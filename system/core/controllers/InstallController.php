@@ -195,7 +195,7 @@ class InstallController extends FWFrontController
      */
     protected function writeDbConfig($dsn, $username, $password)
     {
-        $dbConfigFile = dirname(dirname(dirname(__FILE__))) . '/runtime/front/db.config.php';
+        $dbConfigFile = Yii::app()->runtimePath .'/db.config.php';
 
         $dbConfig = @include $dbConfigFile;
 

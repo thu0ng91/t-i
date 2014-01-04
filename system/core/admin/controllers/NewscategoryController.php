@@ -1,6 +1,6 @@
 <?php
 
-class NewscategoryController extends Controller
+class NewscategoryController extends FWAdminController
 {
     protected function menus()
     {

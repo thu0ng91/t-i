@@ -3,7 +3,7 @@
  * App 行为控制
  * Class ApplicationBehavior
  */
-class ApplicationBehavior extends CBehavior {
+class FrontAppBehavior extends CBehavior {
 
     public function events()
     {
@@ -74,5 +74,19 @@ class ApplicationBehavior extends CBehavior {
                 Yii::app()->urlManager->addRules($r, false);
             }
         }
+
+        // 动态加载模块
+        // @todo 可从缓存中加载
+        $modules = Modules::model()->findAll("status=:status", array(
+            ':status' => Yii::app()->params['status']['ischecked'],
+        ));
+
+        $loadModules = array();
+        foreach ($modules as $m) {
+            $loadModules[] = $m->name;
+//            Yii::app()->setModules($m->name);
+        }
+//        var_dump($this);
+        Yii::app()->setModules($loadModules);
     }
 }

@@ -3,7 +3,7 @@
 /**
  * Class FriendlinkController
  */
-class FriendlinkController extends Controller
+class FriendlinkController extends FWAdminController
 {
     protected function menus()
     {

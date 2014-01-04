@@ -3,7 +3,7 @@
  * 广告管理
  * Class AdsController
  */
-class AdsController extends Controller
+class AdsController extends FWAdminController
 {
     protected function menus()
     {

@@ -22,6 +22,7 @@ return array(
 	'preload'=>array('log'),
 	'viewPath'=>'.',
     'runtimePath'=> $basePath .'/../../runtime/front',
+    'modulePath'=> $basePath .'/../../modules',
 	// autoloading model and component classes
 	'import'=>array(
     'application.models.*',
@@ -35,7 +36,7 @@ return array(
     'theme' => 'biquge',
 
     'behaviors' => array(
-        'app' => 'application.behaviors.ApplicationBehavior',
+        'app' => 'application.behaviors.FrontAppBehavior',
     ),
 	
 	'modules'=>array(
@@ -50,6 +51,7 @@ return array(
 		 	// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			//'ipFilters'=>array('127.0.0.1','::1'),
 		),
+//        'test',
 //        'fw',
     ),
 
@@ -113,6 +115,7 @@ return array(
         'themeManager' => array(
             'basePath' => BASE_THEME_PATH . DS . 'front',
             'baseUrl' => $webUrl . '/' . BASE_THEME_DIR . '/front',
+            'themeClass' => 'application.components.FWTheme',
         ),
 
         'viewRenderer' => array(

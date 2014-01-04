@@ -17,6 +17,7 @@ $backendArray=array(
     'viewPath'=>$backend.'/views',
 	'controllerPath'=> $backend.'/controllers',
     'runtimePath'=> $frontend .'/../../runtime/backend',
+    'modulePath'=> $frontend .'/../../modules',
 	'import'=>array(	
     'application.models.*',
     'application.components.*',
@@ -27,7 +28,10 @@ $backendArray=array(
     'backend.components.*',      
 	),
     'theme' => 'bootstrap',
-    'behaviors' => null,
+    'behaviors' => array(
+        'app' => 'application.behaviors.AdminAppBehavior',
+    ),
+//    'behaviors' => null,
     'components'=>array(
         'user'=>array(
             // enable cookie-based authentication
@@ -47,6 +51,7 @@ $backendArray=array(
                 'admin/<_c:(site|adminuser|user|book|category|article)>/<_a:(index|create|update|delete)>' => '<_c>/<_a>',
                 'admin/login' => 'site/login',
                 'admin/logout' => 'site/logout',
+                '<_m:(\w+)>/<_c:(\w+)>/<_a:(\w+)>' => '<_m>/<_c>/<_a>',
             ),
 		),
 		'log'=>array(
@@ -62,6 +67,7 @@ $backendArray=array(
     'themeManager' => array(
       'basePath' => BASE_THEME_PATH . DS . 'admin',
       'baseUrl' => $webUrl . '/' . BASE_THEME_DIR . '/admin',
+      'themeClass' => 'application.components.FWTheme',
     ),
 	),
 	'params'=> require($backend.'/config/params.php'),

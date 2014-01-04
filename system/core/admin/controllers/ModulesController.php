@@ -2,7 +2,7 @@
 /**
  * Class ModuleController
  */
-class ModulesController extends Controller
+class ModulesController extends FWAdminController
 {
     protected function menus()
     {
@@ -87,6 +87,7 @@ class ModulesController extends Controller
                 $m->version = $v['config']['version'];
                 $m->fwversion = $v['config']['fwversion'];
                 $m->description = $v['config']['description'];
+                $m->adminmenus = serialize($v['config']['adminmenus']);
                 $m->createtime = time();
                 $m->updatetime = time();
                 $m->status = 0;
@@ -130,15 +131,15 @@ class ModulesController extends Controller
             Yii::app()->end();
         }
 
-        $moduleFile = FW_MODULE_BASE_PATH . DS . $m->name . DS . $m->name . ".php";
+        $moduleFile = FW_MODULE_BASE_PATH . DS . $m->name . DS . ucfirst($m->name) . "Module.php";
 
         try {
             include_once $moduleFile;
             $moduleCls = ucfirst($m->name) . "Module";
-            if (class_exists($moduleCls, false)) {
+            if (class_exists($moduleCls)) {
                 $setup = new $moduleCls();
                 if ($setup instanceof IModule) {
-                    $r = $setup->install(Yii::app()->db);
+                    $r = $setup->install();
                     if ($r) {
                         $m->status = 1;
                         $m->save();
@@ -173,15 +174,15 @@ class ModulesController extends Controller
 
         // 已经安装，需要先执行卸载
         if ($m->status == 1) {
-            $moduleFile = FW_MODULE_BASE_PATH . DS . $m->name . ".php";
+            $moduleFile = FW_MODULE_BASE_PATH . DS . $m->name . DS . ucfirst($m->name) . "Module.php";
 
             try {
                 include_once $moduleFile;
                 $moduleCls = ucfirst($m->name) . "Module";
-                if (class_exists($moduleCls, false)) {
+                if (class_exists($moduleCls)) {
                     $setup = new $moduleCls();
                     if ($setup instanceof IModule) {
-                        $r = $setup->uninstall(Yii::app()->db);
+                        $r = $setup->uninstall();
                     }
                 }
             } catch (Exception $e) {
@@ -267,12 +268,12 @@ class ModulesController extends Controller
 //            $ext = $f->getExtension();
 //            $ext = strtolower($ext);
             if ($f->isDir() && !$f->isDot()) {
-                $moduleFile = $f->getPathname() . DS . $name . ".php";
+                $moduleFile = $f->getPathname() . DS . ucfirst($name) . "Module.php";
                 $moduleConfigFile = $f->getPathname() . DS . "conf.php";
                 if (is_file($moduleConfigFile) && is_file($moduleFile)) {
                     include_once $moduleFile;
                     $moduleCls = ucfirst($name) . "Module";
-                    if (class_exists($moduleCls, false)) {
+                    if (class_exists($moduleCls)) {
                         $m = new $moduleCls();
                         if ($m instanceof IModule) {
                             $modules[$name] = array();

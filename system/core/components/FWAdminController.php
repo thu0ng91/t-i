@@ -3,11 +3,14 @@
  * Controller is the customized base controller class.
  * All controller classes for this application should extend from this base class.
  */
-class Controller extends CController
+class FWAdminController extends CController
 {
 	public $layout = 'main';
 
     public $menupanel;
+
+    public $topMenus = array();
+    public $leftMenus = array();
 
 	public function init()
 	{
@@ -15,6 +18,28 @@ class Controller extends CController
 			Yii::app()->user->setFlash('actionInfo','您尚未登录系统！');
 			$this->redirect(array('site/login'));
 		}
+
+//        var_dump(Yii::app()->hasModule("book"));
+        $modules = Modules::model()->findAll('status=:status', array(
+            ':status' => Yii::app()->params['status']['ischecked'],
+        ));
+
+        foreach ($modules as $m) {
+            if ($m->adminmenus) {
+                $cls = get_class($this);
+                $cls = str_replace("Controller", "", $cls);
+                $cls[0] = strtolower($cls[0]);
+//                var_dump($this->getId(),$cls);
+                $menus = unserialize($m->adminmenus);
+//                $menus['url'] = Yii::app()->createUrl($menus['url']);
+                $menus['top']['active'] = $this->getId() == $cls ? true : false;
+                $this->topMenus[] = $menus['top'];
+
+                if ($this->getId() == $cls) {
+                    $this->leftMenus = $menus['left'];
+                }
+            }
+        }
 
 //		if(!empty($_GET['menupanel']))
 //		{

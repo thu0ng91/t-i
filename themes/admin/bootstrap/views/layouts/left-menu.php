@@ -43,9 +43,16 @@
             //            array('label'=>'伪静态设置', 'url'=> $this->createUrl('system/rewrite'), 'active'=> $this->action->id == 'rewrite' ? true : false),
         );
     } else {
-        $menus = array(
-            array('label'=>'小说', 'url'=> $this->createUrl('site/index'), 'active'=> $this->id == 'site' ? true : false),
-        );
+//        $menus = array(
+//            array('label'=>'小说', 'url'=> $this->createUrl('site/index'), 'active'=> $this->id == 'site' ? true : false),
+//        );
+        $menus = $this->leftMenus;
+        foreach ($menus as $k => $v) {
+            $v['url'] = Yii::app()->createUrl($v['url']);
+
+            $v['active'] = strpos($v['url'], '/' . $this->action->id) !== false ;
+            $menus[$k] = $v;
+        }
     }
     $this->widget('bootstrap.widgets.TbMenu', array(
     'type'=>'pills', // '', 'tabs', 'pills' (or 'list')

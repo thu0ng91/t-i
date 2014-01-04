@@ -1,6 +1,6 @@
 <?php
 
-class SystemController extends Controller
+class SystemController extends FWAdminController
 {
     protected function menus()
     {

@@ -6,15 +6,13 @@
 interface IModule {
     /**
      * 安装时调用
-     * @param $db
      * @return boolean
      */
-    public function install(CDbConnection $db);
+    public function install();
 
     /**
      * 删除时调用
-     * @param $db
      * @return boolean
      */
-    public function uninstall(CDbConnection $db);
+    public function uninstall();
 }

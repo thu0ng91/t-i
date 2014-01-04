@@ -1,6 +1,6 @@
 <?php
 
-class FeedbackController extends Controller
+class FeedbackController extends FWAdminController
 {
 	/**
 	 * Lists all models.

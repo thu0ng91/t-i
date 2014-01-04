@@ -2,7 +2,7 @@
 /**
  * Class NewsController
  */
-class NewsController extends Controller
+class NewsController extends FWAdminController
 {
     protected function menus()
     {

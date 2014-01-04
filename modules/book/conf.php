@@ -8,7 +8,6 @@ return array(
 	'author' => 'pizigou', // 模块作者
 	'version' => '1.0.0', // 当前模块版本
 	'fwversion' => '1.2.3', // 模块所需最低飞舞版本
-	'hasadmin' => true, // 模块是否存在管理后台管理
 	'description' => '小说连载系统', // 模块详细说明
     'adminmenus' => array(
         'top' => array(

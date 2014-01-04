@@ -15,4 +15,10 @@ interface IModule {
      * @return boolean
      */
     public function uninstall();
+
+    /**
+     * 升级时调用
+     * @return boolean
+     */
+    public function upgrade();
 }

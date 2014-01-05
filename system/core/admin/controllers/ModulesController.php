@@ -22,7 +22,7 @@ class ModulesController extends FWAdminController
         'stop_success' => '停止模块成功',
         'start_error' => '启用模块失败',
         'start_success' => '启用模块成功',
-        'scan_result' => '共找到 %d 个未安装模块',
+        'scan_result' => '找到 %d 个未安装模块，%d 个需升级模块',
     );
 
 	/**
@@ -70,8 +70,17 @@ class ModulesController extends FWAdminController
 
         $modules = Modules::model()->findAll();
 
+        $upgradeCount = 0;
         foreach ($modules as $k => $v) {
             if (isset($localModules[$v->name])) {
+                if (version_compare($localModules[$v->name]['config']['version'], $v->version) > 0) { // 发现升级版
+                    if (version_compare($localModules[$v->name]['config']['version'], $v->upgradeversion) > 0) {
+                        $v->upgradeversion = $localModules[$v->name]['config']['version'];
+    //                    $v->status = -1; // 发现升级版，直接禁用掉当前版本
+                        $v->save();
+                        $upgradeCount++;
+                    }
+                }
                 unset($localModules[$v->name]);
             }
         }
@@ -97,7 +106,7 @@ class ModulesController extends FWAdminController
             }
         }
 
-        $r = sprintf($this->message['scan_result'], $count);
+        $r = sprintf($this->message['scan_result'], $count, $upgradeCount);
 
         echo $r;
 
@@ -149,6 +158,63 @@ class ModulesController extends FWAdminController
                 }
             } else {
                 throw new Exception();
+            }
+        } catch (Exception $e) {
+            echo $this->message['install_error'];
+            Yii::app()->end();
+        }
+    }
+
+    /**
+     * 升级模块
+     * @param $id
+     */
+    public function actionUpgrade($id)
+    {
+        if(!Yii::app()->request->isPostRequest) return;
+
+        $id = intval($id);
+
+        $m = $this->loadModel($id);
+        if (!$m) {
+            echo $this->message['install_error'];
+            Yii::app()->end();
+        }
+
+//        if ($m->status == 1) {
+//            echo $this->message['install_error:module_is_installed'];
+//            Yii::app()->end();
+//        }
+
+        if (version_compare(FWXSVersion, $m->fwversion) < 0) {
+            $s = sprintf($this->message['install_error:fwversion_not_support'], $m->fwversion, FWXSVersion);
+            echo $s;
+            Yii::app()->end();
+        }
+
+        $moduleFile = FW_MODULE_BASE_PATH . DS . $m->name . DS . ucfirst($m->name) . "Module.php";
+
+        try {
+            include_once $moduleFile;
+            $moduleCls = ucfirst($m->name) . "Module";
+            if (class_exists($moduleCls)) {
+                $setup = new $moduleCls();
+                if ($setup instanceof IModule && version_compare($m->upgradeversion, $m->version) > 0) {
+                    $r = $setup->upgrade();
+                    if ($r) {
+                        $m->version = $m->upgradeversion;
+//                        $m->status = 1;
+                        $m->save();
+                        echo $this->message['install_success'];
+                        Yii::app()->end();
+                    }
+                } else {
+                    echo $this->message['install_error'];
+                    Yii::app()->end();
+                }
+            } else {
+                echo $this->message['install_error'];
+                Yii::app()->end();
             }
         } catch (Exception $e) {
             echo $this->message['install_error'];

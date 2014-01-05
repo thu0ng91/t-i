@@ -40,9 +40,21 @@ return array(
     'gather_auth_key' => '52694e26e7b55',
     'urlSuffix' => array('.html', '.htm', '.shtml', '.asp', '.aspx', '.php'),
     'lockFile' => 'install.lock',
-    'novelType' => array(
+    'novelFlag' => array(
        '1' => '连载',
        '2' => '完本'
+    ),
+    'recommendLevel' => array(
+        '不推荐',
+        '一级推荐',
+        '二级推荐',
+        '三级推荐',
+        '四级推荐',
+        '五级推荐',
+        '六级推荐',
+        '七级推荐',
+        '八级推荐',
+        '九级推荐',
     ),
     'novelAdsStatus' => array(
         '0' => '未启用',

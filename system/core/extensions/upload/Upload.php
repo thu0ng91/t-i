@@ -13,19 +13,28 @@ class Upload{
 			if(is_file($deleteFile))
 				unlink($deleteFile);
 		}
-		$uploadDir=Yii::app()->basePath.'/../uploads/'.$type.'/'.date('Y-m',time());
+		$uploadDir= FW_ROOT_PATH . DS . FW_UPLOAD_DIR .DS .$type. DS .date('Y-m',time());
 		self::recursionMkDir($uploadDir);
 		$imgname=time().'-'.rand().'.'.$upload->extensionName;
 		//图片存储路径
-		$imageurl='/uploads/'.$type.'/'.date('Y-m',time()).'/'.$imgname;
+		$imageurl='/' . FW_UPLOAD_DIR . '/'.$type.'/'.date('Y-m',time()).'/'.$imgname;
 		//存储绝对路径
-		$uploadPath=$uploadDir.'/'.$imgname;
+		$uploadPath=$uploadDir. DS. $imgname;
 		if($upload->saveAs($uploadPath)){
 			return $imageurl;
 		}else{
 			return null;
 		}
 	}
+
+    public static function deleteFile($imgurl)
+    {
+        if(!empty($imgurl)){
+            $deleteFile= FW_ROOT_PATH . $imgurl;
+            if(is_file($deleteFile))
+                unlink($deleteFile);
+        }
+    }
 	private static function recursionMkDir($dir){
 		if(!is_dir($dir)){
 			if(!is_dir(dirname($dir))){

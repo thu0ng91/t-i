@@ -3,13 +3,14 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - 添加小说';
+$this->pageTitle=Yii::app()->name . ' - 编辑小说';
 //$this->breadcrumbs=array(
 //	'Login',
 //);
 ?>
 
-<?php $this->renderPartial('_form', array(
+
+<?php $this->renderPartial('book/_form', array(
     'model' => $model,
     'categorys' => $categorys,
 )); ?>

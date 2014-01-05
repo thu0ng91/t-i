@@ -46,7 +46,7 @@ $this->pageTitle=Yii::app()->name;
 //        array('name'=>'createtime', 'value' => 'date("Y-m-d H:i:s", $data->createtime)', 'filter' => false),
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
-            'template'=>"{setup}{start}{stop}{delete}",
+            'template'=>"{setup}{start}{stop}{upgrade}{delete}",
             'htmlOptions'=>array('style'=>'width: 50px'),
             'buttons' => array(
                 'setup' => array(
@@ -75,6 +75,15 @@ $this->pageTitle=Yii::app()->name;
                     'options'=> array('style'=>'cursor:pointer;'), // HTML options for the button tag
                     'click'=> 'js:function () {ajaxPost($(this).attr("href"));return false;}',     // a JS function to be invoked when the button is clicked
                     'visible'=> '$data->status == 1 ? true : false',
+                ),
+                'upgrade' => array(
+                    'label'=>'升级该模块',     // text label of the button
+                    'url'=>'Yii::app()->controller->createUrl("modules/upgrade",array("id"=>$data->id))',       // a PHP expression for generating the URL of the button
+                    'imageUrl'=> '',  // image URL of the button. If not set or false, a text link is used
+                    'icon' => 'upload',
+                    'options'=> array('style'=>'cursor:pointer;'), // HTML options for the button tag
+                    'click'=> 'js:function () {ajaxPost($(this).attr("href"));return false;}',     // a JS function to be invoked when the button is clicked
+                    'visible'=> 'version_compare($data->upgradeversion, $data->version) > 0 ? true : false',
                 ),
                 'delete' => array(
                     'label'=>'删除该模块',     // text label of the button

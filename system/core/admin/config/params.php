@@ -19,11 +19,6 @@ return array(
         '0' => '不通过审核',
         '1' => '通过审核', 
     ),
-    'recommendLevel' => array(
-        '不推荐',
-        '首页推荐',
-        '本栏目推荐',
-    ),
     'moduleStatus' => array(
         '0' => "未安装",
         '1' => "已启用",

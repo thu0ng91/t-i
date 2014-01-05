@@ -9,10 +9,10 @@
  * @property string $author
  * @property integer $authorid
  * @property integer $cid
- * @property integer $type
+ * @property integer $flag
  * @property string $imgurl
- * @property string $summary
  * @property string $keywords
+ * @property string $summary
  * @property string $pinyin
  * @property string $initial
  * @property integer $recommendlevel
@@ -37,8 +37,10 @@
  * @property integer $updatetime
  * @property integer $status
  */
-class Book extends CActiveRecord
+class Book extends BaseModel
 {
+    public $imagefile;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -65,16 +67,17 @@ class Book extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title', 'required'),
-			array('authorid, cid, type, recommendlevel, favoritenum, chaptercount, wordcount, lastchapterid, lastchaptertime, alllikenum, monthlikenum, weeklikenum, daylikenum, lastliketime, allclicks, monthclicks, weekclicks, dayclicks, lastclicktime, hascover, createtime, updatetime, status', 'numerical', 'integerOnly'=>true),
-			array('title, keywords, lastchaptertitle', 'length', 'max'=>100),
+			array('title,cid', 'required'),
+			array('authorid, cid, flag, recommendlevel, favoritenum, chaptercount, wordcount, lastchapterid, lastchaptertime, alllikenum, monthlikenum, weeklikenum, daylikenum, lastliketime, allclicks, monthclicks, weekclicks, dayclicks, lastclicktime, hascover, createtime, updatetime, status', 'numerical', 'integerOnly'=>true),
+			array('title, lastchaptertitle', 'length', 'max'=>100),
 			array('author', 'length', 'max'=>32),
-			array('imgurl, pinyin', 'length', 'max'=>200),
-			array('summary', 'length', 'max'=>255),
+			array('pinyin', 'length', 'max'=>200),
+			array('keywords', 'length', 'max'=>255),
+			array('summary', 'length', 'max'=>1000),
 			array('initial', 'length', 'max'=>1),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, title, author, authorid, cid, type, imgurl, summary, keywords, pinyin, initial, recommendlevel, favoritenum, chaptercount, wordcount, lastchapterid, lastchaptertitle, lastchaptertime, alllikenum, monthlikenum, weeklikenum, daylikenum, lastliketime, allclicks, monthclicks, weekclicks, dayclicks, lastclicktime, hascover, createtime, updatetime, status', 'safe', 'on'=>'search'),
+			array('id, title, author, authorid, cid, flag, imgurl, keywords, summary, pinyin, initial, recommendlevel, favoritenum, chaptercount, wordcount, lastchapterid, lastchaptertitle, lastchaptertime, alllikenum, monthlikenum, weeklikenum, daylikenum, lastliketime, allclicks, monthclicks, weekclicks, dayclicks, lastclicktime, hascover, createtime, updatetime, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -96,37 +99,38 @@ class Book extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'author' => 'Author',
-			'authorid' => 'Authorid',
-			'cid' => 'Cid',
-			'type' => 'Type',
-			'imgurl' => 'Imgurl',
-			'summary' => 'Summary',
-			'keywords' => 'Keywords',
-			'pinyin' => 'Pinyin',
-			'initial' => 'Initial',
-			'recommendlevel' => 'Recommendlevel',
-			'favoritenum' => 'Favoritenum',
-			'chaptercount' => 'Chaptercount',
-			'wordcount' => 'Wordcount',
-			'lastchapterid' => 'Lastchapterid',
-			'lastchaptertitle' => 'Lastchaptertitle',
-			'lastchaptertime' => 'Lastchaptertime',
-			'alllikenum' => 'Alllikenum',
-			'monthlikenum' => 'Monthlikenum',
-			'weeklikenum' => 'Weeklikenum',
-			'daylikenum' => 'Daylikenum',
-			'lastliketime' => 'Lastliketime',
-			'allclicks' => 'Allclicks',
-			'monthclicks' => 'Monthclicks',
-			'weekclicks' => 'Weekclicks',
-			'dayclicks' => 'Dayclicks',
-			'lastclicktime' => 'Lastclicktime',
-			'hascover' => 'Hascover',
-			'createtime' => 'Createtime',
-			'updatetime' => 'Updatetime',
-			'status' => 'Status',
+			'title' => '小说名',
+			'author' => '作者',
+			'authorid' => '作者编号',
+			'cid' => '分类',
+			'flag' => '写作阶段',
+			'imagefile' => '封面图',
+			'keywords' => '关键字',
+			'summary' => '简介',
+			'pinyin' => '小说名拼音',
+			'initial' => '小说名首字母',
+			'recommendlevel' => '推荐等级',
+			'favoritenum' => '收藏数',
+			'chaptercount' => '章节数',
+			'volumecount' => '分卷数',
+			'wordcount' => '字数',
+			'lastchapterid' => '最后章节编号',
+			'lastchaptertitle' => '最后章节标题',
+			'lastchaptertime' => '最后章节时间',
+			'alllikenum' => '所有推荐数',
+			'monthlikenum' => '月推荐数',
+			'weeklikenum' => '周推荐数',
+			'daylikenum' => '日推荐数',
+			'lastliketime' => '最后推荐时间',
+			'allclicks' => '所有点击数',
+			'monthclicks' => '月点击数',
+			'weekclicks' => '周点击数',
+			'dayclicks' => '日点击数',
+			'lastclicktime' => '最后点击时间',
+			'hascover' => '是否有封面图',
+			'createtime' => '发布时间',
+			'updatetime' => '更新时间',
+			'status' => '状态',
 		);
 	}
 
@@ -146,10 +150,10 @@ class Book extends CActiveRecord
 		$criteria->compare('author',$this->author,true);
 		$criteria->compare('authorid',$this->authorid);
 		$criteria->compare('cid',$this->cid);
-		$criteria->compare('type',$this->type);
+		$criteria->compare('flag',$this->flag);
 		$criteria->compare('imgurl',$this->imgurl,true);
-		$criteria->compare('summary',$this->summary,true);
 		$criteria->compare('keywords',$this->keywords,true);
+		$criteria->compare('summary',$this->summary,true);
 		$criteria->compare('pinyin',$this->pinyin,true);
 		$criteria->compare('initial',$this->initial,true);
 		$criteria->compare('recommendlevel',$this->recommendlevel);
@@ -178,4 +182,27 @@ class Book extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+    /**
+     * @return bool|void
+     */
+    public function beforeSave()
+    {
+        if (parent::beforeSave()) {
+            if (!$this->isNewRecord) return true;
+
+            $title = trim($this->title);
+            $title = str_replace(" ", "-", $this->title);
+            $this->pinyin = H::getPinYin($title);
+            $m = self::model()->find("pinyin=:pinyin", array(
+               ':pinyin' => $this->pinyin,
+            ));
+            // 粗略解决拼音相同的问题
+            if ($m) {
+                $this->pinyin = $this->pinyin . rand(1, 10000);
+            }
+            $this->initial = $this->pinyin{0};
+            return true;
+        } else return false;
+    }
 }

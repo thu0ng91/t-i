@@ -135,19 +135,21 @@ class AdminController extends FWAdminController
                 }
 
                 Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['updateSuccess']);
-                $this->redirect(array('index','menupanel'=>$_GET['menupanel'],'cid'=>$_GET['cid'],'title'=>$_GET['title']));
+//                $this->redirect(array('bookList','menupanel'=>$_GET['menupanel'],'cid'=>$_GET['cid'],'title'=>$_GET['title']));
+                $this->refresh();
             }else if($model->validate()){
                 Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['updateFail']);
-                $this->redirect(array('index','menupanel'=>$_GET['menupanel'],'cid'=>$_GET['cid'],'title'=>$_GET['title']));
+//                $this->redirect(array('bookList','menupanel'=>$_GET['menupanel'],'cid'=>$_GET['cid'],'title'=>$_GET['title']));
+                $this->refresh();
             }
         }
 
-        $bookImages = BookImage::model()->findAll('bookid=:bookid', array(
-            ':bookid' => $model->id,
-        ));
+//        $bookImages = BookImage::model()->findAll('bookid=:bookid', array(
+//            ':bookid' => $model->id,
+//        ));
         $this->render('book/update',array(
             'model'=>$model,
-            'bookimages' => $bookImages,
+//            'bookimages' => $bookImages,
             'categorys'=>Category::model()->showAllSelectCategory(),
         ));
     }
@@ -170,6 +172,127 @@ class AdminController extends FWAdminController
     }
 
     /**
+     * ajax 创建tag 并返回tag 编号
+     */
+    public function actionAjaxCreateTag()
+    {
+        $tagName = $_REQUEST['tag'];
+
+        $tag = Tags::model()->find("name=:name", array(
+           ':name' => $tagName,
+        ));
+        if (!$tag) {
+            $tag = new Tags();
+            $tag->name = $tagName;
+            $tag->save();
+        }
+
+        $this->jsonOuputAndEnd(true, $tag->id);
+    }
+
+    /**
+     * 分类列表
+     */
+    public function actionCategoryList()
+    {
+        $criteria=new CDbCriteria(array(
+            'select'=>'id,title,parentid,imgurl,isnav',
+            'condition'=>"",
+            'order'=>'sort desc',
+        ));
+
+        if(!empty($_GET['Category']['title']))
+            $criteria->addSearchCondition('title',$_GET['Category']['title']);
+
+        if(isset($_GET['Category']['isnav']))
+            $criteria->compare('isnav', $_GET['Category']['isnav']);
+
+        $criteria->addNotInCondition('status', array(Yii::app()->params['status']['isdelete']));
+
+        $dataProvider=new CActiveDataProvider('Category',array(
+            'criteria'=> $criteria,
+            'pagination'=>array(
+                'pageSize'=>1000,
+            ),
+        ));
+        $categoryList=array();
+//		Category::model()->showAllCategory($categoryList,$dataProvider->getData());
+//		$dataProvider->setData($categoryList);
+        $this->render('category/list',array(
+            'dataProvider'=>$dataProvider,
+            'category' => $categoryList,
+            'model' => Category::model(),
+        ));
+
+    }
+
+
+    /**
+     * 创建分类
+     */
+    public function actionCategoryCreate()
+    {
+        $model=new Category;
+        if(isset($_POST['Category']))
+        {
+            $model->attributes=$_POST['Category'];
+            if ($model->shorttitle == "") {
+                $model->shorttitle = H::getPinYin($model->title);
+            }
+            $upload=CUploadedFile::getInstance($model,'imagefile');
+            if(!empty($upload))
+            {
+                $model->imgurl=Upload::createFile($upload,'category','create');
+            }
+            if($model->save()){
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveSuccess']);
+                $this->refresh();
+            }else if($model->validate()){
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveFail']);
+                $this->refresh();
+            }
+        }else{
+//			$model->module=$module;
+        }
+        $this->render('category/create',array(
+            'model'=>$model,
+            'categorys'=>Category::model()->showAllSelectCategory(Category::SHOW_TOPCATGORY),
+        ));
+    }
+
+    /**
+     * 更新分类
+     * @param $id
+     */
+    public function actionCategoryUpdate($id)
+    {
+        $model=$this->loadCategoryModel($id);
+        if(!empty($_POST['Category']))
+        {
+            $model->attributes=$_POST['Category'];
+            if ($model->shorttitle == "") {
+                $model->shorttitle = H::getPinYin($model->title);
+            }
+            $upload=CUploadedFile::getInstance($model,'imagefile');
+            if(!empty($upload))
+            {
+                $model->imgurl=Upload::createFile($upload,'category','update',$model->imgurl);
+            }
+            if($model->save()){
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['updateSuccess']);
+                $this->redirect(array('index','menupanel'=>$_GET['menupanel']));
+            }else if($model->validate()){
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['updateFail']);
+                $this->redirect(array('index','menupanel'=>$_GET['menupanel']));
+            }
+        }
+        $this->render('category/update',array(
+            'model'=> $model,
+            'categorys'=>Category::model()->showAllSelectCategory(Category::SHOW_TOPCATGORY),
+        ));
+    }
+
+    /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer the ID of the model to be loaded
@@ -177,6 +300,19 @@ class AdminController extends FWAdminController
     public function loadBookModel($id)
     {
         $model=Book::model()->findByPk((int)$id);
+        if($model===null)
+            throw new CHttpException(404,'The requested page does not exist.');
+        return $model;
+    }
+
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer the ID of the model to be loaded
+     */
+    public function loadCategoryModel($id)
+    {
+        $model=Category::model()->findByPk((int)$id);
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
         return $model;

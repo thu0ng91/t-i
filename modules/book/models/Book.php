@@ -81,16 +81,20 @@ class Book extends BaseModel
 		);
 	}
 
-	/**
-	 * @return array relational rules.
-	 */
-	public function relations()
-	{
-		// NOTE: you may need to adjust the relation name and the related
-		// class name for the relations automatically generated below.
-		return array(
-		);
-	}
+    /**
+     * @return array relational rules.
+     */
+    public function relations()
+    {
+        // NOTE: you may need to adjust the relation name and the related
+        // class name for the relations automatically generated below.
+        return array(
+            'category' => array(CActiveRecord::BELONGS_TO, 'Category', 'cid'),
+            'images' => array(CActiveRecord::HAS_MANY, 'BookImage', 'bookid'),
+//            'chapter' => array(CActiveRecord::HAS_MANY, 'Article', 'bookid', 'order'=>'chapter.chapter ASC, chapter.id asc', 'on' => 'chapter.status=' . Yii::app()->params['status']['ischecked']),
+        );
+    }
+
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -106,6 +110,7 @@ class Book extends BaseModel
 			'flag' => '写作阶段',
 			'imagefile' => '封面图',
 			'keywords' => '关键字',
+//			'tags' => '标签',
 			'summary' => '简介',
 			'pinyin' => '小说名拼音',
 			'initial' => '小说名首字母',

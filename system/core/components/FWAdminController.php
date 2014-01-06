@@ -106,4 +106,31 @@ class FWAdminController extends CController
 	protected function showViewUrl($type,$data){
 		return str_replace('admin.php','index.php',Yii::app()->createUrl("$type/view",array('id'=>$data->id)));
 	}
+
+    /**
+     * 输出带有有失败、成功提示的JSON数据
+     * @param $result boolean
+     * @param $data mixed
+     */
+    public function jsonOutput($result, $data = null)
+    {
+        $r = array(
+            "result" => $result ? true : false,
+            "data" => $data,
+        );
+
+        echo json_encode($r);
+    }
+
+    /**
+     * 输出带有有失败、成功提示的JSON数据并终止运行
+     * @param $result boolean
+     * @param $data mixed
+     */
+    public function jsonOuputAndEnd($result, $data = null)
+    {
+        $this->jsonOutput($result, $data);
+
+        Yii::app()->end();
+    }
 }

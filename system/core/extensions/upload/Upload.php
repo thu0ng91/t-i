@@ -15,7 +15,7 @@ class Upload{
 		}
 		$uploadDir= FW_ROOT_PATH . DS . FW_UPLOAD_DIR .DS .$type. DS .date('Y-m',time());
 		self::recursionMkDir($uploadDir);
-		$imgname=time().'-'.rand().'.'.$upload->extensionName;
+		$imgname=time() .rand().'.'.$upload->extensionName;
 		//图片存储路径
 		$imageurl='/' . FW_UPLOAD_DIR . '/'.$type.'/'.date('Y-m',time()).'/'.$imgname;
 		//存储绝对路径

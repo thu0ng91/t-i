@@ -1,11 +1,14 @@
 <?php
-
-class AdminController extends FWAdminController
+/**
+ * 小说管理
+ * Class BookController
+ */
+class BookController extends FWAdminController
 {
     /**
      * 小说列表
      */
-    public function actionBookList()
+    public function actionIndex()
     {
       $criteria=new CDbCriteria();
     //        $criteria->addCondition('status=:stauts');
@@ -45,7 +48,7 @@ class AdminController extends FWAdminController
               ),
           ),
       ));
-      $this->render('book/list',array(
+      $this->render('index',array(
           'dataProvider'=>$dataProvider,
           'categorys'=> Category::model()->showAllSelectCategory(Category::SHOW_ALLCATGORY),
           'model' => Book::model(),
@@ -55,7 +58,7 @@ class AdminController extends FWAdminController
     /**
      * 小说创建
      */
-    public function actionBookCreate()
+    public function actionCreate()
     {
         $model=new Book;
         $cid=$_GET['cid'];
@@ -70,6 +73,17 @@ class AdminController extends FWAdminController
 //                $model->imgurl = Upload::createFile($upload,'book','create');
 //            }
             if($model->save()){
+                // 保存 tags
+                $tagIdList = $_POST['book_tags'];
+                $tagIdList = explode(",", $tagIdList);
+                foreach ($tagIdList as $v) {
+                    if (!is_numeric($v) || $v < 1) continue;
+                    $m = new BookTags();
+                    $m->bookid = $model->id;
+                    if ($v > 0) $m->tagid = intval($v);
+                    $m->save();
+                }
+
                 $images = CUploadedFile::getInstancesByName('images');
 
                 if (isset($images) && count($images) > 0) {
@@ -94,7 +108,7 @@ class AdminController extends FWAdminController
                 $this->refresh();
             }
         }
-        $this->render('book/create',array(
+        $this->render('create',array(
             'model'=>$model,
             'categorys'=>Category::model()->showAllSelectCategory(),
         ));
@@ -104,9 +118,9 @@ class AdminController extends FWAdminController
      * 小说更新
      * @param $id
      */
-    public function actionBookUpdate($id)
+    public function actionUpdate($id)
     {
-        $model=$this->loadBookModel($id);
+        $model=$this->loadModel($id);
         if(!empty($_POST['Book']))
         {
             $model->attributes=$_POST['Book'];
@@ -117,6 +131,17 @@ class AdminController extends FWAdminController
 //            }
 
             if($model->save()){
+                // 保存新增tags
+                $tagIdList = $_POST['book_tags'];
+                $tagIdList = explode(",", $tagIdList);
+                foreach ($tagIdList as $v) {
+                    if (!is_numeric($v) || $v < 1) continue;
+                    $m = new BookTags();
+                    $m->bookid = $model->id;
+                    if ($v > 0) $m->tagid = intval($v);
+                    $m->save();
+                }
+
                 $images = CUploadedFile::getInstancesByName('images');
 
                 if (isset($images) && count($images) > 0) {
@@ -147,7 +172,7 @@ class AdminController extends FWAdminController
 //        $bookImages = BookImage::model()->findAll('bookid=:bookid', array(
 //            ':bookid' => $model->id,
 //        ));
-        $this->render('book/update',array(
+        $this->render('update',array(
             'model'=>$model,
 //            'bookimages' => $bookImages,
             'categorys'=>Category::model()->showAllSelectCategory(),
@@ -163,6 +188,15 @@ class AdminController extends FWAdminController
         $m = BookImage::model()->findByPk((int)$id);
         if ($m) {
             Upload::deleteFile($m->imgurl);
+
+            // 当删除了所有图片时，调整小说封面图状态
+            if (!Book::model()->exists('id=:id', array(
+                ':id' => $m->bookid,
+            ))) {
+                Book::model()->updateByPk($m->bookid, array(
+                   'iscover' => 0,
+                ));
+            }
             $m->delete();
         }
 
@@ -173,6 +207,7 @@ class AdminController extends FWAdminController
 
     /**
      * ajax 创建tag 并返回tag 编号
+     * 在新建书籍：书籍编号还不存在时调用
      */
     public function actionAjaxCreateTag()
     {
@@ -191,105 +226,30 @@ class AdminController extends FWAdminController
     }
 
     /**
-     * 分类列表
+     * ajax 删除tag
+     * 在新建 or 编辑书籍时调用
+     * 输出tag编号
      */
-    public function actionCategoryList()
+    public function actionAjaxDeleteTag()
     {
-        $criteria=new CDbCriteria(array(
-            'select'=>'id,title,parentid,imgurl,isnav',
-            'condition'=>"",
-            'order'=>'sort desc',
+        $tagName = $_REQUEST['tag'];
+        $bookId = $_REQUEST['bookid'];
+
+        if ($bookId < 1) $this->jsonOuputAndEnd(false);
+
+        $tag = Tags::model()->find("name=:name", array(
+            ':name' => $tagName,
         ));
-
-        if(!empty($_GET['Category']['title']))
-            $criteria->addSearchCondition('title',$_GET['Category']['title']);
-
-        if(isset($_GET['Category']['isnav']))
-            $criteria->compare('isnav', $_GET['Category']['isnav']);
-
-        $criteria->addNotInCondition('status', array(Yii::app()->params['status']['isdelete']));
-
-        $dataProvider=new CActiveDataProvider('Category',array(
-            'criteria'=> $criteria,
-            'pagination'=>array(
-                'pageSize'=>1000,
-            ),
-        ));
-        $categoryList=array();
-//		Category::model()->showAllCategory($categoryList,$dataProvider->getData());
-//		$dataProvider->setData($categoryList);
-        $this->render('category/list',array(
-            'dataProvider'=>$dataProvider,
-            'category' => $categoryList,
-            'model' => Category::model(),
-        ));
-
-    }
-
-
-    /**
-     * 创建分类
-     */
-    public function actionCategoryCreate()
-    {
-        $model=new Category;
-        if(isset($_POST['Category']))
-        {
-            $model->attributes=$_POST['Category'];
-            if ($model->shorttitle == "") {
-                $model->shorttitle = H::getPinYin($model->title);
-            }
-            $upload=CUploadedFile::getInstance($model,'imagefile');
-            if(!empty($upload))
-            {
-                $model->imgurl=Upload::createFile($upload,'category','create');
-            }
-            if($model->save()){
-                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveSuccess']);
-                $this->refresh();
-            }else if($model->validate()){
-                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveFail']);
-                $this->refresh();
-            }
-        }else{
-//			$model->module=$module;
+        if (!$tag) {
+            $this->jsonOuputAndEnd(false);
         }
-        $this->render('category/create',array(
-            'model'=>$model,
-            'categorys'=>Category::model()->showAllSelectCategory(Category::SHOW_TOPCATGORY),
-        ));
-    }
 
-    /**
-     * 更新分类
-     * @param $id
-     */
-    public function actionCategoryUpdate($id)
-    {
-        $model=$this->loadCategoryModel($id);
-        if(!empty($_POST['Category']))
-        {
-            $model->attributes=$_POST['Category'];
-            if ($model->shorttitle == "") {
-                $model->shorttitle = H::getPinYin($model->title);
-            }
-            $upload=CUploadedFile::getInstance($model,'imagefile');
-            if(!empty($upload))
-            {
-                $model->imgurl=Upload::createFile($upload,'category','update',$model->imgurl);
-            }
-            if($model->save()){
-                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['updateSuccess']);
-                $this->redirect(array('index','menupanel'=>$_GET['menupanel']));
-            }else if($model->validate()){
-                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['updateFail']);
-                $this->redirect(array('index','menupanel'=>$_GET['menupanel']));
-            }
-        }
-        $this->render('category/update',array(
-            'model'=> $model,
-            'categorys'=>Category::model()->showAllSelectCategory(Category::SHOW_TOPCATGORY),
+        BookTags::model()->deleteAll("tagid=:tagid and bookid=:bookid", array(
+            ":tagid" => $tag->id,
+            ":bookid" =>  $bookId,
         ));
+
+        $this->jsonOuputAndEnd(true, $tag->id);
     }
 
     /**
@@ -297,22 +257,9 @@ class AdminController extends FWAdminController
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer the ID of the model to be loaded
      */
-    public function loadBookModel($id)
+    public function loadModel($id)
     {
         $model=Book::model()->findByPk((int)$id);
-        if($model===null)
-            throw new CHttpException(404,'The requested page does not exist.');
-        return $model;
-    }
-
-    /**
-     * Returns the data model based on the primary key given in the GET variable.
-     * If the data model is not found, an HTTP exception will be raised.
-     * @param integer the ID of the model to be loaded
-     */
-    public function loadCategoryModel($id)
-    {
-        $model=Category::model()->findByPk((int)$id);
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
         return $model;

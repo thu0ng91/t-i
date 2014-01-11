@@ -75,4 +75,17 @@ class H {
 
         return file_exists($lockFile);
     }
+
+    /**
+     * 获取字数
+     * @param $content
+     * @param string $encoding
+     * @return int
+     */
+    public static function getWordCount($content, $encoding = "UTF-8")
+    {
+        if (empty($content)) return 0;
+
+        return mb_strlen($content, $encoding);
+    }
 }

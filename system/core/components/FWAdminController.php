@@ -26,16 +26,16 @@ class FWAdminController extends CController
 
         foreach ($modules as $m) {
             if ($m->adminmenus) {
-                $cls = get_class($this);
-                $cls = str_replace("Controller", "", $cls);
-                $cls[0] = strtolower($cls[0]);
+//                $cls = get_class($this);
+//                $cls = str_replace("Controller", "", $cls);
+//                $cls[0] = strtolower($cls[0]);
 //                var_dump($this->getId(),$cls);
                 $menus = unserialize($m->adminmenus);
 //                $menus['url'] = Yii::app()->createUrl($menus['url']);
-                $menus['top']['active'] = $this->getId() == $cls ? true : false;
+                $menus['top']['active'] = $this->module->id == $m->name ? true : false;
                 $this->topMenus[] = $menus['top'];
 
-                if ($this->getId() == $cls) {
+                if ($this->module->id == $m->name) {
                     $this->leftMenus = $menus['left'];
                 }
             }

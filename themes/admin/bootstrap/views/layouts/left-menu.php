@@ -50,7 +50,10 @@
         foreach ($menus as $k => $v) {
             $v['url'] = Yii::app()->createUrl($v['url']);
 
-            $v['active'] = strpos($v['url'], '/' . $this->action->id) !== false ;
+            $v['active'] = strpos($v['url'], $this->id . '/' . $this->action->id) !== false ;
+            if (!$v['active']) {
+                $v['active'] = strpos($v['url'], '/' . $this->id) !== false ;
+            }
             $menus[$k] = $v;
         }
     }

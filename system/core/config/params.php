@@ -60,4 +60,8 @@ return array(
         '0' => '未启用',
         '1' => '启用'
     ),
+    'novelContentType' => array(
+        '0' => '文本',
+        '1' => '图片'
+    ),
 );

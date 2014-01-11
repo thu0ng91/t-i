@@ -12,6 +12,15 @@
 
 </style>
 
+<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+//    'homeLink' => CHtml::link(""
+    'links'=>array(
+        '小说栏目管理' => Yii::app()->createUrl("book/admin/category/index"),
+//        '小说分卷管理' => Yii::app()->createUrl("book/admin/volume/index", array("bookid" => isset($book) ? $book->id : $model->book->id)),
+        $this->action->id == 'create' ? "新建小说栏目" : "编辑小说栏目",
+    ),
+)); ?>
+
     <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
       'id'=>'category-form',
       'type'=>'horizontal',

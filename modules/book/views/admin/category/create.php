@@ -9,7 +9,7 @@ $this->pageTitle=Yii::app()->name . ' - 添加栏目';
 //);
 ?>
 
-<?php $this->renderPartial('category/_form', array(
+<?php $this->renderPartial('_form', array(
     'model' => $model,
     'categorys' => $categorys,
 )); ?>

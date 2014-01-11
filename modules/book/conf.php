@@ -12,16 +12,16 @@ return array(
     'adminmenus' => array(
         'top' => array(
             'label' => '小说管理',
-            'url' => 'book/admin/bookList',
+            'url' => 'book/admin/book/index',
         ),
         'left' => array(
             array(
                 'label' => '小说栏目管理',
-                'url' => 'book/admin/categoryuList',
+                'url' => 'book/admin/category/index',
             ),
             array(
                 'label' => '小说管理',
-                'url' => 'book/admin/bookList',
+                'url' => 'book/admin/book/index',
             ),
         )
     ),

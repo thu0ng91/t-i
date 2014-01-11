@@ -3,7 +3,7 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - 编辑小说';
+$this->pageTitle=Yii::app()->name . ' - 编辑分卷';
 //$this->breadcrumbs=array(
 //	'Login',
 //);

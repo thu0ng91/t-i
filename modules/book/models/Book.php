@@ -118,7 +118,7 @@ class Book extends BaseModel
 			'favoritenum' => '收藏数',
 			'chaptercount' => '章节数',
 			'volumecount' => '分卷数',
-			'wordcount' => '字数',
+			'wordcount' => '总字数',
 			'lastchapterid' => '最后章节编号',
 			'lastchaptertitle' => '最后章节标题',
 			'lastchaptertime' => '最后章节时间',
@@ -209,5 +209,32 @@ class Book extends BaseModel
             $this->initial = $this->pinyin{0};
             return true;
         } else return false;
+    }
+
+    public function afterSave()
+    {
+        if ($this->isNewRecord) { // 创建默认分卷
+            $v = new Volume();
+            if (!$v->exists('bookid=:bookid', array(
+                ':bookid' => $this->id
+            ))) {
+                $v->bookid = $this->id;
+                $v->title = "默认分卷";
+                $v->save();
+            }
+        }
+//        parent::afterSave();
+    }
+
+    /**
+     * 获取书籍关联tags
+     */
+    public function getTags()
+    {
+        $sql = "select tags.id, tags.name from tags, book_tags where book_tags.tagid=tags.id and book_tags.bookid=:bookid";
+        $list = Yii::app()->db->createCommand($sql)->queryAll(true, array(
+            ':bookid' => $this->id,
+        ));
+        return $list;
     }
 }

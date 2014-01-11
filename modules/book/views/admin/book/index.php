@@ -6,7 +6,7 @@ $this->pageTitle=Yii::app()->name;
 
 <?php $this->widget('bootstrap.widgets.TbButton', array(
     'label'=>'新建小说',
-    'url' => Yii::app()->createUrl('book/admin/bookCreate'),
+    'url' => Yii::app()->createUrl('book/admin/book/create'),
     'type'=>'primary', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
     'size'=>'null', // null, 'large', 'small' or 'mini'
 )); ?>
@@ -29,37 +29,41 @@ $this->pageTitle=Yii::app()->name;
 //        ),
         array('name'=>'author', ),
         array('name'=>'cid', 'value' => '$data->category->title', 'filter' => $categorys),
+        array('name'=>'volumecount', 'value' => '$data->volumecount', 'filter' => false),
+//        array('name'=>'chaptercount', 'value' => '$data->chaptercount', 'filter' => false),
+        array('name'=>'chaptercount', 'value' => '$data->chaptercount', 'filter' => false),
+        array('name'=>'wordcount', 'value' => '$data->wordcount', 'filter' => false),
         array('name'=> 'recommendlevel', 'value' => 'Yii::app()->params["recommendLevel"][$data->recommendlevel]', 'filter' => Yii::app()->params["recommendLevel"]),
 //        array('name'=>'language', 'header'=>'Language'),
         array('name'=>'createtime', 'value' => 'date("Y-m-d H:i:s", $data->createtime)', 'filter' => false),
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
-            'template'=>"{view}{add}{update}{delete}",
+            'template'=>"{update}{volume}{chapter}{delete}",
             'htmlOptions'=>array('style'=>'width: 50px'),
             'buttons' => array(
                 'update' => array(
                     'label'=>'编辑小说',     // text label of the button
-                    'url'=>'Yii::app()->createUrl("book/admin/bookUpdate",array("id"=>$data->id))',       // a PHP expression for generating the URL of the button
+                    'url'=>'Yii::app()->createUrl("book/admin/book/update",array("id"=>$data->id))',       // a PHP expression for generating the URL of the button
                     'imageUrl'=> '',  // image URL of the button. If not set or false, a text link is used
 //                    'icon' => 'eye-open',
                     'options'=> array('style'=>'cursor:pointer;'), // HTML options for the button tag
 //                    'click'=> 'js:function(){}',     // a JS function to be invoked when the button is clicked
                     'visible'=> 'true',
                 ),
-                'view' => array(
-                    'label'=>'查看小说章节',     // text label of the button
-                    'url'=>'Yii::app()->createUrl("book/admin/chapterList",array("bid"=>$data->id))',       // a PHP expression for generating the URL of the button
+                'volume' => array(
+                    'label'=>'管理小说分卷',     // text label of the button
+                    'url'=>'Yii::app()->createUrl("book/admin/volume/index",array("bookid"=>$data->id))',       // a PHP expression for generating the URL of the button
                     'imageUrl'=> '',  // image URL of the button. If not set or false, a text link is used
-                    'icon' => 'eye-open',
+                    'icon' => 'book',
                     'options'=> array('style'=>'cursor:pointer;'), // HTML options for the button tag
                     'click'=> 'js:function(){}',     // a JS function to be invoked when the button is clicked
                     'visible'=> 'true',
                 ),
-                'add' => array(
-                    'label'=>'添加小说章节',     // text label of the button
-                    'url'=>'Yii::app()->createUrl("book/admin/chapterCreate",array("bid"=>$data->id))',       // a PHP expression for generating the URL of the button
+                'chapter' => array(
+                    'label'=>'管理小说章节',     // text label of the button
+                    'url'=>'Yii::app()->createUrl("book/admin/chapter/index",array("bookid"=>$data->id))',       // a PHP expression for generating the URL of the button
                     'imageUrl'=> '',  // image URL of the button. If not set or false, a text link is used
-                    'icon' => 'plus',
+                    'icon' => 'list',
                     'options'=> array('style'=>'cursor:pointer;'), // HTML options for the button tag
                     'click'=> 'js:function(){}',     // a JS function to be invoked when the button is clicked
                     'visible'=> 'true',

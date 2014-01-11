@@ -15,6 +15,15 @@
 <!-- Tokenfield CSS -->
 <link href="<?php echo Yii::app()->theme->baseUrl;?>/css/bootstrap-tokenfield.min.css" type="text/css" rel="stylesheet">
 
+<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+//    'homeLink' => CHtml::link(""
+    'links'=>array(
+        '小说管理' => Yii::app()->createUrl("book/admin/book/index"),
+//        '小说分卷管理' => Yii::app()->createUrl("book/admin/volume/index", array("bookid" => isset($book) ? $book->id : $model->book->id)),
+        $this->action->id == 'create' ? "新建小说" : "编辑小说",
+    ),
+)); ?>
+
     <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
       'id'=>'book-form',
       'type'=>'horizontal',
@@ -40,13 +49,13 @@
     )); ?>
 <!--      --><?php //echo $form->fileFieldRow($model, 'imagefile'); ?>
 
-    <?php if ($this->action->id == 'bookUpdate'):?>
+    <?php if ($this->action->id == 'update'):?>
         <div class="control-group ">
             <label for="Book_imagefile1" class="control-label">已上传封面图</label>
             <div class="controls">
                 <?php foreach ($model->images as $img):?>
                     <p>
-                        <?php echo CHtml::image(H::getNovelImageUrl($img->imgurl), '', array('width' => '100px', 'height' => '100px'));?><a href="<?php echo Yii::app()->createUrl('book/admin/deleteBookImage', array('id' => $img->id));?>" onclick="ajaxDeleteImage(this);return false;">删除</a>
+                        <?php echo CHtml::image(H::getNovelImageUrl($img->imgurl), '', array('width' => '100px', 'height' => '100px'));?><a href="<?php echo Yii::app()->createUrl('book/admin/book/deleteBookImage', array('id' => $img->id));?>" onclick="ajaxDeleteImage(this);return false;">删除</a>
                     </p>
 
                 <?php endforeach;?>
@@ -70,11 +79,26 @@
         </div>
     </div>
 
+<?php
+    $book_tags_id_list = "";
+    $book_tags_name_list = "";
+    if ($model->id > 0) {
+        $book_tags_id_list = array();
+        $book_tags_name_list = array();
+        foreach ($model->tags as $tag) {
+            $book_tags_id_list[] = $tag['id'];
+            $book_tags_name_list[] = $tag["name"];
+        }
+
+        $book_tags_id_list = implode(",", $book_tags_id_list);
+        $book_tags_name_list = implode("," , $book_tags_name_list);
+    }
+?>
     <div class="control-group ">
         <label for="Book_imagefile1" class="control-label">标签</label>
         <div class="tokenfield controls">
             <input type="hidden" name="book_tags" id="book_tags" value="" />
-            <input type="text" class="form-control" id="tags-tokenfield-typeahead" placeholder="点击填写标签，按回车键保存" value="" />
+            <input type="text" class="form-control" id="tags-tokenfield-typeahead" placeholder="点击填写标签，按回车键保存" value="<?php echo $book_tags_name_list;?>" />
         </div>
     </div>
 
@@ -100,8 +124,10 @@
 
 <script>
     var urls = {
-      'ajaxCreateTag' : '<?php echo Yii::app()->createUrl("book/admin/ajaxCreateTag");?>'
+      'ajaxCreateTag' : '<?php echo Yii::app()->createUrl("book/admin/book/ajaxCreateTag");?>',
+      'ajaxDeleteTag' : '<?php echo Yii::app()->createUrl("book/admin/book/ajaxDeleteTag");?>'
     };
+    var bookId = '<?php echo $model->id;?>';
     function ajaxDeleteImage(obj)
     {
         var url = $(obj).attr("href");
@@ -130,7 +156,15 @@
                 }
             },'json');
         }).on('removeToken', function (e) {
-//            alert(e.token.value);
+            $.post(urls.ajaxDeleteTag, {tag: e.token.value, bookid: bookId}, function (data) {
+//                //alert(data.result);
+                if (data.result) {
+                    var v = $("#book_tags").val();
+                    var id = data.data;
+                    v = v.replace(id.toString(), "");
+                    $("#book_tags").val(v);
+                }
+            },'json');
         });
 
 </script>

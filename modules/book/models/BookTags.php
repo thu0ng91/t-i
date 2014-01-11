@@ -1,20 +1,20 @@
 <?php
 
 /**
- * This is the model class for table "book_image".
+ * This is the model class for table "book_tags".
  *
- * The followings are the available columns in table 'book_image':
+ * The followings are the available columns in table 'book_tags':
  * @property string $id
+ * @property integer $tagid
  * @property integer $bookid
- * @property string $imgurl
- * @property integer $iscover
+ * @property integer $sort
  */
-class BookImage extends CActiveRecord
+class BookTags extends CActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
-	 * @return BookImage the static model class
+	 * @return BookTags the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
@@ -26,7 +26,7 @@ class BookImage extends CActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'book_image';
+		return 'book_tags';
 	}
 
 	/**
@@ -37,12 +37,10 @@ class BookImage extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('bookid, imgurl', 'required'),
-			array('bookid, chapterid, iscover', 'numerical', 'integerOnly'=>true),
-			array('imgurl', 'length', 'max'=>255),
+			array('tagid, bookid, sort', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, bookid, chapterid, iscover', 'safe', 'on'=>'search'),
+			array('id, tagid, bookid, sort', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,10 +62,9 @@ class BookImage extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'tagid' => 'Tagid',
 			'bookid' => 'Bookid',
-			'chapterid' => 'chapterid',
-			'imgurl' => 'Imgurl',
-			'iscover' => 'Iscover',
+			'sort' => 'Sort',
 		);
 	}
 
@@ -83,9 +80,9 @@ class BookImage extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
+		$criteria->compare('tagid',$this->tagid);
 		$criteria->compare('bookid',$this->bookid);
-		$criteria->compare('imgurl',$this->imgurl,true);
-		$criteria->compare('iscover',$this->iscover);
+		$criteria->compare('sort',$this->sort);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

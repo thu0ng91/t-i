@@ -9,7 +9,7 @@ $this->pageTitle=Yii::app()->name . ' - 添加小说';
 //);
 ?>
 
-<?php $this->renderPartial('book/_form', array(
+<?php $this->renderPartial('_form', array(
     'model' => $model,
     'categorys' => $categorys,
 )); ?>

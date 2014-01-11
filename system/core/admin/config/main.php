@@ -51,7 +51,7 @@ $backendArray=array(
                 'admin/<_c:(site|adminuser|user|book|category|article)>/<_a:(index|create|update|delete)>' => '<_c>/<_a>',
                 'admin/login' => 'site/login',
                 'admin/logout' => 'site/logout',
-                '<_m:(\w+)>/<_c:(\w+)>/<_a:(\w+)>' => '<_m>/<_c>/<_a>',
+//                '<_m:(\w+)>/<_c:(\w+)>/<_a:(\w+)>' => '<_m>/<_c>/<_a>',
             ),
 		),
 		'log'=>array(

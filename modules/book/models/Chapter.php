@@ -134,6 +134,14 @@ class Chapter extends CActiveRecord
                     ':id' => $book->id,
                 )
             ));
+            // 减去分卷字数
+            Volume::model()->updateCounters(array(
+                'wordcount' => -1 * $this->wordcount,
+                'id=:id',
+                array(
+                    ':id' => $this->volumeid,
+                )
+            ));
 
             // 重设字数
             $this->wordcount = H::getWordCount($this->content);
@@ -170,7 +178,7 @@ class Chapter extends CActiveRecord
                 'lastchapterid'
             ));
 
-            // 调整分卷章节数和总字数
+            // 增加分卷章节数和总字数
             Volume::model()->updateCounters(
                 array(
                     'chaptercount' => 1,
@@ -220,6 +228,9 @@ class Chapter extends CActiveRecord
                 ':id' => $this->volumeid,
             )
         );
+
+        // 删除内容文件
+        $this->deleteContentFile();
 
         return true;
     }

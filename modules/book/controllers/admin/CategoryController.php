@@ -34,7 +34,7 @@ class CategoryController extends FWAdminController
 		$dataProvider=new CActiveDataProvider('Category',array(
 			'criteria'=> $criteria,
 			'pagination'=>array(
-        		'pageSize'=>1000,
+                'pageSize'=> $this->module['admin']['list_count'],
     		),	
 		));
 		$categoryList=array();

@@ -36,7 +36,7 @@ class BookController extends FWAdminController
       $dataProvider=new CActiveDataProvider('Book',array(
           'criteria'=>$criteria,
           'pagination'=>array(
-              'pageSize'=>Yii::app()->params['girdpagesize'],
+              'pageSize'=> $this->module['admin']['list_count'],
           ),
           'sort'=>array(
               'defaultOrder'=>array(
@@ -98,7 +98,9 @@ class BookController extends FWAdminController
 
                     // 更新主表封面图信息
                     $model->hascover = 1;
-                    $model->save();
+                    $model->update(array(
+                        'hascover',
+                    ));
                 }
 
                 Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveSuccess']);
@@ -156,7 +158,9 @@ class BookController extends FWAdminController
 
                     // 更新主表封面图信息
                     $model->hascover = 1;
-                    $model->save();
+                    $model->update(array(
+                        'hascover',
+                    ));
                 }
 
                 Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['updateSuccess']);
@@ -190,11 +194,12 @@ class BookController extends FWAdminController
             Upload::deleteFile($m->imgurl);
 
             // 当删除了所有图片时，调整小说封面图状态
-            if (!Book::model()->exists('id=:id', array(
-                ':id' => $m->bookid,
+            if (!BookImage::model()->exists('bookid=:bookid and iscover=:iscover', array(
+                ':bookid' => $m->bookid,
+                ':iscover' => 1,
             ))) {
                 Book::model()->updateByPk($m->bookid, array(
-                   'iscover' => 0,
+                   'hascover' => 0,
                 ));
             }
             $m->delete();

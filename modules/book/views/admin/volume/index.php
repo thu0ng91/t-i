@@ -28,6 +28,7 @@ $this->pageTitle=Yii::app()->name;
         array('name'=>'id', 'header' => '#', 'filter' => false),
         array('name'=>'title', 'filter' => false ),
         array('name'=>'chaptercount', 'filter' => false ),
+        array('name'=>'wordcount', 'filter' => false ),
 //        array('name'=>'parentid', 'value' => '$data->parent->title', 'filter' => false),
 //        array('name'=>'isnav',  'value' =>  '$data->isnav == 0 ? "否" : "是"', 'filter' => array('否', '是')),
 //        array('name'=>'language', 'header'=>'Language'),

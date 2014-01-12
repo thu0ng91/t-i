@@ -39,7 +39,7 @@ class VolumeController extends FWAdminController
       $dataProvider=new CActiveDataProvider('Volume',array(
           'criteria'=>$criteria,
           'pagination'=>array(
-              'pageSize'=>Yii::app()->params['girdpagesize'],
+              'pageSize'=> $this->module['admin']['list_count'],
           ),
           'sort'=>array(
               'defaultOrder'=>array(

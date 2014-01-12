@@ -72,6 +72,7 @@ class Volume extends CActiveRecord
 			'bookid' => '小说编号',
 			'title' => '标题',
 			'chaptercount' => '分卷章节数',
+			'wordcount' => '分卷总字数',
 			'createtime' => '发布时间',
 			'sort' => '排序号',
 		);
@@ -95,7 +96,7 @@ class Volume extends CActiveRecord
     public function afterSave()
     {
         $book = Book::model()->findByPk($this->bookid);
-        if (!$book) return false;
+        if (!$book) return;
 
         $book->updateCounters(
             array(

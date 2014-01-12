@@ -335,7 +335,7 @@ class ModulesController extends FWAdminController
 //            $ext = strtolower($ext);
             if ($f->isDir() && !$f->isDot()) {
                 $moduleFile = $f->getPathname() . DS . ucfirst($name) . "Module.php";
-                $moduleConfigFile = $f->getPathname() . DS . "conf.php";
+                $moduleConfigFile = $f->getPathname() . DS . "install.config.php";
                 if (is_file($moduleConfigFile) && is_file($moduleFile)) {
                     include_once $moduleFile;
                     $moduleCls = ucfirst($name) . "Module";

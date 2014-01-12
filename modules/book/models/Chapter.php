@@ -152,15 +152,15 @@ class Chapter extends CActiveRecord
 
     public function afterSave()
     {
-        if ($this->isNewRecord) {
-            $book = Book::model()->findByPk($this->bookid);
-            if (!$book) return;
+        $book = Book::model()->findByPk($this->bookid);
+        if (!$book) return;
 
-            // 调整小说章节数和总字数
+        if ($this->isNewRecord) {
+            // 调整小说章节数
             $book->updateCounters(
                 array(
                     'chaptercount' => 1,
-                    'wordcount' => H::getWordCount($this->content),
+//                    'wordcount' => H::getWordCount($this->content),
                 ),
                 'id=:id',
                 array(
@@ -178,11 +178,11 @@ class Chapter extends CActiveRecord
                 'lastchapterid'
             ));
 
-            // 增加分卷章节数和总字数
+            // 增加分卷章节数
             Volume::model()->updateCounters(
                 array(
                     'chaptercount' => 1,
-                    'wordcount' => H::getWordCount($this->content),
+//                    'wordcount' => H::getWordCount($this->content),
                 ),
                 'id=:id',
                 array(
@@ -190,6 +190,23 @@ class Chapter extends CActiveRecord
                 )
             );
         }
+
+        // 增加小说总字数
+        $book->updateCounters(array(
+            'wordcount' => H::getWordCount($this->content),
+            'id=:id',
+            array(
+                ':id' => $book->id,
+            )
+        ));
+        // 增加分卷字数
+        Volume::model()->updateCounters(array(
+            'wordcount' => H::getWordCount($this->content),
+            'id=:id',
+            array(
+                ':id' => $this->volumeid,
+            )
+        ));
 
         // 保存章节内容文件
         $this->saveContentToFile();

@@ -90,7 +90,7 @@ class Book extends BaseModel
         // class name for the relations automatically generated below.
         return array(
             'category' => array(CActiveRecord::BELONGS_TO, 'Category', 'cid'),
-            'images' => array(CActiveRecord::HAS_MANY, 'BookImage', 'bookid'),
+            'images' => array(CActiveRecord::HAS_MANY, 'BookImage', 'bookid', 'on' => 'images.iscover=1'),
 //            'chapter' => array(CActiveRecord::HAS_MANY, 'Article', 'bookid', 'order'=>'chapter.chapter ASC, chapter.id asc', 'on' => 'chapter.status=' . Yii::app()->params['status']['ischecked']),
         );
     }
@@ -197,7 +197,8 @@ class Book extends BaseModel
             if (!$this->isNewRecord) return true;
 
             $title = trim($this->title);
-            $title = str_replace(" ", "-", $this->title);
+            $this->title = $title;
+//            $title = str_replace(" ", "-", $title);
             $this->pinyin = H::getPinYin($title);
             $m = self::model()->find("pinyin=:pinyin", array(
                ':pinyin' => $this->pinyin,
@@ -224,6 +225,24 @@ class Book extends BaseModel
             }
         }
 //        parent::afterSave();
+    }
+
+    public function beforeDelete()
+    {
+        if (parent::beforeDelete()) {
+            // 删除章节和分卷，注意有顺序
+            Chapter::model()->deleteAll('bookid=:bookid', array(
+                ':bookid' => $this->id,
+            ));
+            Volume::model()->deleteAll('bookid=:bookid', array(
+                ':bookid' => $this->id,
+            ));
+            // 删除关联tags
+            BookTags::model()->deleteAll('bookid=:bookid', array(
+                ':bookid' => $this->id,
+            ));
+            return true;
+        } else return false;
     }
 
     /**

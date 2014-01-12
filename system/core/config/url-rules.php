@@ -10,6 +10,8 @@ return array(
     'login' => 'site/login',
     'logout' => 'site/logout',
     'register' => 'site/register',
+    '<title:\w+>/index' => 'book/list/index',
+
 //    'm/<_c:\w+>/<_a:\w+>' => 'stub/<_a>',
 //    '<_c:book>/<_a:\w+>' => 'stub/<_a>',
 );

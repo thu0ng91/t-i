@@ -7,7 +7,7 @@ class SiteController extends FWFrontController
 //    echo "test";exit;
 
 
-      print_r(Yii::app()->hasModule("test"));
+//      print_r(Yii::app()->hasModule("test"));
 //      $this->renderPartial("index");
       $this->render("index");
   }

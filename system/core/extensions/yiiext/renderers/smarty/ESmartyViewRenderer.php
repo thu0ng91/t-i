@@ -264,6 +264,9 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
         $m = Yii::app()->settings->get("SystemBaseConfig");
         $data['siteinfo'] = $m;
 
+        $data['FW_SITE_URL'] = Yii::app()->baseUrl;
+        $data['FW_THEME_URL'] = Yii::app()->theme->baseUrl;
+
 		// check if view file exists
 		if(!is_file($sourceFile) || ($file=realpath($sourceFile))===false)
 			throw new CException(Yii::t('yiiext','View file "{file}" does not exist.', array('{file}'=>$sourceFile)));

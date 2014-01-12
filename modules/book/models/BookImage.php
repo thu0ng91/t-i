@@ -38,11 +38,11 @@ class BookImage extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('bookid, imgurl', 'required'),
-			array('bookid, chapterid, iscover', 'numerical', 'integerOnly'=>true),
+			array('bookid, chapterid, iscover, createtime', 'numerical', 'integerOnly'=>true),
 			array('imgurl', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, bookid, chapterid, iscover', 'safe', 'on'=>'search'),
+			array('id, bookid, chapterid, iscover, createtime', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,12 +64,27 @@ class BookImage extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'bookid' => 'Bookid',
-			'chapterid' => 'chapterid',
-			'imgurl' => 'Imgurl',
-			'iscover' => 'Iscover',
+			'bookid' => '小说编号',
+			'chapterid' => '章节编号',
+			'imgurl' => '图片地址',
+			'iscover' => '是否封面图',
+			'createtime' => '上传时间',
 		);
 	}
+
+    /**
+     * @return bool
+     */
+    public function beforeSave()
+    {
+        if (parent::beforeSave()) {
+            if ($this->isNewRecord) {
+                // 追加发布时间
+                $this->createtime = time();
+            }
+            return true;
+        } else return false;
+    }
 
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.

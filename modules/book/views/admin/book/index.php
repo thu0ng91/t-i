@@ -18,6 +18,14 @@ $this->pageTitle=Yii::app()->name;
     'filter' => $model,
     'columns'=>array(
 //        array('name'=>'id', 'header'=>'#'),
+//        array(
+////            'selectableRows' => 0,
+//            'header' => '<input type="checkbox" /> 全选',
+////            'footer' => '<button type="button" onclick="GetCheckbox();" style="width:76px">批量删除</button>',
+//            'class' => 'CCheckBoxColumn',
+//            'headerHtmlOptions' => array('width'=>'33px'),
+//            'checkBoxHtmlOptions' => array('name' => 'selectdel[]'),
+//        ),
         array('name'=>'id', 'header' => '小说编号', 'filter' => false),
         array('name'=>'title', ),
 //        array(
@@ -70,5 +78,6 @@ $this->pageTitle=Yii::app()->name;
                 ),
             ),
         ),
+
     ),
 )); ?>

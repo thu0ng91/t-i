@@ -16,7 +16,7 @@
 //    'homeLink' => CHtml::link(""
     'links'=>array(
         '小说管理' => Yii::app()->createUrl("book/admin/book/index"),
-        "《" . (isset($book) ? $book->title : $model->book->title)  . '》分卷管理' => Yii::app()->createUrl("book/admin/volume/index", array("bookid" => isset($book) ? $book->id : $model->book->id)),
+        "《" . (isset($book) ? $book->title : $book->title)  . '》分卷管理' => Yii::app()->createUrl("book/admin/volume/index", array("bookid" => isset($book) ? $book->id : $book->id)),
         $this->action->id == 'create' ? "新建分卷" : "编辑分卷",
     ),
 )); ?>
@@ -42,13 +42,14 @@
             <?php else: ?>
                 <?php $this->widget('bootstrap.widgets.TbLabel', array(
                     'type'=>'success', // 'success', 'warning', 'important', 'info' or 'inverse'
-                    'label'=> $model->book->title,
+                    'label'=> $book->title,
                 )); ?>
             <?php endif; ?>
         </div>
     </div>
 
       <?php echo $form->textFieldRow($model, 'title'); ?>
+      <?php echo $form->hiddenField($model, 'chaptertype', array('value' => 1)); ?>
 
 <!--        --><?php //echo $form->dropDownListRow($model, 'parentid', $categorys); ?>
 
@@ -56,9 +57,9 @@
 
 <!--        --><?php //echo $form->dropDownListRow($model, 'isnav', array('否', '是')); ?>
 
-        <?php echo $form->textFieldRow($model, 'sort', array(
-            'hint'=> '提示：数值越大越靠前'
-        )); ?>
+<!--        --><?php //echo $form->textFieldRow($model, 'sort', array(
+//            'hint'=> '提示：数值越大越靠前'
+//        )); ?>
 
 <!--        <fieldset class="well the-fieldset">-->
 <!--            <legend class="the-legend">分类 SEO 设置</legend>-->

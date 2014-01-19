@@ -1,7 +1,7 @@
 <?php
 /**
  * 分卷分卷管理
- * Class VolumeController
+ * Class ChapterController
  */
 class VolumeController extends FWAdminController
 {
@@ -14,29 +14,31 @@ class VolumeController extends FWAdminController
     //        $criteria->addCondition('status=:stauts');
     //        $criteria->params[':status'] = Yii::app()->params['status']['ischecked'];
 
-//      if(!empty($_GET['Volume']['title']))
-//          $criteria->addSearchCondition('title',$_GET['Volume']['title']);
+//      if(!empty($_GET['Chapter']['title']))
+//          $criteria->addSearchCondition('title',$_GET['Chapter']['title']);
 //
-//      if(!empty($_GET['Volume']['author']))
-//          $criteria->addSearchCondition('author',$_GET['Volume']['author']);
+//      if(!empty($_GET['Chapter']['author']))
+//          $criteria->addSearchCondition('author',$_GET['Chapter']['author']);
 //
-//      if(!empty($_GET['Volume']['cid'])){
+//      if(!empty($_GET['Chapter']['cid'])){
 //          $categoryList=array();
-//          $categoryList[] = $_GET['Volume']['cid'];
-//          Category::model()->getAllCategoryIds($categoryList,Category::model()->findAll(), $_GET['Volume']['cid']);
+//          $categoryList[] = $_GET['Chapter']['cid'];
+//          Category::model()->getAllCategoryIds($categoryList,Category::model()->findAll(), $_GET['Chapter']['cid']);
 //          $criteria->addInCondition('cid',$categoryList);
 //      }
 //        $criteria->compare("bookid", $bookid);
         $book = Book::model()->findByPk($bookid);
 
-//      if(isset($_GET['Volume']['recommendlevel'])){
-//          $criteria->compare('recommendlevel', $_GET['Volume']['recommendlevel']);
+//      if(isset($_GET['Chapter']['recommendlevel'])){
+//          $criteria->compare('recommendlevel', $_GET['Chapter']['recommendlevel']);
 //      }
 //
         $criteria->compare('bookid', $bookid);
+        $criteria->compare("chaptertype", 1);
 //      $criteria->addNotInCondition('status', array(Yii::app()->params['status']['isdelete']));
 
-      $dataProvider=new CActiveDataProvider('Volume',array(
+
+      $dataProvider=new CActiveDataProvider(Chapter::customModel($bookid),array(
           'criteria'=>$criteria,
           'pagination'=>array(
               'pageSize'=> $this->module['admin']['list_count'],
@@ -54,7 +56,7 @@ class VolumeController extends FWAdminController
       $this->render('index',array(
           'dataProvider'=>$dataProvider,
 //          'categorys'=> Category::model()->showAllSelectCategory(Category::SHOW_ALLCATGORY),
-          'model' => Volume::model(),
+//          'model' => Chapter::customModel($bookid),
           'book' => $book
       ));
     }
@@ -64,16 +66,17 @@ class VolumeController extends FWAdminController
      */
     public function actionCreate($bookid)
     {
-        $model=new Volume;
+        $model= Chapter::customNew($bookid);
+        $model->chaptertype = 1;
         $book = Book::model()->findByPk($bookid);
 
 //        $cid=$_GET['cid'];
         if($book)
             $model->bookid=$bookid;
 
-        if(isset($_POST['Volume']))
+        if(isset($_POST['Chapter']))
         {
-            $model->attributes=$_POST['Volume'];
+            $model->attributes=$_POST['Chapter'];
 //            $upload = CUploadedFile::getInstance($model,'imagefile');
 //            if(!empty($upload))
 //            {
@@ -99,13 +102,13 @@ class VolumeController extends FWAdminController
      * 分卷更新
      * @param $id
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id, $bookid)
     {
-        $model=$this->loadModel($id);
-//        $book = Book::model()->findByPk($bookid);
-        if(!empty($_POST['Volume']))
+        $model=$this->loadModel($id, $bookid);
+        $book = Book::model()->findByPk($bookid);
+        if(!empty($_POST['Chapter']))
         {
-            $model->attributes=$_POST['Volume'];
+            $model->attributes=$_POST['Chapter'];
 //            $upload=CUploadedFile::getInstance($model,'imagefile');
 //            if(!empty($upload))
 //            {
@@ -124,14 +127,14 @@ class VolumeController extends FWAdminController
             }
         }
 
-//        $bookImages = VolumeImage::model()->findAll('bookid=:bookid', array(
+//        $bookImages = ChapterImage::model()->findAll('bookid=:bookid', array(
 //            ':bookid' => $model->id,
 //        ));
         $this->render('update',array(
             'model'=>$model,
 //            'bookimages' => $bookImages,
 //            'categorys'=>Category::model()->showAllSelectCategory(),
-//            'book' => $book,
+            'book' => $book,
         ));
     }
 
@@ -140,9 +143,13 @@ class VolumeController extends FWAdminController
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer the ID of the model to be loaded
      */
-    public function loadModel($id)
+    public function loadModel($id, $bookId = 0)
     {
-        $model=Volume::model()->findByPk((int)$id);
+        if ($bookId > 0) {
+            $model = Chapter::customModel($bookId)->findByPk((int)$id);
+        } else {
+            $model=Chapter::model()->findByPk((int)$id);
+        }
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
         return $model;

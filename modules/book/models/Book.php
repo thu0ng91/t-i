@@ -215,14 +215,16 @@ class Book extends BaseModel
     public function afterSave()
     {
         if ($this->isNewRecord) { // 创建默认分卷
-            $v = new Volume();
-            if (!$v->exists('bookid=:bookid', array(
-                ':bookid' => $this->id
-            ))) {
-                $v->bookid = $this->id;
-                $v->title = "默认分卷";
-                $v->save();
-            }
+//            $v = new Volume();
+//            if (!$v->exists('bookid=:bookid', array(
+//                ':bookid' => $this->id
+//            ))) {
+//                $v->bookid = $this->id;
+//                $v->title = "默认分卷";
+//                $v->save();
+//            }
+            // 拷贝章节数据库
+            $this->copyChapterDatabase($this->id);
         }
 //        parent::afterSave();
     }
@@ -231,12 +233,17 @@ class Book extends BaseModel
     {
         if (parent::beforeDelete()) {
             // 删除章节和分卷，注意有顺序
-            Chapter::model()->deleteAll('bookid=:bookid', array(
-                ':bookid' => $this->id,
-            ));
-            Volume::model()->deleteAll('bookid=:bookid', array(
-                ':bookid' => $this->id,
-            ));
+//            Chapter::customModel($this->id)->deleteAll('bookid=:bookid', array(
+//                ':bookid' => $this->id,
+//            ));
+
+            // 删除小说时，清除章节数据
+            $chapterDataDir = FW_TXT_DIR . DS . ($this->id % 500) . DS . $this->id;
+            if (is_dir($chapterDataDir)) @rmdir($chapterDataDir);
+
+//            Volume::model()->deleteAll('bookid=:bookid', array(
+//                ':bookid' => $this->id,
+//            ));
             // 删除关联tags
             BookTags::model()->deleteAll('bookid=:bookid', array(
                 ':bookid' => $this->id,
@@ -255,5 +262,16 @@ class Book extends BaseModel
             ':bookid' => $this->id,
         ));
         return $list;
+    }
+
+    protected function copyChapterDatabase($bookId)
+    {
+        $srcPath = FW_MODULE_BASE_PATH . DS . "book" . DS . "data" . DS . "chapter.db";
+        $destPath = FW_TXT_DIR . DS . ($bookId % 500) . DS  . $bookId;
+
+        if (!is_dir($destPath)) @mkdir($destPath, 0777, true);
+
+        $destPath .= DS . "chapter.db";
+        return @copy($srcPath, $destPath);
     }
 }

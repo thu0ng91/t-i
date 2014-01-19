@@ -16,7 +16,7 @@
 //    'homeLink' => CHtml::link(""
     'links'=>array(
         '小说管理' => Yii::app()->createUrl("book/admin/book/index"),
-        "《" . (isset($book) ? $book->title : $model->book->title)  . '》章节管理' => Yii::app()->createUrl("book/admin/chapter/index", array("bookid" => isset($book) ? $book->id : $model->book->id)),
+        "《" . (isset($book) ? $book->title : $book->title)  . '》章节管理' => Yii::app()->createUrl("book/admin/chapter/index", array("bookid" => isset($book) ? $book->id : $book->id)),
         $this->action->id == 'create' ? "新建章节" : "编辑章节",
     ),
 )); ?>
@@ -42,7 +42,7 @@
             <?php else: ?>
                 <?php $this->widget('bootstrap.widgets.TbLabel', array(
                     'type'=>'success', // 'success', 'warning', 'important', 'info' or 'inverse'
-                    'label'=> $model->book->title,
+                    'label'=> $book->title,
                 )); ?>
             <?php endif; ?>
         </div>

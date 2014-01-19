@@ -12,6 +12,7 @@ $this->pageTitle=Yii::app()->name . ' - 编辑分卷';
 
 <?php $this->renderPartial('_form', array(
     'model' => $model,
+    'book' => $book,
     'volumes' => $volumes,
 //    'categorys' => $categorys,
 )); ?>

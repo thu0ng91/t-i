@@ -28,9 +28,10 @@ class ChapterController extends FWAdminController
             $criteria->addSearchCondition('chapterorder',$_GET['Chapter']['chapterorder']);
 
         $criteria->compare('bookid', $bookid);
+        $criteria->compare('chaptertype', 0);
 //        $criteria->compare('status', Yii::app()->params['status']['ischecked']);
 
-	    $dataProvider = new CActiveDataProvider('Chapter',array(
+	    $dataProvider = new CActiveDataProvider(Chapter::customModel($bookid),array(
 			'criteria'=> $criteria,
 			'pagination'=>array(
                 'pageSize'=> $this->module['admin']['list_count'],
@@ -57,9 +58,9 @@ class ChapterController extends FWAdminController
 
 	public function actionCreate($bookid)
 	{
-		$model = new Chapter;
+		$model = Chapter::customNew($bookid);
 
-        $book = Book::model()->findByPk($bookid);
+        $book =Book::model()->findByPk($bookid);
 
         if (!$book) {
             Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveFail']);
@@ -103,9 +104,9 @@ class ChapterController extends FWAdminController
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
 	 */
-	public function actionUpdate($id)
+	public function actionUpdate($id, $bookid)
 	{
-		$model=$this->loadModel($id);
+		$model=$this->loadModel($id, $bookid);
 		if(!empty($_POST['Chapter']))
 		{
 			$model->attributes=$_POST['Chapter'];
@@ -131,14 +132,36 @@ class ChapterController extends FWAdminController
 		));
 	}
 
+    public function actionDelete($id, $bookid)
+    {
+        if(Yii::app()->request->isPostRequest)
+        {
+            // we only allow deletion via POST request
+            if($this->loadModel($id, $bookid)->delete()){
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['deleteSuccess']);
+            }else {
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['deleteFail']);
+            }
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if(!isset($_GET['ajax']))
+                $this->redirect($_POST['returnUrl']);
+        }
+        else
+            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+    }
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer the ID of the model to be loaded
 	 */
-	public function loadModel($id)
+	public function loadModel($id, $bookId = 0)
 	{
-		$model=Chapter::model()->findByPk((int)$id);
+        if ($bookId > 0) {
+            $model = Chapter::customModel($bookId)->findByPk((int)$id);
+        } else {
+		    $model=Chapter::model()->findByPk((int)$id);
+        }
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -151,7 +174,7 @@ class ChapterController extends FWAdminController
      */
     public function getVolumes($bookid)
     {
-        $l = Volume::model()->findAll('bookid=:bookid', array(
+        $l = Chapter::customModel($bookid)->findAll('bookid=:bookid and chaptertype=1', array(
             ':bookid' => $bookid,
         ));
         $volumes = array();

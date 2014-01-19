@@ -8,7 +8,7 @@ $this->pageTitle=Yii::app()->name;
 //    'homeLink' => CHtml::link(""
     'links'=>array(
         '小说管理' => Yii::app()->createUrl("book/admin/book/index"),
-        '《' . (isset($book) ? $book->title : $model->book->title)  . '》分卷管理',
+        '《' . (isset($book) ? $book->title : $book->title)  . '》分卷管理',
 ))); ?>
 
 <?php $this->widget('bootstrap.widgets.TbButton', array(
@@ -27,8 +27,9 @@ $this->pageTitle=Yii::app()->name;
 //        array('name'=>'id', 'header'=>'#'),
         array('name'=>'id', 'header' => '#', 'filter' => false),
         array('name'=>'title', 'filter' => false ),
-        array('name'=>'chaptercount', 'filter' => false ),
-        array('name'=>'wordcount', 'filter' => false ),
+        array('name'=>'createtime', 'filter' => false, 'value' => 'date("Y-m-d H:i:s", $data->createtime)'),
+//        array('name'=>'chaptercount', 'filter' => false ),
+//        array('name'=>'wordcount', 'filter' => false ),
 //        array('name'=>'parentid', 'value' => '$data->parent->title', 'filter' => false),
 //        array('name'=>'isnav',  'value' =>  '$data->isnav == 0 ? "否" : "是"', 'filter' => array('否', '是')),
 //        array('name'=>'language', 'header'=>'Language'),

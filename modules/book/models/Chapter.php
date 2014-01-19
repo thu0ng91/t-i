@@ -13,8 +13,12 @@
  * @property integer $updatetime
  * @property integer $sort
  */
-class Chapter extends CActiveRecord
+class Chapter extends ChapterDynamicDbModel
 {
+    private $_bookId = 0;
+
+    private static $_chatperDb = array();
+
     public $content = null;
 //    public $wordcount = 0;
 
@@ -44,8 +48,8 @@ class Chapter extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-            array('bookid,title,volumeid', 'required'),
-			array('bookid,volumeid,createtime,chapterorder,contenttype,wordcount', 'numerical', 'integerOnly'=>true),
+            array('bookid,title', 'required'),
+			array('bookid,volumeid,createtime,chapterorder,contenttype,chaptertype,wordcount', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('content', 'length', 'max'=>50000),
 			// The following rule is used by search().
@@ -62,8 +66,8 @@ class Chapter extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'book' => array(CActiveRecord::BELONGS_TO, 'Book', 'bookid'),
-            'volume' => array(CActiveRecord::BELONGS_TO, 'Volume', 'volumeid'),
+//            'book' => array(CActiveRecord::BELONGS_TO, 'Book', 'bookid'),
+//            'volume' => array(CActiveRecord::BELONGS_TO, 'Volume', 'volumeid'),
 		);
 	}
 
@@ -78,6 +82,7 @@ class Chapter extends CActiveRecord
 			'volumeid' => '所属分卷',
 			'chapterorder' => '章节序号',
 			'contenttype' => '内容类型',
+			'chaptertype' => '章节类型',
 			'title' => '标题',
 			'content' => '内容',
 			'wordcount' => '字数',
@@ -134,14 +139,14 @@ class Chapter extends CActiveRecord
                     ':id' => $book->id,
                 )
             ));
-            // 减去分卷字数
-            Volume::model()->updateCounters(array(
-                'wordcount' => -1 * $this->wordcount,
-                'id=:id',
-                array(
-                    ':id' => $this->volumeid,
-                )
-            ));
+//            // 减去分卷字数
+//            Volume::model()->updateCounters(array(
+//                'wordcount' => -1 * $this->wordcount,
+//                'id=:id',
+//                array(
+//                    ':id' => $this->volumeid,
+//                )
+//            ));
 
             // 重设字数
             $this->wordcount = H::getWordCount($this->content);
@@ -178,17 +183,17 @@ class Chapter extends CActiveRecord
                 'lastchapterid'
             ));
 
-            // 增加分卷章节数
-            Volume::model()->updateCounters(
-                array(
-                    'chaptercount' => 1,
-//                    'wordcount' => H::getWordCount($this->content),
-                ),
-                'id=:id',
-                array(
-                    ':id' => $this->volumeid,
-                )
-            );
+//            // 增加分卷章节数
+//            Volume::model()->updateCounters(
+//                array(
+//                    'chaptercount' => 1,
+////                    'wordcount' => H::getWordCount($this->content),
+//                ),
+//                'id=:id',
+//                array(
+//                    ':id' => $this->volumeid,
+//                )
+//            );
         }
 
         // 增加小说总字数
@@ -199,14 +204,14 @@ class Chapter extends CActiveRecord
                 ':id' => $book->id,
             )
         ));
-        // 增加分卷字数
-        Volume::model()->updateCounters(array(
-            'wordcount' => H::getWordCount($this->content),
-            'id=:id',
-            array(
-                ':id' => $this->volumeid,
-            )
-        ));
+//        // 增加分卷字数
+//        Volume::model()->updateCounters(array(
+//            'wordcount' => H::getWordCount($this->content),
+//            'id=:id',
+//            array(
+//                ':id' => $this->volumeid,
+//            )
+//        ));
 
         // 保存章节内容文件
         $this->saveContentToFile();
@@ -234,17 +239,17 @@ class Chapter extends CActiveRecord
                 ':id' => $this->bookid,
             )
         );
-        // 修改分卷章节数
-        Volume::model()->updateCounters(
-            array(
-                'chaptercount' => -1,
-                'wordcount' => $txtLen,
-            ),
-            'id=:id',
-            array(
-                ':id' => $this->volumeid,
-            )
-        );
+//        // 修改分卷章节数
+//        Volume::model()->updateCounters(
+//            array(
+//                'chaptercount' => -1,
+//                'wordcount' => $txtLen,
+//            ),
+//            'id=:id',
+//            array(
+//                ':id' => $this->volumeid,
+//            )
+//        );
 
         // 删除内容文件
         $this->deleteContentFile();

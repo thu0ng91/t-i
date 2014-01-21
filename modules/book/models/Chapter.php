@@ -120,7 +120,7 @@ class Chapter extends ChapterDynamicDbModel
                 // 追加发布时间
                 $this->createtime = time();
                 if (empty($this->chapterorder)) {
-                    $chapter =  Chapter::model()->findBySql('select max(chapterorder) as chapterorder from chapter where bookid=:bookid', array(
+                    $chapter =  $this->findBySql('select max(chapterorder) as chapterorder from chapter where bookid=:bookid', array(
                         ':bookid' => $this->bookid,
                     ));
                     if (!$chapter) return false;
@@ -336,7 +336,7 @@ class Chapter extends ChapterDynamicDbModel
         if (null != $this->bookid && $this->bookid > 0) {
             $dir .= DS . ($this->bookid % 500) . DS . $this->bookid;
 
-            return $dir . DIRECTORY_SEPARATOR . $this->id . ".txt";
+            return $dir . DS . $this->id . ".txt";
         }
 
         return null;

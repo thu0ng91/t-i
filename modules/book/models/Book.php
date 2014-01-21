@@ -239,7 +239,7 @@ class Book extends BaseModel
 
             // 删除小说时，清除章节数据
             $chapterDataDir = FW_TXT_DIR . DS . ($this->id % 500) . DS . $this->id;
-            if (is_dir($chapterDataDir)) @rmdir($chapterDataDir);
+            if (is_dir($chapterDataDir)) H::rrmdir($chapterDataDir);
 
 //            Volume::model()->deleteAll('bookid=:bookid', array(
 //                ':bookid' => $this->id,

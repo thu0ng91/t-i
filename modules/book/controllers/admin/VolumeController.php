@@ -38,7 +38,7 @@ class VolumeController extends FWAdminController
 //      $criteria->addNotInCondition('status', array(Yii::app()->params['status']['isdelete']));
 
 
-      $dataProvider=new CActiveDataProvider(Chapter::customModel($bookid),array(
+      $dataProvider=new FWChapterDataProvider(Chapter::customModel($bookid),array(
           'criteria'=>$criteria,
           'pagination'=>array(
               'pageSize'=> $this->module['admin']['list_count'],

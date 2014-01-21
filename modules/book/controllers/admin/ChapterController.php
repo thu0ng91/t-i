@@ -31,12 +31,13 @@ class ChapterController extends FWAdminController
         $criteria->compare('chaptertype', 0);
 //        $criteria->compare('status', Yii::app()->params['status']['ischecked']);
 
-	    $dataProvider = new CActiveDataProvider(Chapter::customModel($bookid),array(
+	    $dataProvider = new FWChapterDataProvider(Chapter::customModel($bookid),array(
 			'criteria'=> $criteria,
 			'pagination'=>array(
                 'pageSize'=> $this->module['admin']['list_count'],
     		),
             'sort'=>array(
+//                'class' => 'FWChapterOrder',
                 'defaultOrder'=>array(
                     'chapterorder' => CSort::SORT_DESC,
                 ),
@@ -47,10 +48,9 @@ class ChapterController extends FWAdminController
             ),
 		));
 
-
 		$this->render('index',array(
 			'dataProvider'=> $dataProvider,
-            'model' => Chapter::model(),
+            'model' => Chapter::customModel($bookid),
             'book' => $book,
 //			'categorys'=> Category::model()->showAllSelectCategory(Yii::app()->params['module']['article'],Category::SHOW_ALLCATGORY),
 		));
@@ -68,6 +68,7 @@ class ChapterController extends FWAdminController
         }
 
         $model->bookid = $bookid;
+        $model->chaptertype = 0;
 
 //        $model->chapternum = $book->chaptercount + 1;
 
@@ -109,6 +110,7 @@ class ChapterController extends FWAdminController
 		$model=$this->loadModel($id, $bookid);
 		if(!empty($_POST['Chapter']))
 		{
+            $model->chaptertype = 0;
 			$model->attributes=$_POST['Chapter'];
 
 			if($model->save()){

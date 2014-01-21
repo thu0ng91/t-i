@@ -88,4 +88,23 @@ class H {
 
         return mb_strlen($content, $encoding);
     }
+
+    /**
+     * 递归删除目录
+     * @param $dir
+     */
+    public static function rrmdir($dir)
+    {
+        if (is_dir($dir)) {
+            $objects = scandir($dir);
+            foreach ($objects as $object) {
+                if ($object != "." && $object != "..") {
+                    if (filetype($dir. DS .$object) == "dir") self::rrmdir($dir. DS .$object);
+                    else @unlink($dir. DS .$object);
+                }
+            }
+            reset($objects);
+            @rmdir($dir);
+        }
+    }
 }

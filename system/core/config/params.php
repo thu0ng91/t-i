@@ -62,6 +62,6 @@ return array(
     ),
     'novelContentType' => array(
         '0' => '文本',
-        '1' => '图片'
+//        '1' => '图片'
     ),
 );

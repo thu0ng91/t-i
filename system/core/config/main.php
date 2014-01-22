@@ -95,13 +95,13 @@ return array(
 //                    'class' => 'CWebLogRoute',
 //					  'levels'=>'trace,info,error, warning',
                 ),
-                array(
-                    'class'=>'CProfileLogRoute',
-                    'levels'=>'profile',
-                    //'showInFireBug' => true,
-                    'categories'=>'system.db.CDbCommand.query',
-//                    'logFile'=> 'sql.log'
-                ),
+//                array(
+//                    'class'=>'CProfileLogRoute',
+//                    'levels'=>'profile',
+//                    //'showInFireBug' => true,
+//                    'categories'=>'system.db.CDbCommand.query',
+////                    'logFile'=> 'sql.log'
+//                ),
 			),
 		),
 		'image'=>array(

@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>玄幻魔法-派小说网</title>
-<meta name="keywords" content="派小说网"> 
+<meta name="keywords" content="{$keywords}派小说网">
 <link rel="shortcut icon" href="favicon.ico" />
 <link href="{$FW_THEME_URL}/css/style.css" rel="stylesheet" type="text/css">
 <script src="{$FW_THEME_URL}/js/msc_common.js" type="text/javascript" language="javascript"></script>
@@ -47,8 +47,8 @@
   <div class="info_login">
     <div class="cs1">亲爱的小说迷，上次看到哪了，请查看<script type="text/javascript">yuedu();</script></div>
     <div class="cs2">
-      <iframe width="380" height="20" scrolling="no" frameborder="0" src="/loginframe.php" marginwidth=0 marginheight=0 frameborder="0" allowTransparency="true">
-      </iframe>
+      {*<iframe width="380" height="20" scrolling="no" frameborder="0" src="/loginframe.php" marginwidth=0 marginheight=0 frameborder="0" allowTransparency="true">*}
+      {*</iframe>*}
     </div>
   </div>
   <div id="banner" style="display:none;"></div>
@@ -68,7 +68,9 @@
 
 <p>
 
-<a href="#" target="_blank"><font color="#FE0101">手机阅读</font></a> - <a href="#" target="_blank">Pad阅读</font></a> - <a target="_blank" href="#" style="text-decoration:none;">站长E-mail</a> - <a href="#" target="_blank">网站简介</a> - <a href="#" target="_blank">免责声明</a> -</p><script type="text/javascript" src="js/tongji.js"></script>
+<a href="#" target="_blank"><font color="#FE0101">手机阅读</font></a> - <a href="#" target="_blank">Pad阅读</font></a> - <a target="_blank" href="#" style="text-decoration:none;">站长E-mail</a> - <a href="#" target="_blank">网站简介</a> - <a href="#" target="_blank">免责声明</a> -</p>
 
 </body>
 </html>
+{$TIME}
+{debug}

@@ -61,13 +61,13 @@ $backendArray=array(
                 	'class'=>'CFileLogRoute', 
 					'levels'=>'error,warning,trace,info',
            	 	),
-                array(
-                    'class'=>'CProfileLogRoute',
-                    'levels'=>'profile',
-                    //'showInFireBug' => true,
-                    'categories'=>'system.db.CDbCommand.query',
-//                    'logFile'=> 'sql.log'
-                ),
+//                array(
+//                    'class'=>'CProfileLogRoute',
+//                    'levels'=>'profile',
+//                    //'showInFireBug' => true,
+//                    'categories'=>'system.db.CDbCommand.query',
+////                    'logFile'=> 'sql.log'
+//                ),
                 )
     ),
 

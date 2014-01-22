@@ -1,4 +1,4 @@
-  <!--列表-->
+<!--列表-->
 <div class="main">
 	<div id="centerl">
 	<div class="padding">

@@ -256,23 +256,27 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
 		// current controller properties will be accessible as {$this->property}
 		if (!isset($data['this'])) $data['this'] = $context;
 		// Yii::app()->... is available as {Yii->...} (deprecated, use {Yii::app()->...} instead, Smarty3 supports this.)
-		$data['Yii'] = Yii::app();
+//		$data['Yii'] = Yii::app();
 		// time and memory information
 		$data['TIME'] = sprintf('%0.5f',Yii::getLogger()->getExecutionTime());
 		$data['MEMORY'] = round(Yii::getLogger()->getMemoryUsage()/(1024*1024),2).' MB';
 
-        $m = Yii::app()->settings->get("SystemBaseConfig");
-        $data['siteinfo'] = $m;
+//        $m = Yii::app()->settings->get("SystemBaseConfig");
+//        $data['siteinfo'] = $m;
 
-        $data['FW_SITE_URL'] = Yii::app()->baseUrl;
-        $data['FW_THEME_URL'] = Yii::app()->theme->baseUrl;
+//        $data['FW_SITE_URL'] = Yii::app()->baseUrl;
+//        $data['FW_THEME_URL'] = Yii::app()->theme->baseUrl;
 
 		// check if view file exists
 		if(!is_file($sourceFile) || ($file=realpath($sourceFile))===false)
 			throw new CException(Yii::t('yiiext','View file "{file}" does not exist.', array('{file}'=>$sourceFile)));
 
+//        $parentData = $this->getSmarty()->getTemplateVars();
+//        $data = CMap::mergeArray($data, $parentData);
+
+        $this->getSmarty()->assign($data);
 		/** @var Smarty_Internal_Template $template */
-		$template = $this->getSmarty()->createTemplate($sourceFile, null, null, $data, true);
+		$template = $this->getSmarty()->createTemplate($sourceFile, null, null, $this->getSmarty(), true);
 
 		// render or return
 		if($return)

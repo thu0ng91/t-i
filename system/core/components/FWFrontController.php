@@ -40,5 +40,22 @@ class FWFrontController extends CController
         if ($m) {
             $this->siteConfig = $m;
         }
+
+        // 初始化共用模板变量
+        $this->assign("FW_SITE_URL", Yii::app()->baseUrl);
+        $this->assign("FW_THEME_URL", Yii::app()->theme->baseUrl);
+
+        $this->assign("Yii", Yii::app());
+        $this->assign("siteinfo", $m);
+
 	}
+
+    public function assign($name, $value)
+    {
+        $render = Yii::app()->viewRenderer;
+
+        $smarty = $render->smarty;
+
+        $smarty->assign($name, $value);
+    }
 }

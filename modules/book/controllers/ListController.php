@@ -5,36 +5,48 @@
  */
 class ListController extends FWFrontController
 {
-  public function actionIndex()
-  {
+    public function actionIndex()
+    {
 
-      $category = Category::model()->find('shorttitle=:title', array(
+        $category = Category::model()->find('shorttitle=:title', array(
           ':title' => $_GET['title']
-      ));
+        ));
 
-      $criteria = new CDbCriteria();
-      $criteria->compare("cid", $category->id);
-      $criteria->compare("status", Yii::app()->params['status']['ischecked']);
+        if (!$category) {
+            throw new CHttpException(404);
+        }
 
-      $criteria->order = "createtime desc";
+        $criteria = new CDbCriteria();
+        $criteria->compare("cid", $category->id);
+        $criteria->compare("status", Yii::app()->params['status']['ischecked']);
 
-      $count=Book::model()->count($criteria);
-      $pages=new CPagination($count);
+        $criteria->order = "createtime desc";
 
-      // results per page
-      $pages->pageSize= $this->module['front']['category_list_count'];
-      $pages->applyLimit($criteria);
+        $count=Book::model()->count($criteria);
+        $pages=new CPagination($count);
 
-      $list =Book::model()->findAll($criteria);
+        // results per page
+        $pages->pageSize= $this->module['front']['category_list_count'];
+        $pages->applyLimit($criteria);
 
-//      var_dump($list);
+        $list =Book::model()->findAll($criteria);
 
-      $this->assign("list", $list);
-      $this->assign("pages", $pages);
-      $this->assign("keywords", "just for test");
+        //      var_dump($list);
 
-//      print_r(Yii::app()->hasModule("test"));
-//      $this->renderPartial("index");
-      $this->render("index");
-  }
+        // SEO 相关
+        $this->setSEOVar("分类名", $category->seotitle != "" ? $category->seotitle : $category->title);
+        $this->setSEOVar("分类关键字", $category->keywords);
+        $this->setSEOVar("分类描述", $category->description);
+
+        $this->setAllSEOInfo("分类页");
+
+        $this->assign("category", $category);
+        $this->assign("list", $list);
+        $this->assign("pages", $pages);
+//        $this->assign("keywords", "just for test");
+
+        //      print_r(Yii::app()->hasModule("test"));
+        //      $this->renderPartial("index");
+        $this->render("index");
+    }
 }

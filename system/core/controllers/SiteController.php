@@ -135,13 +135,13 @@ class SiteController extends FWFrontController
     public function actionError()
     {
         if($error = Yii::app()->errorHandler->error) {
-            $m = Yii::app()->settings->get("SystemBaseConfig");
+            $m = $this->siteConfig;
             $adminEmail = '';
             if ($m) {
                 $adminEmail = $m->SiteAdminEmail;
             }
             Yii::app()->user->setFlash('actionInfo', '^_^ 发现臭虫，请联系站长：' . $adminEmail);
         }
-        $this->render('error', $error);
+        $this->render('error');
     }
 }

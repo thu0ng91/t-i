@@ -91,7 +91,7 @@ class Book extends BaseModel
         return array(
             'category' => array(CActiveRecord::BELONGS_TO, 'Category', 'cid'),
             'images' => array(CActiveRecord::HAS_MANY, 'BookImage', 'bookid', 'order' => 'images.createtime desc', 'on' => 'images.iscover=1'),
-            'chapter' => array(CActiveRecord::HAS_MANY, 'Chapter', 'bookid', 'order'=>'chapter.chapterorder ASC, chapter.id asc'),
+//            'chapter' => array(CActiveRecord::HAS_MANY, 'Chapter', 'bookid', 'order'=>'chapter.chapterorder ASC, chapter.id asc'),
         );
     }
 

@@ -2,8 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>玄幻魔法-派小说网</title>
-<meta name="keywords" content="{$keywords}派小说网">
+<title>{$title}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
 <link rel="shortcut icon" href="favicon.ico" />
 <link href="{$FW_THEME_URL}/css/style.css" rel="stylesheet" type="text/css">
 <script src="{$FW_THEME_URL}/js/msc_common.js" type="text/javascript" language="javascript"></script>

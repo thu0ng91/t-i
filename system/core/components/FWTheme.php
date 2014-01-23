@@ -16,7 +16,7 @@ class FWTheme extends CTheme {
         $viewPath = $basePath.'/'.$controller->getUniqueId();
 
 
-        if (!is_dir($viewPath)) { // 如果没有自定义模块模板，则使用模块自带模板
+        if (!is_dir($viewPath) && $module) { // 如果没有自定义模块模板，则使用模块自带模板
             $moduleViewPath = FW_MODULE_BASE_PATH .'/'.$module->getId() . "/views";
 //            $viewPath = FW_MODULE_BASE_PATH .'/'.$controller->getUniqueId() . "";
             $viewPath = $moduleViewPath . "/" . $controller->getId();

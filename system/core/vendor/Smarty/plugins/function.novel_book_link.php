@@ -17,10 +17,26 @@ function smarty_function_novel_book_link($params, &$smarty){
         return "";
     }
 
+    if (!Yii::app()->hasModule("book")) return "";
+
     $c = $smarty->tpl_vars['this']->value;
 
     $id = intval($params['id']);
+    $type = "";
+    if (!empty($params['type'])) {
+        $type = $params['type'];
+    }
 
-    return $c->createUrl('book/view', array('id' => $id));
+    switch ($type) {
+        case "info":
+            $link = 'book/detail/info';
+            break;
+        case "index":
+        default:
+            $link = 'book/detail/index';
+            break;
+    }
+
+    return Yii::app()->createUrl($link, array('id' => $id));
 
 }

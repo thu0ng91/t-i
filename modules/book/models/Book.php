@@ -41,6 +41,8 @@ class Book extends BaseModel
 {
     public $imagefile;
 
+    public $coverImageUrl;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -227,6 +229,13 @@ class Book extends BaseModel
             $this->copyChapterDatabase($this->id);
         }
 //        parent::afterSave();
+    }
+
+    public function afterFind()
+    {
+        if (count($this->images) > 0 && $this->hascover) {
+            $this->coverImageUrl = H::getNovelImageUrl($this->images[0]->imgurl);
+        }
     }
 
     public function beforeDelete()

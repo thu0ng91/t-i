@@ -1,29 +1,33 @@
 <!--列表-->
 <div class="main">
 	<div id="centerl">
-        <div class="padding">
-            <div class="box" style="width:980px;">
-                <div class="title">
-                    <h5 class="current">{$category->title}</h5>
-                </div>
-                <div class="books">
-                    {foreach $list as $book}
-                    <div class="bk">
-                    <div class="pic">
-                    <a href='{novel_book_link id=$book->id}' title='{$book->title}' target="_blank">
-                    <img src="{$book->coverImageUrl}" alt='{$book->title}'/></a>
-                    </div>
-                    <h3><a href='{novel_book_link id=$book->id}'  target='_blank' title='{$book->title}'>{$book->title}</a></h3>
-                    <h4>作者：{$book->author} </h4><div class="bnew"><a href="http://www.paitxt.com/23/23946/7612122.html" target="_blank">{$book->lastchaptertitle}</a></div><div class='bnew'>
-                    <span>最后更新：{$book->createtime|date_format:'Y-m-d'}</span>
-                    </div>
-                    <p>{$book->summary}</p>
-                    </div>
-                    {/foreach}
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="padding">
+	<div class="box" style="width:980px;">
+		<div class="title">
+			<h5 class="current">{$category->title}</h5>
+		</div>
+		<div class="books">
+
+
+{foreach $list as $book}
+<div class="bk"> 
+<div class="pic">
+<a href='http://www.paitxt.com/23/23946/index.html' title='{$book->title}' target="_blank">
+<img src="{$book->coverImageUrl}" alt='{$book->title}'/></a>
+</div>
+<h3><a href='http://www.paitxt.com/23/23946/index.html'  target='_blank' title='{$book->title}'>{$book->title}</a></h3>
+<h4>作者：{$book->author} </h4><div class="bnew"><a href="http://www.paitxt.com/23/23946/7612122.html" target="_blank">{$book->lastchaptertitle}</a></div><div class='bnew'>
+<span>最后更新：{$book->createtime|date_format:'Y-m-d'}</span>
+</div> 
+<p>{$book->summary}</p>
+</div>
+{/foreach}
+ 
+
+</div>
+</div>
+</div>
+</div>
 </div>
 <!--end 列表-->
 

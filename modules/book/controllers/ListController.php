@@ -7,7 +7,6 @@ class ListController extends FWFrontController
 {
     public function actionIndex()
     {
-
         $category = Category::model()->find('shorttitle=:title', array(
           ':title' => $_GET['title']
         ));

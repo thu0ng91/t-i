@@ -14,9 +14,9 @@
 
 <div class="head">
   <div class="header">
-    <div class="logo"><a href="http://www.paitxt.com" title="派小说网"></a></div>
+    <div class="logo"><a href="{$FW_SITE_URL}" title="{$siteinfo->SiteName}"></a></div>
     <ul class="menu">
-      <li class="on"><a href="http://www.paitxt.com" title="派小说网">首页</a></li>
+      <li class="on"><a href="{$FW_SITE_URL}" title="{$siteinfo->SiteName}">首页</a></li>
       <li><a href="http://www.paitxt.com/class/1.html" >玄幻</a></li>
       <li><a href="http://www.paitxt.com/class/2.html" >修真</a></li>
       <li><a href="http://www.paitxt.com/class/3.html" >都市</a></li>
@@ -64,8 +64,6 @@
 <div class="foot">
 
 		<span style="font-family:arial;">Copyright &copy; 2013 <a href="http://www.paitxt.com" target="_blank">www.paitxt.com</a> </span> 派小说网 版权所有  </a></p>
-
-
 
 <p>
 

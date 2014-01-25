@@ -68,9 +68,10 @@ class FWModule extends CWebModule implements IModule,ArrayAccess {
 
     /**
      * 升级时调用
+     * @param $currentVersion 当前版本
      * @return boolean
      */
-    public function upgrade()
+    public function upgrade($currentVersion)
     {
         return true;
     }

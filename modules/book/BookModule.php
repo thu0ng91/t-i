@@ -23,7 +23,7 @@ class BookModule extends FWModule
      * 升级时调用
      * @return boolean
      */
-    public function upgrade()
+    public function upgrade($currentVersion)
     {
         return true;
     }

@@ -200,7 +200,7 @@ class ModulesController extends FWAdminController
             if (class_exists($moduleCls)) {
                 $setup = new $moduleCls();
                 if ($setup instanceof IModule && version_compare($m->upgradeversion, $m->version) > 0) {
-                    $r = $setup->upgrade();
+                    $r = $setup->upgrade($m->version);
                     if ($r) {
                         $m->version = $m->upgradeversion;
 //                        $m->status = 1;

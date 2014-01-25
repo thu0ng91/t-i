@@ -16,7 +16,9 @@ function smarty_function_novel_category_link($params, &$smarty){
         return "";
     }
 
-    $c = $smarty->tpl_vars['this']->value;
+    if (!Yii::app()->hasModule("book")) return "";
+
+//    $c = $smarty->tpl_vars['this']->value;
 
     $id = intval($params['id']);
 
@@ -27,6 +29,6 @@ function smarty_function_novel_category_link($params, &$smarty){
     $m = Category::model()->find($criteria);
     if (!$m) return "";
 
-    return $c->createUrl('category/index', array('title' => $m->shorttitle));
+    return Yii::app()->createUrl('book/list/index', array('title' => $m->shorttitle));
 
 }

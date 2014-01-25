@@ -28,6 +28,10 @@ class DetailController extends FWFrontController
 
         $this->assign("chapters", $chapterList);
 
+        // 更新小说点击统计
+        $book->updateClickStats();
+
+        // seo 相关
         $this->setSEOVar("分类名", $book->category->seotitle != "" ? $book->category->seotitle : $book->category->title);
         $this->setSEOVar("分类关键字", $book->category->keywords);
         $this->setSEOVar("分类描述", $book->category->description);
@@ -40,5 +44,4 @@ class DetailController extends FWFrontController
 
         $this->render("index");
     }
-
 }

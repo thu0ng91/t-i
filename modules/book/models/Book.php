@@ -235,6 +235,8 @@ class Book extends BaseModel
     {
         if (count($this->images) > 0 && $this->hascover) {
             $this->coverImageUrl = H::getNovelImageUrl($this->images[0]->imgurl);
+        } else {
+            $this->coverImageUrl = Yii::app()->theme->baseUrl . "/images/nocover.jpg";
         }
     }
 
@@ -271,6 +273,77 @@ class Book extends BaseModel
             ':bookid' => $this->id,
         ));
         return $list;
+    }
+
+    /**
+     * 统计小说点击：日、周、月、总点击
+     * @param int $bookid
+     * @return bool
+     */
+    public function updateClickStats($bookid = 0)
+    {
+        if ($bookid == 0) $bookid = $this->id;
+
+        if ($bookid < 1) return false;
+
+        $book = null;
+        if ($bookid == $this->id) $book = $this;
+        else {
+            $book = self::model()->findByPk($bookid);
+            if (!$book) return false;
+        }
+
+        $y = date('Y');
+        $m = date('n');
+        $d = date('Y-m-d');
+        $w = date('W');
+
+        $monthclicks = $book->monthclicks;
+        $weekclicks = $book->weekclicks;
+        $dayclicks = $book->dayclicks;
+
+        if (date('n', $book->lastclicktime) == $m && $y == date('Y', $book->lastclicktime)) {
+            $monthclicks += 1;
+        } else {
+            $monthclicks = 1;
+        }
+
+        if (date('W', $book->lastclicktime) == $w && $y == date('Y', $book->lastclicktime)) {
+            $weekclicks += 1;
+        } else {
+            $weekclicks = 1;
+        }
+
+        if (date('Y-m-d', $book->lastclicktime) == $d) {
+            $dayclicks += 1;
+        } else {
+            $dayclicks = 1;
+        }
+
+//        $book->updateCounters(
+//            array(
+//                'monthclicks' => $monthclicks,
+//                'weekclicks' => $weekclicks,
+//                'dayclicks' => $dayclicks,
+//            ),
+//            'id=:id',
+//            array(
+//                ':id' => $bookid,
+//            )
+//        );
+
+        $book->monthclicks = $monthclicks;
+        $book->weekclicks = $weekclicks;
+        $book->dayclicks = $dayclicks;
+        $book->allclicks += 1;
+        $book->lastclicktime = time();
+        $book->update(array(
+            'lastclicktime',
+            'monthclicks',
+            'weekclicks',
+            'dayclicks',
+            'allclicks',
+        ));
     }
 
     protected function copyChapterDatabase($bookId)

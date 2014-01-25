@@ -4,7 +4,7 @@
         <div class="padding">
             <div class="box" style="width:980px;">
                 <div class="title">
-                    <h5 class="current">{$category->title}</h5>
+                    <h5 class="current">最近更新</h5>
                 </div>
                 <div class="books">
                     {foreach $list as $book}

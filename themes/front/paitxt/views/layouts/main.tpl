@@ -16,16 +16,11 @@
   <div class="header">
     <div class="logo"><a href="{$FW_SITE_URL}" title="{$siteinfo->SiteName}"></a></div>
     <ul class="menu">
-      <li class="on"><a href="{$FW_SITE_URL}" title="{$siteinfo->SiteName}">首页</a></li>
-      <li><a href="http://www.paitxt.com/class/1.html" >玄幻</a></li>
-      <li><a href="http://www.paitxt.com/class/2.html" >修真</a></li>
-      <li><a href="http://www.paitxt.com/class/3.html" >都市</a></li>
-      <li><a href="http://www.paitxt.com/class/4.html" >穿越</a></li>
-      <li><a href="http://www.paitxt.com/class/5.html" >异界</a></li>
-      <li><a href="http://www.paitxt.com/class/6.html" >网游</a></li>
-      <li><a href="http://www.paitxt.com/class/7.html" >科幻</a></li>
-      <li><a href="http://www.paitxt.com/lastupdate/1.html" >最近更新</a></li>
-      <li><a href="http://www.paitxt.com/modules/article/index.php?fullflag=1" >全本</a></li>
+      <li {if $this->id == 'site' && $this->action->id == 'index'}class="on"{/if}><a href="{$FW_SITE_URL}" title="{$siteinfo->SiteName}">首页</a></li>
+      {novel_menu}
+      <li {if $this->id == 'list' && $this->action->id == 'index' && $category->id == $item->id}class="on"{elseif $this->id == 'detail' && $this->action->id == 'index' && $book->category->id == $item->id}class="on"{/if}><a href="{novel_category_link id=$item->id}">{$item->title}</a></li>
+      {/novel_menu}
+      <li {if $this->id == 'list' && $this->action->id == 'lastupdate'}class="on"{/if}><a href="{Yii::app()->createUrl("book/list/lastupdate")}" >最近更新</a></li>
     </ul>
     <div class="search">
       <form id="searcharticle" name="searcharticle" method="post" action="/modules/article/search.php">
@@ -63,11 +58,12 @@
 
 <div class="foot">
 
-		<span style="font-family:arial;">Copyright &copy; 2013 <a href="http://www.paitxt.com" target="_blank">www.paitxt.com</a> </span> 派小说网 版权所有  </a></p>
+        <p>本站为演示站点，所有小说及章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
+		<span style="font-family:arial;">Copyright &copy; 2014 <a href="{$FW_SITE_PUB_URL}" target="_blank">{$FW_SITE_PUB_URL}</a> </span> {$siteinfo->SiteName}</a></p>
 
 <p>
 
-<a href="#" target="_blank"><font color="#FE0101">手机阅读</font></a> - <a href="#" target="_blank">Pad阅读</font></a> - <a target="_blank" href="#" style="text-decoration:none;">站长E-mail</a> - <a href="#" target="_blank">网站简介</a> - <a href="#" target="_blank">免责声明</a> -</p>
+{*<a href="#" target="_blank"><font color="#FE0101">手机阅读</font></a> - <a href="#" target="_blank">Pad阅读</font></a> - <a target="_blank" href="#" style="text-decoration:none;">站长E-mail</a> - <a href="#" target="_blank">网站简介</a> - <a href="#" target="_blank">免责声明</a> -</p>*}
 
 </body>
 </html>

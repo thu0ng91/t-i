@@ -25,8 +25,7 @@ class ChapterController extends FWFrontController
         $this->assign("chapter", $chapter);
 
         //@done 因为对象模式会去加载txt章节内容从而浪费资源，所以此处可以优化
-        // 上下章节编号
-
+        // 取得上下章节编号
         $sql = "select id from chapter where contenttype=0 and chapterorder<:chapterorder order by chapterorder desc limit 1";
         $db = $m->getDbConnection();
         $r = $db->createCommand($sql)->queryRow(true, array(
@@ -56,7 +55,10 @@ class ChapterController extends FWFrontController
 //        $nextChapter = $m->find($criteria);
 //        $this->assign("nextChapter", $nextChapter);
 
+        // 更新小说点击统计
+        $book->updateClickStats();
 
+        // seo 相关
         $this->setSEOVar("分类名", $book->category->seotitle != "" ? $book->category->seotitle : $book->category->title);
         $this->setSEOVar("分类关键字", $book->category->keywords);
         $this->setSEOVar("分类描述", $book->category->description);

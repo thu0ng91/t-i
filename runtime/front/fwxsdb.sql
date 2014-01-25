@@ -1,18 +1,25 @@
--- --------------------------------------------------------
--- 主机:                           127.0.0.1
--- 服务器版本:                        5.5.16 - MySQL Community Server (GPL)
--- 服务器操作系统:                      Win32
--- HeidiSQL 版本:                  8.2.0.4675
--- --------------------------------------------------------
+/*
+Navicat MySQL Data Transfer
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+Source Server         : localhost
+Source Server Version : 50516
+Source Host           : localhost:3306
+Source Database       : fwxsdb
 
--- 导出  表 fwxsdb.admin 结构
+Target Server Type    : MYSQL
+Target Server Version : 50516
+File Encoding         : 65001
+
+Date: 2014-01-26 00:07:57
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for admin
+-- ----------------------------
 DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
+CREATE TABLE `admin` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
@@ -28,14 +35,18 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `status` tinyint(1) DEFAULT NULL,
   `loginhits` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+INSERT INTO `admin` VALUES ('1', 'admin', 'ce17e9af3c4ad636c26a240b0e2c73cb', null, '1', null, null, null, null, '1388063493', '1388063493', null, '1', '0');
 
-
--- 导出  表 fwxsdb.ads 结构
+-- ----------------------------
+-- Table structure for ads
+-- ----------------------------
 DROP TABLE IF EXISTS `ads`;
-CREATE TABLE IF NOT EXISTS `ads` (
+CREATE TABLE `ads` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(500) NOT NULL COMMENT '广告代码',
   `createtime` int(11) NOT NULL COMMENT '创建时间',
@@ -44,30 +55,16 @@ CREATE TABLE IF NOT EXISTS `ads` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of ads
+-- ----------------------------
 
-
--- 导出  表 fwxsdb.article 结构
-DROP TABLE IF EXISTS `article`;
-CREATE TABLE IF NOT EXISTS `article` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) NOT NULL COMMENT '章节标题',
-  `bookid` int(10) NOT NULL COMMENT '章节所属书籍',
-  `volumeid` int(10) NOT NULL DEFAULT '0' COMMENT '分卷编号',
-  `chapterorder` smallint(6) NOT NULL DEFAULT '0' COMMENT '章节号',
-  `createtime` int(10) DEFAULT NULL COMMENT '发布时间',
-  PRIMARY KEY (`id`),
-  KEY `chapter` (`chapterorder`),
-  KEY `bookid` (`bookid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
--- 数据导出被取消选择。
-
-
--- 导出  表 fwxsdb.book 结构
+-- ----------------------------
+-- Table structure for book
+-- ----------------------------
 DROP TABLE IF EXISTS `book`;
-CREATE TABLE IF NOT EXISTS `book` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `book` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL COMMENT '书名',
   `author` varchar(32) DEFAULT NULL COMMENT '作者',
   `authorid` int(10) NOT NULL DEFAULT '0' COMMENT '作者编号',
@@ -102,42 +99,68 @@ CREATE TABLE IF NOT EXISTS `book` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `book_uniq_title_idx` (`title`),
   KEY `book_cid_idx` (`cid`),
-  KEY `book_pinyin_idx` (`pinyin`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  KEY `book_pinyin_idx` (`pinyin`),
+  KEY `book_lastchpatertime_idx` (`lastchaptertime`),
+  KEY `book_createtime_idx` (`createtime`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of book
+-- ----------------------------
+INSERT INTO `book` VALUES ('14', '苍天霸业', '一般不发言', '0', '1', '1', '神奇、飞舞', '玄武大陆，宗门林立，征战不休。　　林枫，一个来自乡间的普通少年，因为一个神秘老者，一个玉坠，命运发现惊人的逆转。　　纷乱世间，只有自己强大，才可以守护心爱之人。变强，才不会被他人欺辱。　　变强，才有资格与心爱的女人比肩。变强，才能带领宗门，从默默无闻走向傲视天下。　　且看一个乡下少年，如何从一个最小的宗门开始起步，一步步崛起，最终横扫整个玄武大陆，...... ', 'cangtianbaye', 'c', '0', '0', '1', '0', '3794', '1', '第一章 林枫', '1390572443', '0', '0', '0', '0', null, '46', '46', '46', '46', '1390665045', '1', '1390571590', '1390571590', '1');
+INSERT INTO `book` VALUES ('15', '苍天霸业2', '一般不发言', '0', '1', '1', '神奇、飞舞', '玄武大陆，宗门林立，征战不休。　　林枫，一个来自乡间的普通少年，因为一个神秘老者，一个玉坠，命运发现惊人的逆转。　　纷乱世间，只有自己强大，才可以守护心爱之人。变强，才不会被他人欺辱。　　变强，才有资格与心爱的女人比肩。变强，才能带领宗门，从默默无闻走向傲视天下。　　且看一个乡下少年，如何从一个最小的宗门开始起步，一步步崛起，最终横扫整个玄武大陆，...... ', 'cangtianbaye', 'c', '0', '0', '1', '0', '3794', '1', '第一章 林枫', '1390572443', '0', '0', '0', '0', null, '0', '0', '0', '0', null, '1', '1390571590', '1390571590', '1');
+INSERT INTO `book` VALUES ('16', '苍天霸业3', '一般不发言', '0', '1', '1', '神奇、飞舞', '玄武大陆，宗门林立，征战不休。　　林枫，一个来自乡间的普通少年，因为一个神秘老者，一个玉坠，命运发现惊人的逆转。　　纷乱世间，只有自己强大，才可以守护心爱之人。变强，才不会被他人欺辱。　　变强，才有资格与心爱的女人比肩。变强，才能带领宗门，从默默无闻走向傲视天下。　　且看一个乡下少年，如何从一个最小的宗门开始起步，一步步崛起，最终横扫整个玄武大陆，...... ', 'cangtianbaye', 'c', '0', '0', '1', '0', '3794', '1', '第一章 林枫', '1390572443', '0', '0', '0', '0', null, '0', '0', '0', '0', null, '1', '1390571590', '1390571590', '1');
+INSERT INTO `book` VALUES ('17', '苍天霸业4', '一般不发言', '0', '1', '1', '神奇、飞舞', '玄武大陆，宗门林立，征战不休。　　林枫，一个来自乡间的普通少年，因为一个神秘老者，一个玉坠，命运发现惊人的逆转。　　纷乱世间，只有自己强大，才可以守护心爱之人。变强，才不会被他人欺辱。　　变强，才有资格与心爱的女人比肩。变强，才能带领宗门，从默默无闻走向傲视天下。　　且看一个乡下少年，如何从一个最小的宗门开始起步，一步步崛起，最终横扫整个玄武大陆，...... ', 'cangtianbaye', 'c', '0', '0', '1', '0', '3794', '1', '第一章 林枫', '1390572443', '0', '0', '0', '0', null, '0', '0', '0', '0', null, '1', '1390571590', '1390571590', '1');
+INSERT INTO `book` VALUES ('18', '苍天霸业5', '一般不发言', '0', '1', '1', '神奇、飞舞', '玄武大陆，宗门林立，征战不休。　　林枫，一个来自乡间的普通少年，因为一个神秘老者，一个玉坠，命运发现惊人的逆转。　　纷乱世间，只有自己强大，才可以守护心爱之人。变强，才不会被他人欺辱。　　变强，才有资格与心爱的女人比肩。变强，才能带领宗门，从默默无闻走向傲视天下。　　且看一个乡下少年，如何从一个最小的宗门开始起步，一步步崛起，最终横扫整个玄武大陆，...... ', 'cangtianbaye', 'c', '0', '0', '1', '0', '3794', '1', '第一章 林枫', '1390572443', '0', '0', '0', '0', null, '0', '0', '0', '0', null, '1', '1390571590', '1390571590', '1');
 
-
--- 导出  表 fwxsdb.book_image 结构
+-- ----------------------------
+-- Table structure for book_image
+-- ----------------------------
 DROP TABLE IF EXISTS `book_image`;
-CREATE TABLE IF NOT EXISTS `book_image` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `bookid` int(10) NOT NULL COMMENT '书籍编号',
+CREATE TABLE `book_image` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `bookid` int(11) NOT NULL COMMENT '书籍编号',
+  `chapterid` int(11) NOT NULL DEFAULT '0' COMMENT '章节编号，当为章节编号时，封面编号为0',
   `imgurl` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT '图片地址',
   `iscover` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否封面图：0 否 1 是',
+  `createtime` int(10) DEFAULT NULL COMMENT '发布时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of book_image
+-- ----------------------------
+INSERT INTO `book_image` VALUES ('1', '9', '0', '/uploads/book/2014-01/138953446823805.jpg', '1', '1389534468');
+INSERT INTO `book_image` VALUES ('2', '10', '0', '/uploads/book/2014-01/139014712411154.jpg', '1', '1390147124');
+INSERT INTO `book_image` VALUES ('3', '11', '0', '/uploads/book/2014-01/139014727223126.jpg', '1', '1390147272');
+INSERT INTO `book_image` VALUES ('4', '12', '0', '/uploads/book/2014-01/139031938519435.jpg', '1', '1390319385');
+INSERT INTO `book_image` VALUES ('5', '13', '0', '/uploads/book/2014-01/139039541812187.jpg', '1', '1390395418');
+INSERT INTO `book_image` VALUES ('6', '13', '0', '/uploads/book/2014-01/139039541812088.jpg', '1', '1390395418');
+INSERT INTO `book_image` VALUES ('7', '14', '0', '/uploads/book/2014-01/1390571590104.jpg', '1', '1390571590');
 
-
--- 导出  表 fwxsdb.book_tags 结构
+-- ----------------------------
+-- Table structure for book_tags
+-- ----------------------------
 DROP TABLE IF EXISTS `book_tags`;
-CREATE TABLE IF NOT EXISTS `book_tags` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `book_tags` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `tagid` int(11) NOT NULL DEFAULT '0' COMMENT 'tag编号',
   `bookid` int(11) NOT NULL DEFAULT '0' COMMENT '书籍编号',
   `sort` tinyint(4) NOT NULL DEFAULT '0' COMMENT '排序号',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of book_tags
+-- ----------------------------
+INSERT INTO `book_tags` VALUES ('1', '9', '14', '0');
 
-
--- 导出  表 fwxsdb.category 结构
+-- ----------------------------
+-- Table structure for category
+-- ----------------------------
 DROP TABLE IF EXISTS `category`;
-CREATE TABLE IF NOT EXISTS `category` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `category` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `shorttitle` varchar(100) DEFAULT NULL COMMENT '英文、拼音名称',
   `parentid` int(10) DEFAULT NULL,
@@ -152,15 +175,19 @@ CREATE TABLE IF NOT EXISTS `category` (
   `sort` tinyint(4) DEFAULT '0',
   `status` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of category
+-- ----------------------------
+INSERT INTO `category` VALUES ('1', '玄幻小说', 'xuanhuanxiaoshuo', '0', null, null, '', '玄幻、东方玄幻', '好看的玄幻小说', '1389021958', '1389021958', '1', '0', '1');
 
-
--- 导出  表 fwxsdb.friend_link 结构
+-- ----------------------------
+-- Table structure for friend_link
+-- ----------------------------
 DROP TABLE IF EXISTS `friend_link`;
-CREATE TABLE IF NOT EXISTS `friend_link` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `friend_link` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL COMMENT '站点名',
   `imgurl` varchar(200) DEFAULT NULL COMMENT '站点LOGO',
   `linkurl` varchar(500) DEFAULT NULL COMMENT '站点地址',
@@ -171,12 +198,15 @@ CREATE TABLE IF NOT EXISTS `friend_link` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of friend_link
+-- ----------------------------
 
-
--- 导出  表 fwxsdb.modules 结构
+-- ----------------------------
+-- Table structure for modules
+-- ----------------------------
 DROP TABLE IF EXISTS `modules`;
-CREATE TABLE IF NOT EXISTS `modules` (
+CREATE TABLE `modules` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL COMMENT '模块标题',
   `name` varchar(50) NOT NULL COMMENT '模块名称：与模块目录名一致',
@@ -191,15 +221,19 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态：0 未安装 1 已安装 -1 已禁用',
   PRIMARY KEY (`id`),
   UNIQUE KEY `module_name_uniq` (`name`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of modules
+-- ----------------------------
+INSERT INTO `modules` VALUES ('14', '小说连载模块', 'book', 'pizigou', '1.0.1', null, '1.2.3', '小说连载系统', 'a:2:{s:3:\"top\";a:2:{s:5:\"label\";s:12:\"小说管理\";s:3:\"url\";s:21:\"book/admin/book/index\";}s:4:\"left\";a:2:{i:0;a:2:{s:5:\"label\";s:18:\"小说栏目管理\";s:3:\"url\";s:25:\"book/admin/category/index\";}i:1;a:2:{s:5:\"label\";s:12:\"小说管理\";s:3:\"url\";s:21:\"book/admin/book/index\";}}}', '1389445562', '1389445562', '1');
 
-
--- 导出  表 fwxsdb.news 结构
+-- ----------------------------
+-- Table structure for news
+-- ----------------------------
 DROP TABLE IF EXISTS `news`;
-CREATE TABLE IF NOT EXISTS `news` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `news` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL COMMENT '新闻标题',
   `author` varchar(32) DEFAULT NULL COMMENT '作者',
   `keywords` varchar(100) DEFAULT NULL COMMENT '关键字',
@@ -215,16 +249,19 @@ CREATE TABLE IF NOT EXISTS `news` (
   KEY `cid` (`cid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of news
+-- ----------------------------
 
-
--- 导出  表 fwxsdb.news_category 结构
+-- ----------------------------
+-- Table structure for news_category
+-- ----------------------------
 DROP TABLE IF EXISTS `news_category`;
-CREATE TABLE IF NOT EXISTS `news_category` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `news_category` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `shorttitle` varchar(100) DEFAULT NULL COMMENT '英文、拼音名称',
-  `parentid` int(10) DEFAULT NULL,
+  `parentid` int(11) DEFAULT NULL,
   `imgurl` varchar(200) DEFAULT NULL,
   `seotitle` varchar(100) DEFAULT NULL,
   `keywords` varchar(100) DEFAULT NULL,
@@ -236,39 +273,70 @@ CREATE TABLE IF NOT EXISTS `news_category` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of news_category
+-- ----------------------------
 
-
--- 导出  表 fwxsdb.settings 结构
+-- ----------------------------
+-- Table structure for settings
+-- ----------------------------
 DROP TABLE IF EXISTS `settings`;
-CREATE TABLE IF NOT EXISTS `settings` (
+CREATE TABLE `settings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category` varchar(64) NOT NULL DEFAULT 'system',
   `key` varchar(255) NOT NULL,
   `value` text NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category_key` (`category`,`key`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of settings
+-- ----------------------------
+INSERT INTO `settings` VALUES ('1', 'system', 'SystemBaseConfig', 'O:16:\"SystemBaseConfig\":13:{s:8:\"SiteName\";s:15:\"飞舞小说网\";s:12:\"SiteKeywords\";s:12:\"飞舞小说\";s:9:\"SiteIntro\";s:0:\"\";s:13:\"SiteCopyright\";s:0:\"\";s:14:\"SiteAdminEmail\";s:16:\"pizigou@yeah.net\";s:18:\"SiteAttachmentPath\";N;s:9:\"SiteTheme\";s:6:\"paitxt\";s:15:\"SiteIsUsedCache\";s:1:\"0\";s:15:\"\0CModel\0_errors\";a:0:{}s:19:\"\0CModel\0_validators\";O:5:\"CList\":5:{s:9:\"\0CList\0_d\";a:5:{i:0;O:18:\"CRequiredValidator\":11:{s:13:\"requiredValue\";N;s:6:\"strict\";b:0;s:10:\"attributes\";a:1:{i:0;s:8:\"SiteName\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}i:1;O:15:\"CEmailValidator\":16:{s:7:\"pattern\";s:163:\"/^[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/\";s:11:\"fullPattern\";s:170:\"/^[^@]*<[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+(?:\\.[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?>$/\";s:9:\"allowName\";b:0;s:7:\"checkMX\";b:0;s:9:\"checkPort\";b:0;s:10:\"allowEmpty\";b:1;s:11:\"validateIDN\";b:0;s:10:\"attributes\";a:1:{i:0;s:14:\"SiteAdminEmail\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}i:2;O:17:\"CBooleanValidator\":13:{s:9:\"trueValue\";s:1:\"1\";s:10:\"falseValue\";s:1:\"0\";s:6:\"strict\";b:0;s:10:\"allowEmpty\";b:1;s:10:\"attributes\";a:1:{i:0;s:15:\"SiteIsUsedCache\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}i:3;O:16:\"CStringValidator\":16:{s:3:\"max\";i:100;s:3:\"min\";N;s:2:\"is\";N;s:8:\"tooShort\";N;s:7:\"tooLong\";N;s:10:\"allowEmpty\";b:1;s:8:\"encoding\";N;s:10:\"attributes\";a:1:{i:0;s:8:\"SiteName\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}i:4;O:16:\"CStringValidator\":16:{s:3:\"max\";i:255;s:3:\"min\";N;s:2:\"is\";N;s:8:\"tooShort\";N;s:7:\"tooLong\";N;s:10:\"allowEmpty\";b:1;s:8:\"encoding\";N;s:10:\"attributes\";a:5:{i:0;s:12:\"SiteKeywords\";i:1;s:9:\"SiteIntro\";i:2;s:13:\"SiteCopyright\";i:3;s:18:\"SiteAttachmentPath\";i:4;s:9:\"SiteTheme\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}}s:9:\"\0CList\0_c\";i:5;s:9:\"\0CList\0_r\";b:0;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}s:17:\"\0CModel\0_scenario\";s:0:\"\";s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}');
+INSERT INTO `settings` VALUES ('2', 'system', 'SystemRewriteConfig', 'O:19:\"SystemRewriteConfig\":13:{s:34:\"\0SystemRewriteConfig\0idPatternRule\";s:14:\"/(\\{id\\}){1}/i\";s:42:\"\0SystemRewriteConfig\0shortTitlePatternRule\";s:22:\"/(\\{shorttitle\\}){1}/i\";s:9:\"UrlSuffix\";s:1:\"0\";s:12:\"CategoryRule\";s:0:\"\";s:14:\"BookDetailRule\";s:0:\"\";s:17:\"ChapterDetailRule\";s:0:\"\";s:12:\"NewsListRule\";s:0:\"\";s:14:\"NewsDetailRule\";s:0:\"\";s:15:\"\0CModel\0_errors\";a:0:{}s:19:\"\0CModel\0_validators\";O:5:\"CList\":5:{s:9:\"\0CList\0_d\";a:6:{i:0;O:15:\"CRangeValidator\":13:{s:5:\"range\";a:6:{i:0;i:0;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:4;i:5;i:5;}s:6:\"strict\";b:0;s:10:\"allowEmpty\";b:1;s:3:\"not\";b:0;s:10:\"attributes\";a:1:{i:0;s:9:\"UrlSuffix\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}i:1;O:27:\"CRegularExpressionValidator\":12:{s:7:\"pattern\";s:22:\"/(\\{shorttitle\\}){1}/i\";s:10:\"allowEmpty\";b:1;s:3:\"not\";b:0;s:10:\"attributes\";a:1:{i:0;s:12:\"CategoryRule\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}i:2;O:27:\"CRegularExpressionValidator\":12:{s:7:\"pattern\";s:14:\"/(\\{id\\}){1}/i\";s:10:\"allowEmpty\";b:1;s:3:\"not\";b:0;s:10:\"attributes\";a:1:{i:0;s:14:\"BookDetailRule\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}i:3;O:27:\"CRegularExpressionValidator\":12:{s:7:\"pattern\";s:14:\"/(\\{id\\}){1}/i\";s:10:\"allowEmpty\";b:1;s:3:\"not\";b:0;s:10:\"attributes\";a:1:{i:0;s:17:\"ChapterDetailRule\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}i:4;O:27:\"CRegularExpressionValidator\":12:{s:7:\"pattern\";s:14:\"/(\\{id\\}){1}/i\";s:10:\"allowEmpty\";b:1;s:3:\"not\";b:0;s:10:\"attributes\";a:1:{i:0;s:12:\"NewsListRule\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}i:5;O:27:\"CRegularExpressionValidator\":12:{s:7:\"pattern\";s:14:\"/(\\{id\\}){1}/i\";s:10:\"allowEmpty\";b:1;s:3:\"not\";b:0;s:10:\"attributes\";a:1:{i:0;s:14:\"NewsDetailRule\";}s:7:\"message\";N;s:11:\"skipOnError\";b:0;s:2:\"on\";a:0:{}s:6:\"except\";a:0:{}s:4:\"safe\";b:1;s:22:\"enableClientValidation\";b:1;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}}s:9:\"\0CList\0_c\";i:6;s:9:\"\0CList\0_r\";b:0;s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}s:17:\"\0CModel\0_scenario\";s:0:\"\";s:14:\"\0CComponent\0_e\";N;s:14:\"\0CComponent\0_m\";N;}');
 
-
--- 导出  表 fwxsdb.tags 结构
+-- ----------------------------
+-- Table structure for tags
+-- ----------------------------
 DROP TABLE IF EXISTS `tags`;
-CREATE TABLE IF NOT EXISTS `tags` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(10) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '标签名',
+CREATE TABLE `tags` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '标签名',
   PRIMARY KEY (`id`),
   UNIQUE KEY `tag_uniq_name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='TAG表';
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='TAG表';
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of tags
+-- ----------------------------
+INSERT INTO `tags` VALUES ('19', 'tese');
+INSERT INTO `tags` VALUES ('14', '伦理');
+INSERT INTO `tags` VALUES ('3', '发觉');
+INSERT INTO `tags` VALUES ('1', '同人');
+INSERT INTO `tags` VALUES ('18', '奇幻');
+INSERT INTO `tags` VALUES ('20', '奇葩');
+INSERT INTO `tags` VALUES ('2', '女性');
+INSERT INTO `tags` VALUES ('13', '张山');
+INSERT INTO `tags` VALUES ('10', '快餐');
+INSERT INTO `tags` VALUES ('15', '暴力');
+INSERT INTO `tags` VALUES ('6', '测试');
+INSERT INTO `tags` VALUES ('9', '玄幻');
+INSERT INTO `tags` VALUES ('16', '神功');
+INSERT INTO `tags` VALUES ('17', '神奇');
+INSERT INTO `tags` VALUES ('4', '祸水');
+INSERT INTO `tags` VALUES ('5', '红颜');
+INSERT INTO `tags` VALUES ('11', '美女');
+INSERT INTO `tags` VALUES ('12', '选美');
+INSERT INTO `tags` VALUES ('8', '铁血');
+INSERT INTO `tags` VALUES ('7', '飞舞');
 
-
--- 导出  表 fwxsdb.user 结构
+-- ----------------------------
+-- Table structure for user
+-- ----------------------------
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
   `password` varchar(32) NOT NULL,
   `realname` varchar(30) DEFAULT NULL,
@@ -283,14 +351,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `loginhits` int(10) DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
+-- ----------------------------
+-- Records of user
+-- ----------------------------
 
-
--- 导出  表 fwxsdb.user_book_favorites 结构
+-- ----------------------------
+-- Table structure for user_book_favorites
+-- ----------------------------
 DROP TABLE IF EXISTS `user_book_favorites`;
-CREATE TABLE IF NOT EXISTS `user_book_favorites` (
+CREATE TABLE `user_book_favorites` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0： 收藏 1：推荐',
   `title` varchar(100) NOT NULL COMMENT '小说名称',
@@ -301,22 +372,6 @@ CREATE TABLE IF NOT EXISTS `user_book_favorites` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
--- 数据导出被取消选择。
-
-
--- 导出  表 fwxsdb.volume 结构
-DROP TABLE IF EXISTS `volume`;
-CREATE TABLE IF NOT EXISTS `volume` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `bookid` int(10) NOT NULL DEFAULT '0' COMMENT '书籍编号',
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL DEFAULT '' COMMENT '分卷标题',
-  `chaptercount` smallint(6) NOT NULL DEFAULT '0' COMMENT '分卷章节数',
-  `createtime` int(10) DEFAULT '0' COMMENT '章节创捷时间',
-  `sort` tinyint(4) NOT NULL DEFAULT '0' COMMENT '分卷序号',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='分卷';
-
--- 数据导出被取消选择。
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+-- ----------------------------
+-- Records of user_book_favorites
+-- ----------------------------

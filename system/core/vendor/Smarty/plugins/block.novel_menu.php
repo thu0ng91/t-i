@@ -21,7 +21,7 @@ function smarty_block_novel_menu($params, $content, $template, &$repeat) {
     } else {
         $name = "block_novel_menu_" . $params['name'];
     }
-    $name = $params['name'];
+//    $name = $params['name'];
     $itemVarName = 'item';
     $dataVarName = $name . "_data";
     $dataIndexVarName = $name . "_data_index";

@@ -13,14 +13,22 @@
  * @author pizigou <pizigou@yeah.net>
  */
 function smarty_function_novel_chapter_link($params, &$smarty){
+    if(empty($params['bookid'])){
+        return "";
+    }
     if(empty($params['id'])){
         return "";
     }
 
-    $c = $smarty->tpl_vars['this']->value;
+    if (!Yii::app()->hasModule("book")) return "";
+
+//    $c = $smarty->tpl_vars['this']->value;
 
     $id = intval($params['id']);
+    $bookid = intval($params['bookid']);
 
-    return $c->createUrl('article/view', array('id' => $id));
+    $link = "book/chapter/index";
+
+    return Yii::app()->createUrl($link, array('bookid' => $bookid, 'id' => $id));
 
 }

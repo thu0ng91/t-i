@@ -6,7 +6,7 @@ $this->pageTitle=Yii::app()->name;
 
 <?php $this->widget('bootstrap.widgets.TbButton', array(
     'label'=>'新建栏目',
-	'url' => Yii::app()->createUrl('book/admin/categoryCreate'),
+	'url' => Yii::app()->createUrl('book/admin/category/create'),
     'type'=>'primary', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
     'size'=>'null', // null, 'large', 'small' or 'mini'
 )); ?>

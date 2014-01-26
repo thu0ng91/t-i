@@ -66,7 +66,7 @@ return array(
 		
 		'urlManager'=>array(
 			'urlFormat' => 'path',
-			'urlSuffix' => '',
+			'urlSuffix' => '.html',
 			'showScriptName' => false,
 			'rules' => require_once dirname(__FILE__) . "/url-rules.php",
 		),

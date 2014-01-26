@@ -70,5 +70,4 @@
 
 </body>
 </html>
-{$TIME}
-{debug}
+<!-- spend time {$TIME} -->

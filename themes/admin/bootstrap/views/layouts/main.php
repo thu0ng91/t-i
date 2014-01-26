@@ -43,7 +43,7 @@ $this->widget('bootstrap.widgets.TbNavbar',array(
             'class'=>'bootstrap.widgets.TbMenu',
             'htmlOptions'=>array('class'=>'pull-right'),
             'items'=> array(
-                array('label'=>'浏览网站', 'url'=> Yii::app()->baseUrl, 'visible'=> !Yii::app()->user->isGuest, 'linkOptions' => array(
+                array('label'=>'浏览网站', 'url'=> Yii::app()->baseUrl != "" ? Yii::app()->baseUrl : "/", 'visible'=> !Yii::app()->user->isGuest, 'linkOptions' => array(
                     'target' => '_blank',
                 )),
                 array('label'=>'登录', 'url'=> Yii::app()->createUrl('site/login'), 'visible'=> Yii::app()->user->isGuest),

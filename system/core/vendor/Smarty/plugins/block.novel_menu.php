@@ -15,6 +15,12 @@
  * @author pizigou <pizigou@yeah.net>
  */
 function smarty_block_novel_menu($params, $content, $template, &$repeat) {
+
+    if (!Yii::app()->hasModule("book")) {
+        $repeat = false;
+        return;
+    }
+
     if(empty($params['name'])){
 //        throw new CException("'novel_book' 需要 name 参数");
         $name = "block_novel_menu";
@@ -27,6 +33,7 @@ function smarty_block_novel_menu($params, $content, $template, &$repeat) {
     $dataIndexVarName = $name . "_data_index";
     $dataCountVarName = $name . "_data_count";
 
+    Yii::import("book.models.*");
     // 第一次取得数据集
     if (is_null($content)) {
         $list = Category::getMenus();

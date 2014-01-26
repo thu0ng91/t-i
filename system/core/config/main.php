@@ -33,7 +33,7 @@ return array(
     'application.extensions.image.*',
 	),
 
-    'theme' => 'biquge',
+    'theme' => 'paitxt',
 
     'behaviors' => array(
         'app' => 'application.behaviors.FrontAppBehavior',

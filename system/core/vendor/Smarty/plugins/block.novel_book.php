@@ -16,7 +16,10 @@
  */
 function smarty_block_novel_book($params, $content, $template, &$repeat) {
 
-    if (!Yii::app()->hasModule("book")) return;
+    if (!Yii::app()->hasModule("book")) {
+        $repeat = false;
+        return;
+    }
 
     if(empty($params['name'])){
         $name = "block_novel_book";

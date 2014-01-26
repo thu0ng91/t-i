@@ -1,6 +1,6 @@
 <?php
 /**
- * 获取小说列表
+ * 小说列表
  * 
  * Example:
  *  {novel_book name="recommend_book" cid=[1] limit=10 order="" recommend=[1]}
@@ -15,11 +15,16 @@
  * @author pizigou <pizigou@yeah.net>
  */
 function smarty_block_novel_book($params, $content, $template, &$repeat) {
+
+    if (!Yii::app()->hasModule("book")) return;
+
     if(empty($params['name'])){
         $name = "block_novel_book";
     } else {
         $name = "block_novel_book_" . $params['name'];
     }
+
+    Yii::import("book.models.*");
 
     $cid = 0;
     $limit = 10;
@@ -73,10 +78,10 @@ function smarty_block_novel_book($params, $content, $template, &$repeat) {
         } else {
             $c = $template->tpl_vars['this']->value;
 
-            foreach ($list as $k => $v) {
-//                $list[$k]['url'] = $c->createUrl('book/view', array('id' => $v->id));
-                $v->imgurl = H::getNovelImageUrl($v->imgurl);
-            }
+//            foreach ($list as $k => $v) {
+////                $list[$k]['url'] = $c->createUrl('book/view', array('id' => $v->id));
+//                $v->imgurl = H::getNovelImageUrl($v->imgurl);
+//            }
         }
 
         $template->assign($dataVarName, $list);

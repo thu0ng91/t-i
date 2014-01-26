@@ -68,7 +68,7 @@ a:hover{color:#FF4810;}
 .bk .yx_0 .yx_2{ background-color:#96BAE7;height:13px;width:60px;line-height:13px; text-align:center;margin-right:5px;}
 .bk .yx_0 .yx_3{ background-color:#9CDBC3;height:13px;width:35px;line-height:13px; text-align:center;margin-right:5px;}
 .m_b_5{margin-bottom:5px;}
-.news{background:#fff;padding:20px 10px 10px 15px;display:none;border-bottom-right-radius:5px;border-bottom-left-radius:5px;}
+.news{background:#fff;padding:20px 10px 10px 15px;display:none;border-bottom-right-radius:5px;border-bottom-left-radius:5px;overflow: hidden}
 /*.news{background:#fff;display:none;border-bottom-right-radius:5px;border-bottom-left-radius:5px;}
 .news ul{padding:10px 0px 10px 0px;zoom:1;overflow:hidden;}
 .news ul li{height:46px;line-height:46px;width:45%;float:left;overflow:hidden;background:url(images/../../images/xxline.gif) 0px bottom repeat-x;margin:0px 2%;padding-right:0.5%;display:inline;}

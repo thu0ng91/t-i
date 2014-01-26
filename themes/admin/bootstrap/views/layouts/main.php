@@ -18,10 +18,10 @@
 $menus = array(
     array('label'=> '系统', 'url'=> 'system/base', 'active' => $this->menupanel[0] == 'system' ? true : false),
 //    array('label'=> '小说管理', 'url'=> 'book/index', 'active' => $this->menupanel[0] == 'book' ? true : false),
-    array('label'=> '友链管理', 'url'=> 'friendlink/index', 'active' => $this->menupanel[0] == 'friendlink' ? true : false),
-    array('label'=> '新闻管理', 'url'=> 'news/index', 'active' => $this->menupanel[0] == 'news' ? true : false),
-    array('label'=> '广告管理', 'url'=> 'ads/index', 'active' => $this->menupanel[0] == 'ads' ? true : false),
-    array('label'=> '用户管理', 'url'=> 'user/index', 'active' => $this->menupanel[0] == 'user' ? true : false),
+//    array('label'=> '友链管理', 'url'=> 'friendlink/index', 'active' => $this->menupanel[0] == 'friendlink' ? true : false),
+//    array('label'=> '新闻管理', 'url'=> 'news/index', 'active' => $this->menupanel[0] == 'news' ? true : false),
+//    array('label'=> '广告管理', 'url'=> 'ads/index', 'active' => $this->menupanel[0] == 'ads' ? true : false),
+//    array('label'=> '用户管理', 'url'=> 'user/index', 'active' => $this->menupanel[0] == 'user' ? true : false),
     array('label'=> '模块管理', 'url'=> 'modules/index', 'active' => $this->menupanel[0] == 'modules' ? true : false),
 );
 

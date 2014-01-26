@@ -1,10 +1,11 @@
 <?php
 /**
- * 获取小说排行榜
+ * 小说排行榜
  * 
  * Example:
- *  type = day | week | month
- *  {novel_book_rank name="book_rank" type="day" cid=[1] week="43" day="2013-10-11" month="2013-4" limit=10}
+ *  type = click | recommend 点击 推荐
+ *  order = day | week | month | all 日|周|月|总点击
+ *  {novel_book_rank name="book_rank" type="day" cid=[1] order="" limit=10}
  *      <li><a href='{$item->url}'>{$item->title}</a></li>
  *  {/novel_book_rank}
  * 
@@ -17,13 +18,17 @@
  */
 function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
 
+    if (!Yii::app()->hasModule("book")) return;
+
     if(empty($params['name'])){
         $name = "block_novel_book_rank";
     } else {
         $name = "block_novel_book_rank_" . $params['name'];
     }
 
-    $type = "day";
+    Yii::import("book.models.*");
+
+    $type = "click";
     $limit = 10;
     $cid = 0;
 
@@ -39,23 +44,25 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
         $cid = $params['cid'];
     }
 
-    $year = $month = $week = $day = "";
+    $sort = "all";
 
-    if (isset($params['year'])) {
-        $year = $params['year'];
+    $field = "";
+
+    switch ($type) {
+        case 'click':
+            $field = $sort . "clicks";
+            break;
     }
 
-    if (isset($params['month'])) {
-        $month = $params['month'];
-    }
+    $allowFields = array(
+        'monthclicks',
+        'weekclicks',
+        'dayclicks',
+        'allclicks',
+    );
 
-    if (isset($params['week'])) {
-        $week = $params['week'];
-    }
+    if (!in_array($field, $allowFields)) return;
 
-    if (isset($params['day'])) {
-        $week = $params['day'];
-    }
 
     $itemVarName = 'item';
     $dataVarName = $name . "_data";
@@ -67,7 +74,7 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
 
         $criteria = new CDbCriteria();
 
-        $criteria->order = 'hits desc';
+        $criteria->order = $field . " desc";
         $criteria->limit = $limit;
 
         if ($cid != 0) {
@@ -75,34 +82,19 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
         }
 
         $list = null;
-        switch ($type) {
-            case 'day':
-                $criteria->compare('day', $day);
-                $list = BookViewStatsByDay::model()->findAll($criteria);
-                break;
-            case 'week':
-                $criteria->compare('year', date('Y'));
-                $criteria->compare('week', $week ? $week : date('W'));
-                $list = BookViewStatsByWeek::model()->findAll($criteria);
-                break;
-            case 'month':
-                $t = strtotime($month ? $month : date('Y-m'));
-                $month = date('Y-m-d', $t);
-                $criteria->compare('month', $month);
-                $list = BookViewStatsByMonth::model()->findAll($criteria);
-                break;
-        }
+
+        $list = Book::model()->findAll($criteria);
 
         $count = count($list);
         if (!$list) {
             $count = 0;
         } else {
-            $c = $template->tpl_vars['this']->value;
+//            $c = $template->tpl_vars['this']->value;
 
-            foreach ($list as $k => $v) {
-//                $list[$k]['url'] = $c->createUrl('book/view', array('id' => $v->id));
-                $v->book->imgurl = H::getNovelImageUrl($v->book->imgurl);
-            }
+//            foreach ($list as $k => $v) {
+////                $list[$k]['url'] = $c->createUrl('book/view', array('id' => $v->id));
+////                $v->book->imgurl = H::getNovelImageUrl($v->book->imgurl);
+//            }
         }
 
         $template->assign($dataVarName, $list);

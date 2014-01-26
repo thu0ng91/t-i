@@ -21,6 +21,7 @@ class BookModule extends FWModule
 
     /**
      * 升级时调用
+     * @param $currentVersion
      * @return boolean
      */
     public function upgrade($currentVersion)

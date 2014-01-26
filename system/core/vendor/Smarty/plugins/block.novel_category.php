@@ -15,6 +15,9 @@
  * @author pizigou <pizigou@yeah.net>
  */
 function smarty_block_novel_category($params, $content, $template, &$repeat) {
+
+    //@todo 暂时屏蔽
+    return "";
     if(empty($params['name'])){
         $name = "block_novel_category";
     } else {

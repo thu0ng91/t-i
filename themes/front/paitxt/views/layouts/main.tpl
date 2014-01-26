@@ -11,6 +11,7 @@
 </head>
 <body>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/jquery.min.js"></script>
 
 <div class="head">
   <div class="header">
@@ -20,12 +21,14 @@
       {novel_menu}
       <li {if $this->id == 'list' && $this->action->id == 'index' && $category->id == $item->id}class="on"{elseif $this->id == 'detail' && $this->action->id == 'index' && $book->category->id == $item->id}class="on"{/if}><a href="{novel_category_link id=$item->id}">{$item->title}</a></li>
       {/novel_menu}
-      <li {if $this->id == 'list' && $this->action->id == 'lastupdate'}class="on"{/if}><a href="{Yii::app()->createUrl("book/list/lastupdate")}" >最近更新</a></li>
+      <li {if $this->id == 'list' && $this->action->id == 'lastupdate'}class="on"{/if}><a href="{novel_lastupdate_link}" >最近更新</a></li>
+      <li {if $this->id == 'list' && $this->action->id == 'rank'}class="on"{/if}><a href="{novel_rank_link}" >排行榜</a></li>
     </ul>
     <div class="search">
-      <form id="searcharticle" name="searcharticle" method="post" action="/modules/article/search.php">
-        <input name="searchkey" style="width:190px; float:left; border:0px; height:24px;padding:2px 5px 2px 5px;" value="" size="28" onclick="this.focus();checkKeywords(this,1)" onblur="checkKeywords(this,0)" type="text">
-        <input type="hidden" name="action" value="login">
+      <form id="searcharticle" name="searcharticle" method="get" action="{novel_search_link}">
+        <input name="keyword" style="width:190px; float:left; border:0px; height:24px;padding:2px 5px 2px 5px;" value="请输入书名或作者名搜索小说" size="28" onclick="this.focus();if (this.value
+         == '请输入书名或作者名搜索小说') this.value='';" onblur="if (this.value == '') this.value='请输入书名或作者名搜索小说';"  type="text">
+        {*<input type="hidden" name="action" value="login">*}
         <input class="search-submit" name="button" id="button" value="" type="submit">
         <span id="advancedSearch"></a>&nbsp;&nbsp;&nbsp;&nbsp;</span> <span id="hot_keywords" style="width: 150px; margin-left: 5px;"></span>
       </form>

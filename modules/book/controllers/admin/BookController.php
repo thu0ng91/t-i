@@ -31,7 +31,11 @@ class BookController extends FWAdminController
           $criteria->compare('recommendlevel', $_GET['Book']['recommendlevel']);
       }
 
-      $criteria->addNotInCondition('status', array(Yii::app()->params['status']['isdelete']));
+        if(isset($_GET['Book']['status'])){
+            $criteria->compare('status', $_GET['Book']['status']);
+        } else {
+            $criteria->addNotInCondition('status', array(Yii::app()->params['status']['isdelete']));
+        }
 
       $dataProvider=new CActiveDataProvider('Book',array(
           'criteria'=>$criteria,

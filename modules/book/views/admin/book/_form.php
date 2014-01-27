@@ -108,6 +108,10 @@
 
     <?php echo $form->dropDownListRow($model, 'recommendlevel', Yii::app()->params['recommendLevel']); ?>
 
+    <?php if ($this->action->id == 'update'): ?>
+    <?php echo $form->dropDownListRow($model, 'status', Yii::app()->params['statusAction']); ?>
+    <?php endif; ?>
+
       <div class="form-actions">
         <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'submit',

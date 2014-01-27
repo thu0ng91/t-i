@@ -44,6 +44,7 @@ $this->pageTitle=Yii::app()->name;
         array('name'=> 'recommendlevel', 'value' => 'Yii::app()->params["recommendLevel"][$data->recommendlevel]', 'filter' => Yii::app()->params["recommendLevel"]),
 //        array('name'=>'language', 'header'=>'Language'),
         array('name'=>'createtime', 'value' => 'date("Y-m-d H:i:s", $data->createtime)', 'filter' => false),
+        array('name'=>'status', 'value' => 'Yii::app()->params["statusLabel"][$data->status]', 'filter' => Yii::app()->params['statusAction']),
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
             'template'=>"{update}{volume}{chapter}{delete}",

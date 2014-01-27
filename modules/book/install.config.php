@@ -10,7 +10,7 @@ return array(
 	'description' => '小说连载系统', // 模块详细说明
     'adminmenus' => array(
         'top' => array(
-            'label' => '小说管理v1.0',
+            'label' => '小说管理v1.0.0',
             'url' => 'book/admin/book/index',
         ),
         'left' => array(

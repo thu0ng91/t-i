@@ -21,7 +21,7 @@
                             <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                         </a>
                     </div>
-                    <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
+                    <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title|truncate:9:"...":true}</a></h3>
                     <span>作者：{$item->author}T</span>
                     <div class="bnew">
                         <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>
@@ -52,7 +52,7 @@
                                         <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                                     </a>
                                 </div>
-                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
+                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title|truncate:9:"...":true}</a></h3>
                                 <span>作者：{$item->author}T</span>
                                 <div class="bnew">
                                     <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>
@@ -83,7 +83,7 @@
                                         <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                                     </a>
                                 </div>
-                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
+                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title|truncate:9:"...":true}</a></h3>
                                 <span>作者：{$item->author}T</span>
                                 <div class="bnew">
                                     <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>

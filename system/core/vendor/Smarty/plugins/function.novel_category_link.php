@@ -3,7 +3,7 @@
  * 获取分类地址
  *
  * Example:
- * {novel_category_link id="test"}
+ * {novel_category_link id="1"}
  *
  * @param array $params
  * @param Smarty $smarty

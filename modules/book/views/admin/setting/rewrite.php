@@ -19,7 +19,7 @@ $this->pageTitle=Yii::app()->name . ' - 小说连载模块伪静态设置';
 
 <!--      --><?php //echo $form->dropDownListRow($model, 'UrlSuffix', CMap::mergeArray(array('-1' => '请选择'), Yii::app()->params['urlSuffix'])); ?>
       <?php echo $form->textFieldRow($model, 'BookCategoryRule', array(
-          'hint'=> "可用变量：<br /> {pinyin}，表示分类拼音；{id}，表示分类编号 <br />示例：<br /> category/{pinyin} <br /> fenlei/{pinyin}<br /> category/{id} <br /> fenlei/{id}"
+          'hint'=> "可用变量：<br /> {pinyin}，表示分类拼音 <br /> 示例：<br /> category/{pinyin} <br /> fenlei/{pinyin}"
       )); ?>
       <?php echo $form->textFieldRow($model, 'BookInfoRule', array(
           'hint'=> "可用变量：<br /> {id}，表示小说编号 <br />示例：<br /> book/info/{id} <br /> novel/info/{id}"

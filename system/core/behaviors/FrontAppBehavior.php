@@ -41,38 +41,38 @@ class FrontAppBehavior extends CBehavior {
                 Yii::app()->urlManager->urlSuffix = Yii::app()->params['urlSuffix'][$m->UrlSuffix];
             }
 
-            if ($m->CategoryRule) {
-                $r = $m->CategoryRule;
-                $r = str_replace('{shorttitle}', '<title:\w+>', $r);
-                $r = array( $r =>  'category/index');
-                Yii::app()->urlManager->addRules($r, false);
-            }
-            if ($m->BookDetailRule) {
-                $r = $m->BookDetailRule;
-                $r = str_replace('{id}', '<id:\d+>', $r);
-                $r = array( $r =>  'book/view');
-                Yii::app()->urlManager->addRules($r, false);
-            }
-            if ($m->ChapterDetailRule) {
-                $r = $m->ChapterDetailRule;
-                $r = str_replace('{id}', '<id:\d+>', $r);
-                $r = array( $r =>  'article/view');
-                Yii::app()->urlManager->addRules($r, false);
-            }
-
-            if ($m->NewsListRule) {
-                $r = $m->NewsListRule;
-                $r = str_replace('{id}', '<id:\d+>', $r);
-                $r = array( $r =>  'news/index');
-                Yii::app()->urlManager->addRules($r, false);
-            }
-
-            if ($m->NewsDetailRule) {
-                $r = $m->NewsDetailRule;
-                $r = str_replace('{id}', '<id:\d+>', $r);
-                $r = array( $r =>  'news/view');
-                Yii::app()->urlManager->addRules($r, false);
-            }
+//            if ($m->CategoryRule) {
+//                $r = $m->CategoryRule;
+//                $r = str_replace('{shorttitle}', '<title:\w+>', $r);
+//                $r = array( $r =>  'category/index');
+//                Yii::app()->urlManager->addRules($r, false);
+//            }
+//            if ($m->BookDetailRule) {
+//                $r = $m->BookDetailRule;
+//                $r = str_replace('{id}', '<id:\d+>', $r);
+//                $r = array( $r =>  'book/view');
+//                Yii::app()->urlManager->addRules($r, false);
+//            }
+//            if ($m->ChapterDetailRule) {
+//                $r = $m->ChapterDetailRule;
+//                $r = str_replace('{id}', '<id:\d+>', $r);
+//                $r = array( $r =>  'article/view');
+//                Yii::app()->urlManager->addRules($r, false);
+//            }
+//
+//            if ($m->NewsListRule) {
+//                $r = $m->NewsListRule;
+//                $r = str_replace('{id}', '<id:\d+>', $r);
+//                $r = array( $r =>  'news/index');
+//                Yii::app()->urlManager->addRules($r, false);
+//            }
+//
+//            if ($m->NewsDetailRule) {
+//                $r = $m->NewsDetailRule;
+//                $r = str_replace('{id}', '<id:\d+>', $r);
+//                $r = array( $r =>  'news/view');
+//                Yii::app()->urlManager->addRules($r, false);
+//            }
         }
 
         // 动态加载模块
@@ -88,5 +88,9 @@ class FrontAppBehavior extends CBehavior {
         }
 //        var_dump($this);
         Yii::app()->setModules($loadModules);
+
+        foreach ($loadModules as $m) {
+            Yii::app()->getModule($m);
+        }
     }
 }

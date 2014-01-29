@@ -11,9 +11,14 @@ class ListController extends FWFrontController
      */
     public function actionIndex()
     {
-        $category = Category::model()->find('shorttitle=:title', array(
-          ':title' => $_GET['title']
-        ));
+        $category = null;
+        if (isset($_GET['title']) && is_string($_GET['title'])) {
+            $category = Category::model()->find('shorttitle=:title', array(
+              ':title' => $_GET['title']
+            ));
+        } elseif (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $category = Category::model()->findByPk($_GET['id']);
+        }
 
         if (!$category) {
             throw new CHttpException(404);

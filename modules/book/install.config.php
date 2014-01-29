@@ -22,6 +22,10 @@ return array(
                 'label' => '小说管理',
                 'url' => 'book/admin/book/index',
             ),
+            array(
+                'label' => '小说伪静态配置',
+                'url' => 'book/admin/setting/rewrite',
+            ),
         )
     ),
 );

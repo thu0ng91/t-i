@@ -58,3 +58,39 @@
 <!--end 列表-->
 {*<script src="{$FW_THEME_URL}/js/jquery.min.js" type="text/javascript" language="javascript"></script>*}
 <script src="{$FW_THEME_URL}/js/font.js" type="text/javascript" language="javascript"></script>
+
+
+<script language=javascript>
+    //上一页链接
+    var prevpage="{novel_chapter_link bookid=$book->id id=$prevChapterId}";
+    //下一页链接
+    var nextpage="{novel_chapter_link bookid=$book->id id=$nextChapterId}";
+    //目录页链接
+    var catalog="{novel_book_link id=$book->id}";
+
+    {literal}
+
+//    document.onkeydown = gotNextPage;
+
+    function gotNextPage(event)
+    {
+        event = event ? event : (window.event ? window.event : null);
+        if (event.keyCode==39)
+        {
+            //alert("Next Page!")
+            location=nextpage
+        }
+        if (event.keyCode==37)
+        {
+            //alert("Prevpage Page!");
+            location=prevpage;
+        }
+        if (event.keyCode==13)
+        {
+            location=catalog
+        }
+    }
+
+    $(document).bind("keydown", gotNextPage);
+    {/literal}
+</script>

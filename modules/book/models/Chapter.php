@@ -134,19 +134,11 @@ class Chapter extends ChapterDynamicDbModel
             // 先从总字数减去原来的字数，然后通过afterSave 方法再增加相应的字数
             $book->updateCounters(array(
                 'wordcount' => -1 * $this->wordcount,
-                'id=:id',
+                'id=:id and chaptertype=0',
                 array(
                     ':id' => $book->id,
                 )
             ));
-//            // 减去分卷字数
-//            Volume::model()->updateCounters(array(
-//                'wordcount' => -1 * $this->wordcount,
-//                'id=:id',
-//                array(
-//                    ':id' => $this->volumeid,
-//                )
-//            ));
 
             // 重设字数
             $this->wordcount = H::getWordCount($this->content);
@@ -161,27 +153,43 @@ class Chapter extends ChapterDynamicDbModel
         if (!$book) return;
 
         if ($this->isNewRecord) {
-            // 调整小说章节数
-            $book->updateCounters(
-                array(
-                    'chaptercount' => 1,
-//                    'wordcount' => H::getWordCount($this->content),
-                ),
-                'id=:id',
-                array(
-                    ':id' => $this->bookid,
-                )
-            );
+            if ($this->chaptertype == 0) {
+                // 调整小说章节数
+                $book->updateCounters(
+                    array(
+                        'chaptercount' => 1,
+    //                    'wordcount' => H::getWordCount($this->content),
+                    ),
+                    'id=:id',
+                    array(
+                        ':id' => $this->bookid,
+                    )
+                );
+            } else {
+                // 调整小说分卷数
+                $book->updateCounters(
+                    array(
+                        'volumecount' => 1,
+                        //                    'wordcount' => H::getWordCount($this->content),
+                    ),
+                    'id=:id',
+                    array(
+                        ':id' => $this->bookid,
+                    )
+                );
+            }
 
-            // 更新小说最后章节信息
-            $book->lastchaptertitle =  $this->title;
-            $book->lastchaptertime =  $this->createtime;
-            $book->lastchapterid =  $this->id;
-            $book->update(array(
-                'lastchaptertitle',
-                'lastchaptertime',
-                'lastchapterid'
-            ));
+            if ($this->chaptertype == 0) {
+                // 更新小说最后章节信息
+                $book->lastchaptertitle =  $this->title;
+                $book->lastchaptertime =  $this->createtime;
+                $book->lastchapterid =  $this->id;
+                $book->update(array(
+                    'lastchaptertitle',
+                    'lastchaptertime',
+                    'lastchapterid'
+                ));
+            }
 
 //            // 增加分卷章节数
 //            Volume::model()->updateCounters(
@@ -196,14 +204,16 @@ class Chapter extends ChapterDynamicDbModel
 //            );
         }
 
-        // 增加小说总字数
-        $book->updateCounters(array(
-            'wordcount' => H::getWordCount($this->content),
-            'id=:id',
-            array(
-                ':id' => $book->id,
-            )
-        ));
+        if ($this->chaptertype == 0) {
+            // 增加小说总字数
+            $book->updateCounters(array(
+                'wordcount' => H::getWordCount($this->content),
+                'id=:id',
+                array(
+                    ':id' => $book->id,
+                )
+            ));
+        }
 //        // 增加分卷字数
 //        Volume::model()->updateCounters(array(
 //            'wordcount' => H::getWordCount($this->content),
@@ -222,37 +232,32 @@ class Chapter extends ChapterDynamicDbModel
     {
         if (!parent::beforeDelete()) return false;
 
-        $txtLen = -1 * $this->wordcount;
-//        if (null == $this->content) {
-//            $this->content = $this->getContentFromFile();
-//            $txtLen = H::getWordCount($this->content);
-//        }
-        // 修改小说章节数
-//        $book = new Book();
-        Book::model()->updateCounters(
-            array(
-                'chaptercount' => -1,
-                'wordcount' => $txtLen,
-            ),
-            'id=:id',
-            array(
-                ':id' => $this->bookid,
-            )
-        );
-//        // 修改分卷章节数
-//        Volume::model()->updateCounters(
-//            array(
-//                'chaptercount' => -1,
-//                'wordcount' => $txtLen,
-//            ),
-//            'id=:id',
-//            array(
-//                ':id' => $this->volumeid,
-//            )
-//        );
-
-        // 删除内容文件
-        $this->deleteContentFile();
+        if ($this->chaptertype == 0) {
+            $txtLen = -1 * $this->wordcount;
+            Book::model()->updateCounters(
+                array(
+                    'chaptercount' => -1,
+                    'wordcount' => $txtLen,
+                ),
+                'id=:id and chaptercount>=1',
+                array(
+                    ':id' => $this->bookid,
+                )
+            );
+            // 删除内容文件
+            $this->deleteContentFile();
+        } else {
+            Book::model()->updateCounters(
+                array(
+                    'volumecount' => -1,
+//                    'wordcount' => $txtLen,
+                ),
+                'id=:id and volumecount>=1',
+                array(
+                    ':id' => $this->bookid,
+                )
+            );
+        }
 
         return true;
     }

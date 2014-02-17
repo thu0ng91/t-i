@@ -139,6 +139,30 @@ class VolumeController extends FWAdminController
     }
 
     /**
+     * 删除分卷
+     * @param int $id
+     * @param $bookid
+     * @throws CHttpException
+     */
+    public function actionDelete($id, $bookid)
+    {
+        if(Yii::app()->request->isPostRequest)
+        {
+            // we only allow deletion via POST request
+            if($this->loadModel($id, $bookid)->delete()){
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['deleteSuccess']);
+            }else {
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['deleteFail']);
+            }
+            // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if(!isset($_GET['ajax']))
+                $this->redirect($_POST['returnUrl']);
+        }
+        else
+            throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+    }
+
+    /**
      * Returns the data model based on the primary key given in the GET variable.
      * If the data model is not found, an HTTP exception will be raised.
      * @param integer the ID of the model to be loaded

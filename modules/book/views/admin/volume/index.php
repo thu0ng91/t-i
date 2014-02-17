@@ -37,6 +37,26 @@ $this->pageTitle=Yii::app()->name;
             'class'=>'bootstrap.widgets.TbButtonColumn',
             'template'=>"{update}{delete}",
             'htmlOptions'=>array('style'=>'width: 50px'),
+            'buttons' => array(
+                'update' => array(
+                    'label'=>'编辑分卷',     // text label of the button
+                    'url'=>'Yii::app()->createUrl("book/admin/volume/update",array("id"=>$data->id, "bookid" => $data->bookid))',       // a PHP expression for generating the URL of the button
+                    'imageUrl'=> '',  // image URL of the button. If not set or false, a text link is used
+//                    'icon' => 'eye-open',
+                    'options'=> array('style'=>'cursor:pointer;'), // HTML options for the button tag
+//                    'click'=> 'js:function(){}',     // a JS function to be invoked when the button is clicked
+                    'visible'=> 'true',
+                ),
+                'delete' => array(
+                    'label'=>'删除分卷',     // text label of the button
+                    'url'=>'Yii::app()->createUrl("book/admin/volume/delete",array("id"=>$data->id, "bookid" => $data->bookid))',       // a PHP expression for generating the URL of the button
+                    'imageUrl'=> '',  // image URL of the button. If not set or false, a text link is used
+//                    'icon' => 'eye-open',
+                    'options'=> array('style'=>'cursor:pointer;'), // HTML options for the button tag
+//                    'click'=> 'js:function(){}',     // a JS function to be invoked when the button is clicked
+                    'visible'=> 'true',
+                ),
+            )
         ),
     ),
 )); ?>

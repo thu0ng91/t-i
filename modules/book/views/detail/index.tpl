@@ -29,18 +29,40 @@
                     </div>
 
                     <div class="book_article_texttable">
+                        {$i=0}
+                        {$tagIsClosed = false}
                         {foreach $chapters as $chapter}
-                            {if $chapter@index % 3 == 0 || $chapter@first}
-                        <div class="book_article_listtext">
-                            <dl id="chapterlist">
-                            {/if}
+                            {if $chapter->chaptertype == 0}
+                                {if $i % 3 == 0 }
+                                    {$tagIsClosed = false}
+                                    <div class="book_article_listtext">
+                                    <dl id="chapterlist">
+                                {/if}
+
                                 <dd><a href="{novel_chapter_link bookid=$book->id id=$chapter->id}">{$chapter->title}</a></dd>
-                                {*<dd><a href="6607061.html">第二章 断臂的骑士</a></dd>*}
-                                {*<dd><a href="6607062.html">第三章 虎形拳</a></dd>*}
-                            {if $chapter@iteration % 3 == 0  || $chapter@last}
-                            </dl>
-                            <div class="clear"></div>
-                        </div>
+                            {*<dd><a href="6607061.html">第二章 断臂的骑士</a></dd>*}
+                            {*<dd><a href="6607062.html">第三章 虎形拳</a></dd>*}
+                                {if (($i +1) % 3 == 0 && $i > 0)  || $chapter@last}
+                                    </dl>
+                                    <div class="clear"></div>
+                                    </div>
+                                    {$tagIsClosed = true}
+                                {/if}
+                                {$i=$i+1}
+                            {else}
+                                {if !$tagIsClosed}
+                                    </dl>
+                                    <div class="clear"></div>
+                                </div>
+                                {$i = 0}
+                                {$tagIsClosed = true}
+                                {/if}
+                                <div class="book_article_listtext">
+                                    {*<dl id="chapterlist">*}
+                                        <dl style="text-align: center;font-weight: bold">{$chapter->title}</dl>
+                                     {*</dl>*}
+                                    <div class="clear"></div>
+                                </div>
                             {/if}
                         {/foreach}
                      </div>

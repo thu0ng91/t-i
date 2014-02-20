@@ -7,11 +7,11 @@
 <meta name="description" content="{$description}">
 <link rel="shortcut icon" href="favicon.ico" />
 <link href="{$FW_THEME_URL}/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{$FW_THEME_URL}/js/jquery.min.js"></script>
 <script src="{$FW_THEME_URL}/js/msc_common.js" type="text/javascript" language="javascript"></script>
 </head>
 <body>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
-<script type="text/javascript" src="{$FW_THEME_URL}/js/jquery.min.js"></script>
 
 <div class="head">
   <div class="header">

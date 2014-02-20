@@ -92,5 +92,9 @@
     }
 
     $(document).bind("keydown", gotNextPage);
+
+    $(document).ready(function () {
+        LoadUserPro();
+    });
     {/literal}
 </script>

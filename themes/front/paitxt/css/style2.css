@@ -94,7 +94,7 @@ a:hover{color:#F33;text-decoration:underline;}
 .book_news_style_text2 .yin_3{background:url(/images/003.gif) no-repeat; width:148px; height:88px; position:absolute;index:1; float:right; right:250px; margin-top:-40px;}
 .book_news_style_text2 h1{font-weight:bold; color:#444; font-size:15px;}
 .book_news_style_text2 h1 a{font-weight:bold; color:#b70000;text-decoration:none; line-height:20px; font-size:13px;}
-.book_news_style_text2 h2{color:#444; margin-top:5px; margin-bottom:5px; width:150px; float:left; overflow:hidden; height:16px;}
+.book_news_style_text2 h2{color:#444; margin-top:5px; margin-bottom:5px; width:150px; float:left; height:16px;}
 .book_news_style_text2 h2 a{ color:#b70000; }
 .book_news_style_text2 h3{color:#444; border-top:1px dotted #bebebe; padding-top:5px;text-decoration:none; line-height:20px; float:left; width:400px; }
 .book_news_style_text2 h4{color:#444; margin-top:5px; margin-bottom:5px; width:250px; float:left; overflow:hidden; height:16px;}

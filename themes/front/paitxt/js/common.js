@@ -1,6 +1,3 @@
-
-//jieqi common
-
 //取得一个对象，相当于getElementById()
 function GetObjcet() {
   var elements = new Array();
@@ -554,15 +551,15 @@ if(showbook.innerHTML==""){
 		{
 			for(var i=0;i<books.length;i++){
 			if(i>books.length-21)
-			{					
-				bookhtml+='<li><a class="title" href="/yuedu_'+books[i][0]+'/" title="访问：《'+books[i][2]+'》目录">《'+books[i][2]+'》</a><a href="/book_'+books[i][0]+'/'+books[i][1]+'.html" title="阅读：'+books[i][3]+'" class="chapter">'+books[i][3]+'</a><a href="javascript:removebook(\''+books[i][0]+'\')" class="delbook">删除</a></li>'	
+			{
+                bookhtml+='<li><a class="title" href="'+ SiteUrl + '/book/detail/index/id/'+books[i][0]+'" title="访问：《'+books[i][2]+'》目录">《'+books[i][2]+'》</a><a href="'+ SiteUrl + '/book/chapter/index/bookid/'+books[i][0]+'/id/'+books[i][1]+'.html" title="阅读：'+books[i][3]+'" class="chapter">'+books[i][3]+'</a><a href="javascript:removebook(\''+books[i][0]+'\')" class="delbook">删除</a></li>'
 			}
 			}
 		}
 		else
 		{
-			for(var i=0;i<books.length;i++){				
-				bookhtml+='<li><a class="title" href="/yuedu_'+books[i][0]+'/" title="访问：《'+books[i][2]+'》目录">《'+books[i][2]+'》</a><a href="/book_'+books[i][0]+'/'+books[i][1]+'.html" title="阅读：'+books[i][3]+'" class="chapter">'+books[i][3]+'</a><a href="javascript:removebook(\''+books[i][0]+'\')" class="delbook">删除</a></li>'	
+			for(var i=0;i<books.length;i++){
+                bookhtml+='<li><a class="title" href="'+ SiteUrl + '/book/detail/index/id/'+books[i][0]+'" title="访问：《'+books[i][2]+'》目录">《'+books[i][2]+'》</a><a href="'+ SiteUrl + '/book/chapter/index/bookid/'+books[i][0]+'/id/'+books[i][1]+'.html" title="阅读：'+books[i][3]+'" class="chapter">'+books[i][3]+'</a><a href="javascript:removebook(\''+books[i][0]+'\')" class="delbook">删除</a></li>'
 			
 			}
 		}
@@ -591,14 +588,14 @@ function showbook_fordele(){
 			for(var i=0;i<books.length;i++){
 			if(i>books.length-21)
 			{					
-				bookhtml+='<li><a class="title" href="/yuedu_'+books[i][0]+'/" title="访问：《'+books[i][2]+'》目录">《'+books[i][2]+'》</a><a href="/book_'+books[i][0]+'/'+books[i][1]+'.html" title="阅读：'+books[i][3]+'" class="chapter">'+books[i][3]+'</a><a href="javascript:removebook(\''+books[i][0]+'\')" class="delbook">删除</a></li>'	
+				bookhtml+='<li><a class="title" href="'+ SiteUrl + '/book/detail/id/'+books[i][0]+'/" title="访问：《'+books[i][2]+'》目录">《'+books[i][2]+'》</a><a href="'+ SiteUrl + '/book/chapter/index/bookid/'+books[i][0]+'/id/'+books[i][1]+'.html" title="阅读：'+books[i][3]+'" class="chapter">'+books[i][3]+'</a><a href="javascript:removebook(\''+books[i][0]+'\')" class="delbook">删除</a></li>'
 			}
 			}
 		}
 		else
 		{
 			for(var i=0;i<books.length;i++){				
-				bookhtml+='<li><a class="title" href="/yuedu_'+books[i][0]+'/" title="访问：《'+books[i][2]+'》目录">《'+books[i][2]+'》</a><a href="/book_'+books[i][0]+'/'+books[i][1]+'.html" title="阅读：'+books[i][3]+'" class="chapter">'+books[i][3]+'</a><a href="javascript:removebook(\''+books[i][0]+'\')" class="delbook">删除</a></li>'	
+				bookhtml+='<li><a class="title" href="'+ SiteUrl + '/book/detail/id/'+books[i][0]+'/" title="访问：《'+books[i][2]+'》目录">《'+books[i][2]+'》</a><a href="/book_'+books[i][0]+'/'+books[i][1]+'.html" title="阅读：'+books[i][3]+'" class="chapter">'+books[i][3]+'</a><a href="javascript:removebook(\''+books[i][0]+'\')" class="delbook">删除</a></li>'
 			
 			}
 		}

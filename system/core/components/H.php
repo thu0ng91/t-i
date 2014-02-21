@@ -107,4 +107,21 @@ class H {
             @rmdir($dir);
         }
     }
+
+    /**
+     * 获取当前项目的绝对地址
+     * @param $url
+     * @return string
+     */
+    public static function getAbsoluteUrl($url = '')
+    {
+        if (preg_match('/^http:\/\//', $url) > 0) return $url;
+
+        $baseUrl = Yii::app()->baseUrl;
+        if (preg_match('/^\//', $url) == 0) $baseUrl = '/' . $baseUrl;
+        if (preg_match('/\/$/', $url) == 0) $baseUrl .= '/';
+
+        $baseUrl = "http://" . $_SERVER['HTTP_HOST'] . $baseUrl;
+        return $baseUrl . $url;
+    }
 }

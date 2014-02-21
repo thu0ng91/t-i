@@ -13,7 +13,7 @@
                     </div>
 
                     <div class="book_news_style">
-                        <div class="book_news_style_img1"><img src="{$book->coverImageUrl}" width="130" height="150" /><br />{*<br /><a href="http://www.paitxt.com/30298.html" target="_blank">{$book->title}TXT下载</a>*}</div>
+                        <div class="book_news_style_img1"><img src="{$book->coverImageUrl}" width="130" height="150" /><br /><br /><a href="{novel_book_download_link id=$book->id}" target="_blank">{$book->title}TXT下载</a></div>
                         <div class="book_news_style_form1">
                             <div class="book_news_style_text2">
                                 <h1>{$book->title}</h1>
@@ -72,3 +72,8 @@
     </div>
 </div>
 <!--end 列表-->
+<script>
+    {literal}
+    window.lastread.set()
+    {/literal}
+</script>

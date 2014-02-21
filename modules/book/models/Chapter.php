@@ -313,7 +313,16 @@ class Chapter extends ChapterDynamicDbModel
 
             if (!$this->makeArticleDataDir($p)) return false;
 
-            return @file_put_contents($p, $this->content);
+            $r = @file_put_contents($p, $this->content);
+
+            // 保存小说章节到一个txt文件 方便下载
+            if ($this->isNewRecord) {
+                $title = "\r\n" . $this->title ."\r\n";
+                $p = $this->getArticleDataDir() . DS . "all.txt";
+                @file_put_contents($p, $title . $this->content, FILE_APPEND);
+            }
+
+            return $r;
         }
 
         return false;
@@ -337,14 +346,22 @@ class Chapter extends ChapterDynamicDbModel
      */
     protected function getArticleDataPath()
     {
-        $dir = FW_ROOT_PATH . DS . FW_TXT_DIR;
+        $dir = $this->getArticleDataDir();
+        if (null == $dir) return null;
+        return $dir . DS . $this->id . ".txt";
+
+    }
+
+    /**
+     * 获取小说章节保存路径
+     * @return string
+     */
+    public function getArticleDataDir()
+    {
         if (null != $this->bookid && $this->bookid > 0) {
-            $dir .= DS . ($this->bookid % 500) . DS . $this->bookid;
-
-            return $dir . DS . $this->id . ".txt";
-        }
-
-        return null;
+//            $dir .= DS . ($this->bookid % 500) . DS . $this->bookid;
+            return Book::getBookDataDir($this->bookid);
+        } else return null;
     }
 
     /**

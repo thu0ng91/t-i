@@ -346,14 +346,37 @@ class Book extends BaseModel
         ));
     }
 
+    /**
+     * 复制章节数据库到小说章节保存目录
+     * @param $bookId
+     * @return bool
+     */
     protected function copyChapterDatabase($bookId)
     {
         $srcPath = FW_MODULE_BASE_PATH . DS . "book" . DS . "data" . DS . "chapter.db";
-        $destPath = FW_TXT_DIR . DS . ($bookId % 500) . DS  . $bookId;
+//        $destPath = FW_TXT_DIR . DS . ($bookId % 500) . DS  . $bookId;
+        $destPath = self::getBookDataDir($bookId);
 
         if (!is_dir($destPath)) @mkdir($destPath, 0777, true);
 
         $destPath .= DS . "chapter.db";
         return @copy($srcPath, $destPath);
+    }
+
+    /**
+     * 返回书籍数据目录
+     * @param $bookId
+     * @return bool|string
+     */
+    public static function getBookDataDir($bookId)
+    {
+        if ($bookId > 0) {
+            $dir = FW_ROOT_PATH . DS . FW_TXT_DIR;
+            $dir .= DS . ($bookId % 500) . DS . $bookId;
+
+            return $dir;
+        }
+
+        return false;
     }
 }

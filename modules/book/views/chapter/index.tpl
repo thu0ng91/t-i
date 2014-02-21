@@ -68,6 +68,11 @@
     //目录页链接
     var catalog="{novel_book_link id=$book->id}";
 
+    var bid = '{$book->id}';
+    var tid = '{$chapter->id}';
+    var title = '{$book->title}';
+    var texttitle = '{$chapter->title}';
+
     {literal}
 
 //    document.onkeydown = gotNextPage;
@@ -95,6 +100,7 @@
 
     $(document).ready(function () {
         LoadUserPro();
+        window.lastread.set(bid,tid,title,texttitle);
     });
     {/literal}
 </script>

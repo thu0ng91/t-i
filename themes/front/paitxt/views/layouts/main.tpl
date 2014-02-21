@@ -7,6 +7,9 @@
 <meta name="description" content="{$description}">
 <link rel="shortcut icon" href="favicon.ico" />
 <link href="{$FW_THEME_URL}/css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+    var SiteUrl = '{$FW_SITE_URL}';
+</script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/jquery.min.js"></script>
 <script src="{$FW_THEME_URL}/js/msc_common.js" type="text/javascript" language="javascript"></script>
 </head>
@@ -44,7 +47,7 @@
 </div>
 <div class="u_tips">
   <div class="info_login">
-    <div class="cs1">亲爱的小说迷，上次看到哪了，请查看<script type="text/javascript">yuedu();</script></div>
+    <div class="cs1">亲爱的小说迷，上次看到哪了，请查看<script type="text/javascript">yuedu();</script> <a href="{Yii::app()->createUrl('shortcut/download')}" style="color:red">保存到桌面</a></div>
     <div class="cs2">
       {*<iframe width="380" height="20" scrolling="no" frameborder="0" src="/loginframe.php" marginwidth=0 marginheight=0 frameborder="0" allowTransparency="true">*}
       {*</iframe>*}

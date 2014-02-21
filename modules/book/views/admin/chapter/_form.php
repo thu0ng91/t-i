@@ -54,7 +54,7 @@
 
 <!--        --><?php //echo $form->textFieldRow($model, 'shorttitle', array('hint' => '不填写则自动获取栏目名称的拼音')); ?>
 
-        <?php echo $form->dropDownListRow($model, 'volumeid', $volumes); ?>
+        <?php echo $form->dropDownListRow($model, 'volumeid',array_merge(array('0' => '默认分卷'), $volumes)); ?>
         <?php echo $form->dropDownListRow($model, 'contenttype', Yii::app()->params['novelContentType']); ?>
         <?php echo $form->textAreaRow($model, 'content', array(
             'style' => 'width:80%;height:300px',

@@ -15,7 +15,7 @@ class DetailController extends FWFrontController
         ));
 
         if (!$book) {
-            new CHttpException(404);
+            throw new CHttpException(404);
         }
 
         $this->assign("book", $book);
@@ -43,5 +43,45 @@ class DetailController extends FWFrontController
         $this->setAllSEOInfo("小说页");
 
         $this->render("index");
+    }
+
+    /**
+     * 小说下载
+     */
+    public function actionDownload()
+    {
+        $id = $_GET['id'];
+        $book = Book::model()->find("id=:id and status=:status", array(
+            ':id' => $id,
+            ':status' => Yii::app()->params['status']['ischecked'],
+        ));
+
+        if (!$book) {
+            throw new CHttpException(404);
+        }
+
+        $file = Book::getBookDataDir($id) . DS . "all.txt";
+
+        if (!file_exists($file)) {
+            throw new CHttpException(404);
+        }
+
+        $title = iconv("UTF-8", "GBK//ignore", $book->title);
+
+//        echo $shortcut;
+
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename='. $title . '.txt');
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        ob_clean();
+        flush();
+        set_time_limit(0);
+        readfile($file);
+
+        Yii::app()->end();
     }
 }

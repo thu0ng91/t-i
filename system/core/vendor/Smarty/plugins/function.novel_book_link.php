@@ -3,7 +3,7 @@
  * 取得小说地址
  *
  * Example:
- * {novel_book_link id=1}
+ * {novel_book_link id=1 type="index|info"}
  *
  *
  * @param array $params

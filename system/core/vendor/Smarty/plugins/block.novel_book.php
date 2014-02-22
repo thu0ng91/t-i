@@ -3,7 +3,7 @@
  * 小说列表
  * 
  * Example:
- *  {novel_book name="recommend_book" cid=[1] limit=10 order="" recommend=[1]}
+ *  {novel_book name="recommend_book" cid=[1] limit=10 order="createtime desc" recommend=[1] id=[1,3]}
  *      <li><a href='{$item->url}'>{$item->title}</a></li>
  *  {/novel_book}
  * 
@@ -33,9 +33,16 @@ function smarty_block_novel_book($params, $content, $template, &$repeat) {
     $limit = 10;
     $order = '';
     $recommendLevel = 0;
+    $idList = array();
 
     if (isset($params['cid']) && is_array($params['cid'])) {
         $cid = $params['cid'];
+    }
+
+    if (isset($params['id']) && is_array($params['id'])) {
+        foreach ($params['id'] as $v) {
+            $idList[] = intval($v);
+        }
     }
 
     if (isset($params['limit'])) {
@@ -69,6 +76,10 @@ function smarty_block_novel_book($params, $content, $template, &$repeat) {
 
         if ($recommendLevel != 0) {
             $criteria->addInCondition("recommendlevel", $recommendLevel);
+        }
+
+        if (!empty($idList)) {
+            $criteria->addInCondition('id', $idList);
         }
 
         $criteria->compare("status", Yii::app()->params['status']['ischecked']);

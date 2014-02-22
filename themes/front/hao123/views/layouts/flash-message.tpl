@@ -1,0 +1,1 @@
+{widget name="bootstrap.widgets.TbAlert" block=true fade=true closeText="&times" alerts=["success" => ['block'=>true, 'fade'=>true, 'closeText'=>'&times;'],'actionInfo'=>['block'=>true, 'fade'=>true, 'closeText'=>'&times;']] }

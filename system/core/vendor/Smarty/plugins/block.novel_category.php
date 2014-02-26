@@ -3,7 +3,7 @@
  * 获取小说分类
  * 
  * Example:
- *  {novel_category name="top_menu"}
+ *  {novel_category id=[1,2,3]}
  *      <li><a href='{$item->url}'>{$item->title}</a></li>
  *  {/novel_category}
  * 
@@ -16,17 +16,23 @@
  */
 function smarty_block_novel_category($params, $content, $template, &$repeat) {
 
-    //@todo 暂时屏蔽
-    return "";
+    if (!Yii::app()->hasModule("book")) {
+        $repeat = false;
+        return;
+    }
+
     if(empty($params['name'])){
         $name = "block_novel_category";
     } else {
         $name = "block_novel_category_" . $params['name'];
     }
 
-    $cid = 0;
-    if (isset($params['id'])) {
-        $cid = intval($params['id']);
+    Yii::import("book.models.*");
+
+    $idList = array();
+
+    if (isset($params['id']) && is_array($params['id'])) {
+        $idList = $params['id'];
     }
 
     //$name = $params['name'];
@@ -35,12 +41,26 @@ function smarty_block_novel_category($params, $content, $template, &$repeat) {
     $dataIndexVarName = $name . "_data_index";
     $dataCountVarName = $name . "_data_count";
 
+    $itemPropVarName = "block";
+
+    $itemProps = array(
+        'index' =>  0,
+        'iteration' => 1,
+        'first' => true,
+        'last' => false,
+        'total' =>  0,
+    );
+
     // 第一次取得数据集
     if (is_null($content)) {
         $criteria = new CDbCriteria();
 
-        if ($cid > 0) {
-            $criteria->compare("id", $cid);
+//        if ($cid > 0) {
+//            $criteria->compare("id", $cid);
+//        }
+
+        if (!empty($idList)) {
+            $criteria->addInCondition("id", $idList);
         }
 
         $criteria->compare('status', Yii::app()->params['status']['ischecked']);
@@ -62,12 +82,16 @@ function smarty_block_novel_category($params, $content, $template, &$repeat) {
         $template->assign($dataCountVarName, $count);
         $template->assign($dataIndexVarName, 0);
 
+        $itemProps['total'] = $count;
+        $template->assign($itemPropVarName, $itemProps);
+
     } else {
         echo $content;
     }
 
     $count = $template->getVariable($dataCountVarName)->value;
     $index = $template->getVariable($dataIndexVarName)->value;
+    $itemProps =  $template->getVariable($itemPropVarName)->value;
 
     if ($count > 0 && $index < $count) {
         if (!$repeat) $repeat = true;
@@ -84,10 +108,18 @@ function smarty_block_novel_category($params, $content, $template, &$repeat) {
         } else {
 
             if ($index < $count) {
+                $itemProps['index'] = $index;
+                $itemProps['first'] = $index < 1 ? true : false;
+
                 $template->assign($itemVarName, $list[$index]);
                 $template->clearAssign($dataIndexVarName);
                 $index++;
                 $template->assign($dataIndexVarName, $index);
+
+                $itemProps['iteration'] = $index;
+                $itemProps['last'] = $index == $count ? true : false;
+                $template->assign($itemPropVarName, $itemProps);
+
                 $repeat = true;
 
             } else {
@@ -102,5 +134,6 @@ function smarty_block_novel_category($params, $content, $template, &$repeat) {
         $template->clearAssign($dataVarName);
         $template->clearAssign($dataIndexVarName);
         $template->clearAssign($dataCountVarName);
+        $template->clearAssign($itemPropVarName);
     }
 }

@@ -33,6 +33,16 @@ function smarty_block_novel_menu($params, $content, $template, &$repeat) {
     $dataIndexVarName = $name . "_data_index";
     $dataCountVarName = $name . "_data_count";
 
+    $itemPropVarName = "block";
+
+    $itemProps = array(
+        'index' =>  0,
+        'iteration' => 1,
+        'first' => true,
+        'last' => false,
+        'total' =>  0,
+    );
+
     Yii::import("book.models.*");
     // 第一次取得数据集
     if (is_null($content)) {
@@ -52,12 +62,16 @@ function smarty_block_novel_menu($params, $content, $template, &$repeat) {
         $template->assign($dataCountVarName, $count);
         $template->assign($dataIndexVarName, 0);
 
+        $itemProps['total'] = $count;
+        $template->assign($itemPropVarName, $itemProps);
+
     } else {
         echo $content;
     }
 
     $count = $template->getVariable($dataCountVarName)->value;
     $index = $template->getVariable($dataIndexVarName)->value;
+    $itemProps =  $template->getVariable($itemPropVarName)->value;
 
     if ($count > 0 && $index < $count) {
         if (!$repeat) $repeat = true;
@@ -74,10 +88,18 @@ function smarty_block_novel_menu($params, $content, $template, &$repeat) {
         } else {
 
             if ($index < $count) {
+                $itemProps['index'] = $index;
+                $itemProps['first'] = $index < 1 ? true : false;
+
                 $template->assign($itemVarName, $list[$index]);
                 $template->clearAssign($dataIndexVarName);
                 $index++;
                 $template->assign($dataIndexVarName, $index);
+
+                $itemProps['iteration'] = $index;
+                $itemProps['last'] = $index == $count ? true : false;
+                $template->assign($itemPropVarName, $itemProps);
+
                 $repeat = true;
 
             } else {
@@ -92,5 +114,6 @@ function smarty_block_novel_menu($params, $content, $template, &$repeat) {
         $template->clearAssign($dataVarName);
         $template->clearAssign($dataIndexVarName);
         $template->clearAssign($dataCountVarName);
+        $template->clearAssign($itemPropVarName);
     }
 }

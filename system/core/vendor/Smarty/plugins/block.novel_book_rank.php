@@ -5,7 +5,7 @@
  * Example:
  *  type = click | recommend 点击 推荐
  *  order = day | week | month | all 日|周|月|总点击
- *  {novel_book_rank name="book_rank" type="day" cid=[1] order="" limit=10}
+ *  {novel_book_rank name="book_rank" type="click" cid=[1] order="" limit=10}
  *      <li><a href='{$item->url}'>{$item->title}</a></li>
  *  {/novel_book_rank}
  * 
@@ -72,6 +72,16 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
     $dataIndexVarName = $name . "_data_index";
     $dataCountVarName = $name . "_data_count";
 
+    $itemPropVarName = "block";
+
+    $itemProps = array(
+        'index' =>  0,
+        'iteration' => 1,
+        'first' => true,
+        'last' => false,
+        'total' =>  0,
+    );
+
     // 第一次取得数据集
     if (is_null($content)) {
 
@@ -104,12 +114,16 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
         $template->assign($dataCountVarName, $count);
         $template->assign($dataIndexVarName, 0);
 
+        $itemProps['total'] = $count;
+        $template->assign($itemPropVarName, $itemProps);
+
     } else {
         echo $content;
     }
 
     $count = $template->getVariable($dataCountVarName)->value;
     $index = $template->getVariable($dataIndexVarName)->value;
+    $itemProps =  $template->getVariable($itemPropVarName)->value;
 
     if ($count > 0 && $index < $count) {
         if (!$repeat) $repeat = true;
@@ -124,10 +138,18 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
             $repeat = false;
         } else {
             if ($index < $count) {
+                $itemProps['index'] = $index;
+                $itemProps['first'] = $index < 1 ? true : false;
+
                 $template->assign($itemVarName, $list[$index]);
                 $template->clearAssign($dataIndexVarName);
                 $index++;
                 $template->assign($dataIndexVarName, $index);
+
+                $itemProps['iteration'] = $index;
+                $itemProps['last'] = $index == $count ? true : false;
+                $template->assign($itemPropVarName, $itemProps);
+
                 $repeat = true;
             } else {
                 $template->assign($itemVarName, null);
@@ -141,5 +163,6 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
         $template->clearAssign($dataVarName);
         $template->clearAssign($dataIndexVarName);
         $template->clearAssign($dataCountVarName);
+        $template->clearAssign($itemPropVarName);
     }
 }

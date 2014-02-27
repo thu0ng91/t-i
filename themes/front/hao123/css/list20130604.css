@@ -1,0 +1,28 @@
+﻿.listsx{background:url(../images/topbg0604.jpg) repeat-y;}
+.listsx{width:980px;border-top:3px solid #017F01; margin:10px auto 0}
+.listsx p{ background:#F7F7F7;height:35px; line-height:35px; padding-left:22px;color:#646464;border-left:1px solid #DDDDDD;border-right:1px solid #DDDDDD}
+.listsx ul{padding:5px 12px 9px;background:url(../images/listbg0604.jpg) bottom no-repeat}
+.listsx li{border-bottom:1px solid #EEEEEE;padding-left:8px;width:940px;float:left;margin-top:5px;  padding-bottom:5px;}
+.listsx strong{float:left; margin-top:3px}
+.listsx a{margin:0 5px;padding:4px 5px;float:left; text-decoration:none}
+.listsx a.orange{color:#FD5001}
+.listsx a.cur,.listsx a:hover{background:#017E00;color:#fff; text-decoration:none}
+li.zimu a{margin:0 3px}
+
+.listcon{width:980px;margin:0 auto}
+.listconl{border:1px solid #DDDDDD;border-top:3px solid #017F01;float:left;width:707px;background:#fff;margin-top:10px}
+.listconltop{height:36px;line-height:36px; background:#F6F6F6;color:#000;font-weight:bold}
+.width57,.width369,.width85,.width84,.width111{float:left}
+.width57{width:57px;text-align:center}
+.width369{width:369px; overflow:hidden; white-space:nowrap}
+.width85{width:85px;text-align:center}
+.width84{width:84px;text-align:center}
+.width111{width:91px;margin-left:20px; overflow:hidden; white-space:nowrap; text-align:center}
+.jhfd .green{font-size:14px;color:#017F01;margin:0 8px 0 11px}
+.jhfd .gray{color:#888888}
+.listconl .red{color:#F00}
+.listconl li{height:31px;line-height:31px;width:707px;float:left}
+
+
+.dirtools{ background:none;height:auto}
+.pages a:hover, .pages strong {background: none repeat scroll 0 0 #00A400;border: 1px solid #007E01}

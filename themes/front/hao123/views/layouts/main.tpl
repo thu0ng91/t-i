@@ -7,8 +7,13 @@
 <meta name="keywords" content="{$keywords}"/>
 <meta name="description" content="{$description}"/>
 <link href="{$FW_THEME_URL}/css/common.css" rel="stylesheet">
+{if $this->id == 'site'}
 <link href="{$FW_THEME_URL}/css/index.css" rel="stylesheet">
 <link href="{$FW_THEME_URL}/css/indexbox.css" rel="stylesheet">
+{elseif $this->id == 'list'}
+<link href="{$FW_THEME_URL}/css/list.css" rel="stylesheet">
+<link href="{$FW_THEME_URL}/css/list20130604.css" rel="stylesheet">
+{/if}
 <base target="_blank">
 </head>
 <body>
@@ -16,8 +21,8 @@
 
 	<div id="header">
 		<div class="wrap980">
-			<div class="logocss"><a href="http://www.hao123.com">HAO123小说频道</a></div>
-			<form id="search" name="search" action="/search/" method="get" onSubmit="return qrsearch();"><div class="serachwrap">
+			<div class="logocss"><a href="{$FW_SITE_URL}">{$siteinfo->SiteName}</a></div>
+			<form id="search" name="search" action="{novel_search_link}" method="get" onSubmit="return qrsearch();"><div class="serachwrap">
 				<span class="search_text"><input id="kw" name="kw" type="text" value="请输入小说名..." autocomplete="off"  title="请输入小说名..." onfocus="if(this.value==this.title) this.value='';" onblur="if(this.value=='') this.value=this.title;"  onSubmit="return qrsearch();" autofocus="true" x-webkit-speech="" x-webkit-grammar="builtin:translate"></span><input type="submit" value="" class="search_submit">
 				<p>热门搜索：<a href="/intro/41222">莽荒纪</a><a href="/intro/37411">天才相师</a><a href="/intro/37604">最强弃少</a><a href="/intro/37444">求魔</a><a href="/intro/37407">绝世唐门</a></p>
 			</div></form>
@@ -37,7 +42,7 @@
 	</div>
 
 	<div id="nav">
-		<p><a href="{$FW_SITE_URL}" target="_self">首页</a>|<a href="/index/type-wuxia" target="_self">武侠</a><a href="/index/type-xianxia" target="_self">仙侠</a>|<a href="/index/type-xuanhuan" target="_self">玄幻</a><a href="/index/type-qihuan" target="_self">奇幻</a>|<a href="/index/type-dushi" target="_self">都市</a><a href="/index/type-yanqing" target="_self">言情</a>|<a href="/index/type-lishi" target="_self">历史</a><a href="/index/type-junshi" target="_self">军事</a>|<a href="/index/type-youxi" target="_self">网游</a><a href="/index/type-jingji" target="_self">竞技</a>|<a href="/index/type-lingyi" target="_self">灵异</a><a href="/index/type-xuanyi">悬疑</a>|<a href="/index/type-kehuan">科幻</a><a href="/index/type-tongren">同人</a>|<a href="/index/ph">小说排行榜</a>|<a href="/index/ph/wanjie.html">完结</a><img src="{$FW_THEME_URL}/images/hot2.gif">|<a href="http://book.hao123.com/update" class="jianjie">简洁版</a></p>
+		<p><a href="{$FW_SITE_URL}" target="_self">首页</a>{novel_menu}|<a href="{novel_book_link id=$item->id}">{$item->title}</a>{/novel_menu}<a href="/index/ph">小说排行榜</a>|<a href="/index/ph/wanjie.html">完结</a><img src="{$FW_THEME_URL}/images/hot2.gif">|<a href="http://book.hao123.com/update" class="jianjie">简洁版</a></p>
 	</div>
 	<div class="class_wraptop">
 	</div>

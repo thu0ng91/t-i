@@ -42,7 +42,7 @@
 	</div>
 
 	<div id="nav">
-		<p><a href="{$FW_SITE_URL}" target="_self">首页</a>{novel_menu}|<a href="{novel_book_link id=$item->id}">{$item->title}</a>{/novel_menu}<a href="/index/ph">小说排行榜</a>|<a href="/index/ph/wanjie.html">完结</a><img src="{$FW_THEME_URL}/images/hot2.gif">|<a href="http://book.hao123.com/update" class="jianjie">简洁版</a></p>
+		<p><a href="{$FW_SITE_URL}" target="_self">首页</a>{novel_menu}|<a href="{novel_category_link id=$item->id}">{$item->title}</a>{/novel_menu}<a href="{novel_rank_link}">小说排行榜</a></p>
 	</div>
 	<div class="class_wraptop">
 	</div>

@@ -72,23 +72,29 @@
             <ul class="clearfix ritemone">
             {/if}
             {if $block.index < 2}
-                {if $block.first}
+                {*if $block.first*}
                 <li><a href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"></a>
                 <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
                 <p>
                     {$item->summary|trim|truncate:15:'...'}
                 </p>
                 </li>
-                {/if}
+                {*/if*}
             {/if}
-            {if $block.iteration > 2 || $block.last}
+            {if $block.index == 2}
             </ul>
             {/if}
-            {if $block.iteration == 2}
+            {if $block.index < 2 && $block.last}
+            </ul>
+            {/if}
+            {if $block.index == 2 && $block.total > 2}
             <ul class="clearfix ritemtwo">
             {/if}
+            {if $block.index >=2}
                 <li><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
-            {if $block.iteration > 2 && $block.last}
+            {/if}
+            
+            {if $block.index > 2 && $block.last}
             </ul>
             {/if}
         {/novel_book}

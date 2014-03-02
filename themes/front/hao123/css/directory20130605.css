@@ -1,0 +1,32 @@
+﻿#favbooks{clear:both; }
+.con_lwrap{padding:25px 18px 0 10px}
+.con_limg{ background:none;height:auto;width:147px;text-align:center;padding:9px 0 0 8px}
+.con_limg img{ width:139px; height:176px;padding:3px;border:1px solid #CECECE}
+.con_limg a,.jianj{background:url(../images/top0605.png) no-repeat}
+.con_limg a{display:inline-block;width:71px;height:24px;line-height:24px;padding-left:18px;color:#D05D00; text-decoration:none;margin-top:7px}
+.con_limg a.cwfk{ background-position:0 0}
+.con_limg a.sccs{ background-position:0 -30px}
+.con_limg a.fxcs{ background-position:0 -60px; padding:0; margin:0;}
+
+
+.r420{width:506px}
+.r420 h1{height:43px}
+.author{height:32px;line-height:32px;color:#B0B0B0;border-bottom:1px dashed #DCDCDC}
+.author span.black{color:#000;margin-right:20px}
+span.green a{color:#009A00;margin-right:7px}
+.r420 .r_cons{margin-top:5px;width:496px;height:121px}
+.lastrecord{ background:#FFFFEB;border:1px solid #FCC078; position:relative;height:25px;line-height:25px;color:#676767;overflow:inherit}
+.jianj{ position:absolute; top:-6px;height:6px;width:9px;left:42px;background-position:-74px -101px}
+.lastrecord strong{font-weight:normal;color:#000;width:424px;overflow:hidden}
+
+
+.dirlboxs .splone{width:276px}
+.dirconthree strong{width:46px;text-align:center}
+.splone{padding-left:12px}
+.allmoble{height:30px;line-height:30px;text-align:center;color:#009B02;border:1px solid #ddd;width:684px;margin:5px auto}
+
+ul.hottj{padding-top:12px;border-top:1px dashed #C0C0C0;margin:8px auto 0;width:950px}
+ul.hottj li{margin-left:5px;width:232px;overflow:hidden;height:28px;line-height:28px;float:left;font-size:14px;display:inline}
+ul.hottj a.mark{color:#888888}
+ul.hottj a.biaot{color:#333333;margin-left:12px}
+.dirconthree li{height:32px;overflow:hidden;line-height:32px; width:50%}

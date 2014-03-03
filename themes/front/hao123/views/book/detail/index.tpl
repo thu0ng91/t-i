@@ -33,7 +33,7 @@
                     *}
                 </div>
                 <div class="lastrecord">
-                    最新章节：<strong><a href="/intro/132154/chapter-756.html" target="_blank">大奶的警告</a></strong>
+                    最新章节：<strong><a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" target="_blank">{$book->lastchaptertitle}</a></strong>
                     <div class="jianj">
                     </div>
                 </div>
@@ -45,8 +45,10 @@
     <div class="w262">
         <h2 class="rtitone">最近更新</h2>
         <div class="ritembox">
+            {novel_book cid=[$book->cid] order="lastchaptertime desc" limit=7}
+            {if $block.first}
             <div class="cimgsfont">
-                <a class="imgcss" href="/intro/37457"><img alt="武炼巅峰" src="http://imgs.imgshao123.net/UploadFile/2013422/20130422122118531853.jpg"><i class="nbicos"></i></a>
+                <a class="imgcss" href="{novel_book_link id=$book->id}"><img alt="武炼巅峰" src="http://imgs.imgshao123.net/UploadFile/2013422/20130422122118531853.jpg"><i class="nbicos"></i></a>
                 <h3><a href="/intro/37457">武炼巅峰</a></h3>
                 作者：莫默
                 <p>
@@ -54,13 +56,14 @@
                 </p>
             </div>
             <ol class="clearfix olcrwrap bg_gray">
-                <li><span>3-2</span><a href="/intro/37495">超神系统</a></li>
-                <li><span>3-2</span><a href="/intro/37509">末世之黑暗召唤师</a></li>
-                <li><span>3-2</span><a href="/intro/41222">莽荒纪</a></li>
-                <li><span>3-2</span><a href="/intro/12636">无仙</a></li>
-                <li><span>3-2</span><a href="/intro/14582">国色生枭</a></li>
-                <li><span>3-2</span><a href="/intro/21477">驭兽道</a></li>
+            {/if}
+                {if !$block.first}
+                <li><span>{$item.lastchaptertime|date_format:'Y-m'}</span><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
+                {/if}
+            {if $block.last}
             </ol>
+            {/if}
+            {/novel_book}
         </div>
         <div class="bline706">
         </div>
@@ -69,6 +72,7 @@
 <div class="clearfix wrap980">
     <div class="wrap706">
         <div class="dirlboxs">
+            {*
             <div class="dirlwrap">
                 <h2>《女公务员的日记》章节目录</h2>
                 <strong><a href="/intro/132154/chapter.html">打开完整目录列表</a></strong>
@@ -77,24 +81,17 @@
                     <a href="#" class="d_sort">降序</a><!--高亮也加上类名为d_sort_cur-->
                 </div>
             </div>
+            *}
             <div class="clearfix dirconthree">
                 <ol id="dirsort01">
-                    <li><strong>756</strong><span class="splone"><a href="/intro/132154/chapter-756.html">大奶的警告</a></span></li>
-                    <li><strong>755</strong><span class="splone"><a href="/intro/132154/chapter-755.html">见招拆招</a></span></li>
-                    <li><strong>754</strong><span class="splone"><a href="/intro/132154/chapter-754.html">吻我的唇</a></span></li>
-                    <li><strong>753</strong><span class="splone"><a href="/intro/132154/chapter-753.html">野牲的征服</a></span></li>
-                    <li><strong>752</strong><span class="splone"><a href="/intro/132154/chapter-752.html">苟且幽会</a></span></li>
-                    <li><strong>751</strong><span class="splone"><a href="/intro/132154/chapter-751.html">野心需有个度</a></span></li>
-                    <li><strong>750</strong><span class="splone"><a href="/intro/132154/chapter-750.html">给他推腰</a></span></li>
-                    <li><strong>749</strong><span class="splone"><a href="/intro/132154/chapter-749.html">非常诱惑</a></span></li>
-                    <li><strong>748</strong><span class="splone"><a href="/intro/132154/chapter-748.html">红颜不可做祸水</a></span></li>
-                    <li><strong>747</strong><span class="splone"><a href="/intro/132154/chapter-747.html">压到身下</a></span></li>
-                    <li><strong>746</strong><span class="splone"><a href="/intro/132154/chapter-746.html">想他了？</a></span></li>
-                    <li><strong>745</strong><span class="splone"><a href="/intro/132154/chapter-745.html">车内车外</a></span></li>
-                    <li><strong>744</strong><span class="splone"><a href="/intro/132154/chapter-744.html">撩他</a></span></li>
-                    <li><strong>743</strong><span class="splone"><a href="/intro/132154/chapter-743.html">硬了</a></span></li>
+                {assign "i" 1}
+                {foreach $chapters as $item}
+                    <li><strong>{$i}</strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
+                    {assign "i" $i +1}
+                {/foreach}
                 </ol>
             </div>
+            {*
             <div class="dirtools">
                 <a href="/intro/132154/chapter.html" class="viewalllinks">查看全部章节</a>
                 <a href="/intro/132154/chaptershow.html" class="firstlinks">从第一章开始阅读</a>
@@ -114,6 +111,7 @@
                     <li><strong>1</strong><span class="splone"><a href="/intro/132154/chapter-1.html">我和市委书记</a></span></li>
                 </ol>
             </div>
+            *}
         </div>
         <div class="bline706">
         </div>
@@ -129,75 +127,29 @@
                 </ul>
             </div>
             <div id="dirconsone">
-                <div>
+            {foreach ['day', 'month', 'week'] as $t}
+                <div {if !$t@first}class="hidden"{/if}>
+                {novel_book_rank order=$t cid=[$book->cid] limit=12}
+                    {if $block.first}
                     <div class="cimgsfont">
-                        <a class="imgcss" href="/intro/132184"><img alt="乡村活寡" src="http://imgs.imgshao123.net/UploadFile/201377/20130707180532853285.jpg"><i class="nbicos"></i></a>
-                        <h3><a href="/intro/132184">乡村活寡</a></h3>
-                        作者：苍穹神鹰
+                        <a class="imgcss" href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
+                        <h3><a href="{novel_book_link id=$item->id}"></a></h3>
+                        作者：{$item->author}
                         <p>
-                            男主人公奇丑无比，光棍一条，却恶习难改，女主人公貌若天仙，原......
+                            {$item->summary|trim|truncate:30:"......"}
                         </p>
                     </div>
                     <ol class="clearfix olcrwrap">
-                        <li><span>22069</span><a href="/intro/132154">女公务员的日记</a></li>
-                        <li><span>20203</span><a href="/intro/41222">莽荒纪</a></li>
-                        <li><span>14304</span><a href="/intro/149625">完美世界</a></li>
-                        <li><span>11636</span><a href="/intro/132561">官色：攀上女领导</a></li>
-                        <li><span>9836</span><a href="/intro/45397">我的美女总裁老婆</a></li>
-                        <li><span>9774</span><a href="/intro/130956">大主宰</a></li>
-                        <li><span>8558</span><a href="/intro/142978">尼姑庵的和尚</a></li>
-                        <li><span>8095</span><a href="/intro/37453">校花的贴身高手</a></li>
-                        <li><span>7675</span><a href="/intro/35485">罪恶之城</a></li>
-                        <li><span>7482</span><a href="/intro/143968">致命天尊</a></li>
-                        <li><span>7222</span><a href="/intro/37500">全职高手</a></li>
+                    {/if}
+                    {if !$block.first}
+                        <li><span>{$item.allclicks}</span><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
+                    {/if}
+                    {if $block.last}
                     </ol>
+                    {/if}
+                {/novel_book_rank}
                 </div>
-                <div class="hidden">
-                    <div class="cimgsfont">
-                        <a class="imgcss" href="/intro/132184"><img alt="乡村活寡" src="http://imgs.imgshao123.net/UploadFile/201377/20130707180532853285.jpg"><i class="nbicos"></i></a>
-                        <h3><a href="/intro/132184">乡村活寡</a></h3>
-                        作者：苍穹神鹰
-                        <p>
-                            男主人公奇丑无比，光棍一条，却恶习难改，女主人公貌若天仙，原......
-                        </p>
-                    </div>
-                    <ol class="clearfix olcrwrap">
-                        <li><span>6069</span><a href="/intro/41222">莽荒纪</a></li>
-                        <li><span>4715</span><a href="/intro/132154">女公务员的日记</a></li>
-                        <li><span>3777</span><a href="/intro/149625">完美世界</a></li>
-                        <li><span>2822</span><a href="/intro/45397">我的美女总裁老婆</a></li>
-                        <li><span>2678</span><a href="/intro/130956">大主宰</a></li>
-                        <li><span>2465</span><a href="/intro/132561">官色：攀上女领导</a></li>
-                        <li><span>2157</span><a href="/intro/37500">全职高手</a></li>
-                        <li><span>2135</span><a href="/intro/143968">致命天尊</a></li>
-                        <li><span>1958</span><a href="/intro/37407">绝世唐门</a></li>
-                        <li><span>1956</span><a href="/intro/250697">英雄联盟之谁与争锋</a></li>
-                        <li><span>1936</span><a href="/intro/35485">罪恶之城</a></li>
-                    </ol>
-                </div>
-                <div class="hidden">
-                    <div class="cimgsfont">
-                        <a class="imgcss" href="/intro/132184"><img alt="乡村活寡" src="http://imgs.imgshao123.net/UploadFile/201377/20130707180532853285.jpg"><i class="nbicos"></i></a>
-                        <h3><a href="/intro/132184">乡村活寡</a></h3>
-                        作者：苍穹神鹰
-                        <p>
-                            男主人公奇丑无比，光棍一条，却恶习难改，女主人公貌若天仙，原......
-                        </p>
-                    </div>
-                    <ol class="clearfix olcrwrap">
-                        <li><span>12689</span><a href="/intro/41222">莽荒纪</a></li>
-                        <li><span>10742</span><a href="/intro/132154">女公务员的日记</a></li>
-                        <li><span>8989</span><a href="/intro/149625">完美世界</a></li>
-                        <li><span>6190</span><a href="/intro/130956">大主宰</a></li>
-                        <li><span>6097</span><a href="/intro/45397">我的美女总裁老婆</a></li>
-                        <li><span>5375</span><a href="/intro/132561">官色：攀上女领导</a></li>
-                        <li><span>4661</span><a href="/intro/143968">致命天尊</a></li>
-                        <li><span>4636</span><a href="/intro/35485">罪恶之城</a></li>
-                        <li><span>4410</span><a href="/intro/250697">英雄联盟之谁与争锋</a></li>
-                        <li><span>4349</span><a href="/intro/37407">绝世唐门</a></li>
-                        <li><span>4207</span><a href="/intro/37500">全职高手</a></li>
-                    </ol>
-                </div>
+            {/foreach} 
             </div>
         </div>
         <div class="bline706">
@@ -207,29 +159,13 @@
 <div class="wrapone">
     <h2 class="youlovetit">猜你喜欢</h2>
     <ul class="clearfix imgitems">
-        <li><a href="/intro/36454" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/2013530/20130530032582408240.jpg" alt=""><strong>大结局上</strong></a>
-        <h3><a href="/intro/36454">废物三小姐</a></h3>
-        女强文，一对一。她是人人眼中蠢笨无能，连猪狗都不如</li>
-        <li><a href="/intro/37558" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422180034773477.jpg" alt=""><strong>第三千五百五十五章 试探虚实</strong></a>
-        <h3><a href="/intro/37558">百炼成仙</a></h3>
-        仙路崎岖，百般磨练终成正果一个没有灵根的少年，一个</li>
-        <li><a href="/intro/38358" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422175165836583.jpg" alt=""><strong>终卷 不被传颂的挽歌 第九百六十四章 进入中心（上）</strong></a>
-        <h3><a href="/intro/38358">人间冰器</a></h3>
-        “人间冰器”计划失败了，只有11幸存下来。他被送到了</li>
-        <li><a href="/intro/45093" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422130332113211.jpg" alt=""><strong>番外：[结局]</strong></a>
-        <h3><a href="/intro/45093">首席总裁，慢点吻！</a></h3>
-        19岁，渐渐走入绝境的她签下一纸生子协议。陌生男人借</li>
-        <li><a href="/intro/9033" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422130761436143.jpg" alt=""><strong>
-第一二零三章 临行之时
-        </strong></a>
-        <h3><a href="/intro/9033">花香满园</a></h3>
-        中南海特工,宦海风流之路！
-另：本书慢热，希望能耐心
-        </li>
-        <li><a href="/intro/47363" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/201368/20130608050685558555.jpg" alt=""><strong>第三百二十五章&nbsp;&nbsp;永不分离（大结局）</strong></a>
-        <h3><a href="/intro/47363">穿越沦为弃妃：妾身不伺候</a></h3>
-        一场反调戏却没有成功落入花池，穿越成了新嫁娘，婚房</li>
+        {novel_book cid=[$book->cid] order='allclicks desc' limit=6}
+        <li><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->lastchaptertitle}"><strong>{$item->lastchaptertitle}</strong></a>
+        <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
+        {$item->summary|trim|truncate:20:"..."}</li>
+        {/novel_book}
     </ul>
+    {*
     <ul class="hottj clearfix">
         <li><a href="http://book.hao123.com/index/type-xianxia" class="mark">[仙侠]</a><a href="http://book.hao123.com/intro/41222" class="biaot">莽荒记</a></li>
         <li><a href="http://book.hao123.com/xuanhuan" class="mark">[玄幻]</a><a href="http://book.hao123.com/intro/37408" class="biaot">武动乾坤</a></li>
@@ -260,6 +196,7 @@
         <li><a href="http://book.hao123.com/index/type-xuanhuan" class="mark">[玄幻]</a><a href="http://book.hao123.com/intro/130956" class="biaot">大主宰</a></li>
         <li><a href="http://book.hao123.com/kehuan" class="mark">[科幻]</a><a href="http://book.hao123.com/intro/37471" class="biaot">最终进化</a></li>
     </ul>
+    *}
 </div>
 <div class="blinebgs">
 </div>

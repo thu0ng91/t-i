@@ -23,8 +23,8 @@
 		<div class="wrap980">
 			<div class="logocss"><a href="{$FW_SITE_URL}">{$siteinfo->SiteName}</a></div>
 			<form id="search" name="search" action="{novel_search_link}" method="get" onSubmit="return qrsearch();"><div class="serachwrap">
-				<span class="search_text"><input id="kw" name="kw" type="text" value="请输入小说名..." autocomplete="off"  title="请输入小说名..." onfocus="if(this.value==this.title) this.value='';" onblur="if(this.value=='') this.value=this.title;"  onSubmit="return qrsearch();" autofocus="true" x-webkit-speech="" x-webkit-grammar="builtin:translate"></span><input type="submit" value="" class="search_submit">
-				<p>热门搜索：<a href="/intro/41222">莽荒纪</a><a href="/intro/37411">天才相师</a><a href="/intro/37604">最强弃少</a><a href="/intro/37444">求魔</a><a href="/intro/37407">绝世唐门</a></p>
+				<span class="search_text"><input id="kw" name="keyword" type="text" value="请输入小说名..." autocomplete="off"  title="请输入小说名..." onfocus="if(this.value==this.title) this.value='';" onblur="if(this.value=='') this.value=this.title;"  onSubmit="return qrsearch();" autofocus="true" x-webkit-speech="" x-webkit-grammar="builtin:translate"></span><input type="submit" value="" class="search_submit">
+				<p>热门搜索：{*<a href="/intro/41222">莽荒纪</a><a href="/intro/37411">天才相师</a><a href="/intro/37604">最强弃少</a><a href="/intro/37444">求魔</a><a href="/intro/37407">绝世唐门</a>*}</p>
 			</div></form>
 			<div id="favid" class="favboxs">
 				<div class="favsbtn">收藏</div>

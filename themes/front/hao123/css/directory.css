@@ -124,14 +124,14 @@
 .olcrwrap a{margin-left:27px}
 .olcrwrap span{float:right;margin-left:5px}
 .ritemboxtwo{margin-top:6px;border-top:1px solid #ddd}
-.ritemboxtwo,.dirlboxs{overflow:hidden;height:508px}
+.ritemboxtwo{overflow:hidden;height:508px}
 .tittwo{height:37px;border-bottom:1px solid #DCDCDC}
 .tittwo h2{line-height:44px;height:37px;overflow:hidden;font-size:14px;color:#017D01;float:left;padding-left:16px}
 .tittwo ul{float:right;margin-bottom:-1px;_position:relative}
 .tittwo li{font-weight:bold;cursor:pointer;float:left;height:30px;line-height:30px;overflow:hidden;margin-top:8px;padding:0 15px 0 18px;color:#343434}
 .tittwo li.cur{color:#017D01;border-bottom:2px solid #017D01;height:28px}
 
-.dirlboxs{height:506px;border:1px solid #ddd;border-top:3px solid #017F01;background:#fff;margin-top:6px}
+.dirlboxs{border:1px solid #ddd;border-top:3px solid #017F01;background:#fff;margin-top:6px}
 .dirlwrap{height:36px;line-height:36px;overflow:hidden;border-bottom:1px solid #ddd}
 .dirlwrap h2{float:left;padding-left:13px;font-size:14px;padding-right:15px}
 .dirlwrap strong{float:left;font-size:14px}

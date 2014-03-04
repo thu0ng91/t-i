@@ -26,3 +26,20 @@ li.zimu a{margin:0 3px}
 
 .dirtools{ background:none;height:auto}
 .pages a:hover, .pages strong {background: none repeat scroll 0 0 #00A400;border: 1px solid #007E01}
+
+.pages {padding-left: 250px;}
+ul.yiiPager
+{
+	font-size:11px;
+	border:0;
+	margin:0;
+	line-height:100%;
+	display:inline;
+	padding-left:200px;
+}
+
+ul.yiiPager li
+{
+	display:inline;
+	width: 30px;
+}

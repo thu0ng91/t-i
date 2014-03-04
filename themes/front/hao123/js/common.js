@@ -477,7 +477,9 @@ var fixvar=false;
 				scrollheight=$(document).scrollTop()+$(window).height();
 			if(scrollheight>recimgs){
 				if(!fixvar){
-					fixvar=true;$("body").append('<div id="fixedwrap"><span class="fixicos"></span><div class="clearfix fixtopbox"><div class="fixtopa"><h6>分类</h6><a href="http://book.hao123.com/index/type-dushi" target="_blank">都市</a><a href="http://book.hao123.com/index/type-yanqing" target="_blank">言情</a><a href="http://book.hao123.com/index/type-xianxia" target="_blank">仙侠</a><a href="http://book.hao123.com/index/type-wuxia" target="_blank">武侠</a><a href="http://book.hao123.com/index/type-qihuan" target="_blank">奇幻</a><a href="http://book.hao123.com/index/type-youxi" target="_blank">网游</a><a href="http://book.hao123.com/index/type-lingyi" target="_blank">灵异</a><a href="http://book.hao123.com/index/type-junshi" target="_blank">军事</a><a href="http://book.hao123.com/index/type-lishi" target="_blank">历史</a><a href="http://book.hao123.com/index/type-xuanhuan" target="_blank">玄幻</a></div><a href="http://book.hao123.com/#recbigbox" class="gonows" target="_self">我最近看的</a></div><a href="#" target="_self" class="fixbottoma">TOP</a></div>');	
+					fixvar=true;
+					// $("body").append('<div id="fixedwrap"><span class="fixicos"></span><div class="clearfix fixtopbox"><div class="fixtopa"><h6>分类</h6><a href="http://book.hao123.com/index/type-dushi" target="_blank">都市</a><a href="http://book.hao123.com/index/type-yanqing" target="_blank">言情</a><a href="http://book.hao123.com/index/type-xianxia" target="_blank">仙侠</a><a href="http://book.hao123.com/index/type-wuxia" target="_blank">武侠</a><a href="http://book.hao123.com/index/type-qihuan" target="_blank">奇幻</a><a href="http://book.hao123.com/index/type-youxi" target="_blank">网游</a><a href="http://book.hao123.com/index/type-lingyi" target="_blank">灵异</a><a href="http://book.hao123.com/index/type-junshi" target="_blank">军事</a><a href="http://book.hao123.com/index/type-lishi" target="_blank">历史</a><a href="http://book.hao123.com/index/type-xuanhuan" target="_blank">玄幻</a></div><a href="http://book.hao123.com/#recbigbox" class="gonows" target="_self">我最近看的</a></div><a href="#" target="_self" class="fixbottoma">TOP</a></div>');	
+					// $("body").append('<div id="fixedwrap"><span class="fixicos"></span><div class="clearfix fixtopbox"><div class="fixtopa"></div></div><a href="#" target="_self" class="fixbottoma">TOP</a></div>');	
 					$("#fixedwrap").css("left",(($(window).width()-980)/2)-100);
 				}else{
 					$("#fixedwrap").show();	
@@ -496,7 +498,7 @@ $(function(){
 			
 	});
 });
-document.writeln("<div style=\" display:none; width:0; height:0; overflow:hidden; white-space:nowrap\"><script src=\'http://w.cnzz.com/c.php?id=30028099\' language=\'JavaScript\'></script></div>");
+// document.writeln("<div style=\" display:none; width:0; height:0; overflow:hidden; white-space:nowrap\"><script src=\'http://w.cnzz.com/c.php?id=30028099\' language=\'JavaScript\'></script></div>");
 document.writeln("<!-- Baidu Button BEGIN -->");
 document.writeln("<script type=\"text/javascript\" id=\"bdshare_js\" data=\"type=slide&amp;img=1&amp;pos=right&amp;uid=0\" ></script>");
 document.writeln("<script type=\"text/javascript\" id=\"bdshell_js\"></script>");

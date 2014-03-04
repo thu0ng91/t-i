@@ -339,7 +339,9 @@
         <h3>精品小说网站</h3>
     </div>
     <div class="linkbody">
+    {*
         <a href="http://book.hao123.com" targdt="_blank">小说</a>|<a href="http://book.hao123.com/index/ph" targdt="_blank">小说排行榜</a>|<a href="http://www.kanshu.com" targdt="_blank">看书网</a>|<a href="http://www.zhaoxiaoshuo.com" targdt="_blank">找小说</a>|<a href="http://b.faloo.com" targdt="_blank">飞卢小说</a>|<a href="http://www.bxwx.org" targdt="_blank">笔下文学</a>|<a href="http://read.guanhuaju.com/" targdt="_blank">冠华居小说网 </a>|<a href="http://www.wjsw.com/" targdt="_blank">万卷书屋</a>|<a href="http://www.hongshu.com/" targdt="_blank">红薯小说网</a>|<a href="http://www.fmx.cn" targdt="_blank">凤鸣轩小说网</a>|<a href="http://www.xs8.cn/" targdt="_blank">言情小说吧</a>|<a href="http://www.cc222.com" targdt="_blank">烟雨红尘</a>|<a href="http://www.qwsy.com/" targdt="_blank">蔷薇言情小说</a>|<a href="http://www.feiku.com" targdt="_blank">飞库电子书</a>|<a href="http://www.tusuu.com/" targdt="_blank">txt小说下载</a>|<a href="http://www.yuncheng.com" targdt="_blank">云中书城</a>|<a href="http://www.huanxia.com " targdt="_blank">幻侠小说网</a>|<a href="http://www.motie.com" targdt="_blank">磨铁中文网</a>|<a href="http://www.shuhai.com" targdt="_blank">书海小说网</a>|<a href="http://www.txt8.net" targdt="_blank">txt小说下载吧</a>|<a href="http://www.sxcnw.net " targdt="_blank">书香电子书</a>|<a href="http://www.abada.com" targdt="_blank">小说下载网</a>|<a href="http://www.bookbao.com/" targdt="_blank">书包网</a>|<a href="http://www.cuiweiju.com/" targdt="_blank">翠微居小说</a>|<a href="http://www.duwenzhang.com/" targdt="_blank">文章阅读网</a>|<a href="http://www.3gsc.com.cn/" targdt="_blank">3G小说网</a>|<a href="http://bbs.txtnovel.com/" targdt="_blank">书香门第TXT</a>|<a href="http://www.msxf.net" targdt="_blank">陌上香坊</a>|<a href="http://www.txtbook.com.cn" targdt="_blank">乐读电子书</a>|<a href="http://www.2kxs.com" targdt="_blank">2k小说</a>|<a href="http://www.juyit.com" targdt="_blank">君子聚义</a>|<a href="http://www.ibook8.com/" targdt="_blank">txt电子书下载</a>|<a href="http://www.tadu.com/?cid=1914" targdt="_blank">塔读文学</a>|<a href="http://www.paipaitxt.com" targdt="_blank">派派小说论坛</a>|<a href="http://www.feifantxt.com" targdt="_blank">非凡小说网</a>|<a href="http://www.zongheng.com " targdt="_blank">纵横中文网 </a>|<a href="http://www.rain8.com/ " targdt="_blank">雨枫轩小说</a>|<a href="http://www.bayueju.com" targdt="_blank">八月居小说网</a>|<a href="http://www.17k.com/ " targdt="_blank">17K小说网</a>|
+    *}
     </div>
 </div>
 <div class="blinebgs"></div>
@@ -347,8 +349,10 @@
 {* 回到顶部*}
 <div id="fix-area" class="fix-area">
     <a style="visibility: visible;" class="go-top-btn" href="#" target="_self">返回顶部</a>
+    {*
     <a class="feedback-btn boxy" href="#feedback">反馈</a>
     <div id="shortcut-goerwei" class="shortcut-erweiwrap" style="height:120px;">
         <a class="g_icon clz"></a><a class="shortcut-goerwei" href="http://www.hao123.com/shouji"><span class="top">万本小说免费读</span><span class="shortcut-goerwei-pic"><img src="http://imgs.imgshao123.net/images/1233459.png" border="0" height="70px" width="70px"></span><span>点击或扫描下载</span></a>
     </div>
+    *}
 </div>

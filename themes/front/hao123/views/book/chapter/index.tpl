@@ -11,7 +11,7 @@
                         <dl>
                             <div class="adtext"></div>
                             <dt>{$chapter->title}</dt>
-                            <div class="sdt"><script type="text/javascript">TplTextSelect();</script>
+                            <div class="sdt">{*<script type="text/javascript">TplTextSelect();</script>*}
                                 <div id="TextSelect">
                                     <div class="ts1">
                                         <span>选择背景颜色：</span>
@@ -58,7 +58,7 @@
 <!--end 列表-->
 {*<script src="{$FW_THEME_URL}/js/jquery.min.js" type="text/javascript" language="javascript"></script>*}
 <script src="{$FW_THEME_URL}/js/font.js" type="text/javascript" language="javascript"></script>
-
+<script type="text/javascript" src="{$FW_THEME_URL}/js/common1.js"></script>
 
 <script language=javascript>
     //上一页链接

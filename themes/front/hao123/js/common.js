@@ -308,7 +308,7 @@ function get_mygame(){
         $("#favconid").html('<div class="recordlist"><p>' + hscontent + '</p></div>');
     }
 }
-getmygame();
+// getmygame();
 
 
 $(function(){

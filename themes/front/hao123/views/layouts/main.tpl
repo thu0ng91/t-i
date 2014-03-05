@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=7">
 <title>{$title}</title>
-<meta name="keywords" content="{$keywords}"/>
-<meta name="description" content="{$description}"/>
+<meta name="keywords" content="{$keywords|strip_tags}"/>
+<meta name="description" content="{$description|trim|strip_tags|truncate:100:"..."|replace:"\n":" "|replace:"\r":" "}"/>
 <link href="{$FW_THEME_URL}/css/common.css" rel="stylesheet">
 {if $this->id == 'site'}
 <link href="{$FW_THEME_URL}/css/index.css" rel="stylesheet">
@@ -14,7 +14,9 @@
 <link href="{$FW_THEME_URL}/css/list.css" rel="stylesheet">
 <link href="{$FW_THEME_URL}/css/list20130604.css" rel="stylesheet">
 {/if}
+{if $this->id == 'site'}
 <base target="_blank">
+{/if}
 <script type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 </head>
 <body>
@@ -69,3 +71,4 @@
 <script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/index.js"></script>
 </html>
+<!-- spend time: {$TIME} -->

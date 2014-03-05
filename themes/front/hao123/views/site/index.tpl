@@ -5,23 +5,23 @@
             <ul style="display: block;" class="">
                 <div class="indexonell">
                     {novel_book id=[15]}
-                    <a href="{novel_book_link id=$item->id type='info'}"><img src="{$item->coverImageUrl}"></a>
-                    <h2><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h2>
+                    <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
+                    <h2><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h2>
 					<span>{$item->summary|trim|truncate:50:'...'}
-					<a href="{novel_book_link id=$item->id type='info'}" class="green">阅读&gt;&gt;</a>
+					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
 					</span>
                     {/novel_book}
                 </div>
                 <div class="indexonelc">
                     {novel_book id=[13]}
-                    <h3><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h3>
+                    <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
 					<span>{$item->summary|trim|truncate:50:'...'}
-					<a href="{novel_book_link id=$item->id type='info'}" class="green">阅读&gt;&gt;</a>
+					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
 					</span>
                     {/novel_book}
                     <ul class="clearfix">
                         {novel_book cid=[10] order='allclicks desc' limit=8}
-                        <li><a href="{novel_category_link id=$item->cid}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='info'}" class="i2">{$item->title}</a></li>
+                        <li><a href="{novel_category_link id=$item->cid}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
                         {/novel_book}
                     </ul>
                     <h3><a href="/intro/37408">《武动乾坤》 天蚕土豆</a></h3>
@@ -45,10 +45,10 @@
                 <div class="indexonell">
                 	{*使用5级推荐*}
                     {novel_book cid=[$v] recommend=[5] limit=1}
-                    <a href="{novel_book_link id=$item->id type='info'}"><img src="{$item->coverImageUrl}"></a>
-                    <h2><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h2>
+                    <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
+                    <h2><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h2>
 					<span>{$item->summary|trim|truncate:50:'...'}
-					<a href="{novel_book_link id=$item->id type='info'}" class="green">阅读&gt;&gt;</a>
+					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
 					</span>
                     {/novel_book}
                 </div>
@@ -56,14 +56,14 @@
                 	{*使用4级推荐*}
                     {novel_book cid=[$v] recommend=[4] order='allclicks desc' limit=9}
                     {if $block.first}
-                    <h3><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h3>
+                    <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
 					<span>{$item->summary|trim|truncate:50:'...'}
-					<a href="{novel_book_link id=$item->id type='info'}" class="green">阅读&gt;&gt;</a>
+					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
 					</span>
                     <ul class="clearfix">
                     {/if}
                     {if !$block.first}
-                        <li><a href="{novel_category_link id=$item->cid}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='info'}" class="i2">{$item->title}</a></li>
+                        <li><a href="{novel_category_link id=$item->cid}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
                     {/if}
                     {if $block.last}
                     </ul>
@@ -72,14 +72,14 @@
                 	{*使用3级推荐*}
                     {novel_book cid=[$v] recommend=[3] order='allclicks desc' limit=9}
                     {if $block.first}
-                    <h3><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h3>
+                    <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
 					<span>{$item->summary|trim|truncate:50:'...'}
-					<a href="{novel_book_link id=$item->id type='info'}" class="green">阅读&gt;&gt;</a>
+					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
 					</span>
                     <ul class="clearfix">
                     {/if}
                     {if !$block.first}
-                        <li><a href="{novel_category_link id=$item->cid}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='info'}" class="i2">{$item->title}</a></li>
+                        <li><a href="{novel_category_link id=$item->cid}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
                     {/if}
                     {if $block.last}
                     </ul>
@@ -130,16 +130,16 @@
         	{novel_book_rank order=$v limit=11}
             	{if $block.first}
                 <div class="figure clearfix">
-                    <a href="{novel_book_link id=$item->id type='info'}"><img src="{$item->coverImageUrl}"></a>
+                    <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
                     <div class="figurer">
-                        <h4><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h4>
-                        <span>{$item->summary|trim|truncate:15:'...'}</span><a href="{novel_book_link id=$item->id type='info'}" class="green">阅读&gt;&gt;</a>
+                        <h4><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h4>
+                        <span>{$item->summary|trim|truncate:15:'...'}</span><a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
                     </div>
                 </div>
                 <ul class="clearfix">
                 {/if}
                 {if !$block.first}
-                    <li><a href="xianxia" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='info'}" class="i2">{$item->title}</a></li>
+                    <li><a href="xianxia" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
                 {/if}
 
                 {if $block.last}

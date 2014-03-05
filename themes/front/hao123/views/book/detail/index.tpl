@@ -48,12 +48,10 @@
             {novel_book cid=[$book->cid] order="lastchaptertime desc" limit=7}
             {if $block.first}
             <div class="cimgsfont">
-                <a class="imgcss" href="{novel_book_link id=$book->id}"><img alt="武炼巅峰" src="http://imgs.imgshao123.net/UploadFile/2013422/20130422122118531853.jpg"><i class="nbicos"></i></a>
-                <h3><a href="/intro/37457">武炼巅峰</a></h3>
-                作者：莫默
-                <p>
-    武之巅峰，是孤独，是寂寞，是漫漫求索，是高处不胜寒逆境中成......
-                </p>
+                <a class="imgcss" href="{novel_book_link id=$book->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
+                <h3><a href="/intro/37457">{$item->title}</a></h3>
+                作者：{$item->author}
+                <p>{$item->summary|trim|truncate:30:"..."}</p>
             </div>
             <ol class="clearfix olcrwrap bg_gray">
             {/if}
@@ -71,17 +69,8 @@
 </div>
 <div class="clearfix wrap980">
     <div class="wrap706">
+    {*
         <div class="dirlboxs">
-            {*
-            <div class="dirlwrap">
-                <h2>《女公务员的日记》章节目录</h2>
-                <strong><a href="/intro/132154/chapter.html">打开完整目录列表</a></strong>
-                <div class="sortwrap" id="dirsortbtn">
-                    <a href="#" class="u_sort u_sort_cur">升序</a>
-                    <a href="#" class="d_sort">降序</a><!--高亮也加上类名为d_sort_cur-->
-                </div>
-            </div>
-            *}
             <div class="clearfix dirconthree">
                 <ol id="dirsort01">
                 {assign "i" 1}
@@ -91,31 +80,12 @@
                 {/foreach}
                 </ol>
             </div>
-            {*
-            <div class="dirtools">
-                <a href="/intro/132154/chapter.html" class="viewalllinks">查看全部章节</a>
-                <a href="/intro/132154/chaptershow.html" class="firstlinks">从第一章开始阅读</a>
-                <a href="#top" target="_self" class="dirgotop">返回顶端↑</a>
-            </div>
-            <div class="clearfix dirconthree">
-                <ol id="dirsort02">
-                    <li><strong>10</strong><span class="splone"><a href="/intro/132154/chapter-10.html">无耻交易</a></span></li>
-                    <li><strong>9</strong><span class="splone"><a href="/intro/132154/chapter-9.html">羊入虎口谍中谍</a></span></li>
-                    <li><strong>8</strong><span class="splone"><a href="/intro/132154/chapter-8.html">滋阴汇阳秘籍</a></span></li>
-                    <li><strong>7</strong><span class="splone"><a href="/intro/132154/chapter-7.html">留了一手</a></span></li>
-                    <li><strong>6</strong><span class="splone"><a href="/intro/132154/chapter-6.html">邪恶男老师</a></span></li>
-                    <li><strong>5</strong><span class="splone"><a href="/intro/132154/chapter-5.html">为什么考公I务员</a></span></li>
-                    <li><strong>4</strong><span class="splone"><a href="/intro/132154/chapter-4.html">我的网名叫“宝宝”</a></span></li>
-                    <li><strong>3</strong><span class="splone"><a href="/intro/132154/chapter-3.html">热带雨林里</a></span></li>
-                    <li><strong>2</strong><span class="splone"><a href="/intro/132154/chapter-2.html">飞机上的缠绵</a></span></li>
-                    <li><strong>1</strong><span class="splone"><a href="/intro/132154/chapter-1.html">我和市委书记</a></span></li>
-                </ol>
-            </div>
-            *}
         </div>
         <div class="bline706">
         </div>
+        *}
     </div>
+    {*
     <div class="w262">
         <div class="ritemboxtwo">
             <div class="tittwo">
@@ -155,7 +125,25 @@
         <div class="bline706">
         </div>
     </div>
+    *}
 </div>
+
+<div class="wrapone">
+        <div class="dirlboxs">
+            <div class="clearfix dirconthree">
+                <ol id="dirsort01">
+                {assign "i" 1}
+                {foreach $chapters as $item}
+                    <li><strong>{$i}</strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
+                    {assign "i" $i +1}
+                {/foreach}
+                </ol>
+            </div>
+        </div>
+        <div class="bline706">
+        </div>
+</div>
+
 <div class="wrapone">
     <h2 class="youlovetit">猜你喜欢</h2>
     <ul class="clearfix imgitems">

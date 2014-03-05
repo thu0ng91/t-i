@@ -20,7 +20,7 @@ span.green a{color:#009A00;margin-right:7px}
 .lastrecord strong{font-weight:normal;color:#000;width:424px;overflow:hidden}
 
 
-.dirlboxs .splone{width:276px}
+.dirlboxs .splone{width:170px}
 .dirconthree strong{width:46px;text-align:center}
 .splone{padding-left:12px}
 .allmoble{height:30px;line-height:30px;text-align:center;color:#009B02;border:1px solid #ddd;width:684px;margin:5px auto}
@@ -29,4 +29,5 @@ ul.hottj{padding-top:12px;border-top:1px dashed #C0C0C0;margin:8px auto 0;width:
 ul.hottj li{margin-left:5px;width:232px;overflow:hidden;height:28px;line-height:28px;float:left;font-size:14px;display:inline}
 ul.hottj a.mark{color:#888888}
 ul.hottj a.biaot{color:#333333;margin-left:12px}
-.dirconthree li{height:32px;overflow:hidden;line-height:32px; width:50%}
+.dirconthree li{height:32px;overflow:hidden;line-height:32px; width:30%}
+.dirlboxs .dirconthree{width:100%;}

@@ -43,7 +43,7 @@
                             </div>
                             <dd>
 
-                                <div id="booktext"><!--go-->{$chapter->content|nl2br} <!--over--></div>
+                                <div id="booktext"><!--go-->{$chapter->content|replace:"\n":"<br />&nbsp;&nbsp;&nbsp;&nbsp;"} <!--over--></div>
                             </dd>
                         </dl>
                     </div>

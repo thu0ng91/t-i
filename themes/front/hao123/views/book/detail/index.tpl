@@ -48,8 +48,8 @@
             {novel_book cid=[$book->cid] order="lastchaptertime desc" limit=7}
             {if $block.first}
             <div class="cimgsfont">
-                <a class="imgcss" href="{novel_book_link id=$book->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
-                <h3><a href="/intro/37457">{$item->title}</a></h3>
+                <a class="imgcss" href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
+                <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
                 作者：{$item->author}
                 <p>{$item->summary|trim|truncate:30:"..."}</p>
             </div>

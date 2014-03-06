@@ -194,7 +194,9 @@ function getmygame(){
 
 function ordergame(h) {
     var newgames = new Array();
+    
     for (var i in h) {
+    	if (typeof(h[i]) != 'string') continue;
         var ogame = h[i].split("||");
         newgames[i] = ogame;
     }
@@ -206,7 +208,7 @@ function gethsgames() {
     var c = window.localStorage ? localStorage.getItem('gvalues') : UserData.getItem('gvalues');
     if(!c) return new Array();
     var t = c.split("|||");
-    if (t[0] !== "2144.cn") return new Array();
+    // if (t[0] !== "2144.cn") return new Array();
     t.shift();
     return t;
 }
@@ -248,7 +250,7 @@ function get_hsgames() {
     var c = window.localStorage ? localStorage.getItem('gv') : UserData.getItem('gv');
     if(!c) return new Array();
     var t = c.split("|||");
-    if (t[0] !== "book.hao123.com") return new Array();
+    // if (t[0] !== "book.hao123.com") return new Array();
     t.shift();
     return t;
 }
@@ -291,6 +293,7 @@ $("#favbooks,.sccs").click(function(){
 function order_game(h) {
     var newgames = new Array();
     for (var i in h) {
+    	if (typeof(h[i]) != 'string') continue;
         var ogame = h[i].split("||");
         newgames[i] = ogame;
     }
@@ -308,7 +311,7 @@ function get_mygame(){
         $("#favconid").html('<div class="recordlist"><p>' + hscontent + '</p></div>');
     }
 }
-// getmygame();
+getmygame();
 
 
 $(function(){
@@ -509,3 +512,7 @@ document.writeln("</script>");
 document.writeln("<!-- Baidu Button END -->");
 
 
+function outputBottomLink()
+{
+	document.writeln('<a href="#" target="_blank">关于本站</a><b>|</b><a href="#" target="_blank">官方微博</a><b>|</b><a href="#" class="mobile" target="_blank">手机版</a><b>|</b><a href="#" class="browser hilight" target="_blank" title=""><i></i>移动版</a><b>|</b><a href="#" target="_blank">网站地图</a></p><p class="copyright"><span class="intro"> 上网导航第一品牌</span><a class="beian" target="_blank" href="http://www.miibeian.gov.cn/">京ICP证030173号</a>');
+}

@@ -1,4 +1,5 @@
 <link href="{$FW_THEME_URL}/css/style2.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{$FW_THEME_URL}/js/font.js"></script>
 <!--列表-->
 <div class="main">
     <div id="centerl">
@@ -9,9 +10,10 @@
                     <div class="book_middle_title"> <span>双击开始滚动屏幕</span>当前位置： <a href="{$FW_SITE_URL}">首页</a> &gt; <a href="{novel_book_link id=$book->id}">{$book->title}</a> &gt; {$chapter->title} </div>
                     <div id="bgdiv" class="book_middle_text">
                         <dl>
-                            <div class="adtext"></div>
+                            {*<div class="adtext"></div>*}
                             <dt>{$chapter->title}</dt>
-                            <div class="sdt">{*<script type="text/javascript">TplTextSelect();</script>*}
+                            <div class="sdt"><script type="text/javascript">TplTextSelect();</script>
+                            {*
                                 <div id="TextSelect">
                                     <div class="ts1">
                                         <span>选择背景颜色：</span>
@@ -40,6 +42,7 @@
                                         <a onclick="SetFont()" href="javascript:void(0)">设置字体</a>&nbsp;
                                         <a href="javascript:addBookmarkAjax('31593', '7088945');">加入书签</a></div>
                                 </div>
+                                *}
                             </div>
                             <dd>
 
@@ -57,7 +60,7 @@
 </div>
 <!--end 列表-->
 {*<script src="{$FW_THEME_URL}/js/jquery.min.js" type="text/javascript" language="javascript"></script>*}
-<script src="{$FW_THEME_URL}/js/font.js" type="text/javascript" language="javascript"></script>
+{*<script src="{$FW_THEME_URL}/js/font.js" type="text/javascript" language="javascript"></script>*}
 <script type="text/javascript" src="{$FW_THEME_URL}/js/common1.js"></script>
 
 <script language=javascript>

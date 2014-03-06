@@ -14,10 +14,15 @@
 <link href="{$FW_THEME_URL}/css/list.css" rel="stylesheet">
 <link href="{$FW_THEME_URL}/css/list20130604.css" rel="stylesheet">
 {/if}
-{if $this->id == 'site'}
+{if $this->id == 'site111'}
 <base target="_blank">
 {/if}
 <script type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/common1.js"></script>
+<script type="text/javascript">
+	var siteUrl = '{$FW_SITE_URL}';
+	var siteThemeUrl = '{$FW_THEME_URL}';
+</script>
 </head>
 <body>
 <div id="page-header">
@@ -38,37 +43,40 @@
 					<i>暂无收藏记录...</i>
 				</div>
 			</div>
+			*}
+
 			<div id="readid" class="readrecord">
 				<div class="recordbtn">阅读记录</div>
 				<div class="recordwrap" id="recorconid">
 					<i>暂无阅读记录...</i>
 				</div>
 			</div>
-			*}
 		</div>
 	</div>
 
 	<div id="nav">
 		<p><a href="{$FW_SITE_URL}" target="_self">首页</a>{novel_menu}|<a href="{novel_category_link id=$item->id}">{$item->title}</a>{/novel_menu}<a href="{novel_lastupdate_link}">最新更新</a>{*a href="{novel_rank_link}">小说排行榜</a>*}</p>
 	</div>
+
 	{*
 	<div class="class_wraptop">
 	</div>
 	*}
 
+
 	{$content}
 
 	<div class="blinebgs"></div>
+	<script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
 	<div class="footer" monkey="cool" style="border:0;" alog-alias="footer">
 		<div id="ft">
 			<!--footer-->
-			<p class="ft_link"><a href="#" target="_blank">关于本站</a><b>|</b><a href="#" target="_blank">官方微博</a><b>|</b><a href="#" class="mobile" target="_blank">手机版</a><b>|</b><a href="#" class="browser hilight" target="_blank" title=""><i></i>移动版</a><b>|</b><a href="#" target="_blank">网站地图</a></p><p class="copyright"><span class="intro"> 上网导航第一品牌</span><a class="beian" target="_blank" href="http://www.miibeian.gov.cn/">京ICP证030173号</a></p>
+			<p class="ft_link"><script type="text/javascript">outputBottomLink();</script></p>
 	</div>
 </div>
 </body>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/jquery.boxy.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/index.js"></script>
 </html>
 <!-- spend time: {$TIME} -->

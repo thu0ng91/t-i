@@ -546,6 +546,8 @@ var showbook=document.getElementById('banner');
 if(showbook.innerHTML==""){
 	var bookhtml='';
 	var books=lastread.getBook();
+	var t = false;
+	siteUrl = siteUrl.lastIndexOf("/") == 0 ? siteUrl : (siteUrl + "/");
 	if(books.length){
 		if(books.length>20)
 		{

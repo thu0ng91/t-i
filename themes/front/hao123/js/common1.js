@@ -613,7 +613,7 @@ function removebook(k){
 	}
 	
 function yuedu(){
-document.writeln("<a href=\"javascript:showbook();\">阅读记录</a>");
+document.writeln("<a href=\"javascript:showbook();\" style=\"font-weight:bold\">阅读记录</a>");
 }
 
 window.lastread = new LastRead();

@@ -205,3 +205,19 @@ a.go-top-btn,a.feedback-btn{display:block;width:50px;text-indent:-9999px; margin
 html{_background: url(about:black) no-repeat fixed;}
 
 #recbigbox{min-height:10px;_height:10px}
+
+/* read history */
+.u_tips{width:960px;padding-left:10px;padding-right:10px; margin:0 auto;line-height:34px; background-color:#ffffff;box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.15);border-radius:0px 0px 3px 3px;margin-bottom:7px;}
+.info_login{width:980px; margin:0 auto;}
+.info_login .cs1{ float:left;}
+.info_login .cs2{ float:right;margin-top:8px; text-align:right}
+#banner{clear:both;margin:0 auto;width:960px;}
+#banner2{clear:both;margin:5px auto 0;width:970px;}
+#banner li {list-style:none;float:left;width:468px;margin:1px;padding:2px 5px;height:25px;line-height:25px;background:#ffffff;border-bottom:1px solid #eee;}
+#banner li a.title{width:180px;height:25px;float:left;text-align:left;color:#111;overflow:hidden}
+#banner li a.chapter{width:250px;height:25px;float:left;text-align:left;color:#666;overflow:hidden}
+#banner li a.delbook{width:30px;float:right;padding:0 2px;border:0px solid #555;color:#333;}
+#banner li:hover{background:#b3eff4;}
+#banner .li_noread:hover{ background-color:#ffffff;}
+#banner li:hover a{color:#000;}
+#banner li:hover a.delbook{background:#fff;color:#666;}

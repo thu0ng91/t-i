@@ -3,7 +3,7 @@
  * 小说列表
  * 
  * Example:
- *  {novel_book name="recommend_book" cid=[1] limit=10 order="createtime desc" recommend=[1] id=[1,3]}
+ *  {novel_book name="recommend_book" cid=[1] limit=10 order="createtime desc" recommend=[1] id=[1,3] where='recommendlevel>= 3'}
  *      <li><a href='{$item->url}'>{$item->title}</a></li>
  *  {/novel_book}
  * 
@@ -34,6 +34,7 @@ function smarty_block_novel_book($params, $content, $template, &$repeat) {
     $order = '';
     $recommendLevel = 0;
     $idList = array();
+    $where = '';
 
     if (isset($params['cid']) && is_array($params['cid'])) {
         $cid = $params['cid'];
@@ -53,6 +54,10 @@ function smarty_block_novel_book($params, $content, $template, &$repeat) {
     }
     if (isset($params['recommend']) && is_array($params['recommend'])) {
         $recommendLevel = $params['recommend'];
+    }
+
+    if (isset($params['where'])) {
+        $where = $params['where'];
     }
 
     $itemVarName = 'item';
@@ -90,6 +95,10 @@ function smarty_block_novel_book($params, $content, $template, &$repeat) {
 
         if (!empty($idList)) {
             $criteria->addInCondition('id', $idList);
+        }
+
+        if ("" != $where) {
+            $criteria->addCondition($where);
         }
 
         $criteria->compare("status", Yii::app()->params['status']['ischecked']);

@@ -45,12 +45,14 @@
 			</div>
 			*}
 
+			{*
 			<div id="readid" class="readrecord">
 				<div class="recordbtn">阅读记录</div>
 				<div class="recordwrap" id="recorconid">
 					<i>暂无阅读记录...</i>
 				</div>
 			</div>
+			*}
 		</div>
 	</div>
 
@@ -58,10 +60,22 @@
 		<p><a href="{$FW_SITE_URL}" target="_self">首页</a>{novel_menu}|<a href="{novel_category_link id=$item->id}">{$item->title}</a>{/novel_menu}<a href="{novel_lastupdate_link}">最新更新</a>{*a href="{novel_rank_link}">小说排行榜</a>*}</p>
 	</div>
 
+	{* 阅读记录 *}
+	<div class="u_tips">
+	  <div class="info_login">
+	    <div class="cs1">亲爱的小说迷，上次看到哪了，请查看 <script type="text/javascript">yuedu();</script><a href="{Yii::app()->createUrl('shortcut/download')}" style="color:red">点击添加 {$siteinfo.SiteName} 到桌面</a></div>
+	    <div class="cs2">     
+	    </div>
+	  </div>
+	  <div id="banner" style="display:none;"></div>
+	  <div style="clear:both;height:0px;"></div>
+	</div>
+
 	{*
 	<div class="class_wraptop">
 	</div>
 	*}
+
 
 
 	{$content}

@@ -3,90 +3,98 @@
         <div id="consone">
             {* 分类头条 *}
             <ul style="display: block;" class="">
+            {novel_book order='recommendlevel desc,allclicks desc' limit=19}
+            {if $block.first}
                 <div class="indexonell">
-                    {novel_book id=[15]}
                     <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
                     <h2><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h2>
 					<span>{$item->summary|trim|truncate:50:'...'}
 					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
 					</span>
-                    {/novel_book}
                 </div>
+            {/if}
+            {if $block.index == 1}
                 <div class="indexonelc">
-                    {novel_book id=[13]}
                     <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
 					<span>{$item->summary|trim|truncate:50:'...'}
 					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
 					</span>
-                    {/novel_book}
+            {/if}
+            {if $block.index == 2 && $block.total > 1}
                     <ul class="clearfix">
-                        {novel_book cid=[10] order='allclicks desc' limit=8}
+            {/if}
+            {if $block.index >= 2 && $block.index <= 9}
                         <li><a href="{novel_category_link id=$item->cid}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
-                        {/novel_book}
+            {/if}
+            {if ($block.last && $block.index > 1 && $block.index <= 9) || $block.index == 9}
                     </ul>
-                    <h3><a href="/intro/37408">《武动乾坤》 天蚕土豆</a></h3>
-					<span>修炼一途，乃窃阴阳，夺造化，转涅盘，握生死，掌轮回。武之极，破苍穹，动乾坤！新书求收藏，求推荐，谢大…<a href="/intro/37408" class="green">阅读&gt;&gt;</a>
-					</span>
+            {/if}
+            {if !$block.last && $block.index == 10}
+                    <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
+                    <span>{$item->summary|trim|truncate:50:'...'}
+                    <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
+                    </span>           
                     <ul class="clearfix">
-                        <li><a href="/dushi" class="i1">[都市]</a><a href="/intro/18558" class="i2">官场之风流人生</a></li>
-                        <li><a href="/lunli" class="i1">[伦理]</a><a href="/intro/132561" class="i2">官色：攀上女领导</a></li>
-                        <li><a href="/wuxia" class="i1">[武侠]</a><a href="/intro/35471" class="i2">我的美女老师</a></li>
-                        <li><a href="/xuanhuan" class="i1">[玄幻]</a><a href="/intro/143155" class="i2">异人射仙传</a></li>
-                        <li><a href="/xuanhuan" class="i1">[玄幻]</a><a href="/intro/37491" class="i2">剑道独尊</a></li>
-                        <li><a href="/xianxia" class="i1">[仙侠]</a><a href="/intro/37413" class="i2">遮天</a></li>
-                        <li><a href="/xiuxian" class="i1">[修仙]</a><a href="/intro/37424" class="i2">凡人修仙传</a></li>
-                        <li><a href="/xuanhuan" class="i1">[玄幻]</a><a href="/intro/130956" class="i2">大主宰</a></li>
+             {/if}
+
+             {if $block.index > 10 && $block.index <= 18}
+                        <li><a href="{novel_category_link id=$item->cid}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
+             {/if}                       
+                {if ($block.last && $block.index > 10 && $block.index <= 18) || $block.index == 18}
                     </ul>
+                {/if}
+                {if $block.last}
                 </div>
+                {/if}
+                {/novel_book}
             </ul>
 
-            {foreach [10, 3, 1] as $v}
+            {foreach [10,3,1] as $v}
             <ul class="hidden">
+            {novel_book cid=[$v] order='recommendlevel desc,allclicks desc' limit=19}
+            {if $block.first}
                 <div class="indexonell">
-                	{*使用5级推荐*}
-                    {novel_book cid=[$v] recommend=[5] limit=1}
                     <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
                     <h2><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h2>
-					<span>{$item->summary|trim|truncate:50:'...'}
-					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
-					</span>
-                    {/novel_book}
+                    <span>{$item->summary|trim|truncate:50:'...'}
+                    <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
+                    </span>
                 </div>
+            {/if}
+            {if $block.index == 1}
                 <div class="indexonelc">
-                	{*使用4级推荐*}
-                    {novel_book cid=[$v] recommend=[4] order='allclicks desc' limit=9}
-                    {if $block.first}
                     <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
-					<span>{$item->summary|trim|truncate:50:'...'}
-					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
-					</span>
-                    <ul class="clearfix">
-                    {/if}
-                    {if !$block.first}
+                    <span>{$item->summary|trim|truncate:50:'...'}
+                    <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
+                    </span>
+            {/if}
+            {if $block.index == 2 && $block.total > 1}
+                <ul class="clearfix">
+            {/if}
+            {if $block.index >= 2 && $block.index <= 9}
                         <li><a href="{novel_category_link id=$item->cid}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
-                    {/if}
-                    {if $block.last}
+            {/if}
+            {if ($block.last && $block.index > 1 && $block.index <= 9) || $block.index == 9}
                     </ul>
-					{/if}
-                    {/novel_book}
-                	{*使用3级推荐*}
-                    {novel_book cid=[$v] recommend=[3] order='allclicks desc' limit=9}
-                    {if $block.first}
+            {/if}
+            {if !$block.last && $block.index == 10}
                     <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
-					<span>{$item->summary|trim|truncate:50:'...'}
-					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
-					</span>
+                    <span>{$item->summary|trim|truncate:50:'...'}
+                    <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
+                    </span>           
                     <ul class="clearfix">
-                    {/if}
-                    {if !$block.first}
+             {/if}
+
+             {if $block.index > 10 && $block.index <= 18}
                         <li><a href="{novel_category_link id=$item->cid}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
-                    {/if}
-                    {if $block.last}
+             {/if}                       
+                {if ($block.last && $block.index > 10 && $block.index <= 18) || $block.index == 18}
                     </ul>
-					{/if}
-                    {assign "i" $i+1}
-                    {/novel_book}                    
+                {/if}
+                {if $block.last && $block.total > 0}
                 </div>
+                {/if}
+                {/novel_book}
             </ul>
             {/foreach}
 

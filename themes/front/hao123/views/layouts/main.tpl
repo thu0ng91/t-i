@@ -57,7 +57,7 @@
 	</div>
 
 	<div id="nav">
-		<p><a href="{$FW_SITE_URL}" target="_self">首页</a>{novel_menu}|<a href="{novel_category_link id=$item->id}">{$item->title}</a>{/novel_menu}<a href="{novel_lastupdate_link}">最新更新</a>{*a href="{novel_rank_link}">小说排行榜</a>*}</p>
+		<p><a href="{$FW_SITE_URL}" target="_self">首页</a>{novel_menu}|<a href="{novel_category_link id=$item->id}">{$item->title}</a>{/novel_menu}|<a href="{novel_lastupdate_link}">最新更新</a>{*a href="{novel_rank_link}">小说排行榜</a>*}</p>
 	</div>
 
 	{* 阅读记录 *}

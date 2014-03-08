@@ -43,13 +43,13 @@
                 {if ($block.last && $block.index > 10 && $block.index <= 18) || $block.index == 18}
                     </ul>
                 {/if}
-                {if $block.last}
+                {if $block.last && $block.total > 1}
                 </div>
                 {/if}
                 {/novel_book}
             </ul>
 
-            {foreach [10,3,1] as $v}
+            {foreach [1,2,4,5,6,7,8,9,10,11,12,13] as $v}
             <ul class="hidden">
             {novel_book cid=[$v] order='recommendlevel desc,allclicks desc' limit=19}
             {if $block.first}
@@ -91,7 +91,7 @@
                 {if ($block.last && $block.index > 10 && $block.index <= 18) || $block.index == 18}
                     </ul>
                 {/if}
-                {if $block.last && $block.total > 0}
+                {if $block.last && $block.total > 1}
                 </div>
                 {/if}
                 {/novel_book}
@@ -102,7 +102,7 @@
         <div class="indexonelr" id="tabsone">
             <ul>
                 <li class="cur">热书</li>
-                {novel_category id=[10,3,1]}
+                {novel_category id=[1,2,4,5,6,7,8,9,10,11,12,13]}
                 <li>{$item->title}</li>
                 {/novel_category}
                 {*

@@ -1,0 +1,710 @@
+/* CSS Document */
+* {
+	margin:0;
+	padding:0;
+}
+body {
+	font-size:12px;
+	color:#333;
+	font-family:"微软雅黑", "宋体", Simsum;
+}
+a {
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+li {
+	list-style:none;
+}
+img {
+	border:none;
+}
+h4 {
+	font-size:14px;
+}
+h5 {
+	font-size:12px;
+}
+
+
+.xx_top {
+	background:url(../image/bs_tbg.gif)/*tpa=http://www.qingkan.net/template/default/image/bs_tbg.gif*/;
+	height:27px;
+	line-height:27px;
+	padding-left:20px;
+}
+.xx_top h5 {
+	display:block;
+	float:left;
+}
+.xx_top span a {
+	float:right;
+	display:block;
+	height:27px;
+	padding-right:10px;
+	color:#333;
+}
+.xx_top span a:hover {
+	color:#ff6600;
+	text-decoration:underline;
+}
+.clear {
+	line-height:0px; 
+	height:0px;
+	clear:both;
+	display:block;
+	font-size:0px;
+}
+#warpper {
+	width:960px;
+	margin:0px auto;
+}
+#cont1 {
+	width:960px;
+	height:312px;
+	overflow:hidden;
+}
+#cont1 #cont1_1 {
+	width:220px;
+	float:left;
+	height:300px;
+	margin-right:10px;
+	border:1px solid #ccc;
+}
+#cont1 #cont1_1 h5{
+	display:block;
+	height:29px;
+	font-weight:100;
+	line-height:29px;
+	background:url(../image/sy_29.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/sy_29.gif*/ repeat-x;
+}
+#cont1 #cont1_1 h5 span {
+	display:block;
+	width:70px;
+	float:left;
+	border-right:1px solid #ccc;
+	text-align:center;
+}
+	
+#cont1 #cont1_1 h5 .hover{
+	background:url(../image/sy_27.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/sy_27.gif*/ repeat-x;
+	font-weight:bold;
+}
+
+#cont1 #cont1_1 ul {
+	padding-top:5px;
+}
+#cont1 #cont1_1 ul li {
+	display:block;
+	height:26px;
+	line-height:26px;
+	overflow:hidden;
+	padding-left:10px;
+	padding-right:15px;
+	color:#666;
+	width:190px;
+}
+#cont1 #cont1_1 ul li span a{
+	color:#888;
+}
+#cont1 #cont1_1 ul li a {
+	color:#333;
+}
+#cont1 #cont1_1 ul li a:hover {
+	color:#ff6600;
+}
+
+#cont1 #cont1_1 ul li a:hover span {
+	color:#ff6600;
+}
+
+
+
+
+#cont1 #cont1_2 {
+	width:495px;
+	height:300px;
+	overflow:hidden;
+	float:left;
+	border:1px solid #ccc;
+}
+#cont1 #cont1_2 .meanbox {
+	width:480px;
+	padding-top:10px;
+	padding-left:10px;
+	height:280px;
+	color:#888;
+}
+
+#cont1 #cont1_2 .meanbox  h3 {
+	font-size:14px;
+	height:24px;
+	line-height:24px;
+}
+#cont1 #cont1_2 .meanbox a{
+	color:#333;
+}
+#cont1 #cont1_2 .meanbox a:hover{
+	color:#ff6600;
+}
+#cont1 #cont1_2 .jstxtrit {
+	width:285px;
+	float:left;
+}
+#cont1 #cont1_2 .Contiguous {
+	height:64px;
+	background:url(../image/hdpxzalbg.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/hdpxzalbg.gif*/ no-repeat #f2f2f2;
+	margin-bottom:8px;
+	padding-left:15px;
+}
+#cont1 #cont1_2 .jstxtbox {
+	clear:both;
+	height:64px;
+	padding-left:15px;
+	margin-bottom:8px;
+}
+#cont1 #cont1_2 .jsimglft {
+	width:190px;
+		border:1px solid #ccc;
+	height:278px;
+	float:left;
+}
+#cont1 #cont1_2 .jsimglft img {
+	width:190px;
+	height:278px;
+}
+#cont1 #cont1_2 .jsimgrit {
+	height:64px;
+	width:52px;
+	float:left;
+}
+#cont1 #cont1_2 .jsimgrit img {
+	width:50px;
+	border:1px solid #ccc;
+	height:62px;
+}
+#cont1 #cont1_2 .jstxtlist {
+	float:right;
+	width:210px;
+}
+#cont1 #cont1_2 .jstxtlist p {
+	line-height:16px;
+}
+
+
+#cont1 #cont1_3 {
+	float:right;
+	width:222px;
+	height:300px;
+}
+
+#cont1 #cont1_3 .ph_box {
+	border:1px solid #ccc;
+	height:300px;
+	margin-bottom:10px;
+}
+#cont1 #cont1_3 .ph_box ul {
+	display:block;
+	height:240px;
+}
+.ph_box .xx_top p {
+	float:right;
+	display:block;
+	width:70px; overflow:hidden;
+}
+.ph_box  .xx_top p span {
+	display:block;
+	padding:0px 10px;
+	float:left;
+}
+.ph_box .xx_top p span.hover {
+	background:url(../image/sy_27.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/sy_27.gif*/;
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
+
+.ph_box  ul {
+	display:block;
+	clear:both;
+	margin:5px 0px 0px 10px;
+	background:url(../image/index_listbg.gif)/*tpa=http://www.qingkan.net/template/default/image/index_listbg.gif*/ no-repeat;
+}
+.ph_box  ul li {
+	display:block;
+	padding-left:25px;
+	height:29px;
+	vertical-align:bottom;
+	width:175px;
+	border-bottom:1px dashed #ccc;
+	line-height:29px;
+}
+
+.ph_box ul li .sp_name {
+	display:block;
+	float:left;
+	height:29px;
+	width:120px;
+	overflow:hidden;
+}
+.ph_box  ul li .sp_zuozhe {
+display:block;
+height:29px;
+float:right;
+width:55px;
+color:#888;
+overflow:hidden;
+text-align:right;
+}
+.ph_box  ul li .sp_data {
+	display:block;
+	height:23px;
+	width:55px;
+	padding-top:6px;
+	float:right;
+	text-align:right;
+	color:#888;
+	overflow:hidden;
+}
+.ph_box  ul li a {
+	color:#333;
+}
+
+.ph_box  ul li a:hover {
+	color:#ff6600;
+	text-decoration:underline;
+}
+.ph_box  .more {
+	text-align:right;
+	display:block;
+	height:28px;
+	clear:both;
+	padding-right:10px;
+	line-height:28px;
+}
+.ph_box  p a{
+	color:#333;
+}
+.ph_box  p a:hover {
+	color:#ff6600;
+}
+
+
+
+#cont2 {
+	width:960px;
+}
+#cont2 .cont2_left {
+	height:241px;
+	width:727px;
+	border:1px solid #ccc;
+	border-top:0px;
+	float:left;
+
+}
+.cont2_left .l_top {
+	background:url(../image/index_tconb.gif)/*tpa=http://www.qingkan.net/template/default/image/index_tconb.gif*/;
+	line-height:30px;
+	height:30px;
+	width:727px;
+}
+.cont2_left .l_top h4 {
+	color:#fff;
+	display:block;
+	float:left;
+	width:110px;
+	text-align:center;
+}
+.cont2_left .l_top span {
+	float:right;
+	padding-right:10px;
+	display:block;
+}
+.cont2_left .l_top span a {
+	color:#333;
+}
+.cont2_left .l_top span a:hover {
+	color:#ff600;
+	text-decoration:underline;
+}
+.cont2_left .l_cont {
+	clear:both;
+}
+.l_box {
+	width:342px;
+	height:200px;
+	overflow:hidden;
+	float:left;
+	padding:10px 10px 0px 10px;
+}
+.cont2_left .l_box h4 {
+	font-size:14px;
+	line-height:24px;
+	height:24px;
+	display:block;
+	clear:both;
+}
+.l_box h4 a {
+	color:#333;
+}
+.l_box h4 a:hover {
+	color:#ff6600;
+}
+.l_box .p_img {
+	display:block;
+	float:left;
+	padding-top:6px;
+}
+.l_box .p_img img {
+	width:104px;
+	height:153px;
+	padding:3px;
+	border:1px solid #ccc;
+}
+.l_box .p_img a:hover img {
+	border:2px solid #ffb94f;
+	padding:2px;
+}
+
+.l_box ul {
+	display:block;
+	padding-top:3px;
+	float:right;
+}
+.l_box ul li{
+	display:block;
+	width:210px;
+	overflow:hidden;
+	line-height:24px;
+	height:24px;
+	color:#666;
+}
+.l_box ul li a {
+	color:#333;
+}
+.l_box ul li span a{
+	color:#888;
+}
+.l_box ul li a:hover {
+	color:#ff6600;
+}
+.l_box ul li a:hover span {
+	color:#ff6600;
+}
+#cont2_left_2 .l_box {
+	padding:0;
+	width:358px;
+	border:1px solid #ccc;
+	border-top:none;
+	height:241px;
+	margin-right:8px;
+}
+#cont2_left_2 .l_box .l_box_top {
+	height:32px;
+	line-height:32px;
+	background:url(../image/index_tconb2.gif)/*tpa=http://www.qingkan.net/template/default/image/index_tconb2.gif*/ no-repeat;
+}
+#cont2_left_2 .l_box .l_box_top h3 {
+	display:block;
+	color:#333;
+	padding-left:15px;
+	font-size:14px;
+	float:left;
+}
+#cont2_left_2 .l_box .l_box_top span {
+	float:right;
+	padding-right:10px;
+}
+#cont2_left_2 .l_box .l_box_top span a {
+	color:#333;
+}
+#cont2_left_2 .l_box .l_box_cont {
+	padding:5px 10px 10px 10px;
+	height:196px;
+}
+#cont2_left_2 .l_box .l_box_cont h4 {
+	line-height:24px;
+}
+
+
+
+#cont2 .cont2_right {
+	float:right;
+	color:#333;
+	margin-bottom:10px;
+	line-height:20px;
+	height:240px;
+	width:220px;
+	border:1px solid #ccc;
+}
+
+
+
+#cont3 {
+	width:960px;
+	margin-bottom:10px;
+}
+#cont3 #update .l_top {
+	background:url(../image/index_tconb.gif)/*tpa=http://www.qingkan.net/template/default/image/index_tconb.gif*/;
+	line-height:30px;
+	height:30px;
+	width:727px;
+}
+#cont3 #update .l_top h4 {
+	color:#fff;
+	display:block;
+	float:left;
+	width:110px;
+	text-align:center;
+}
+#cont3 #update .l_top span {
+	float:right;
+	padding-right:10px;
+	display:block;
+}
+#cont3 #update {
+	width:728px;
+	float:left;
+	border:1px solid #ccc;
+	border-top:none;
+	margin-bottom:10px;
+}
+#cont3 #update .updatetitle {
+	color:#333333;
+	background-color: #f5f5f5;
+	width: 728px;
+	height: 22px;
+	padding-top: 10px;
+}
+#cont3 #update .updatemain{
+	
+}
+#cont3 #update .updatemain ul{
+	height:22px;
+	padding-top:10px;
+}
+#cont3 #update .updatemain ul li {
+	
+}
+#cont3 #update .updatemain .a1{
+	background-color:#f8f8f8;
+}
+
+.uplist3z {
+	text-align:center; width:30px; display:inline; float:left; margin-left:5px; clear:both;overflow:hidden;
+}
+.uplist3a {
+	text-align:center; width:60px; display:inline; float:left;overflow:hidden;
+}
+.uplist3b {
+	text-align:left; padding-left:10px; width:350px; display:inline; float:left; margin-left:5px; white-space: nowrap; overflow:hidden;
+}
+.uplist3c {
+	text-align:center; width:50px; display:inline; float:left;overflow:hidden;
+}
+.uplist3d {
+	text-align:center; width:110px; display:inline; float:left;overflow:hidden;
+}
+.uplist3e {
+	text-align:center; width:100px; display:inline; float:left; margin-left:5px; overflow:hidden;
+}
+.ts_font01{
+	color:#ec6200; font-size:14px;
+}
+
+#cont3 #cont3_bar {
+	float:right;
+	width:222px;
+}
+#cont3 #cont3_bar .ph_box {
+	border:1px solid #ccc;
+	margin-bottom:10px;
+}
+#cont3 #cont3_bar .ph_box ul{	
+	margin-bottom:12px;
+}
+
+
+#paihang {
+	margin-bottom:10px;
+}
+#paihang #ph_top {
+height:40px;
+width:958px;
+border:1px solid #ccc;
+border-bottom:0px;
+border-bottom:2px solid #000;
+background:url(../image/phb_top_bg.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/phb_top_bg.gif*/;
+}
+#paihang #ph_top img {
+    margin-top:6px; margin-left:12px;
+}
+#paihang #ph_cont {
+	padding-left:10px;
+	width:948px;
+	padding-top:10px;
+	border:1px solid #ccc;
+}
+#paihang #ph_cont .sy_ph_bx {
+	width:237px;
+	float:left;
+	margin-bottom:10px;
+}
+#paihang #ph_cont .ph_box {
+	width:225px;
+	border:1px solid #ccc;
+	padding-bottom:0px;
+}
+#paihang #ph_cont .ph_box .xx_top p {
+	float:right;
+	display:block;
+	padding-right:11px;
+}
+#paihang #ph_cont .ph_box .xx_top p span {
+	display:block;
+	padding:0px 10px;
+	float:left;
+}
+#paihang #ph_cont .ph_box .xx_top p span.hover {
+	background:url(../image/sy_27.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/sy_27.gif*/;
+	border-left:1px solid #ccc;
+	border-right:1px solid #ccc;
+}
+
+#paihang #ph_cont .ph_box ul {
+	display:block;
+	clear:both;
+	height:300px;
+	margin:5px 10px 10px 10px;
+	background:url(../image/index_listbg.gif)/*tpa=http://www.qingkan.net/template/default/image/index_listbg.gif*/ no-repeat;
+}
+#paihang #ph_cont .ph_box li {
+	display:block;
+	padding-left:25px;
+	height:29px;
+	border-bottom:1px dashed #ccc;
+	line-height:29px;
+	vertical-align: bottom;
+}
+#paihang #ph_cont .ph_box li .sp_01 {
+	display:block;
+	float:left;
+}
+#paihang #ph_cont .ph_box li .sp_01 a {
+	color:#333;
+}
+#paihang #ph_cont .ph_box li .sp_01 a:hover {
+	color:#ff6600;
+	text-decoration:underline;
+}
+#paihang #ph_cont .ph_box li .sp_02 {
+	float:right;
+	display:block;
+	color:#888;
+}
+#paihang #ph_cont .ph_box li .sp_02 a {
+	color:#888;
+}
+#paihang #ph_cont .ph_box li .sp_02 a:hover {
+	color:#ff6600;
+}
+#paihang #ph_cont .ph_box .more {
+	display:block;
+	text-align:right;
+	padding-right:10px;
+	clear:both;
+	border-top:1px solid #f0eced;
+	height:24px;
+	line-height:24px;
+	background:#f7f7f7;
+}
+#paihang #ph_cont .ph_box .more a {
+	color:#333;
+}
+
+
+
+#youqing {
+	margin-bottom:10px;
+	border:1px solid #ccc;
+}
+#youqing .xx_top {
+	background:url(../image/index_toph.gif)/*tpa=http://www.qingkan.net/template/default/image/index_toph.gif*/;
+	padding:0px;
+}
+#youqing .xx_top h5 {
+	background:url(../image/xx_top.gif)/*tpa=http://www.qingkan.net/template/default/image/xx_top.gif*/ no-repeat;
+	display:block;
+	padding-left:20px;
+	height:27px;
+}
+#youqing .xx_cont {
+	height:auto;
+	padding:10px 10px 10px 13px;
+}
+#youqing .xx_cont a {
+	color:#333;
+	margin-right:10px;
+	line-height:20px;
+}
+#youqing .xx_cont a:hover{
+	color:#ff6600;
+}
+
+#footer {
+	width:960px;
+	color:#888;
+	line-height:24px;
+	text-align:center;
+	border-top:2px solid #E3E3E3;
+	margin:0px auto;
+	padding-top:5px;
+}
+#footer .p_01 a{
+	color:#333;
+}
+#footer p a {
+	color:#888;
+}
+#fnpd_nav {
+	height:33px;
+	border-right:1px solid #ccc;
+	width:960px;
+	margin:0px auto;
+	background:url(../image/nav_menubg_05.gif);
+	font-size:12px;
+	margin-bottom:10px;
+}
+#fnpd_nav h3 {
+	color:#fff;
+	background:url(../image/nav_menubg_03.gif);
+	width:118px;
+	padding-left:20px;
+	display:block;
+	height:33px;
+	float:left;
+	font-size:12px;
+	line-height:33px;
+}
+#fnpd_nav ul {
+	display:block;
+	width:780px;
+	float:left;
+	padding-left:20px;
+	height:33px;
+}
+#fnpd_nav ul li {
+	display:block;
+	float:left;
+	color:#666;
+	line-height:33px;
+	padding:0px 10px;
+}
+#fnpd_nav ul li a {
+	color:#333;
+	text-decoration:none;
+}
+#fnpd_nav ul li a:hover {
+	color:#ff6600;
+	text-decoration:underline;
+}

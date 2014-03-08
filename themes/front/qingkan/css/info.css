@@ -1,0 +1,620 @@
+/* CSS BOOK */
+a{ color:#000; text-decoration:none; }
+a:hover{ color:#f60; text-decoration:underline; }
+.top8{ margin-top:8px; }
+.clear{ clear:both; height:0px;line-height:0px; font-size:0px; }
+.sy_contain{ width:960px; margin:0 auto 10px; background-color:#fff; color:#373737;position:relative; clear:both; }
+.sy_left{ float:left; width:727px; background-color:#fff ; overflow: hidden; }
+.sy_right{ float:right; width:222px;background-color:#fff ;overflow: hidden; }
+.sy_kuang01{ border:1px solid #dfdbdb; width:725px; position:relative; z-index:1; }
+.sy_kuang02{ border:1px solid #dfdbdb;}
+.sy_kuang02 a img {border:1px solid #ccc;}
+.sy_kuang02 a:hover img {border:1px solid #ffb94f;}
+
+/*顶部整体*/
+.sy_contain  a{color:#444;}
+.sy_contain  a:hover{color:#f60;}
+.sy_qh{ border:1px solid #dfdbdb;}
+.sy_dh{background-color:#f6f7f7; padding:0px 10px 0px 10px; height:28px; width:940px; margin:0px auto 8px auto;}
+.sy_dh img{ margin-right:10px}
+.sy_dh p { display:block; padding-top:7px; float:left; }
+
+/*左侧*/
+.sy_left #layer1 {position:absolute; margin: 0px; width: 110px; display: block; height: 100px; left: -5px; top: -5px;z-index:0;}
+.sy_bt01{ background-image: url(../image/book_top.gif)/*tpa=http://www.qingkan.net/template/default/image/book_top.gif*/; background-repeat: repeat-x; background-position: left bottom; padding-bottom:10px; }
+.sy_bt01 .a1{ padding:0 10px; text-align:right}
+.sy_bt01 .a2{ text-align:center; margin:10px}
+.sy_bt01 .a3{ text-align:center; margin:10px ; color:#444; font-size:14px;}
+.sy_bt01 h1 {display:inline;}
+.sy_bt01 h1 a{color:#f27622;}
+.sy_bt01 h1 a:hover{color:#f27622;}
+.sy_nr02{ padding:20px 10px 10px 10px; width:705px}
+.sy_nr02_left{ float:left; width:230px; background-image: url(../image/book_cover.gif)/*tpa=http://www.qingkan.net/template/default/image/book_cover.gif*/; background-repeat: no-repeat; background-position: left top; }
+.sy_nr02_left img{ width:188px; height:270px; margin:12px 0 20px 15px}
+.sy_nr02_right{ float:right; width:475px; color:#444444}
+.sy_nr02_right li{ line-height:22px}
+.sy_nr02_right .a1{ font-size:14px; font-weight:bold}
+.sy_nr02_right .a2{ /*text-indent:0;*/margin-top:10px}
+.sy_nr02_right .a2 a,.sy_nr02_right .a3 a{ color:#3778ba; text-decoration: underline; margin:0 5px }
+.sy_nr02_right .a2 a:hover,.sy_nr02_right .a3 a:hover{ color:#ff0000}
+.sy_nr02_right .a3{ margin:2px 0; color:#3778ba; }
+.sy_nr02_right .a3 a{ text-decoration: underline; }
+.sy_zstb{ color: #f27622; background-image: url(../image/keyword.gif)/*tpa=http://www.qingkan.net/template/default/image/keyword.gif*/; background-repeat: no-repeat; text-align: center; height: 20px; line-height:20px; width: 68px; display: block; float:left; margin-right:10px;}
+
+/*右侧*/
+.sy_bt02{ height:27px; background-image: url(../image/bs_tbg.gif)/*tpa=http://www.qingkan.net/template/default/image/bs_tbg.gif*/; background-repeat: no-repeat; background-position: left top; padding-left:24px; line-height:27px; font-weight:bold}
+.sy_bt03{ height:27px; background-image: url(../image/book_svote.gif)/*tpa=http://www.qingkan.net/template/default/image/book_svote.gif*/; background-repeat: no-repeat; background-position: left top; padding-left:34px; line-height:27px; font-weight:bold; margin:5px 0}
+.sy_nr01{ padding:10px; position:relative;}
+.sy_nr01 .left{ float:left; width:100px;}
+.sy_nr01 .left span{ color:#f27622; font-weight:bold}
+.sy_nr01 .left li{ padding-left:10px;line-height:22px;}
+.sy_nr01 .right{ float:right; width:80px; text-align:center}
+.sy_nr04{ float:left; margin:10px 5px 0 10px}
+.sy_nr04 p{ width:84px; white-space:nowrap; overflow:hidden; text-align:center; margin:5px 0}
+.sy_nr04 img{ width:80px; height:100px; border:1px solid #cccccc; padding:2px; background-color:#fff;}
+.ul03 {line-height:200%}
+/*按钮*/
+.bookbtn01{ float:right;background:url(../image/favorite.gif)/*tpa=http://www.qingkan.net/template/default/image/favorite.gif*/ no-repeat 0 0; border:0; width:75px; height:19px; cursor:pointer;text-align: center; color:#fff; margin-top:4px; }
+.bookbtn02{ background:url(../image/book_report.gif)/*tpa=http://www.qingkan.net/template/default/image/book_report.gif*/ no-repeat 0 0; border:0; width:75px; height:24px; cursor:pointer;text-align: center; color:#fff; }
+.bookbtn03{ background:url(../image/book_read.gif)/*tpa=http://www.qingkan.net/template/default/image/book_read.gif*/ no-repeat 0 0; border:0; width:145px; height:44px; cursor:pointer;text-align: center; color:#fff; float:left; clear:both; }
+.bookbtn04{ border:0; width:70px; height:27px; cursor:pointer; padding-left:30px; font-weight:bold;font-family: "微软雅黑"; float:left;font-size:14px; margin:5px 0 0 2px;display: block; padding-top:8px; }
+.bookbtn06{ background:url(../image/book_vote.gif)/*tpa=http://www.qingkan.net/template/default/image/book_vote.gif*/ no-repeat 0 0; border:0; width:65px; height:77px; cursor:pointer;text-align: center; color:#fff; }
+.bookbtn04 a{ color:#fff; font-weight:bold; text-decoration:none;}
+.bookbtn04 img{ margin-right:3px}
+.sy_anniu { padding-bottom:5px; height:48px;  clear:both; }
+.sy_anniu .sy_zstb{ clear:both; height:22px; }
+#keyword { padding:10px; height:30px; }
+#bookbutton a { line-height:18px; }
+.sy_anniu #btn_vote{color:#fff; background:url(../image/btn_vote.gif)/*tpa=http://www.qingkan.net/template/default/image/btn_vote.gif*/}
+.sy_anniu #btn_vote:hover {color:#ee600a;text-decoration:none; background-position:0px 35px;}
+.sy_anniu #btn_down {color:#fff; background:url(../image/btn_down.gif)/*tpa=http://www.qingkan.net/template/default/image/btn_down.gif*/}
+.sy_anniu #btn_down:hover {color:#ee600a;text-decoration:none; background-position:0px 35px;}
+.sy_anniu #btn_mark {color:#fff; background:url(../image/btn_mark.gif)/*tpa=http://www.qingkan.net/template/default/image/btn_mark.gif*/}
+.sy_anniu #btn_mark:hover {color:#ee600a;text-decoration:none; background-position:0px 35px;}
+.downeb{float: right; background:url(../image/ten_down.gif)/*tpa=http://www.qingkan.net/template/default/image/ten_down.gif*/ no-repeat 0 0; border:0; width:126px; height:20px; line-height:20px; cursor:pointer;text-align: center;color:#f03001; display: block; margin-top:5px}
+.downeb a:hover{text-decoration:none;}
+.wpinglun{margin:10px}
+.sidead{padding:10px}
+
+/*书籍信息*/
+#articleinfo{ display:block; height:200px; }
+.h1title{ font-family: "微软雅黑","黑体"; font-size:28px; color:#f27622; }
+.tauthor{ margin-left:20px; }
+.sy_font02{ font-weight:bold; color:#373737; }
+.sy_font03{ color:#3778ba; }
+#zp_jj .sp_01 { float:left; display:block; padding-top:5px; padding-bottom:5px; }
+#zp_jj .sp_02 { text-align:right; float:right; display:block; }
+#zp_jj .sp_02 img { margin-right:3px; }
+#articledescandeit{ display:block; height:200px; }
+.wb_more{ display:block; text-align:right;}
+.wb_more a{ color:#0066FF; text-decoration:underline; }
+
+/*书籍数据*/
+.sy_qh .mod{background-image: url(../image/book_stop.gif)/*tpa=http://www.qingkan.net/template/default/image/book_stop.gif*/; background-repeat: repeat-x; height:34px;padding:0 5px;}
+.sy_qh .mod .hover{ float:left; margin-right:5px; width:93px; height:34px; line-height:40px; text-align:center;background-image: url(../image/book_data.gif)/*tpa=http://www.qingkan.net/template/default/image/book_data.gif*/; background-repeat: no-repeat; font-weight:bold; background-position: bottom; }
+.sy_qh .date{ color:#444444}
+.sy_qh .table01{ margin:10px 0;}
+.sy_qh .table01 td{ padding:2px 0 0 10px; height:20px}
+
+/*最新章节*/
+.tj_listbox { border:1px solid #d6d6d6; margin-bottom:8px;}
+.tj_listtt { background-image: url(../image/book_stop.gif)/*tpa=http://www.qingkan.net/template/default/image/book_stop.gif*/; background-repeat: repeat-x; height:34px;padding:0 10px; }
+.tj_listtt img{ margin-right:5px}
+.tj_listtt span { display: block }
+.tj_zjname { float: left;font-weight: bold; color:#373737; padding-top:10px}
+.tj_listbox ul { background-color:#fff}
+.tj_listbox ul li {border-bottom:1px solid #dfdbdb; line-height: 25px; display: block; height: 25px; clear: both; vertical-align: middle }
+.tj_listbox ul li span { display: block; float: left; border-right: #dfdbdb 1px solid }
+.tj_listbox ul li a { color:#333333 }
+.tj_bg:hover { background: url(../image/ten_list1.gif)/*tpa=http://www.qingkan.net/template/default/image/ten_list1.gif*/ repeat-x 0px 0px }
+.tj_bg img{ margin-left:8px}
+.tj_l02 { padding-left: 1%; width: 75%; padding-top:1px; }
+.tj_l02 a { line-height: 24px;height: 24px; }
+.tj_l02 i { padding-bottom: 0px; line-height: 12px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline-block; height: 12px; padding-top: 0px }
+.tj_l03 { padding-left: 1%; width: 10%; color: #999999; }
+.tj_listbox ul li span.l04 { border-right-style: none; padding-left: 1%; width: 20%; color: #999999 }
+.tj_listbox ul li.litt { line-height: 25px; height: 25px; color:#fff;background-image: url(../image/ten_list2.gif)/*tpa=http://www.qingkan.net/template/default/image/ten_list2.gif*/; background-repeat: repeat-x; }
+.tj_listbox ul li.litt *{color:#fff; }
+.tj_listbox ul li.litt .l04{color:#fff; }
+.tj_litt_juan { border-bottom:1px solid #c2d0e0; text-align: center; line-height: 31px; background: url(../image/ten_list1.gif)/*tpa=http://www.qingkan.net/template/default/image/ten_list1.gif*/; height: 31px;font-size: 14px; }
+.tj_juan { border-bottom:#3a4857 1px solid; text-align: center; line-height: 24px; background: #fff; height: 24px; color: #f60; font-weight: bold }
+.tj_listbox .tj_morezj { line-height: 24px; background-color:#f2f2f2; height:24px } 
+.tj_dy{ padding:10px; width:705px}
+.tj_dybt a { width: 173px; display: block; background: url(../image/readall1.gif)/*tpa=http://www.qingkan.net/template/default/image/readall1.gif*/ no-repeat 0px 0px; float: left; height: 48px }
+.tj_dybt a:hover { width: 173px; display: block; background: url(../image/readall2.gif)/*tpa=http://www.qingkan.net/template/default/image/readall2.gif*/ no-repeat 0px 0px; height: 48px; text-decoration: none }
+.tj_dybt a span { visibility: hidden; }
+.lisemenu { float:right; }
+.lisemenu a { display:block; height:36px; width:98px; text-indent:-999px; background:url(../image/ten_read.gif)/*tpa=http://www.qingkan.net/template/default/image/ten_read.gif*/}
+.lisemenu a:hover { background-position:0px -36px; }
+
+
+#star {
+	font-size:35px;
+	font-weight:bold;
+	font-family:"华文仿宋";
+        color:#ff6600;
+}
+#starnum {
+	font-size:16px;
+	font-weight:bold;
+	font-family:"华文仿宋";
+        color:#ff6600;
+}
+
+/*打赏*/
+#dashang {
+	margin-top:10px;
+	height:245px;
+}
+#dashang .mod li {
+	width:93px;font-weight:bold; background-position: bottom;height:34px; text-align:center; line-height:34px; display:block;
+}
+#dashang .main {
+	padding-top:15px;
+}
+#dashang .left_ds {
+float:left; width:225px; padding-left:85px; background:url(../image/goldpic.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/goldpic.gif*/ 0px 50px no-repeat;
+}
+#dashang .left_ds h3 {
+	display:block;
+	font-size:12px;
+	height:25px;
+	background:url(../image/syds_03.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/syds_03.gif*/ 70px 0px no-repeat;
+}
+#dashang .left_ds ul{
+	line-height:24px;
+	height:144px;
+	display:block;
+}
+#dashang .left_ds #ul_ph {
+	background:url(../image/ul_phbg.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/ul_phbg.gif*/ no-repeat 0px 2px;
+	padding-left:25px;
+	width:200px;
+	display:block;
+}
+#dashang .left_ds #ul_ph li {
+	display:block;
+	line-height:24px;
+	height:24px;
+	overflow:hidden;
+	width:180px;
+}
+#dashang .left_ds ul li {
+	display:block;
+	line-height:24px;
+	height:24px;
+	overflow:hidden;
+	width:200px;
+}
+
+#dashang .left_ds b {
+	color:#ff0c00;
+}
+#dashang .right_ds {
+	float:left;
+	width:360px;
+	background:url(../image/sy_bgbg.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/sy_bgbg.gif*/ no-repeat;
+	padding-left:50px;
+}
+#dashang .right_ds ul {
+	display:block;
+	width:350px;
+	height:145px;
+}
+#dashang .right_ds ul li {
+	display:block;
+	width:350px;
+	height:26px;
+	border-bottom:1px dashed #ccc;
+	line-height:26px;
+	vertical-align:bottom;
+	clear:both;
+}
+#dashang .right_ds ul li .sp_name {
+	display:block;
+	width:60px;
+	overflow:hidden;
+	padding-right:10px;
+	float:left;
+	padding-left:10px;
+}
+#dashang .right_ds ul li .sp_xinxi {
+	display:block;
+	float:left;
+	width:150px;
+	white-space: nowrap;
+	overflow:hidden;
+}
+#dashang .right_ds ul li .sp_xinxi b {
+	color:#ff0c00;
+}
+#dashang .right_ds ul li .sp_time {
+	float:left;
+	color:#888;
+	display:block;
+}
+
+#dashang .right_ds p input {
+	background:url(../image/syds_16.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/syds_16.gif*/;
+	width:130px;
+	height:38px;
+	border:0;
+	cursor:pointer;
+}
+
+#wfpf_cont {
+height:30px;
+width:135px;
+top:0px;
+position:absolute;
+z-index:99;
+left:0px;
+display:none;
+}
+
+#box{width:400px;background:#ccc;border:#666 5px solid;margin:0 auto;}
+#box h4{height:22px;padding:8px 10px 0;color:#fff;font-size:14px;background:#999;}
+#box .content{padding:20px;}
+
+#doPoint span{background:url(../image/star_small.gif)/*tpa=http://www.qingkan.net/template/default/image/star_small.gif*/ 2px 0 no-repeat;width:110px;display:block;height:19px;}
+#doPoint span small {float:left;width:11px;height:0;padding-top:19px;font-size:0;overflow:hidden;cursor:pointer;}
+#doPoint .star10{ background-position:2px 0px; }
+#doPoint .star9{ background-position:2px -19px;}
+#doPoint .star8{ background-position:2px -38px;}
+#doPoint .star7{ background-position:2px -57px;}
+#doPoint .star6{ background-position:2px -76px;} 
+#doPoint .star5{ background-position:2px -95px;}
+#doPoint .star4{ background-position:2px -114px;}
+#doPoint .star3{ background-position:2px -133px;}
+#doPoint .star2{ background-position:2px -152px;}
+#doPoint .star1{ background-position:2px -171px;}
+#doPoint .star0{ background-position:2px -190px;}
+
+#huadong{padding:10px 0px 5px 0px ;color:#f27622;font-weight:bold;}
+.a4 {margin-bottom:10px;}
+.a4 span{ color:#ff0c00; font-weight:bold;}
+.tabletp .c1{ float:left; margin-left:5px; width:2px; height:10px; background-color:#FC0; display:block; }/*调整宽度投票*/
+.tabletp .c2{ float:left; margin-left:5px; width:10px; height:10px; background-color:#FC0; display:block; }/*调整宽度投票*/
+.tabletp .c3{ float:left; margin-left:5px; width:40px; height:10px; background-color:#FC0; display:block; }/*调整宽度投票*/
+.tabletp .c4{ float:left; margin-left:5px; width:50px; height:10px; background-color:#FC0; display:block; }/*调整宽度投票*/
+.tabletp .c5{ float:left; margin-left:5px; width:70px; height:10px; background-color:#FC0; display:block; }/*调整宽度投票*/
+
+
+
+
+
+
+
+
+
+/*评论*/
+#pinglun {
+width:725px;
+border:1px solid #dfdbdb;
+float:left
+}
+#pinglun  a {
+color:#666666;
+text-decoration:none;
+}
+/*切换*/
+.sy_qhc .mod{background-image: url(../image/sy_07.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/sy_07.gif*/; background-repeat: repeat-x; height:34px;padding:0 5px}
+.sy_qhc .mod ul{height:34px;}
+.sy_qhc .mod li{display: inline;}
+.sy_qhc .mod li a{ width:90px; float:left; height:34px; text-align:center; line-height:34px; background-image: url(../image/sy_06.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/sy_06.gif*/; background-repeat: no-repeat;background-position: right center; margin-right:5px }
+.sy_qhc .mod .hover a{ width:93px; background-image: url(../image/sy_05.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/sy_05.gif*/; background-repeat: no-repeat; font-weight:bold; background-position: bottom; }
+.sy_qhc .main{ color:#444444}
+.sy_qhc .table01{ margin:10px 0;}
+.sy_qhc .table01 td{ padding:2px 0 0 10px; height:20px}
+.sy_qhc .ul01{ padding:10px}
+.sy_qhc .ul01 li{ padding:3px 0}
+
+#pinglun .mod {
+position:relative;
+}
+#pinglun .mod a:hover {
+color:#ff6600;
+text-decoration:underline;
+}
+
+#pinglun  .mod span {
+display:block;
+position:absolute;
+top:10px;
+right:10px;
+}
+#pinglun  .mod span b {
+color:#ff6600;
+}
+
+#pinglun  .main {
+padding-top:20px;
+}
+#pinglun  .main .loading {
+margin:10px 10px 50px 350px;
+}
+#pinglun  .main .pl_list {
+display:block;
+width:722px;
+margin-bottom:20px;
+margin-left:3px;
+border-bottom:1px dashed #ccc;
+}
+#pinglun  .main .pl_list .kongbai {
+display:block;
+line-height:1px;
+font-size:1px;
+height:1px;
+clear:both;
+}
+#pinglun  .main .pl_list .pl_zuo {
+width:105px;
+padding-left:20px;
+float:left;
+}
+
+#pinglun  .main .pl_list .pl_zuo .p_img img{
+padding:5px;
+border:1px solid #ccc;
+width:80px;
+height:80px;
+margin-bottom:5px;
+}
+#pinglun  .main .pl_list .p_nr {
+text-align:center;
+display:block;
+width:90px;
+line-height:22px;
+}
+
+#pinglun  .main .pl_list .pl_you {
+width:580px;
+position:relative;
+padding-left:6px;
+float:left;
+}
+#pinglun  .main .pl_list .jiantou {
+position:absolute;
+top:40px;
+left:0px;
+}
+.pl_you h5 {
+font-size:14px;
+font-weight:100;
+display:block;
+}
+.pl_you h5 .pl_name {
+display:block;
+margin-bottom:5px;
+float:left;
+}
+.pl_you h5 .pl_time {
+display:block;
+color:#999999;
+margin-bottom:5px;
+font-size:12px;
+float:right;
+}
+.pl_you .pl_cont {
+clear:both;
+border:1px solid #f2ddda;
+padding:8px 5px 10px 10px!important;
+padding:4px 5px 10px 10px;
+background:#fffbf8;
+}
+.pl_you .pl_cont p {
+	/*全英文，无空格时，强制换行，防止撑破宽度*/
+	word-break:break-all;
+	overflow:auto;
+	line-height:25px;
+}
+.pl_you .pl_cont .pl_huifu {
+padding-left:20px;
+}
+.pl_you .pl_cont .pl_huifu img {
+margin:10px 0px 5px 0px;
+}
+
+.pl_you .pl_caozuo {
+text-align:right;
+display:block;
+padding:10px 0px 20px 0px;
+}
+
+.pl_you .pl_caozuo a {
+color:#2fa008;
+}
+.pl_you .pl_caozuo a b {
+color:#f50b0c;
+font-weight:bold;
+}
+.pl_you .pl_caozuo a span {
+color:#f50b0c;
+}
+.pl_you .pl_caozuo a:hover {
+color:#ff6600;
+text-decoration:underline;
+}
+
+#pinglunqu  {
+padding-left:15px;
+width:670px;
+position:relative;
+}
+
+
+#pinglunqu h3 {
+font-size:14px;
+display:block;
+height:30px;
+line-height:30px;
+}
+#pinglunqu h3 span {
+color:#ff6600;
+}
+#pinglunqu h3 a {
+color:#ff6600;
+}
+#pinglunqu h3 a:hover{
+text-decoration:underline;
+}
+#pinglunqu  .plq_login {
+display:block;
+height:28px;
+}
+#pinglunqu  .plq_login input {
+width:100px;
+height:18px;
+line-height:18px;
+}
+#pinglunqu .plq_login_load {
+HEIGHT:28PX;
+display:bolck;
+line-height:28px;
+}
+#pinglunqu .plq_name {
+display:block;
+height:28px;
+float:left;
+width:400px;
+position:relative;
+}
+#pinglunqu  .plq_name input {
+height:18px;
+line-height:18px;
+width:300px;
+}
+#pinglunqu  .plq_name img {
+top:1px;
+z-index:1;
+position:absolute;
+cursor:pointer;
+}
+#pinglunqu  .plq_cont {
+clear:both;
+}
+#pinglunqu  .plq_cont span {
+display:block;
+float:left;
+}
+#pinglunqu  .plq_cont textarea{
+width:590px;
+height:140px;
+font-size:12px;
+background:url(../image/srnrbg.gif)/*tpa=http://www.qingkan.net/template/default/image/srnrbg.gif*/;
+border:1px solid #999;
+padding:5px;
+}
+#pinglunqu #sp_menu {
+display:block;
+height:auto;
+left:278px;
+top:80px;
+width:200PX;
+width:auto;
+border:1px solid #ccc;
+z-index:2;
+background:#fff;
+position:absolute;
+}
+#pinglunqu #sp_menu li a {
+padding:0px 5px;
+height:24px;
+width:200PX;
+display:block;
+line-height:24px;
+}
+#pinglunqu #sp_menu li a:hover {
+background:#CEF0FF;
+}
+#pinglunqu #sp_menu .close{
+color:#FF3300;
+cursor:pointer;
+display:block;
+text-align:right;
+padding:5PX;
+}
+#pinglunqu #biaoqing {
+	padding-left:70px;
+	padding-top:10px;
+}
+#pinglunqu  .plq_ts {
+display:block;
+width:570px;
+padding:6px 10px 0px 20px;
+line-height:20px;
+background:url(../image/sy_ts2.gif) repeat-x;
+height:44px;
+margin:10px 0px 10px 60px;
+border:1px solid #f2ead3;
+}
+#pinglunqu  .plq_ts strong {
+color:#ff6600;
+}
+
+#pinglunqu .plq_caozuo{
+text-align:right;
+display:block;
+margin-top:10px;
+margin-bottom:10px;
+height:27px;
+display:block;
+clear:both;
+padding-right:10px;
+
+}
+#pinglunqu .plqloading {
+display:block;
+margin-top:10px;
+margin-bottom:10px;
+height:27px;
+clear:both;
+text-align:center;
+}
+#pinglunqu .plq_caozuo {
+position:relative;
+}
+#pinglunqu .plq_caozuo .txt {
+width:50px;
+height:18px;
+margin-right:45px;
+}
+#pinglunqu .plq_caozuo #codes {
+position:absolute;
+top:5px;
+right:150px;
+}
+#pinglunqu input {
+border:1px solid #999;
+}
+#pinglunqu .plq_caozuo .btn {
+background:url(../image/sy_anniu09.gif);
+border:0;
+cursor:pointer;
+height:27px;
+width:134px;
+}
+#info {
+float:right;
+height:24px;
+line-height:24px;
+}
+/* 快速发表 */
+#mdiv { position: absolute; border: 1px solid #CCC; top:0px; left: 0px; width: 70px; height: 110px; z-index:1;
+background-color: #FFFFFF; visibility: hidden; padding: 5px; overflow: hidden; text-align:center; }
+#mdiv a {line-height:24px; display:block; border-bottom:1px solid #ccc; height:24px;}
+#mdiv a:hover {
+background:#D2FCA0;
+}
+.divOver{background-color:#D2FCA0;}
+.tworight {
+	WIDTH: 190px; FLOAT:right; HEIGHT: auto
+}
+.Content_page { width:720px; height:20px; margin-top:10px; padding-bottom:10px; border-bottom:1px #CCC solid; line-height:20px;}
+.Content_fy { float:right; }
+.Content_fl { float:left; margin-left:5px; text-align:center; width:20px;height:20px; background-color:#EEE; border:1px #CCC solid; }
+.Content_fl span {font-weight:bold}
+.Content_fl a { width:20px; height:20px; left:0;top:0; display:block; }
+.Content_fl a:hover { width:20px; height:20px; background:#F90; color:#333; text-decoration:none; }
+.Content_ytj { float:right;  margin-right:10px; }
+.Content_ytj span { color:#F60; }

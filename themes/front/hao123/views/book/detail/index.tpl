@@ -10,8 +10,12 @@
             <span class="lzzico"></span>
             <div class="con_limg">
                 <img src="{$book->coverImageUrl}" alt="{$book->title}">
+
+                <a href="{novel_book_download_link id=$book->id}" class="">TXT下载</a>
+                {*
                 <a href="#feedback" class="cwfk boxy">错误反馈</a>
                 <a href="#" class="sccs">收藏此书</a>
+                *}
                 <!-- Baidu Button BEGIN -->
                 <div id="bdshare" class="bdshare_b" style="margin-left:28px;margin-top:7px; _margin-left:14px;_margin-top:7px;;">
                     <a href="#" class="fxcs" style="padding-left:30px;">分享此书</a>

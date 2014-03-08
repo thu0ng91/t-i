@@ -1,0 +1,121 @@
+/* CSS Document */
+/*houlijuan*/
+/*2010-10-21*/
+body{margin:0px auto;font-size:12px;color:#333333;}
+a{text-decoration:none;color:#333333;}
+a:hover,.menu a:hover{color:#ea6200; text-decoration:underline;}
+ul,li,img,p{margin:0px; padding:0px; border:0px; list-style:none;}
+.clear{clear:both; height:0px; overflow:hidden; line-height:0px; font-size:0px;}
+.top8{margin-top:8px;}
+/*精品频道内容*/
+.jp_contain{width:960px; margin:0px auto 10px auto; background-color:#FFFFFF;OVERFLOW: hidden;line-height:20px;}
+.jp_left{ float:left; width:730px}
+.jp_right{ float:right; width:220px}
+.jp_kuang,.jp_kuang1{ border:1px solid #d0d0d0; border-top:0; padding:10px 0px 10px 0px; width:728px;OVERFLOW: hidden;height:270px;}
+.jp_kuang2{border:1px solid #d0d0d0; background-color:f5f5f5;OVERFLOW: hidden}
+.jp_kuang3{border:1px solid #d0d0d0; width:958px; padding:10px 0px;OVERFLOW: hidden}
+.jp_kuang2 p{ padding:10px 20px; font-size:14px; line-height:30px}
+.jp_dh01{ background-image: url(../image/jp02.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/jp02.gif*/; background-repeat: no-repeat; background-position: left top; height:30px; line-height:30px; font-size: 14px; 	font-weight: bold; color: #FFFFFF;
+}
+.jp_dh01 span {
+display:block;
+width:112px;
+text-align:center;
+}
+.qb_bt03{height:22px; background-image: url(../image/qb_dh01.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_dh01.gif*/; background-repeat: no-repeat;padding-top:5px; background-position: left top; padding:5px 10px 5px 25px}
+.jp_dh02{ background-image: url(../image/phb_top_bg.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/phb_top_bg.gif*/; border-left:1px solid #ccc;  border-right:1px solid #ccc;  border-top:1px solid #ccc; border-bottom:2px solid #000; height:40px;}
+
+.jp_dh02 IMG {
+MARGIN-TOP: 6px; MARGIN-LEFT: 12px
+}
+
+
+.jp_dh03{ background-image: url(../image/jp03.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/jp03.gif*/; background-repeat: no-repeat; background-position: left bottom; width:333px; height:14px;}
+.jp_dh04{ background-color:#f4f4f4; padding:5px 10px 10px 10px; width:313px}
+.qb_bt02{height:25px; background-image: url(../image/qb_01.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_01.gif*/; background-repeat: no-repeat;  text-align:center; padding-top:5px;font-size:14px;color:#FFFFFF;background-position:center; margin-bottom:5px; font-weight:bold}
+
+.jp_kuang ul{ height:200px}
+.jp_kuang li{ padding:2px 0}
+.jp_lf_l{ float:left; width:145px; margin:0; padding:0px;}
+.jp_lf_r{ float:left; width:180px;}
+.jp_lf_r ul {
+display:block;
+height:161px;
+}
+.jp_lf_l img{ width:125px; height:180px; padding:4px; background-color:#FFFFFF; border:1px solid #CCCCCC;display: block;}
+.jp_lf_l A:hover img,.jp_kuang1 .nr A:hover img{ BORDER: #f5bc58 1px solid;BACKGROUND: #f5bc58;  }
+.jp_lf{ float:left;  width:340px; padding-left:15px;}
+
+.jp_kuang1 .nr{ height:210px; padding-top:10px; border-bottom:1px dashed #CCCCCC;}
+.jp_kuang1 .nr a{ font-size:14px; font-weight:bold}
+.jp_kuang1 .nr .li_name {
+display:block;
+height:24px;
+padding-left:6px;
+width:125px;
+overflow:hidden;
+line-height:24px;
+}
+.jp_kuang1 .nr ul{ float:left; width:139px; padding-left:5px;}
+.jp_kuang1 .nr li{ text-align:center; padding:3px 0;}
+.jp_kuang1 .nr img{ width:108px; height:155px;display: block;padding:4px; background-color:#FFFFFF;border:1px solid #CCCCCC;}
+.jp_kuang1 .xux ul{margin:8px 0 0px 10px; }
+.jp_kuang1 .xux li{ padding:2px 0 2px 2px; float:left;width:173px; }
+
+.jp_kuang2 .ul2{ padding:10px}
+.jp_kuang2 .ul2 li{ padding:3px 0}
+.jp_kuang2 .ul2 a{ padding-left:2px}
+
+.jp_kuang2 .mod UL{ WIDTH: 210px; OVERFLOW: hidden;  margin-top:5px; background-image: url(../image/qb_pm02.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_pm02.gif*/; background-repeat: no-repeat; background-position: 10px 0px; }
+.jp_kuang2 .mod UL LI { LINE-HEIGHT: 30px; WIDTH:172px; FLOAT: left; HEIGHT: 30px; OVERFLOW: hidden; PADDING-left:38px;
+}
+.jp_kuang2 .mod UL LI SPAN { display: block;  OVERFLOW: hidden }
+.jp_kuang2 .mod UL LI CITE { display: block;  OVERFLOW: hidden }
+.jp_kuang2 .mod UL LI SPAN { WIDTH: 110px; FLOAT: left; HEIGHT: 22px }
+.jp_kuang2 .mod UL LI CITE { TEXT-ALIGN: right; WIDTH: 60px; FLOAT: right; HEIGHT: 22px; font-style: normal; }
+.jp_kuang2 .mod UL LI CITE A { COLOR: #888; }
+.jp_kuang2 .mod UL LI CITE A:hover { COLOR: #f00}
+
+.jp_kuang3 {
+padding-left:10px;
+width:948px;
+}
+
+.jp_kuang3 .mod{ width:304px; border:1px solid #d0d0d0; margin:6px 10px 6px 0px;height:346px; float:left}
+.jp_kuang3 .mod UL{ WIDTH: 302px; padding-left:2px; OVERFLOW: hidden; height:300px;  margin-top:2px; background-image: url(../image/qb_pm01.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_pm01.gif*/; background-repeat: no-repeat; background-position: 10px 0px; }
+.jp_kuang3 .mod UL LI { LINE-HEIGHT: 22px; WIDTH:256px; FLOAT: left; HEIGHT: 22px; OVERFLOW: hidden; PADDING:5px 0 2px 38px; border-bottom:1px dashed #CCCCCC
+}
+#main1 ul {
+margin-top:10px;
+}
+.jp_kuang3 .mod UL LI SPAN { display: block;  OVERFLOW: hidden }
+.jp_kuang3 .mod UL LI CITE { display: block;  OVERFLOW: hidden }
+.jp_kuang3 .mod UL LI SPAN { WIDTH: 180px; FLOAT: left; HEIGHT: 22px }
+.jp_kuang3 .mod UL LI CITE { TEXT-ALIGN: right; WIDTH: 60px; FLOAT: right; HEIGHT: 22px; font-style: normal; }
+.jp_kuang3 .mod UL LI CITE A { COLOR: #888; }
+.jp_kuang3 .mod UL LI CITE A:hover { COLOR: #f00}
+
+/*vip*/
+.vip_bt04{height:27px; background-image: url(../image/qb_dh01.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_dh01.gif*/; background-repeat: no-repeat; background-position: left top; }
+.vip_bt04 .mod_l{ float:left; width:80px; line-height:27px; padding-left:25px; font-weight:bold}
+.vip_bt04 .mod_r{ float:right; width:105px;height:27px;}
+.vip_bt04 .mod_r ul{height:27px;}
+.vip_bt04 .mod_r li{display: inline;}
+.vip_bt04 .mod_r li a{ width:25px;float:left; height:27px; text-align:center; line-height:27px; color:#666666; background-position: right center;background-image: url(../image/phb_jg.gif)/*tpa=http://www.qingkan.net/template/default/image/phb_jg.gif*/; background-repeat: no-repeat; margin-right:2px}
+.vip_bt04 .mod_r .hover a{width:41px;background-image: url(../image/ph05.gif)/*tpa=http://www.qingkan.net/template/default/image/ph05.gif*/;background-repeat: no-repeat; color:#FF6600 }
+
+.vip_dh02{ background-image: url(../image/vip01.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/vip01.gif*/; background-repeat: no-repeat; background-position: left top; height:40px;}
+.vip_dh02 a{ width:120px; height:35px; margin-top:2px; margin-left:15px; display:block;}
+.vip_dh02 a:hover {  TEXT-DECORATION: none;
+}
+
+.yuedu_btn { width:190px; }
+.yuedu_btn a{ display:block; width:58px; margin-right:5px; float:left; padding-left:30px; height:29px; line-height:29px; color:#ff3300;  background-image: url(../image/biao_yd_1103.gif); background-repeat: no-repeat; background-position: 0 0; }
+
+/*文字*/
+
+ 
+.jp_font1{font-size:14px;font-weight: bold; font-family: "微软雅黑" !important; font-family:"宋体"; color:#ef6601;}
+.jp_font2{color:#726f6f}
+.font_qb07{ font-weight:bold}
+.font_qb01{ float:right;color:#726f6f}

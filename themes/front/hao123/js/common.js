@@ -514,5 +514,5 @@ document.writeln("<!-- Baidu Button END -->");
 
 function outputBottomLink()
 {
-	document.writeln('<a href="#" target="_blank">关于本站</a><b>|</b><a href="#" target="_blank">官方微博</a><b>|</b><a href="#" class="mobile" target="_blank">手机版</a><b>|</b><a href="#" class="browser hilight" target="_blank" title=""><i></i>移动版</a><b>|</b><a href="#" target="_blank">网站地图</a></p><p class="copyright"><span class="intro"> 上网导航第一品牌</span><a class="beian" target="_blank" href="http://www.miibeian.gov.cn/">京ICP证030173号</a>');
+	// document.writeln('<a href="#" target="_blank">关于本站</a><b>|</b><a href="#" target="_blank">官方微博</a><b>|</b><a href="#" class="mobile" target="_blank">手机版</a><b>|</b><a href="#" class="browser hilight" target="_blank" title=""><i></i>移动版</a><b>|</b><a href="#" target="_blank">网站地图</a></p><p class="copyright"><span class="intro"> 上网导航第一品牌</span><a class="beian" target="_blank" href="http://www.miibeian.gov.cn/">京ICP证030173号</a>');
 }

@@ -547,9 +547,9 @@ if(showbook.innerHTML==""){
 	var bookhtml='';
 	var books=lastread.getBook();
 	var t = false;
-	window.console.log(siteUrl);
+	// window.console.log(siteUrl);
 	siteUrl = (siteUrl.lastIndexOf("/") == (siteUrl.length - 1)) ? siteUrl : (siteUrl + "/");
-	window.console.log(siteUrl);
+	// window.console.log(siteUrl);
 	if(books.length){
 		if(books.length>20)
 		{
@@ -586,7 +586,7 @@ function showbook_fordele(){
 	var showbook=document.getElementById('banner');
 	var bookhtml='';
 	var books=lastread.getBook();
-	window.console.log(siteUrl);
+	// window.console.log(siteUrl);
 	siteUrl = (siteUrl.lastIndexOf("/") == (siteUrl.length - 1)) ? siteUrl : (siteUrl + "/");
 		if(books.length){
 				if(books.length>20)

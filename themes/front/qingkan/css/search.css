@@ -1,0 +1,176 @@
+/* CSS Document */
+* {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+:focus{
+outline:0;
+}
+img {
+	border:0;
+}
+a {
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+.clear {
+	display:block;
+	height:1px;
+	font-size:1px;
+	line-height:1px;
+	clear:both;
+}
+body {
+	font-size:12px;
+	font-family:"微软雅黑", "宋体", Simsun;
+}
+#warpper {
+	width:960px;
+	margin:0px auto;
+}
+#se_top {
+    text-align:right;
+	color:#888;
+	line-height:30px;
+	height:30px;
+}
+#se_top a {
+color:#444;
+}
+#se_top a:hover {
+color:#ff6600;
+}
+#logo {
+	text-align:center;
+	padding:50px 0px;
+}
+#seacrh {
+	width:595px;
+	height:80px;
+	position:relative;
+	margin:0px auto;
+}
+#menu {
+	position:absolute;
+	top:0px;
+	z-index:9;
+	left:0px;
+	width:500px;
+	height:28px;
+}
+#menu span{
+	display:block;
+	height:28px;
+	width:54px;
+	color:#333;
+	line-height:28px;
+	margin-right:10px;
+	text-align:center;
+	float:left;
+}
+#menu a {
+	text-decoration:none;
+	color:#015fd9;
+	display:block;
+	width:54px;
+	height:28px;
+}
+#menu a:active {
+ star:expression(this.onFocus=this.blur()); 
+}
+#menu a:hover {
+	color:#ff6600;
+	background:url(../image/ss_tab2.gif)/*tpa=http://www.qingkan.net/template/default/image/ss_tab2.gif*/ no-repeat;
+	text-decoration:underline;
+}
+#menu .hover {
+	background:url(../image/ss_tab1.gif)/*tpa=http://www.qingkan.net/template/default/image/ss_tab1.gif*/;
+	font-weight:bold;
+}
+#menu span.hover a {
+	color:#333;
+}
+#menu span.hover a:hover {
+	color:#333;
+	background:url(../image/ss_tab1.gif)/*tpa=http://www.qingkan.net/template/default/image/ss_tab1.gif*/;
+	text-decoration:none;
+}
+#main {
+	position:absolute;
+	top:27px;
+	z-index:8;
+	width:593px;
+	height:40px;
+}
+#main #main_left{
+	width:7px;
+	float:left;
+	height:38px;
+}
+#main #main_center {
+	height:34px;
+	float:left;
+	background:#efefef;
+	padding-top:2px;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	width:580px;
+}
+#main .txt {
+	width:446px;
+	padding-left:4px;
+	height:32px;
+	color:#666;
+	line-height:32px;
+	display:block;
+	float:left;
+	border:0;
+	font-size:14px;
+	background:url(../image/in_bg.gif)/*tpa=http://www.qingkan.net/template/default/image/in_bg.gif*/ repeat-x #efefef;
+
+}
+#main .btn {
+	background:url(../image/ss_bg.gif)/*tpa=http://www.qingkan.net/template/default/image/ss_bg.gif*/;
+	height:32px;
+	width:130px;
+	float:left;
+	border:0;
+	cursor:pointer;
+}
+#main #main_right {
+	width:6px;
+	float:right;
+}
+#hot {
+	height:30px;
+	width:760px;
+	text-align:center;
+	margin:0px auto;
+	margin-bottom:100px;
+	line-height:30px;
+	color:#666;
+}
+#hot a {
+	color:#999;
+	text-decoration:underline;
+}
+#hot a:hover {
+	color:#ff6600;
+	text-decoration:none;
+}
+#footer {
+	width:960px;
+	color:#888;
+	line-height:30px;
+	text-align:center;
+	margin:0px auto;
+}
+#footer .p_01 a{
+	color:#333;
+}
+#footer p a {
+	color:#888;
+}

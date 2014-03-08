@@ -1,0 +1,194 @@
+/* CSS Document */
+/*houlijuan*/
+/*2010-08-05*/
+body{margin:0px auto;font-size:12px;color:#333333;}
+a{text-decoration:none;color:#333333;}
+a:hover,.menu a:hover{color:#ea6200; text-decoration:underline;}
+ul,li,img{margin:0px; padding:0px; border:0px; list-style:none;}
+.clear{clear:both; height:0px; overflow:hidden; line-height:0px; font-size:0px;}
+.top8{margin-top:8px;}
+
+/*内容*/
+.qb_contain{width:960px; margin:0px auto 10px auto; background-color:#FFFFFF;OVERFLOW: hidden; line-height:20px; }
+.qb_left{ float:left; width:698px;}
+.qb_right{ float:right; width:248px;}
+.qb_kuang{ border:1px solid #d9d7d7; padding-bottom:5px}
+.qb_kuang2{ border:1px solid #d9d7d7; background-color:#f6f7f7; }
+.qb_bt01{ background-image: url(../image/qb_di.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_di.gif*/; background-repeat: repeat-x; background-position: left top; height:33px;}
+.qb_bt02{height:25px; background-image: url(../image/qb_01.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_01.gif*/; background-repeat: no-repeat;  text-align:center; padding-top:5px;font-size:14px;color:#FFFFFF;background-position:center; margin-bottom:5px; font-weight:bold}
+.qb_bt03{height:22px; background-image: url(../image/qb_dh01.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_dh01.gif*/; background-repeat: no-repeat;padding-top:5px; background-position: left top; padding:5px 10px 5px 25px}
+/*右边*/
+.qb_kuang2 .mod UL{BACKGROUND: url(../image/qb_pm02.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_pm02.gif*/ no-repeat 10px 0px; WIDTH: 246px;OVERFLOW: hidden; margin-top:8px }
+.qb_kuang2 .mod UL LI { LINE-HEIGHT: 22px; WIDTH:200px; FLOAT: left; HEIGHT: 22px; OVERFLOW: hidden; PADDING:6px 0 2px 38px
+}
+.qb_kuang2 .mod UL LI SPAN { display: block;  OVERFLOW: hidden }
+.qb_kuang2 .mod UL LI CITE { display: block;  OVERFLOW: hidden }
+.qb_kuang2 .mod UL LI SPAN { WIDTH: 130px; FLOAT: left; HEIGHT: 22px }
+.qb_kuang2 .mod UL LI CITE { TEXT-ALIGN: right; WIDTH: 70px; FLOAT: right; HEIGHT: 22px; font-style: normal; }
+.qb_kuang2 .mod UL LI CITE A { COLOR: #888; }
+.qb_kuang2 .mod UL LI CITE A:hover { COLOR: #f00}
+
+.qb_kuang2 .mod1 UL{ WIDTH: 246px;OVERFLOW: hidden; }
+.qb_kuang2 .mod1 UL LI { LINE-HEIGHT: 22px; WIDTH:230px; FLOAT: left; HEIGHT: 22px; OVERFLOW: hidden; PADDING:6px 0 2px 8px
+}
+.qb_kuang2 .mod1 UL LI SPAN { display: block;  OVERFLOW: hidden }
+.qb_kuang2 .mod1 UL LI CITE { display: block;  OVERFLOW: hidden }
+.qb_kuang2 .mod1 UL LI SPAN { WIDTH: 160px; FLOAT: left; HEIGHT: 22px }
+.qb_kuang2 .mod1 UL LI CITE { TEXT-ALIGN: right; WIDTH: 70px; FLOAT: right; HEIGHT: 22px; font-style: normal; }
+.qb_kuang2 .mod1 UL LI CITE A { COLOR: #888; }
+.qb_kuang2 .mod1 UL LI CITE A:hover { COLOR: #f00}
+/*VIP全本推荐 封推*/
+.qb_nr02{ padding:10px 0px 5px 15px;width:683px; border-bottom:1px dashed #CCCCCC; }
+.qb_nr02_left{ float:left; width:320px; margin-right:14px;}
+.qb_nr02_left_l{ float:left;height:155px}
+.qb_nr02_left_l img{ width:101px ; height:145px; padding:3px; background-color:#FFFFFF; border:1px solid #CCCCCC;display: block; }
+.qb_nr02_left_l A:hover IMG { BORDER: #f5bc58 1px solid;BACKGROUND: #f5bc58;  }
+.qb_nr02_left_r{ float:left; width:194px;padding-left:15px;}
+
+.qb_nr02_left_r .a1{ margin-bottom:5px}
+.qb_nr02_nr{ border-top:1px dashed #CCCCCC; padding:5px 0; margin-top:5px}
+.qb_nr02_nr li{ padding:2px 0}
+.qb_nr02_left_r ul {
+height:124px;
+}
+.qb_nr02_left_r p {
+bottom:0px;
+width:190px;
+left:125px;
+}
+.qb_nr02_left_r p a {
+display:block;
+height:29px;
+width:60px;
+padding-left:30px;
+color:#f30;
+float:left;
+margin-right:5px;
+line-height:29px;
+background:url(../image/biao_yd_1103.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/biao_yd_1103.gif*/;
+}
+.qb_nr03{ margin:10px}
+.qb_nr03 A {
+	BORDER-BOTTOM: #efefef 1px solid; LINE-HEIGHT: 30px; PADDING-LEFT: 14px; WIDTH: 210px; display: block;  BACKGROUND: url(../image/qb_jt.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_jt.gif*/ no-repeat left 10px; FLOAT: left; HEIGHT: 29px; FONT-SIZE: 14px; OVERFLOW: hidden
+}
+
+/*分类推荐*/
+.qb_tr3 { WIDTH: 974px; OVERFLOW: hidden; }
+.qb_tr3 .mod{ margin-top:8px; width:310px; margin-right:12px;FLOAT: left; border:1px solid #CCCCCC; height:444px;}
+.qb_tr3 .mod .mod_container { PADDING-BOTTOM: 12px; PADDING-LEFT: 12px; WIDTH: 286px; PADDING-RIGHT: 12px; PADDING-TOP:8px }
+.qb_tr3 .mod .no1 { POSITION: relative; PADDING-LEFT: 2px; WIDTH: 284px; MARGIN-BOTTOM: 10px; HEIGHT: 110px }
+.qb_tr3 .mod .no1 SMALL {
+   POSITION: absolute; MARGIN: 8px 0px 0px -2px; WIDTH: 43px; display: block;  BACKGROUND: url(../image/bar.gif)/*tpa=http://www.qingkan.net/template/default/image/bar.gif*/ no-repeat 0px 0px; HEIGHT: 22px; LEFT: 0px
+}
+.qb_tr3 .mod .no1 IMG { BORDER: #ddd 1px solid;PADDING: 3px;WIDTH: 71px;display: block; FLOAT: left; HEIGHT: 102px; }
+.qb_tr3 .mod .no1 A:hover IMG { BORDER: #f5bc58 1px solid;BACKGROUND: #f5bc58;  }
+.qb_tr3 .mod .no1 .text { WIDTH: 186px; FLOAT: right; OVERFLOW: hidden; PADDING-TOP: 3px }
+.qb_tr3 .mod .no1 .text STRONG { WIDTH: 186px; display: block;  FLOAT: left; OVERFLOW: hidden }
+.qb_tr3 .mod .no1 .text P { WIDTH: 186px; display: block; FLOAT: left; OVERFLOW: hidden }
+.qb_tr3 .mod .no1 .text STRONG { 	MARGIN-BOTTOM: 2px; HEIGHT: 23px }
+.qb_tr3 .mod .no1 .text STRONG A { COLOR: #ec6200; FONT-SIZE: 14px }
+.qb_tr3 .mod .no1 .text P { LINE-HEIGHT: 20px; TEXT-INDENT: 2em; COLOR: #888 }
+.qb_tr3 .mod .no1 .text P A { LINE-HEIGHT: 20px; COLOR: #ec6200 }
+.qb_tr3 .mod .no1 .text P A:hover { COLOR: #f00 }
+.qb_tr3 .mod UL { WIDTH: 286px; OVERFLOW: hidden; background-image: url(../image/qb_pm01.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_pm01.gif*/; background-repeat: no-repeat; background-position: 0px 0px; }
+.qb_tr3 .mod UL LI {
+	BORDER-BOTTOM: #ddd 1px dashed; LINE-HEIGHT: 22px; WIDTH: 261px; MARGIN-BOTTOM: -1px; FLOAT: left; HEIGHT: 22px; OVERFLOW: hidden; PADDING:6px 0 2px 25px
+}
+.qb_tr3 .mod UL LI SPAN { display: block;  OVERFLOW: hidden }
+.qb_tr3 .mod UL LI CITE { display: block;  OVERFLOW: hidden }
+.qb_tr3 .mod UL LI SPAN { WIDTH: 180px; FLOAT: left; HEIGHT: 22px }
+.qb_tr3 .mod UL LI CITE { TEXT-ALIGN: right; WIDTH: 80px; FLOAT: right; HEIGHT: 22px; font-style: normal; }
+.qb_tr3 .mod UL LI CITE A { COLOR: #888; }
+.qb_tr3 .mod UL LI CITE A:hover { COLOR: #f00}
+/**/
+.qb_menu{width:auto; height:33px; background-image: url(../image/qb_di.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_di.gif*/; background-repeat: repeat-x; background-position: right top; padding-right:10px; line-height:28px; }
+.qb_menu ul{height:26px;}
+.qb_menu li{disqbay: inline;}
+.qb_menu li a{ float:left; width:131px; height:35px; font-size:14px; text-align:center; line-height:29px; color:#666666; background-image: url(../image/qb_03.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_03.gif*/; background-repeat: no-repeat;background-position: right top;}
+.qb_menu .hover a{ color:#FFFFFF; background-image: url(../image/qb_02.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/qb_02.gif*/;background-repeat: no-repeat;font-weight:bold }
+/*字*/
+.font_qb02{ font-size:14px;font-weight: bold; font-family: "微软雅黑" !important; font-family:"宋体"; color:#ef6601;}
+.font_qb01{ float:right;color:#726f6f}
+.font_qb03{ color:#726f6f}
+.font_qb07{  font-size:14px}
+.font_qb04{ color:#ec6200; font-size:14px}
+.font_qb05{ color:#FF0000; font-size:14px;font-weight: bold;}
+.font_qb06{ font-weight: bold; color:#333;}
+/*底部*/
+.zt_bottom{border-top:5px solid #e8e8e8; padding:10px 50px; text-align:center; color:#666666;width:860px; margin:8px auto 0 auto;}
+.zt_bottom a{color:#666666;}
+.zt_bottom a:hover{color:#666666;}
+/*列表*/
+.qb_bt05{height:25px; background-image: url(../image/ts_dh02.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/ts_dh02.gif*/; background-repeat: no-repeat;  text-align:center; padding-top:5px;font-size:14px;color:#FFFFFF;background-position:center; font-weight:bold}
+.qb_twoleft1{ float:left; width:98px;BORDER: #d9d7d7 1px solid; BACKGROUND-COLOR: #f6f7f7;}
+.qb_tworight1{ float:right; width:850px;}
+.qb_twoleft1 #box {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 10px
+}
+.qb_twoleft1 #box LI {
+	TEXT-ALIGN: center; LINE-HEIGHT: 32px; FONT-SIZE: 14px
+}
+.qb_twoleft1 #box LI A {
+	COLOR: #000
+}
+.qb_twoleft1 #box LI A:visited {
+	COLOR: #000
+}
+.qb_twoleft1 #box LI A:hover {
+	COLOR: #FF6600}
+.qb_twoleft1 .line { BACKGROUND-IMAGE: url(../image/listbg.gif)/*tpa=http://www.qingkan.net/template/default/image/listbg.gif*/; height:1px}
+.qb_storelistbt { color:#333333; BORDER-BOTTOM: #cccccc 1px solid; PADDING-BOTTOM: 0px; LINE-HEIGHT: 30px; BACKGROUND-COLOR: white; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; HEIGHT: 30px; PADDING-TOP: 0px; background-image: url(../image/ts_di.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/ts_di.gif*/; background-repeat: repeat-x; }
+.qb_storelistbt1 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; WIDTH: 400px; PADDING-RIGHT: 0px; FLOAT: left; FONT-WEIGHT: bold; PADDING-TOP: 2px
+}
+.qb_storelistbt2 {
+	TEXT-ALIGN: right; PADDING-BOTTOM: 0px; LINE-HEIGHT: normal; PADDING-LEFT: 0px; WIDTH: 300px; PADDING-RIGHT: 0px; FLOAT: right;PADDING-TOP: 11px
+}
+.qb_storelistbt2 a{ color:#333;}
+.qb_storelistbt2 a:hover{color:#ea6200;}
+.qb_storelistbt3 { color:#333333;  WIDTH:auto; HEIGHT: 22px; PADDING-TOP: 12px; border-bottom:1px solid #f5f5f5
+}
+.qb_storelistbt3z {
+	TEXT-ALIGN: center; WIDTH: 40px; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 3px
+}
+.qb_storelistbt3a {
+	TEXT-ALIGN: center; WIDTH: 60px; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 0px
+}
+.qb_storelistbt3b {
+	TEXT-ALIGN: left; PADDING-LEFT: 30px; WIDTH: 380px; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 5px; white-space: nowrap; overflow:hidden;
+}
+.qb_storelistbt3c {
+	TEXT-ALIGN: center; WIDTH: 100px; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 0px
+}
+.qb_storelistbt3d {
+	TEXT-ALIGN: center; WIDTH: 120px; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 0px
+}
+.qb_storelistbt3e {
+	TEXT-ALIGN: center; WIDTH: 100px; DISPLAY: inline; FLOAT: left; MARGIN-LEFT: 5px
+}
+#qbmain ul{ height:22px; padding-top:10px}
+#qbmain .a1{ background-color:#f8f8f8}
+.qblist1 {
+	MARGIN-TOP: 8px;HEIGHT: 27px;PADDING-LEFT: 22px; PADDING-RIGHT: 0px; BACKGROUND: url(../image/ts_dh01.gif.jpg)/*tpa=http://www.qingkan.net/template/default/image/ts_dh01.gif*/ no-repeat 0px 0px; HEIGHT: 22px; FONT-SIZE: 14px; OVERFLOW: hidden; BORDER: #cccccc 1px solid; line-height:22px; }
+.ggao_dh{ background-color:#f6f7f7; padding:4px 10px; margin-bottom:8px; height:20px}
+.ggao_dh img{ margin-right:10px}
+/*页码*/
+.yema{padding:10px 5px;text-align:center;border-top:1px dashed #CCCCCC}
+.yema span{float:right;}
+.yema a,.yema b{border:1px solid #b5b5b5; text-align:center;margin-right:4px; font-family: "微软雅黑", "宋体"; background:#ffffff; padding:2px 5px; line-height:12px;}
+.yema b { background-color:#5E6268;border:1px solid #000000; color:#FFFFFF;}
+.yema a:hover{background:#5E6268; color:#FFFFFF;}
+.go{height:20px;background-color:#5E6268;border:1px solid #000000; color:#FFFFFF; font-weight:bold;}
+
+/*2010-09-16添加导航*/
+.tianjia #box {
+	PADDING: 4px 8px;
+	BACKGROUND-IMAGE: url(../image/listbg2.gif);
+	background-position: center bottom;
+	background-repeat: no-repeat;
+}
+.tianjia #box LI { TEXT-ALIGN: center; LINE-HEIGHT: 27px; height:27px; FONT-SIZE: 14px }
+.tianjia #box LI A { COLOR: #000 }
+.tianjia #box LI A:hover { COLOR: #FF6600}
+.tianjia #box .a1{ background-image: url(../image/qb03.gif); background-repeat: no-repeat; width:230px; height:27px; font-weight: bold; color:#FF6600}
+.tianjia #box .a1 *{color:#FF6600}

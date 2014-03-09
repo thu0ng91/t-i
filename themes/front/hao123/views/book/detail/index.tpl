@@ -71,6 +71,14 @@
         </div>
     </div>
 </div>
+
+<div class="crumbswrap">
+    <span>推荐阅读：</span>
+        {novel_book cid=[$book->category->id] where='recommendlevel<=6' order='createtime desc,allclicks desc' limit=14}
+        <a href="{novel_book_link id=$item->id}">{$item->title}</a>
+        {/novel_book}    
+</div>
+
 <div class="clearfix wrap980">
     <div class="wrap706">
     {*
@@ -151,7 +159,7 @@
 <div class="wrapone">
     <h2 class="youlovetit">猜你喜欢</h2>
     <ul class="clearfix imgitems">
-        {novel_book cid=[$book->cid] order='allclicks desc' limit=6}
+        {novel_book cid=[$book->cid] where='recommendlevel<=5' order='createtime desc,allclicks desc' limit=6}
         <li><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->lastchaptertitle}"><strong>{$item->lastchaptertitle}</strong></a>
         <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
         {$item->summary|trim|truncate:20:"..."}</li>

@@ -49,6 +49,10 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
 
     $sort = "all";
 
+    if (isset($params['order']) && is_string($params['order'])) {
+        $sort = $params['order'];
+    }
+
     $field = "";
 
     switch ($type) {
@@ -56,6 +60,7 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
             $field = $sort . "clicks";
             break;
     }
+
 
     $allowFields = array(
         'monthclicks',
@@ -66,6 +71,15 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
 
     if (!in_array($field, $allowFields)) return;
 
+    switch ($sort) {
+        case 'day':
+            //@todo 正确的实现，但有效率影响，可考虑在下一版本通过记录day,week,month字段
+//            $field = "TO_DAYS(FROM_UNIXTIME(lastclicktime)) desc," . $field . " desc";
+//            break;
+        default:
+            $field = $field . " desc";
+            break;
+    }
 
     $itemVarName = 'item';
     $dataVarName = $name . "_data";
@@ -87,7 +101,8 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
 
         $criteria = new CDbCriteria();
 
-        $criteria->order = $field . " desc";
+//        $criteria->order = $field . " desc";
+        $criteria->order = $field;
         $criteria->limit = $limit;
 
         if ($cid != 0) {

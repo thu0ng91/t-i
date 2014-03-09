@@ -75,3 +75,23 @@
 .ritemthree a{float:left;width:113px;height:178px;margin:10px 6px 0 8px;text-align:center;line-height:2.2;overflow:hidden}
 .ritemthree img{display:block;width:103px;height:148px;display:block;margin:0 auto}
 .seaclass ul{margin-top:-1px;_position:relative}
+
+.wrapone{margin:6px auto 0;background:#fff;width:978px;padding-bottom:10px;border:1px solid #ddd}
+.youlovetit{height:31px;line-height:31px;overflow:hidden;border-bottom:2px solid #017F01;margin:0 auto;width:950px;font-size:14px;color:#007E00}  
+
+.imgitems li{float:left;margin:10px 16px 0 13px;display:inline;width:134px;height:210px;overflow:hidden;color:#888;position:relative}
+.imgitems h3{height:25px;line-height:27px;overflow:hidden;font-weight:normal}
+.imgitems h3 a:hover{color:#0FB607;text-decoration:none}
+.imgcss:hover{text-decoration:none}
+.imgcss,.imgcss img{width:128px;height:159px}
+.imgcss{display:block;padding:2px;border:1px solid #ddd;position:relative;margin:0;}
+.imgcss strong{cursor:pointer;position:absolute;width:125px;height:21px;line-height:21px;left:-1px;bottom:-1px;padding-left:9px;color:#fff; overflow:hidden; white-space:nowrap;}
+.imgcss strong{background:rgba(0,0,0,0.5);filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#7f000000', EndColorStr='#7f000000');}
+:root .imgcss strong{filter:progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#00000000', EndColorStr='#00000000');}
+.imgitems .tjico,.imgitems .ywjico,.imgitems .lzzico{display:block;position:absolute;right:0;top:0;width:46px;height:46px}
+
+.imgitems .ywjico{background:url(../images/ywjico.png) no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale,src="images/ywjico.png");_background:none}
+
+.imgitems .tjico{background:url(../images/tjico.png) no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale,src="images/tjico.png");_background:none}
+
+.imgitems .lzzico{background:url(../images/lzzico.png) no-repeat;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true,sizingMethod=scale,src="images/lzzico.png");_background:none}  

@@ -3,7 +3,7 @@
         <div id="consone">
             {* 分类头条 *}
             <ul style="display: block;" class="">
-            {novel_book order='recommendlevel desc,allclicks desc' limit=19}
+            {novel_book order='recommendlevel desc,createtime desc' where='recommendlevel<=9' limit=19}
             {if $block.first}
                 <div class="indexonell">
                     <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
@@ -50,9 +50,9 @@
             </ul>
 
             {foreach [1,2,4,5,6,7,8,9,10,11,12,13] as $v}
-            <ul class="hidden">
-            {novel_book cid=[$v] order='recommendlevel desc,allclicks desc' limit=19}
+            {novel_book cid=[$v] order='recommendlevel desc,createtime desc' where='recommendlevel<=8' limit=19}
             {if $block.first}
+            <ul class="hidden">
                 <div class="indexonell">
                     <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
                     <h2><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h2>
@@ -93,18 +93,20 @@
                 {/if}
                 {if $block.last && $block.total > 1}
                 </div>
+            </ul>                
                 {/if}
                 {/novel_book}
-            </ul>
             {/foreach}
 
         </div>
         <div class="indexonelr" id="tabsone">
             <ul>
                 <li class="cur">热书</li>
-                {novel_category id=[1,2,4,5,6,7,8,9,10,11,12,13]}
+                {foreach [1,2,4,5,6,7,8,9,10,11,12,13] as $v}
+                {novel_category id=[$v]}
                 <li>{$item->title}</li>
                 {/novel_category}
+                {/foreach}
                 {*
                 <li>玄幻</li>
                 <li>奇幻</li>

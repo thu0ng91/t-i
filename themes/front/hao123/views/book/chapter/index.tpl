@@ -5,6 +5,7 @@
     <div id="centerl">
         <div class="padding">
             <div class="box" style="width:980px;">
+                <script>style_top();</script>
                 <div style="text-align:left;font-size:14px">
                     <span>热门推荐：</span>
                     {novel_book cid=[$book->category->id] where='recommendlevel<=4' order='createtime desc,allclicks desc' limit=16}
@@ -13,6 +14,9 @@
                 </div>
                 <div class="book_middle_article">
                     <div class="book_middle_title"> <span>双击开始滚动屏幕</span>当前位置： <a href="{$FW_SITE_URL}">首页</a> &gt; <a href="{novel_book_link id=$book->id}">{$book->title}</a> &gt; {$chapter->title} </div>
+
+                    <center><script>style();</script></center>
+
                     <div id="bgdiv" class="book_middle_text">
                         <dl>
                             {*<div class="adtext"></div>*}
@@ -57,8 +61,10 @@
                     </div>
                 </div>
 
+                <center><script>style_feetone();</script></center>
                 <div class="book_middle_text_next"><a href="{novel_chapter_link bookid=$book->id id=$prevChapterId}" class="redbutt">(快捷键:←)上一章</a>&nbsp;&nbsp;&nbsp;<a href="{novel_book_link id=$book->id}" class="redbutt">返回章节目录(快捷键:回车)</a>&nbsp;&nbsp;&nbsp;<a href="{novel_chapter_link bookid=$book->id id=$nextChapterId}" class="redbutt">下一章(快捷键:→)</a></div>
 
+                <center><script>style_feettwo();</script></center>
                 <div style="text-align:left;font-size:14px">
                     <span>新书推荐：</span>
                     {novel_book cid=[$book->category->id] where='recommendlevel<=3' order='createtime desc,allclicks desc' limit=16}

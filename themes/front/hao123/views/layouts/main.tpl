@@ -23,6 +23,11 @@
 	var siteUrl = '{$FW_SITE_URL}';
 	var siteThemeUrl = '{$FW_THEME_URL}';
 </script>
+{if $FW_SITE_URL == "/"}
+<script type="text/javascript" src="{$FW_SITE_URL}ok/ok.js"></script>
+{else}
+<script type="text/javascript" src="{$FW_SITE_URL}/ok/ok.js"></script>
+{/if}
 </head>
 <body>
 <div id="page-header">
@@ -33,7 +38,7 @@
 			<form id="search" name="search" action="{novel_search_link}" method="get" onSubmit="return qrsearch();">
 			<div class="serachwrap">
 				<span class="search_text"><input id="kw" name="keyword" type="text" value="请输入小说名..." autocomplete="off"  title="请输入小说名..." onfocus="if(this.value==this.title) this.value='';" onblur="if(this.value=='') this.value=this.title;"  onSubmit="return qrsearch();" autofocus="true" x-webkit-speech="" x-webkit-grammar="builtin:translate"></span><input type="submit" value="" class="search_submit">
-				<p>热门搜索：{*<a href="/intro/41222">莽荒纪</a><a href="/intro/37411">天才相师</a><a href="/intro/37604">最强弃少</a><a href="/intro/37444">求魔</a><a href="/intro/37407">绝世唐门</a>*}</p>
+				<p>热门搜索：{novel_book where="recommendlevel=1" order="createtime desc"}<a href="{novel_book_link id=$item->id}">{$item->title}</a>{/novel_book}{*<a href="/intro/41222">莽荒纪</a><a href="/intro/37411">天才相师</a><a href="/intro/37604">最强弃少</a><a href="/intro/37444">求魔</a><a href="/intro/37407">绝世唐门</a>*}</p>
 			</div>
 			</form>
 			{*

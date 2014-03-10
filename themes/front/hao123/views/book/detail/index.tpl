@@ -1,6 +1,7 @@
 <link href="{$FW_THEME_URL}/css/directory.css" rel="stylesheet">
 <link href="{$FW_THEME_URL}/css/directory20130605.css" rel="stylesheet">
 
+<script>bookinfo_banner_top();</script>
 <div class="crumbswrap">
     <span>当前位置：</span><a href="{$FW_SITE_URL}">首页</a>&gt;<a href="{novel_category_link id=$book->category->id}">{$book->category->title}</a><em>&gt;&nbsp;{$book->title}</em>
 </div>
@@ -200,3 +201,4 @@
 </div>
 <div class="blinebgs">
 </div>
+<script>bookinfo_banner_bottom();</script>

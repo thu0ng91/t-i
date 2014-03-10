@@ -1,5 +1,4 @@
 {* 分类属性 *}
-
 <div class="wrapone">
     {*<h2 class="youlovetit">猜你喜欢</h2>*}
     <ul class="clearfix imgitems">
@@ -10,11 +9,11 @@
         {/novel_book}
     </ul>
 </div>
-
+<script>article_list_banner_top();</script>
 <div class="listcon clearfix">
     <div class="listconl">
         <div class="listconltop">
-            <span class="width57">序号</span><span class="width369">小说类别/小说书名/小说章节</span><span class="width85">状态</span><span class="width84">字数</span><span class="width111">小说作者</span>
+            <span class="width57">序号</span><span class="width369">小说类别/小说书名/小说章节</span><span class="width85">状态</span><span class="width84">下载</span><span class="width111">小说作者</span>
         </div>
         {*
         <div class="dirtools">
@@ -26,7 +25,7 @@
         <ul class="clearfix">
 
             {foreach $list as $item}
-            <li><span class="width57">{$item@iteration}</span><span class="width369 jhfd">[{$category->title}]<a href="{novel_book_link id=$item->id}" class="green" target="_blank">{$item->title}</a><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="gray" target="_blank">{$item->lastchaptertitle}</a></span><span class="width85 green">连载中</span><span class="width84">{$item->wordcount}</span><span class="width111"><a href="#" class="nichen">{$item->author}</a></span></li>
+            <li><span class="width57">{$item@iteration}</span><span class="width369 jhfd">[{$category->title}]<a href="{novel_book_link id=$item->id}" class="green" target="_blank">{$item->title}</a><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="gray" target="_blank">{$item->lastchaptertitle}</a></span><span class="width85 green">连载中</span><span class="width84"><a href="{novel_book_download_link id=$item->id}">TXT下载</a></span><span class="width111"><a href="#" class="nichen">{$item->author}</a></span></li>
             {/foreach}
         </ul>
         <div class="dirtools">
@@ -124,6 +123,7 @@
         </div>
     </div>
 </div>
+<script>article_list_banner_middle();</script>
 {literal}
 <script>
 $(function(){

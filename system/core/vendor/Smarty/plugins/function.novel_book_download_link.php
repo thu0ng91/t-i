@@ -29,8 +29,11 @@ function smarty_function_novel_book_download_link($params, &$smarty){
 
     switch ($type) {
         case "full":
-        default:
             $link = 'book/detail/download';
+            break;
+        case 'page':
+        default:
+            $link = 'book/detail/downPage';
             break;
     }
 

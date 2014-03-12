@@ -132,4 +132,29 @@ class DetailController extends FWFrontController
 
         Yii::app()->end();
     }
+
+    public function actionDownPage()
+    {
+        $id = $_GET['id'];
+        $book = Book::model()->find("id=:id and status=:status", array(
+            ':id' => $id,
+            ':status' => Yii::app()->params['status']['ischecked'],
+        ));
+
+        if (!$book) {
+            throw new CHttpException(404);
+        }
+
+        $this->assign("book", $book);
+
+        $criteria = new CDbCriteria();
+        $criteria->compare("bookid", $book->id);
+        $criteria->order = "chapterorder asc";
+
+        $chapterList = Chapter::customModel($book->id)->findAll($criteria);
+
+        $this->assign("chapters", $chapterList);
+
+        $this->renderPartial('download');
+    }
 }

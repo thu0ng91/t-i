@@ -17,16 +17,16 @@ function duilian(){
 }
 
 function right(){
-document.writeln("<img src=\"" + siteUrl + "/ok/right.jpg\" >");
+document.writeln("<img src=\"" + siteUrl + "/ok/right.jpg\" width=\"330\" height=\"210\" >");
 }
 
 function center(){
-document.writeln("<img src=\"" + siteUrl + "/ok/center.jpg\" >");
+document.writeln("<img src=\"" + siteUrl + "/ok/center.jpg\" width=\"330\" height=\"210\" >");
 }
 
 function left(){
 
-document.writeln("<img src=\"" + siteUrl + "/ok/left.jpg\" >");
+document.writeln("<img src=\"" + siteUrl + "/ok/left.jpg\" width=\"330\" height=\"210\" >");
 }
 function info(){
 //document.writeln("<img src=\"" + siteUrl + "/ok/left.jpg\" >");

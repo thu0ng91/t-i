@@ -1,5 +1,10 @@
 <link href="{$FW_THEME_URL}/css/directory.css" rel="stylesheet">
 <link href="{$FW_THEME_URL}/css/directory20130605.css" rel="stylesheet">
+<style type="text/css">
+{literal}
+
+{/literal}
+</style>
 
 <script>bookinfo_banner_top();</script>
 <div class="crumbswrap">
@@ -47,38 +52,47 @@
         <div class="bline706">
         </div>
     </div>
-    <div class="w262">
-        <h2 class="rtitone">最近更新</h2>
-        <div class="ritembox">
-            {novel_book cid=[$book->cid] order="lastchaptertime desc" limit=7}
-            {if $block.first}
-            <div class="cimgsfont">
-                <a class="imgcss" href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
-                <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
-                作者：{$item->author}
-                <p>{$item->summary|trim|truncate:30:"..."}</p>
+    
+<div class="w262">
+        <div class="crtitbox">
+            <div class="tittwo">
+                <h2>热门排行</h2>
+                <ul>
+                    <li class="cur">日</li>
+                    <li>周</li>
+                    <li>月</li>
+                </ul>
             </div>
-            <ol class="clearfix olcrwrap bg_gray">
+        </div>
+        <div class="crconsbox">
+       {foreach ["day", "week", "month"] as $v} 
+            <div{if !$v@first} class="hidden"{/if}>
+            {novel_book_rank order=$v cid=[$book->category->id] limit=5}
+            {if $block.first}
+                <div class="cimgsfont">
+                    <a class="imgcss" href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
+                    <h3><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h3>
+                    作者：{$item->author}
+                    <p>
+                        {$item->summary|trim|truncate:15:'...'}
+                    </p>
+                </div>
+                <ol class="clearfix olcrwrap">
             {/if}
-                {if !$block.first}
-                <li><span>{$item.lastchaptertime|date_format:'Y-m'}</span><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
-                {/if}
+                    <li><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
             {if $block.last}
-            </ol>
+                </ol>
             {/if}
-            {/novel_book}
+            {/novel_book_rank}
+            </div>
+        {/foreach}
+
         </div>
-        <div class="bline706">
-        </div>
-    </div>
+        <div class="lbline708">
+        </div>    
 </div>
 
-<div class="crumbswrap">
-    <span>推荐阅读：</span>
-        {novel_book cid=[$book->category->id] where='recommendlevel<=6' order='createtime desc,allclicks desc' limit=14}
-        <a href="{novel_book_link id=$item->id}">{$item->title}</a>
-        {/novel_book}    
-</div>
+<div class="clearfix"></div>
 
 <div class="clearfix wrap980">
     <div class="wrap706">
@@ -140,6 +154,30 @@
     </div>
     *}
 </div>
+{assign "newestChapters" array_reverse(array_slice($chapters, -7, -1, true))}
+
+<div class="wrapone">
+        <div class="dirlboxs">
+            <div class="clearfix dirconthree">
+                <ol id="dirsort01">
+                {assign "i" 1}
+                {foreach $newestChapters as $item}
+                    <li><strong>{$i}</strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
+                    {assign "i" $i +1}
+                {/foreach}
+                </ol>
+            </div>
+        </div>
+        <div class="bline706">
+        </div>
+</div>
+
+<div class="crumbswrap">
+    <span>推荐阅读：</span>
+        {novel_book cid=[$book->category->id] where='recommendlevel<=6' order='createtime desc,allclicks desc' limit=14}
+        <a href="{novel_book_link id=$item->id}">{$item->title}</a>
+        {/novel_book}    
+</div>
 
 <div class="wrapone">
         <div class="dirlboxs">
@@ -166,38 +204,6 @@
         {$item->summary|trim|truncate:20:"..."}</li>
         {/novel_book}
     </ul>
-    {*
-    <ul class="hottj clearfix">
-        <li><a href="http://book.hao123.com/index/type-xianxia" class="mark">[仙侠]</a><a href="http://book.hao123.com/intro/41222" class="biaot">莽荒记</a></li>
-        <li><a href="http://book.hao123.com/xuanhuan" class="mark">[玄幻]</a><a href="http://book.hao123.com/intro/37408" class="biaot">武动乾坤</a></li>
-        <li><a href="http://book.hao123.com/index/type-xianxia" class="mark">[仙侠]</a><a href="http://book.hao123.com/intro/37424" class="biaot">凡人修仙传</a></li>
-        <li><a href="http://book.hao123.com/xuanhuan" class="mark">[玄幻]</a><a href="http://book.hao123.com/intro/37420" class="biaot">光明纪元</a></li>
-        <li><a href="http://book.hao123.com/xuanhuan" class="mark">[玄幻]</a><a href="http://book.hao123.com/intro/44784" class="biaot">斗罗大陆</a></li>
-        <li><a href="http://book.hao123.com/wuxia" class="mark">[武侠]</a><a href="http://book.hao123.com/intro/37435" class="biaot">圣堂</a></li>
-        <li><a href="http://book.hao123.com/qihuan" class="mark">[奇幻]</a><a href="http://book.hao123.com/intro/37414" class="biaot">傲世九重天</a></li>
-        <li><a href="http://book.hao123.com/wuxia" class="mark">[武侠]</a><a href="http://book.hao123.com/intro/37558" class="biaot">百炼成仙</a></li>
-        <li><a href="http://book.hao123.com/qihuan" class="mark">[奇幻]</a><a href="http://book.hao123.com/intro/37514" class="biaot">神座</a></li>
-        <li><a href="http://book.hao123.com/dushi" class="mark">[都市]</a><a href="http://book.hao123.com/intro/37634" class="biaot">重生之我的书记人生</a></li>
-        <li><a href="http://book.hao123.com/dushi" class="mark">[都市]</a><a href="http://book.hao123.com/intro/37604" class="biaot">最强弃少</a></li>
-        <li><a href="http://book.hao123.com/dushi" class="mark">[都市]</a><a href="http://book.hao123.com/intro/35527" class="biaot">上位</a></li>
-        <li><a href="http://book.hao123.com/dushi" class="mark">[都市]</a><a href="http://book.hao123.com/intro/37949" class="biaot">韩娱之天王</a></li>
-        <li><a href="http://book.hao123.com/lishi" class="mark">[历史]</a><a href="http://book.hao123.com/intro/37410" class="biaot">醉枕江山</a></li>
-        <li><a href="http://book.hao123.com/lishi" class="mark">[历史]</a><a href="http://book.hao123.com/intro/37411" class="biaot">天才相师</a></li>
-        <li><a href="http://book.hao123.com/youxi" class="mark">[游戏]</a><a href="http://book.hao123.com/intro/37500" class="biaot">全职高手</a></li>
-        <li><a href="http://book.hao123.com/youxi" class="mark">[游戏]</a><a href="http://book.hao123.com/intro/28434" class="biaot">网游之天谴修罗</a></li>
-        <li><a href="http://book.hao123.com/wuxia" class="mark">[武侠]</a><a href="http://book.hao123.com/intro/37723" class="biaot">仙府之缘</a></li>
-        <li><a href="http://book.hao123.com/yanqing" class="mark">[言情]</a><a href="http://book.hao123.com/intro/37453" class="biaot">校花的贴身高手</a></li>
-        <li><a href="http://book.hao123.com/yanqing" class="mark">[言情]</a><a href="http://book.hao123.com/intro/24709" class="biaot">火爆天王</a></li>
-        <li><a href="http://book.hao123.com/junshi" class="mark">[军事]</a><a href="http://book.hao123.com/intro/37685" class="biaot">巴比伦帝国</a></li>
-        <li><a href="http://book.hao123.com/junshi" class="mark">[军事]</a><a href="http://book.hao123.com/intro/37606" class="biaot">明末边军一小兵</a></li>
-        <li><a href="http://book.hao123.com/lishi" class="mark">[历史]</a><a href="http://book.hao123.com/intro/35527" class="biaot">剑道独尊</a></li>
-        <li><a href="http://book.hao123.com/lingyi" class="mark">[灵异]</a><a href="http://book.hao123.com/intro/37522" class="biaot">盗墓笔记</a></li>
-        <li><a href="http://book.hao123.com/xuanyi" class="mark">[悬疑]</a><a href="http://book.hao123.com/intro/39046" class="biaot">神武</a></li>
-        <li><a href="http://book.hao123.com/kehuan" class="mark">[科幻]</a><a href="http://book.hao123.com/intro/37425" class="biaot">吞噬星空</a></li>
-        <li><a href="http://book.hao123.com/index/type-xuanhuan" class="mark">[玄幻]</a><a href="http://book.hao123.com/intro/130956" class="biaot">大主宰</a></li>
-        <li><a href="http://book.hao123.com/kehuan" class="mark">[科幻]</a><a href="http://book.hao123.com/intro/37471" class="biaot">最终进化</a></li>
-    </ul>
-    *}
 </div>
 <div class="blinebgs">
 </div>

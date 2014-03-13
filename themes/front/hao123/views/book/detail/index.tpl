@@ -157,12 +157,13 @@
 {assign "newestChapters" array_reverse(array_slice($chapters, -7, -1, true))}
 
 <div class="wrapone">
+        <h2 style="font-size:14px">最新更新章节</h2>
         <div class="dirlboxs">
             <div class="clearfix dirconthree">
                 <ol id="dirsort01">
                 {assign "i" 1}
                 {foreach $newestChapters as $item}
-                    <li><strong>{$i}</strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
+                    <li><strong></strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
                     {assign "i" $i +1}
                 {/foreach}
                 </ol>
@@ -180,6 +181,7 @@
 </div>
 
 <div class="wrapone">
+        <h2 style="font-size:14px">全部章节</h2>
         <div class="dirlboxs">
             <div class="clearfix dirconthree">
                 <ol id="dirsort01">

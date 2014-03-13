@@ -19,11 +19,11 @@
         <div style="float: left;left:375px">
         </div>
     </div></DIV>{*<DIV id="BookMl"><script src="http://www.qingkan.net/file/script/960.js"></script></DIV>*}<DIV id="BookMl">{$book->title} <BR><script language="javascript" type="text/javascript" src="{$FW_THEME_URL}/js/fx.js"></script><BR><BR>  作者：{$book->author}|内容简介：&nbsp;&nbsp;&nbsp;&nbsp;{$book->summary}</DIV>
-<DIV id="TxtdownTop"><iframe src="http://www.37cs.com/html/click/9066_2610.html" width="950" height="90" marginheight="0" marginwidth="0" scrolling="no" frameborder="0"></iframe></DIV>
+{*<DIV id="TxtdownTop"><iframe src="http://www.37cs.com/html/click/9066_2610.html" width="950" height="90" marginheight="0" marginwidth="0" scrolling="no" frameborder="0"></iframe></DIV>
 <DIV id="TxtdownTop">
     <iframe src="http://www.37cs.com/html/click/9066_2795.html" width="300" height="250" marginheight="0" marginwidth="0" scrolling="no" frameborder="0"></iframe>
     <iframe src="http://www.37cs.com/html/click/9066_2796.html" width="300" height="250" marginheight="0" marginwidth="0" scrolling="no" frameborder="0"></iframe>
-    <iframe src="http://www.37cs.com/html/click/9066_2797.html" width="300" height="250" marginheight="0" marginwidth="0" scrolling="no" frameborder="0"></iframe></DIV>
+    <iframe src="http://www.37cs.com/html/click/9066_2797.html" width="300" height="250" marginheight="0" marginwidth="0" scrolling="no" frameborder="0"></iframe></DIV>*}
 <DIV id="Chapters">{$book->title}[章节列表]
 
 <UL>
@@ -32,5 +32,5 @@
 {/foreach}
 </UL>
 </DIV><DIV id="TxtdownFoot">{$book->title}[列表底部]<BR>  ◎
-    <script src="http://www.qingkan.net/file/script/12.js"></script> <script src="http://s22.cnzz.com/z_stat.php?id=1000172410&web_id=1000172410" language="JavaScript"></script></p>
+    {*<script src="http://www.qingkan.net/file/script/12.js"></script> <script src="http://s22.cnzz.com/z_stat.php?id=1000172410&web_id=1000172410" language="JavaScript"></script>*}</p>
 </DIV></body></html>

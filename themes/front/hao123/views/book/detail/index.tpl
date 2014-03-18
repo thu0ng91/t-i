@@ -2,7 +2,10 @@
 <link href="{$FW_THEME_URL}/css/directory20130605.css" rel="stylesheet">
 <style type="text/css">
 {literal}
-
+    .bdshare_b{float:left;margin:10px 10px;border:2px solid #FFF;background-color:#1B68B0;width:150px;height:40px;text-align: center;font-size:20px;line-height:40px;}
+    .bdshare_b:hover{background-color:#81AF19}
+    div.bdshare_b a{color:#FFF;text-decoration:none}
+    div.bdshare_b a:hover{color:#FFF;text-decoration:none}
 {/literal}
 </style>
 
@@ -16,18 +19,21 @@
             <span class="lzzico"></span>
             <div class="con_limg">
                 <img src="{$book->coverImageUrl}" alt="{$book->title}">
-
+                {*
                 <a href="{novel_book_download_link id=$book->id}" class="">TXT下载</a>
+                *}
                 {*
                 <a href="#feedback" class="cwfk boxy">错误反馈</a>
                 <a href="#" class="sccs">收藏此书</a>
                 *}
+                {*
                 <!-- Baidu Button BEGIN -->
                 <div id="bdshare" class="bdshare_b" style="margin-left:28px;margin-top:7px; _margin-left:14px;_margin-top:7px;;">
                     <a href="#" class="fxcs" style="padding-left:30px;">分享此书</a>
                 </div>
                 <script src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=387158" type="text/javascript" id="bdshare_js" data="type=button&amp;uid=0"></script>
                 <!-- Baidu Button END -->
+                *}
             </div>
             <div class="r420">
                 <h1>{$book->title}</h1>
@@ -46,6 +52,17 @@
                     最新章节：<strong><a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" target="_blank">{$book->lastchaptertitle}</a></strong>
                     <div class="jianj">
                     </div>
+                </div>
+                <div>
+                    <div class="bdshare_b" style="margin-left:0px">
+                        <a href="{novel_book_download_link id=$book->id}" class="">TXT下载</a>
+                    </div>
+                    <!-- Baidu Button BEGIN -->
+                    <div id="bdshare" class="bdshare_b" style="color:#FFF;font-size:20px;text-align:center !important">
+                        <a href="#">分享此书</a>
+                    </div>
+                    <script src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=387158" type="text/javascript" id="bdshare_js" data="type=button&amp;uid=0"></script>
+                    <!-- Baidu Button END -->                
                 </div>
             </div>
         </div>

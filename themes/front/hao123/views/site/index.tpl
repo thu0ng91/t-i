@@ -339,7 +339,7 @@
         </ul>
         <ul style="display: none;" class="hidden">
         {novel_book_rank order="all" limit=20}
-            <li><span class="recnums_r">{$block.iteration}</span><span class="r_spanone"><a href="{novel_book_link id=$item->id}">{$item->category->title} | {$item->title} </a></span><span class="r_spantwo"><i>更新至</i>&nbsp;&nbsp;<a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a></span><span class="r_spanthree">{$item->lastchaptertime|date_format:"Y-m-d H:i:s"}</span><span class="r_spanfour">{$item->allclicks}</span><span class="r_spanfive"><a href="{novel_book_download_link id=$item->id}">TXT下载&gt;&gt;</a></span></li>
+            <li><span class="recnums_r">{$block.iteration}</span><span class="r_spanone"><a href="{novel_book_link id=$item->id}">{$item->category->title}</a> | <a href="{novel_book_link id=$item->id}">{$item->title} </a></span><span class="r_spantwo"><i>更新至</i>&nbsp;&nbsp;<a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a></span><span class="r_spanthree">{$item->lastchaptertime|date_format:"Y-m-d H:i:s"}</span><span class="r_spanfour">{$item->allclicks}</span><span class="r_spanfive"><a href="{novel_book_download_link id=$item->id}">TXT下载&gt;&gt;</a></span></li>
         {/novel_book_rank} 
         </ul>
     </div>

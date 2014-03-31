@@ -110,18 +110,40 @@ class H {
 
     /**
      * 获取当前项目的绝对地址
+     * @param string $url
+     * @param boolean $showScriptName
+     * @return string
+     */
+    public static function getAbsoluteUrl($url = '',  $showScriptName = true)
+    {
+//        if (preg_match('/^http:\/\//', $url) > 0) return $url;
+//
+//        $baseUrl = Yii::app()->baseUrl;
+//        if (preg_match('/^\//', $url) == 0) $baseUrl = '/' . $baseUrl;
+//        if (preg_match('/\/$/', $url) == 0) $baseUrl .= '/';
+//
+//        $baseUrl = "http://" . $_SERVER['HTTP_HOST'] . $baseUrl;
+//        return $baseUrl . $url;
+
+        $url = Yii::app()->createAbsoluteUrl($url);
+
+        if (!$showScriptName) {
+            $url = str_replace('index.php', '', $url);
+        }
+
+        return $url;
+    }
+
+    /**
+     * 获取静态资源的绝对地址
      * @param $url
      * @return string
      */
-    public static function getAbsoluteUrl($url = '')
+    public static  function getStaticAbsoluteUrl($url)
     {
-        if (preg_match('/^http:\/\//', $url) > 0) return $url;
-
-        $baseUrl = Yii::app()->baseUrl;
-        if (preg_match('/^\//', $url) == 0) $baseUrl = '/' . $baseUrl;
-        if (preg_match('/\/$/', $url) == 0) $baseUrl .= '/';
-
-        $baseUrl = "http://" . $_SERVER['HTTP_HOST'] . $baseUrl;
-        return $baseUrl . $url;
+        if(strpos($url,'http')===0)
+            return $url;
+        else
+            return Yii::app()->request->getHostInfo() . ( Yii::app()->baseUrl == '' ? '/' :  Yii::app()->baseUrl) . $url;
     }
 }

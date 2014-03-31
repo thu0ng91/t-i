@@ -102,16 +102,22 @@ function smarty_block_novel_book_rank($params, $content, $template, &$repeat) {
         $criteria = new CDbCriteria();
 
 //        $criteria->order = $field . " desc";
-        $criteria->order = $field;
+        $criteria->order = DbHelper::addTablePrefixWithSql($field);
         $criteria->limit = $limit;
 
         if ($cid != 0) {
-            $criteria->addInCondition("cid", $cid);
+            $criteria->addInCondition(DbHelper::addTablePrefixWithSql("cid"), $cid);
         }
 
         $list = null;
 
-        $list = Book::model()->findAll($criteria);
+        $list = Book::model()->with(array(
+            'category' => array(
+                'select' => 'id,title',
+            ),
+//            'category',
+//            'images',
+        ))->findAll($criteria);
 
         $count = count($list);
         if (!$list) {

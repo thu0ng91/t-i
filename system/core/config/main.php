@@ -95,13 +95,19 @@ return array(
 //                    'class' => 'CWebLogRoute',
 //					  'levels'=>'trace,info,error, warning',
                 ),
-//                array(
-//                    'class'=>'CProfileLogRoute',
-//                    'levels'=>'profile',
-//                    //'showInFireBug' => true,
-//                    'categories'=>'system.db.CDbCommand.query',
-////                    'logFile'=> 'sql.log'
-//                ),
+                array(
+                    'class'=>'CProfileLogRoute',
+                    'levels'=>'profile',
+                    //'showInFireBug' => true,
+                    'categories'=>'system.db.CDbCommand.query',
+//                    'logFile'=> 'sql.log'
+                ),
+                array(
+                    'class'=>'CFileLogRoute',
+                    'levels'=>'trace,log',
+                    'categories' => 'system.db.CDbCommand',
+                    'logFile' => 'db.log',
+                ),
 			),
 		),
 		'image'=>array(
@@ -128,6 +134,9 @@ return array(
         'viewRenderer' => array(
             'class'=>'application.extensions.yiiext.renderers.smarty.ESmartyViewRenderer',
             'fileExtension' => '.tpl',
+            'config' => array(
+                'force_compile' => true,
+            )
         ),
 
         'cache'=>array(

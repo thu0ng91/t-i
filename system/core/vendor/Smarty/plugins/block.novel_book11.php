@@ -82,7 +82,7 @@ function smarty_block_novel_book($params, $content, $template, &$repeat) {
         if ($order == "") {
             $order = 'createtime desc';
         }
-        $criteria->order = $order;
+        $criteria->order = DbHelper::addTablePrefixWithSql($order, 't');
         $criteria->limit = $limit;
 
         if ($cid != 0) {
@@ -90,20 +90,25 @@ function smarty_block_novel_book($params, $content, $template, &$repeat) {
         }
 
         if ($recommendLevel != 0) {
-            $criteria->addInCondition("recommendlevel", $recommendLevel);
+            $criteria->addInCondition(DbHelper::addTablePrefixWithSql("recommendlevel", "t"), $recommendLevel);
         }
 
         if (!empty($idList)) {
-            $criteria->addInCondition('id', $idList);
+            $criteria->addInCondition(DbHelper::addTablePrefixWithSql('id', "t"), $idList);
         }
 
         if ("" != $where) {
             $criteria->addCondition($where);
         }
 
-        $criteria->compare("status", Yii::app()->params['status']['ischecked']);
+        $criteria->compare(DbHelper::addTablePrefixWithSql("status", "t"), Yii::app()->params['status']['ischecked']);
 
-        $list = Book::model()->findAll($criteria);
+        $list = Book::model()->with(array(
+            'category' => array(
+                'select' => 'id,title',
+            ),
+//            'images',
+        ))->findAll($criteria);
 
         $count = count($list);
         if (!$list) {

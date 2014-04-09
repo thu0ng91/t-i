@@ -15,7 +15,7 @@
  * @package Smarty
  * @subpackage Compiler
  */
-class Smarty_Internal_Compile_Novel_book_rank extends Smarty_Internal_Book_Compilebase
+class Smarty_Internal_Compile_Novel_category extends Smarty_Internal_Book_Compilebase
 {
 
 //    private  $bookData = array();
@@ -34,7 +34,7 @@ class Smarty_Internal_Compile_Novel_book_rank extends Smarty_Internal_Book_Compi
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $optional_attributes = array('type', 'click', 'name', 'cid', 'limit', 'order', 'recommend', 'id', 'where');
+    public $optional_attributes = array('name', 'cid', 'limit', 'order', 'recommend', 'id', 'where');
     /**
      * Attribute definition: Overwrites base class.
      *
@@ -71,7 +71,7 @@ class Smarty_Internal_Compile_Novel_book_rank extends Smarty_Internal_Book_Compi
 //        }
 
 //        $this->openTag($compiler, 'foreach', array('foreach', $compiler->nocache, $item, $key));
-        $this->openTag($compiler, 'novel_book');
+        $this->openTag($compiler, 'novel_category');
         // maybe nocache because of nocache variables
         $compiler->nocache = $compiler->nocache | $compiler->tag_nocache;
 
@@ -118,10 +118,8 @@ class Smarty_Internal_Compile_Novel_book_rank extends Smarty_Internal_Book_Compi
         $output .= " \$_smarty_tpl->tpl_vars[$block] = new Smarty_Variable; \$_smarty_tpl->tpl_vars[$block]->_loop = false;\n";
         $output .= " \$_smarty_tpl->tpl_vars[$item] = new Smarty_Variable; \$_smarty_tpl->tpl_vars[$item]->_loop = false;\n";
 
-//        var_export($_attr);
-//        $varParams= var_export($_attr, true);
         $varParams= $this->custom_var_export($_attr);
-        $output .= " \$_data = _fw_get_book_rank_list(" . $varParams . ");\n";
+        $output .= " \$_data = _fw_get_book_category_list(" . $varParams . ");\n";
 //        if ($key != null) {
 //            $output .= " \$_smarty_tpl->tpl_vars[$key] = new Smarty_Variable;\n";
 //        }
@@ -205,7 +203,7 @@ class Smarty_Internal_Compile_Novel_book_rank extends Smarty_Internal_Book_Compi
  * @package Smarty
  * @subpackage Compiler
  */
-class Smarty_Internal_Compile_Novel_book_rankclose extends Smarty_Internal_CompileBase
+class Smarty_Internal_Compile_Novel_categoryclose extends Smarty_Internal_CompileBase
 {
     /**
      * Compiles code for the {/foreach} tag
@@ -224,7 +222,7 @@ class Smarty_Internal_Compile_Novel_book_rankclose extends Smarty_Internal_Compi
             $compiler->tag_nocache = true;
         }
 
-        list($openTag) = $this->closeTag($compiler, array('novel_book'));
+        list($openTag) = $this->closeTag($compiler, array('novel_category'));
 
         return "<?php } ?>";
     }
@@ -233,11 +231,11 @@ class Smarty_Internal_Compile_Novel_book_rankclose extends Smarty_Internal_Compi
 
 /**
  * 内部函数
- * 获取小说排行信息
+ * 获取小说信息
  * @param array $params
  * @return array
  */
-function _fw_get_book_rank_list($params)
+function _fw_get_book_category_list($params)
 {
     if (!Yii::app()->hasModule("book")) {
         return array();
@@ -247,14 +245,14 @@ function _fw_get_book_rank_list($params)
 
     Yii::import("book.models.*");
 
-    $sql = "select * from book where status=1 ";
+    $sql = "select * from category where status=1 ";
 
-    if (isset($params['cid']) && is_array($params['cid'])) {
-        $cid = $params['cid'];
-
-        $sql .= ' and cid in(' . implode(',' , $cid) . ")";
-
-    }
+//    if (isset($params['cid']) && is_array($params['cid'])) {
+//        $cid = $params['cid'];
+//
+//        $where .= ' and cid in(' . implode(',' , $cid) . ")";
+//
+//    }
 
     if (isset($params['id']) && is_array($params['id'])) {
 
@@ -262,18 +260,18 @@ function _fw_get_book_rank_list($params)
     }
 
 
-    if (isset($params['recommend']) && is_array($params['recommend'])) {
-        $recommendLevel = $params['recommend'];
-
-        $sql .= ' and recommendlevel in(' . implode(',' , $recommendLevel) . ")";
-    }
-
-    if (isset($params['where'])) {
-        $where = $params['where'];
-
-        $where = trim($where, "'");
-        $sql .= " and " . $where;
-    }
+//    if (isset($params['recommend']) && is_array($params['recommend'])) {
+//        $recommendLevel = $params['recommend'];
+//
+//        $sql .= ' and recommendlevel in(' . implode(',' , $recommendLevel) . ")";
+//    }
+//
+//    if (isset($params['where'])) {
+//        $where = $params['where'];
+//
+//        $where = trim($where, "'");
+//        $sql .= " and " . $where;
+//    }
 
 
 //    if (isset($params['order'])) {
@@ -283,40 +281,7 @@ function _fw_get_book_rank_list($params)
 //        $order = 'createtime desc';
 //    }
 //
-//    $sql .=  " order by " . $order;
-
-    $type = "click";
-    $sort = "all";
-
-    if (isset($params['type']) && is_string($params['type'])) {
-        $type = $params['type'];
-        $sort = trim($sort, "'");
-    }
-
-    if (isset($params['order']) && is_string($params['order'])) {
-        $sort = $params['order'];
-        $sort = trim($sort, "'");
-    }
-
-    $field = "";
-
-    switch ($type) {
-        case 'click':
-            $field = $sort . "clicks";
-            break;
-    }
-
-
-    $allowFields = array(
-        'monthclicks',
-        'weekclicks',
-        'dayclicks',
-        'allclicks',
-    );
-//var_dump($field);
-    if (!in_array($field, $allowFields)) return array();
-
-    $sql .= ' order by ' . $field;
+//    $sql .=  " order by sort desc";
 
     if (isset($params['limit'])) {
         $limit = intval($params['limit']);
@@ -333,47 +298,47 @@ function _fw_get_book_rank_list($params)
 
     $newList = array();
 
-    $bookIdList = array();
-    $cidList = array();
+//    $bookIdList = array();
+//    $cidList = array();
     foreach ($list as $v) {
-        $bookIdList[] = $v['id'];
-        $cidList[] = $v['cid'];
+//        $bookIdList[] = $v['id'];
+//        $cidList[] = $v['cid'];
         $v = (Object)$v;
         $newList[] = $v;
     }
 
     unset($list);
 
-    // 查询封面图
-    $imageMap = array();
-    if (!empty($bookIdList)) {
-        $sql = 'select bookid, imgurl from book_image where iscover=1 and bookid in(' . implode(',' , $bookIdList) . ")";
-        $cmd = $db->createCommand($sql);
-        $imageList = $cmd->queryAll();
-
-        //
-        foreach ($imageList as $v) {
-            $imageMap[$v['bookid']] = $v['imgurl'];
-        }
-    }
-
-    // 查询分类
-    $categoryMap = array();
-    if (!empty($cidList)) {
-        $sql = 'select * from category where id in(' . implode(',' , $cidList) . ")";
-        $cmd = $db->createCommand($sql);
-        $imageList = $cmd->queryAll();
-
-        foreach ($imageList as $v) {
-            $v['url'] = Yii::app()->createUrl('book/list/index', array('title' => $v['shorttitle']));
-            $categoryMap[$v['id']] = (Object)$v;
-        }
-    }
+//    // 查询封面图
+//    $imageMap = array();
+//    if (!empty($bookIdList)) {
+//        $sql = 'select bookid, imgurl from book_image where iscover=1 and bookid in(' . implode(',' , $bookIdList) . ")";
+//        $cmd = $db->createCommand($sql);
+//        $imageList = $cmd->queryAll();
+//
+//        //
+//        foreach ($imageList as $v) {
+//            $imageMap[$v['bookid']] = $v['imgurl'];
+//        }
+//    }
+//
+//    // 查询分类
+//    $categoryMap = array();
+//    if (!empty($cidList)) {
+//        $sql = 'select * from category where id in(' . implode(',' , $cidList) . ")";
+//        $cmd = $db->createCommand($sql);
+//        $imageList = $cmd->queryAll();
+//
+//        foreach ($imageList as $v) {
+//            $v['url'] = Yii::app()->createUrl('book/list/index', array('title' => $v['shorttitle']));
+//            $categoryMap[$v['id']] = (Object)$v;
+//        }
+//    }
 
     foreach ($newList as $k => $v) {
-        $v->coverImageUrl = H::getStaticAbsoluteUrl($imageMap[$v->id], false);
-        $v->category = $categoryMap[$v->cid];
-        $v->url =  Yii::app()->createUrl('book/detail/index', array('id' => $v->id));
+//        $v->coverImageUrl = H::getStaticAbsoluteUrl($imageMap[$v->id], false);
+//        $v->category = $categoryMap[$v->cid]
+        $v->url =  Yii::app()->createUrl('book/list/index', array('title' => $v->shorttitle));
     }
 
 //    var_dump($newList);

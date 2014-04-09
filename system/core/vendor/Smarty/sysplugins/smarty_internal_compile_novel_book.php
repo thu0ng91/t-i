@@ -15,7 +15,7 @@
  * @package Smarty
  * @subpackage Compiler
  */
-class Smarty_Internal_Compile_Novel_book extends Smarty_Internal_CompileBase
+class Smarty_Internal_Compile_Novel_book extends Smarty_Internal_Book_Compilebase
 {
 
 //    private  $bookData = array();
@@ -117,7 +117,9 @@ class Smarty_Internal_Compile_Novel_book extends Smarty_Internal_CompileBase
         $output = "<?php ";
         $output .= " \$_smarty_tpl->tpl_vars[$block] = new Smarty_Variable; \$_smarty_tpl->tpl_vars[$block]->_loop = false;\n";
         $output .= " \$_smarty_tpl->tpl_vars[$item] = new Smarty_Variable; \$_smarty_tpl->tpl_vars[$item]->_loop = false;\n";
-        $output .= " \$_data = _fw_get_book_list(" . var_export($_attr, true) . ");\n";
+
+        $varParams = $this->custom_var_export($_attr);
+        $output .= " \$_data = _fw_get_book_list(" . $varParams . ");\n";
 //        if ($key != null) {
 //            $output .= " \$_smarty_tpl->tpl_vars[$key] = new Smarty_Variable;\n";
 //        }
@@ -248,7 +250,7 @@ function _fw_get_book_list($params)
     if (isset($params['cid']) && is_array($params['cid'])) {
         $cid = $params['cid'];
 
-        $where .= ' and cid in(' . implode(',' , $cid) . ")";
+        $sql .= ' and cid in(' . implode(',' , $cid) . ")";
 
     }
 
@@ -325,9 +327,9 @@ function _fw_get_book_list($params)
     if (!empty($cidList)) {
         $sql = 'select * from category where id in(' . implode(',' , $cidList) . ")";
         $cmd = $db->createCommand($sql);
-        $imageList = $cmd->queryAll();
+        $catList = $cmd->queryAll();
 
-        foreach ($imageList as $v) {
+        foreach ($catList as $v) {
             $v['url'] = Yii::app()->createUrl('book/list/index', array('title' => $v['shorttitle']));
             $categoryMap[$v['id']] = (Object)$v;
         }
@@ -336,6 +338,7 @@ function _fw_get_book_list($params)
     foreach ($newList as $k => $v) {
         $v->coverImageUrl = H::getStaticAbsoluteUrl($imageMap[$v->id], false);
         $v->category = $categoryMap[$v->cid];
+        $v->url =  Yii::app()->createUrl('book/detail/index', array('id' => $v->id));
     }
 
 //    var_dump($newList);

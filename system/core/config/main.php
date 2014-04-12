@@ -82,7 +82,7 @@ return array(
 		'db'=> require_once $basePath . '/../../runtime/front/db.config.php',
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
-            'errorAction'=>'site/error',
+            'errorAction'=>'/site/error',
         ),
 		'log'=>array(
 			'class'=>'CLogRouter',

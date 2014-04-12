@@ -152,6 +152,63 @@ class ChapterController extends FWAdminController
             throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
     }
 
+    /**
+     * ajax 移动章节
+     */
+    public function actionMove()
+    {
+        $chapter = $this->loadModel($_REQUEST['id'], $_REQUEST['bookid']);
+
+        $this->layout = "main-clean";
+
+        if (Yii::app()->request->isPostRequest) {
+
+
+            $selChapter = Chapter::customModel($chapter->bookid)->findByPk($_POST['select_chapter_id']);
+
+            $selChapterOrder = $selChapter->chapterorder;
+
+            $pos = $_POST['pos'];
+
+            if ($pos == 'before') {
+                // 插入到当前选中章节之前
+                Chapter::customModel($chapter->bookid)->updateCounters(array(
+                    'chapterorder' => 1,
+                ), 'chapterorder>=:chapterorder', array(
+                   ':chapterorder' =>  $selChapterOrder,
+                ));
+                $chapter->chapterorder = $selChapterOrder;
+
+                $chapter->update(array(
+                    'chapterorder',
+                ));
+            } else {
+                // 插入到当前选中章节之后
+                Chapter::customModel($chapter->bookid)->updateCounters(array(
+                    'chapterorder' => 1,
+                ), 'chapterorder>:chapterorder', array(
+                    ':chapterorder' =>  $selChapterOrder,
+                ));
+                $chapter->chapterorder = $selChapterOrder + 1;
+
+                $chapter->update(array(
+                    'chapterorder',
+                ));
+            }
+
+            $this->render("move_successfull");
+
+            Yii::app()->end();
+        }
+        $crit = new CDbCriteria();
+        $crit->order = "chapterorder asc";
+        $chapterList = Chapter::customModel($_REQUEST['bookid'])->findAll($crit);
+        $this->render("move", array(
+            'chapter' => $chapter,
+            'chapterList' => $chapterList,
+        ));
+    }
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

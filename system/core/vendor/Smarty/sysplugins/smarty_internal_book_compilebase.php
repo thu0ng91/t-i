@@ -24,7 +24,7 @@ abstract class Smarty_Internal_Book_Compilebase extends Smarty_Internal_CompileB
                 if (strpos($v, '$') === 0) $str .= $v;
                 elseif (strpos($v, 'array') === 0) $str .= $v;
                 elseif (empty($v)) $str .= "''";
-                else $str .= "'" . trim($v, "'") . "'";
+                else $str .= "'" . trim($v, "'\"") . "'";
             } elseif (empty($v)) {
                 $str .= "''";
             } else $str .= $v;

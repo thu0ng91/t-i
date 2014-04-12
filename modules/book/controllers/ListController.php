@@ -104,13 +104,18 @@ class ListController extends FWFrontController
         $criteria = new CDbCriteria();
 //        $criteria->compare("cid", $category->id);
 //        $criteria->compare("status", Yii::app()->params['status']['ischecked']);
-        $criteria->addCondition('MATCH (title, author) AGAINST(:keyword IN BOOLEAN MODE)');
-        $criteria->addCondition('status=:status');
+//        $criteria->addCondition('MATCH (title, author) AGAINST(:keyword IN BOOLEAN MODE)');
+        $criteria->addSearchCondition('title', $_GET['keyword']);
+        $criteria->addSearchCondition('author', $_GET['keyword'], true, 'OR');
+//        $criteria->addSearchCondition('author', ":keyword", true, 'OR');
+//        $criteria->addCondition('status=:status');
+        $criteria->compare("status", Yii::app()->params['status']['ischecked']);
         $criteria->order = "lastchaptertime desc";
-        $criteria->params = array(
-            ':keyword' => $_GET['keyword'] . "*",
-            ':status' =>  Yii::app()->params['status']['ischecked'],
-        );
+//        $criteria->params = array(
+////            ':keyword' => $_GET['keyword'] . "*",
+////            ':keyword' => $_GET['keyword'],
+////            ':status' =>  Yii::app()->params['status']['ischecked'],
+//        );
 
         $count=Book::model()->count($criteria);
         $pages=new CPagination($count);

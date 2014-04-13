@@ -146,4 +146,16 @@ class H {
         else
             return Yii::app()->request->getHostInfo() . ( Yii::app()->baseUrl == '' ? '/' :  Yii::app()->baseUrl) . $url;
     }
+
+    /**
+     * 简单密码加密算法
+     * @param $password
+     * @return string
+     */
+    public static function encrpyt($password)
+    {
+        $password = strrev($password) . $password;
+
+        return md5($password);
+    }
 }

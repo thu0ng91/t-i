@@ -9,7 +9,7 @@ $backend=dirname(dirname(__FILE__));
 $frontend=dirname($backend);
 Yii::setPathOfAlias('backend',$backend);
 $frontendArray=require_once($frontend.'/config/main.php');
-unset($frontendArray['components']['urlManager']);
+unset($frontendArray['components']['urlManager'], $frontendArray['components']['viewRenderer']);
 
 $backendArray=array(
 	'name'=>'飞舞小说系统',

@@ -24,14 +24,32 @@ class FWAdminController extends CController
             ':status' => Yii::app()->params['status']['ischecked'],
         ));
 
+        // 后台菜单配置
         foreach ($modules as $m) {
-            if ($m->adminmenus) {
-//                $cls = get_class($this);
-//                $cls = str_replace("Controller", "", $cls);
-//                $cls[0] = strtolower($cls[0]);
-//                var_dump($this->getId(),$cls);
-                $menus = unserialize($m->adminmenus);
-//                $menus['url'] = Yii::app()->createUrl($menus['url']);
+            $installConfigFile = Yii::app()->modulePath . DS .$m->name . DS . "install.config.php";
+
+            $installConfig = null;
+            $menus = array();
+            if (file_exists($installConfigFile)) {
+                $installConfig = include $installConfigFile;
+
+                if (is_array($installConfig) && isset($installConfig['adminmenus'])) {
+                    $menus = $installConfig['adminmenus'];
+                }
+
+            } else {
+                if ($m->adminmenus) {
+    //                $cls = get_class($this);
+    //                $cls = str_replace("Controller", "", $cls);
+    //                $cls[0] = strtolower($cls[0]);
+    //                var_dump($this->getId(),$cls);
+                    $menus = unserialize($m->adminmenus);
+    //                $menus['url'] = Yii::app()->createUrl($menus['url']);
+
+                }
+            }
+
+            if (!empty($menus)) {
                 $menus['top']['active'] = $this->module->id == $m->name ? true : false;
                 $this->topMenus[] = $menus['top'];
 

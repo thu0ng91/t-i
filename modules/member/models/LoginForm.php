@@ -19,8 +19,9 @@ class LoginForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('username, password, verifyCode', 'required'),
-			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
+//			array('username, password, verifyCode', 'required'),
+			array('username, password', 'required'),
+//			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 		);
 	}
 

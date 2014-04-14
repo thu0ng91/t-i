@@ -11,20 +11,20 @@ class MemberIdentity extends CUserIdentity
 
 	public function authenticate()
 	{
-		$user= Member::model()->find(
+		$member= Member::model()->find(
             'username=? and password=? and status=?',
             array(
-                strtolower($this->username),
-                User::encrpyt($this->password),
+                $this->username,
+                H::encrpyt($this->password),
                 Yii::app()->params['status']['ischecked'],
             ));
-		if($user === null)
+		if($member === null)
 			return false;
 		else
 		{
-			$this->_id = $user->id;
-			$this->setState('info',$user);
-            $user->updateLoginInfo();
+			$this->_id = $member->id;
+			$this->setState('info',$member);
+            $member->updateLoginInfo();
 			return true;
 		}
 	}

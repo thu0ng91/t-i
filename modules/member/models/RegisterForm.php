@@ -20,7 +20,8 @@ class RegisterForm extends CFormModel
 	public function rules()
 	{
 		return array(
-			array('username, password, repassword, verifyCode', 'required', 'message' => '不能为空'),
+//			array('username, password, repassword, verifyCode', 'required', 'message' => '不能为空'),
+			array('username, password, repassword', 'required', 'message' => '不能为空'),
             array(
                 'username',
                 'length',
@@ -46,7 +47,7 @@ class RegisterForm extends CFormModel
                 'skipOnError' => false,
                 'message' => '用户名已存在',
             ),
-			array('verifyCode', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
+//			array('verifyCode', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
             array('repassword', 'compare', 'compareAttribute' => 'password', 'message' => '两次密码不一致'),
 		);
 	}

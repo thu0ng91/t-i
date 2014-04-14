@@ -110,6 +110,16 @@ class Member extends BaseModel
         return false;
     }
 
+    /**
+     * 更新登陆信息
+     */
+    public function updateLoginInfo()
+    {
+        $this->lastlogintime = time();
+        $this->loginhits += 1;
+        $this->save();
+    }
+
 	/**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.

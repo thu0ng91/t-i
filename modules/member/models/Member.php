@@ -117,7 +117,10 @@ class Member extends BaseModel
     {
         $this->lastlogintime = time();
         $this->loginhits += 1;
-        $this->save();
+        $this->save(true, array(
+            'lastlogintime',
+            'loginhits',
+        ));
     }
 
 	/**

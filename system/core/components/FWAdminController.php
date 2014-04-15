@@ -16,7 +16,7 @@ class FWAdminController extends CController
 	{
 		if(Yii::app()->user->isGuest&&$this->id!=='site'){
 			Yii::app()->user->setFlash('actionInfo','您尚未登录系统！');
-			$this->redirect(array('site/login'));
+			$this->redirect(array('/site/login'));
 		}
 
 //        var_dump(Yii::app()->hasModule("book"));

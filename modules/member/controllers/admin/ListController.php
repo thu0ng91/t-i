@@ -15,7 +15,7 @@ class ListController extends FWAdminController
     //        $criteria->params[':status'] = Yii::app()->params['status']['ischecked'];
 
       if(!empty($_GET['Member']['username']))
-          $criteria->addSearchCondition('title',$_GET['Member']['username']);
+          $criteria->addSearchCondition('username',$_GET['Member']['username']);
 
 //      if(!empty($_GET['Member']['author']))
 //          $criteria->addSearchCondition('author',$_GET['Member']['author']);
@@ -157,7 +157,7 @@ class ListController extends FWAdminController
             );
             $s = str_pad("*", 32 , "*");
             if ($_POST['Member']['password'] == $s) { // 表示不更新密码
-                unset($attributes['password'],$attributes['repassword']);
+                unset($attributes[0], $attributes[1]);
             }
             if($model->save(true, $attributes)){
 //                // 保存新增tags

@@ -11,6 +11,7 @@ class RegisterForm extends CFormModel
 	public $password;
 	public $repassword;
 	public $verifyCode;
+    public $email;
 
 	/**
 	 * Declares the validation rules.
@@ -41,11 +42,16 @@ class RegisterForm extends CFormModel
             array(
                 'username',
                 'unique',
-                'className' =>  'User',
+                'className' =>  'Member',
                 'attributeName' => 'username',
                 'caseSensitive' => false,
                 'skipOnError' => false,
                 'message' => '用户名已存在',
+            ),
+            array(
+                'email',
+                'email',
+//                'message' => '电子邮件不正确',
             ),
 //			array('verifyCode', 'captcha', 'allowEmpty' => !CCaptcha::checkRequirements()),
             array('repassword', 'compare', 'compareAttribute' => 'password', 'message' => '两次密码不一致'),

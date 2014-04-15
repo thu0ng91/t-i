@@ -22,7 +22,7 @@
     <ul class="menu">
       <li {if $this->id == 'site' && $this->action->id == 'index'}class="on"{/if}><a href="{$FW_SITE_URL}" title="{$siteinfo->SiteName}">首页</a></li>
       {novel_menu}
-      <li {if $this->id == 'list' && $this->action->id == 'index' && $category->id == $item->id}class="on"{elseif $this->id == 'detail' && $this->action->id == 'index' && $book->category->id == $item->id}class="on"{/if}><a href="{novel_category_link id=$item->id}">{$item->title}</a></li>
+      <li {if $this->id == 'list' && $this->action->id == 'index' && $category->id == $item->id}class="on"{elseif $this->id == 'detail' && $this->action->id == 'index' && $book->category->id == $item->id}class="on"{/if}><a href="{$item->url}">{$item->title}</a></li>
       {/novel_menu}
       <li {if $this->id == 'list' && $this->action->id == 'lastupdate'}class="on"{/if}><a href="{novel_lastupdate_link}" >最近更新</a></li>
       <li {if $this->id == 'list' && $this->action->id == 'rank'}class="on"{/if}><a href="{novel_rank_link}" >排行榜</a></li>

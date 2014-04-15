@@ -15,13 +15,16 @@ class DoController extends FWFrontController
 
         if(isset($_POST['LoginForm']))
         {
-            $model=new LoginForm;
+            $model = new LoginForm;
             $model->attributes=$_POST['LoginForm'];
 
             if($model->validate()){
-                $identity=new MemberIdentity($model->username,$model->password);
+                $identity = new MemberIdentity($model->username,$model->password);
                 if($identity->authenticate()){
                     Yii::app()->user->login($identity);
+                    // 记录登陆信息
+                    $m = Member::model()->findByPk(Yii::app()->user->info->id);
+                    $m->updateLoginInfo();
                     $this->redirect(array('/site/index'));
                 }else{
                     Yii::app()->user->setFlash('actionInfo','用户名或密码错误');
@@ -68,6 +71,8 @@ class DoController extends FWFrontController
             if($model->validate()){
                 $model = new Member();
                 $model->attributes = $_POST['RegisterForm'];
+                $model->status = Yii::app()->params['status']['ischecked'];
+//                $model->attributes['status'] = Yii::app()->params['status']['ischecked'];
                 if ($model->save()) {
                     Yii::app()->user->setFlash('actionInfo','恭喜，注册成功！请登陆！');
                     $this->redirect(array('login'));
@@ -79,6 +84,7 @@ class DoController extends FWFrontController
                 $msg = "";
                 foreach ($model->getErrors() as $err) {
                     $msg .= array_shift($err) . "<br />";
+                    break;
                 }
                 Yii::app()->user->setFlash('actionInfo', $msg);
                 $this->refresh();

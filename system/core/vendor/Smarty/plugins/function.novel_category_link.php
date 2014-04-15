@@ -33,7 +33,7 @@ function smarty_function_novel_category_link($params, &$smarty){
 //        $criteria->compare("title", $param['title']);
 
         $shorttitle = $param['shorttitle'];
-    } elseif (isset($param['title'])) {
+    } elseif (isset($param['id'])) {
         $criteria = new CDbCriteria();
         $id = intval($params['id']);
         $criteria->compare("id", $id);

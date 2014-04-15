@@ -24,7 +24,7 @@ class MemberIdentity extends CUserIdentity
 		{
 			$this->_id = $member->id;
 			$this->setState('info',$member);
-            $member->updateLoginInfo();
+//            $member->updateLoginInfo();
 			return true;
 		}
 	}

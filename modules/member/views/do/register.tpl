@@ -27,14 +27,14 @@
     <section class="loginBox row-fluid">
         <section class="span7 left">
             <h2>会员注册</h2>
-            <form action="{Yii::app()->createUrl("member/do/login")}" method="post">
+            <form action="{Yii::app()->createUrl("member/do/register")}" method="post">
             <p>账　　号：<input type="text" name="RegisterForm[username]" value="" /></p>
             <p>密　　码：<input type="password" name="RegisterForm[password]" /></p>
             <p>确认密码：<input type="password" name="RegisterForm[repassword]" /></p>
             <p>电子邮箱：<input type="text" name="RegisterForm[email]" /></p>
             <section class="row-fluid">
                 {*<section class="span8 lh30"><label><input type="checkbox" name="rememberme" />下次自动登录</label></section>*}
-                <section class="span1"><input type="submit" value=" 登录 " class="btn btn-primary"></section>
+                <section class="span1"><input type="submit" value=" 注册 " class="btn btn-primary"></section>
             </section>
             <section class="row-fluid">
                 {if Yii::app()->user->hasFlash('actionInfo')}

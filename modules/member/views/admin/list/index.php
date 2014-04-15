@@ -35,7 +35,7 @@ $this->pageTitle=Yii::app()->name;
 //            'htmlOptions'=>array('style'=>'width: 20px;height:20px'),
 //             'filter' => false
 //        ),
-        array('name'=>'username', 'filter'=>true),
+        array('name'=>'username'),
 //        array('name'=>'cid', 'value' => '$data->category->title', 'filter' => $categorys),
 //        array('name'=>'volumecount', 'value' => '$data->volumecount', 'filter' => false),
 ////        array('name'=>'chaptercount', 'value' => '$data->chaptercount', 'filter' => false),

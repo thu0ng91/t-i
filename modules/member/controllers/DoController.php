@@ -95,4 +95,16 @@ class DoController extends FWFrontController
         //$this->render('login',array('model'=>$model));
         $this->render('register',array('model'=>$model));
     }
+
+    /**
+     * ajax 检查用户是否登录，登录成功返回用户信息
+     */
+    public function actionAjaxCheckLogin()
+    {
+        if (Yii::app()->user->isGuest) {
+            $this->jsonOuputAndEnd(false);
+        }
+//        print_r(Yii::app()->user->info->attributes);exit;
+        $this->jsonOuputAndEnd(true, H::getNeedColumns(Yii::app()->user->info, array('username', 'id')));
+    }
 }

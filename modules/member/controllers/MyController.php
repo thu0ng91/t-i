@@ -5,6 +5,13 @@
  */
 class MyController extends MemberController
 {
+
+    public function actionIndex()
+    {
+        var_dump(Yii::app()->themeManager->baseUrl);
+        exit;
+    }
+
     /**
      * 会员书架
      */
@@ -13,7 +20,7 @@ class MyController extends MemberController
         $db = Yii::app()->db;
 
         $sql = "select
-                b.title,b.lastchapterid,b.lastchaptertitle,mb.id,mb.readchaptertitle,mb.readchapterid,mb.bookid
+                b.title,b.lastchapterid,b.lastchaptertitle,mb.id,mb.readchaptertitle,mb.readchapterid,mb.bookid,mb.updatetime
                 from book b, member_book mb where mb.bookid=b.id and mb.memberid=:memberid
                 order by mb.updatetime desc
                 limit 100
@@ -26,7 +33,11 @@ class MyController extends MemberController
             ':memberid' => $this->member->id,
         ));
 
-        $this->assign("list", $list);
+        $newList = array();
+        foreach ($list as $v) {
+            $newList[] = (Object)$v;
+        }
+        $this->assign("list", $newList);
 
         $this->render("bookcase");
     }

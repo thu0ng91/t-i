@@ -16,20 +16,20 @@
                         {*<div class="book_news_style_img1"><img src="{$book->coverImageUrl}" width="130" height="150" /><br /><br /><a href="{novel_book_download_link id=$book->id}" target="_blank">{$book->title}TXT下载</a></div>*}
                         {*<div class="book_news_style_form1">*}
 
-                            <table width="100%">
-                                <th>
-                                    <td>小说</td>
-                                    <td>最新章节</td>
-                                    <td>上次阅读章节</td>
-                                    <td>上次阅读时间</td>
-                                </th>
+                            <table width="100%" class="bookcase">
+                                <tr>
+                                    <td width="20%"><b>小说</b></td>
+                                    <td width="35%"><b>最新章节</b></td>
+                                    <td width="30%"><b>上次阅读章节</b></td>
+                                    <td width="25%"><b>上次阅读时间</b></td>
+                                </tr>
 
                                 {foreach $list as $item}
                                     <tr>
-                                    <td>{$item.title}</td>
-                                    <td>{$item.lastchaptertitle}</td>
-                                    <td>{$item.readchaptertitle}</td>
-                                    <td>{$item.readchaptertime|date_format:'Y-m-d H:i:s'}</td>
+                                    <td><a href="{novel_book_link id=$item->bookid}">{$item->title}</a></td>
+                                    <td><a href="{novel_chapter_link bookid=$item->bookid id=$item->lastchapterid}">{$item->lastchaptertitle}</a></td>
+                                    <td><a href="{novel_chapter_link bookid=$item->bookid id=$item->readchapterid}">{$item->readchaptertitle}</a></td>
+                                    <td>{$item->updatetime|date_format:'Y-m-d H:i'}</td>
                                     </tr>
                                 {foreachelse}
                                     <tr>

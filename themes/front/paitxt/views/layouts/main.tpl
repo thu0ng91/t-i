@@ -47,12 +47,14 @@
 </div>
 <div class="u_tips">
   <div class="info_login">
-    <div class="cs1">亲爱的小说迷，上次看到哪了，请查看<script type="text/javascript">yuedu();</script> <a href="{Yii::app()->createUrl('shortcut/download')}" style="color:red">保存到桌面</a></div>
+    <div class="cs1">亲爱的小说迷，上次看到哪了，请查看<script type="text/javascript">yuedu();</script>&nbsp;&nbsp; <span id="loginPannel">当前你还没有登录，登录后可查看收藏在云端书架中的小说！<a href="{Yii::app()->createUrl("member/do/login")}">点击这里登陆</a></span></div>
     <div class="cs2">
       {*<iframe width="380" height="20" scrolling="no" frameborder="0" src="/loginframe.php" marginwidth=0 marginheight=0 frameborder="0" allowTransparency="true">*}
       {*</iframe>*}
+
     </div>
   </div>
+    {*<a href="{Yii::app()->createUrl('shortcut/download')}" style="color:red">保存到桌面</a>*}
   <div id="banner" style="display:none;"></div>
   <div style="clear:both;height:0px;"></div>
 </div>
@@ -67,10 +69,27 @@
         <p>本站为演示站点，所有小说及章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</p>
 		<span style="font-family:arial;">Copyright &copy; 2014 <a href="{$FW_SITE_PUB_URL}" target="_blank">{$FW_SITE_PUB_URL}</a> </span> {$siteinfo->SiteName}</a></p>
 
-<p>
+{*<p>*}
 
 {*<a href="#" target="_blank"><font color="#FE0101">手机阅读</font></a> - <a href="#" target="_blank">Pad阅读</font></a> - <a target="_blank" href="#" style="text-decoration:none;">站长E-mail</a> - <a href="#" target="_blank">网站简介</a> - <a href="#" target="_blank">免责声明</a> -</p>*}
+<script>
+    {literal}
+    $(document).ready(function () {
 
+        function showLoginInfo(r)
+        {
+            if (typeof r == 'object' && r.result)  {
+                var p = $("#loginPannel");
+                var bookcaseUrl = SiteUrl + "/member/my/bookcase";
+                p.html(r.data.username + " 你好，你可以访问 <a href='" + bookcaseUrl + "'>云端书架</a> 快速找到上次阅读过的章节");
+            }
+        }
+
+//        alert("aaa");
+        getLoginInfo(showLoginInfo);
+    });
+    {/literal}
+</script>
 </body>
 </html>
 <!-- spend time {$TIME} -->

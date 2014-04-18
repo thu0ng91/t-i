@@ -158,4 +158,26 @@ class H {
 
         return md5($password);
     }
+
+    /**
+     * @param CActiveRecord $model
+     * @param array $allowedColumns
+     * @return array
+     */
+    public static function getNeedColumns(CActiveRecord $model, array $allowedColumns)
+    {
+        $columns = array();
+        if ($model instanceof  CActiveRecord) {
+//            $columns = array();
+
+            if (empty($allowedColumns)) return $model->attributes;
+            foreach ($model->attributes as $k => $v) {
+                if (in_array($k, $allowedColumns)) {
+                    $columns[$k] = $v;
+                }
+            }
+        }
+
+        return $columns;
+    }
 }

@@ -237,3 +237,10 @@ a:hover{color:#F33;text-decoration:underline;}
 	filter: Alpha(opacity=30);
 	opacity: 0.3;
 }
+.bookcase td{
+    text-align: left;
+    padding:3px;
+}
+.bookcase b{
+    font-weight: bold;
+}

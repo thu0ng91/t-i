@@ -38,7 +38,7 @@
                                         <a onclick="YaHei()" href="javascript:void(0)">雅黑字体</a>&nbsp;
                                         <a onclick="SetDefault()" href="javascript:void(0)">默认字体</a>&nbsp;
                                         <a onclick="SetFont()" href="javascript:void(0)">设置字体</a>&nbsp;
-                                        <a href="javascript:addBookmarkAjax('31593', '7088945');">加入书签</a></div>
+                                        <a href="javascript:addBookcase('{$book->id}', '{$chapter->id}', addBookcaseCallback);">加入书签</a></div>
                                 </div>
                             </div>
                             <dd>
@@ -102,5 +102,14 @@
         LoadUserPro();
         window.lastread.set(bid,tid,title,texttitle);
     });
+
+    function addBookcaseCallback(data)
+    {
+        if (typeof data == 'object' && data.result) {
+            alert("添加书签成功！");
+        } else {
+            alert("添加书签失败，请联系管理员！");
+        }
+    }
     {/literal}
 </script>

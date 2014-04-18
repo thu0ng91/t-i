@@ -10,7 +10,29 @@ function addBookmark(title,url) {
   	return true;
   }
 }
+
+/**
+ * 加入书架
+ * @param bookId
+ * @param chapterId
+ * @param callback
+ */
+function addBookcase(bookId, chapterId, callback)
+{
+    var url = SiteUrl + "/member/my/ajaxAddBookcase/bookId/" + bookId + "/chapterId/" + chapterId;
+    $.post(url, function(data) {
+        if (typeof callback == 'function') callback(data);
+    },'json');
+}
+
+function getLoginInfo(callback)
+{
+    var url = SiteUrl + "/member/do/ajaxCheckLogin";
+    $.post(url, function(data) {
+        if (typeof callback == 'function') callback(data);
+    },'json');
+}
 function killErrors() {
-return true;
+    return true;
 }
 window.onerror = killErrors;

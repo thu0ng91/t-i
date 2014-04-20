@@ -132,7 +132,7 @@ CREATE TABLE `modules` (
   `upgradeversion` varchar(10) DEFAULT NULL COMMENT '模块升级版本号',
   `fwversion` varchar(10) NOT NULL COMMENT '模块所需最低飞舞系统版本',
   `description` varchar(500) NOT NULL COMMENT '模块描述',
-  `adminmenus` varchar(500) DEFAULT NULL COMMENT '管理员菜单数组序列化',
+  `adminmenus` varchar(1000) DEFAULT NULL COMMENT '管理员菜单数组序列化',
   `createtime` int(11) NOT NULL COMMENT '模块引入系统时间',
   `updatetime` int(11) NOT NULL COMMENT '模块调整时间',
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态：0 未安装 1 已安装 -1 已禁用',

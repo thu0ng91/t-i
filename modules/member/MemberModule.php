@@ -16,7 +16,7 @@ class MemberModule extends FWModule
     {
         $db = Yii::app()->db;
 
-        $dbFile =  FW_MODULE_BASE_PATH . DS . $this->getId()  . DS . "data" . DS . "member.sql";
+        $dbFile =  FW_MODULE_BASE_PATH . DS . "member"  . DS . "data" . DS . "member.sql";
 
         try {
             $sqlText = file_get_contents($dbFile);

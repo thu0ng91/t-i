@@ -48,7 +48,7 @@ class Modules extends CActiveRecord
 			array('title, name', 'length', 'max'=>50),
 			array('author, version, fwversion, upgradeversion', 'length', 'max'=>10),
 			array('description', 'length', 'max'=>500),
-			array('adminmenus', 'length', 'max'=>500),
+			array('adminmenus', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, title, name, author, version, fwversion, description, createtime, updatetime, status', 'safe', 'on'=>'search'),

@@ -1,7 +1,6 @@
 --
 -- 表的结构 `member`
 --
-
 CREATE TABLE IF NOT EXISTS `member` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) DEFAULT NULL,
@@ -22,12 +21,9 @@ CREATE TABLE IF NOT EXISTS `member` (
   KEY `username_idx` (`username`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
 -- 表的结构 `member_book`
 --
-
 CREATE TABLE IF NOT EXISTS `member_book` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `memberid` int(11) NOT NULL COMMENT '用户编号',

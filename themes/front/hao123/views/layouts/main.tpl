@@ -68,7 +68,7 @@
 	{* 阅读记录 *}
 	<div class="u_tips">
 	  <div class="info_login">
-	    <div class="cs1">亲爱的小说迷，上次看到哪了，请查看 <script type="text/javascript">yuedu();</script><a href="{Yii::app()->createUrl('shortcut/download')}" style="color:red">点击添加 {$siteinfo.SiteName} 到桌面</a></div>
+	    <div class="cs1">亲爱的小说迷，上次看到哪了，请查看 <script type="text/javascript">yuedu();</script><a href="{novel_link url='shortcut/download'}" style="color:red">点击添加 {$siteinfo.SiteName} 到桌面</a></div>
 	    <div class="cs2">     
 	    </div>
 	  </div>

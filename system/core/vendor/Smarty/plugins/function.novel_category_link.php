@@ -26,17 +26,20 @@ function smarty_function_novel_category_link($params, &$smarty){
 
 //    return "";
 
+//    Yii::import('book.models.*');
 
     $shorttitle = '';
 
-    if (isset($param['shorttitle'])) {
+    if (isset($params['shorttitle'])) {
 //        $criteria->compare("title", $param['title']);
 
-        $shorttitle = $param['shorttitle'];
-    } elseif (isset($param['id'])) {
+        $shorttitle = $params['shorttitle'];
+    } elseif (isset($params['id'])) {
         $criteria = new CDbCriteria();
         $id = intval($params['id']);
         $criteria->compare("id", $id);
+
+//        print_r($criteria);exit;
         $m = Category::model()->find($criteria);
         if (!$m) return "";
 

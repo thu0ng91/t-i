@@ -14,6 +14,25 @@ class MemberModule extends FWModule
      */
     public function install()
     {
+        $db = Yii::app()->db;
+
+        $dbFile =  FW_MODULE_BASE_PATH . DS . $this->getId()  . DS . "data" . DS . "member.sql";
+
+        try {
+            $sqlText = file_get_contents($dbFile);
+
+            $sqlList = explode(";", $sqlText);
+
+            foreach ($sqlList as $sql) {
+                $sql = trim($sql);
+                if ($sql != "")
+                    $db->createCommand($sql)->execute();
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+            return false;
+        }
+
         return true;
     }
 

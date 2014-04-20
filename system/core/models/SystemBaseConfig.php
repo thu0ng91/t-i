@@ -21,8 +21,17 @@ class SystemBaseConfig extends CFormModel
 
     public $SiteTheme;
 
-    // 站点是否启用缓存
+    /**
+     * 站点是否启用缓存
+     * @var int
+     */
     public $SiteIsUsedCache = 0;
+
+    /**
+     * 首页缓存时间
+     * @var int
+     */
+    public $SiteIndexCacheTime = 0;
 
 	/**
 	 * Declares the validation rules.
@@ -36,6 +45,7 @@ class SystemBaseConfig extends CFormModel
 			array('SiteAdminEmail', 'email'),
 			array('SiteIsUsedCache', 'boolean'),
             array('SiteName', 'length', 'max'=> 100),
+            array('SiteIndexCacheTime', 'numerical', 'integerOnly'=>true),
             array('SiteKeywords,SiteIntro,SiteCopyright,SiteAttachmentPath,SiteTheme', 'length', 'max'=> 255),
 //			array('verifyCode', 'captcha', 'allowEmpty'=>!CCaptcha::checkRequirements()),
 		);
@@ -55,6 +65,7 @@ class SystemBaseConfig extends CFormModel
 			'SiteAttachmentPath' => '站点附件地址',
 			'SiteTheme' => '站点主题',
 			'SiteIsUsedCache' => '是否启用缓存',
+			'SiteIndexCacheTime' => '首页缓存时间',
 		);
 	}
 

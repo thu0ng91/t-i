@@ -47,14 +47,33 @@
 //            array('label'=>'小说', 'url'=> $this->createUrl('site/index'), 'active'=> $this->id == 'site' ? true : false),
 //        );
         $menus = $this->leftMenus;
+
+        $leftMenuIsSelected = false;
         foreach ($menus as $k => $v) {
             $v['url'] = Yii::app()->createUrl($v['url']);
 
+//            if (!$v['active']) {
+//                $v['active'] = strpos($v['url'], '/' . $this->id) !== false ;
+//            }
+
             $v['active'] = strpos($v['url'], $this->id . '/' . $this->action->id) !== false ;
-            if (!$v['active']) {
-                $v['active'] = strpos($v['url'], '/' . $this->id) !== false ;
+//            print_r($v);
+            if ($v['active'] && !$leftMenuIsSelected) {
+                $leftMenuIsSelected = true;
             }
+
             $menus[$k] = $v;
+        }
+
+        if (!$leftMenuIsSelected) { // 当前没找到直接对应的左边菜单，则找到模块级的菜单
+            foreach ($menus as $k => $v) {
+//                $v['url'] = Yii::app()->createUrl($v['url']);
+
+                if (!$v['active']) {
+                    $v['active'] = strpos($v['url'], '/' . $this->id) !== false ;
+                }
+                $menus[$k] = $v;
+            }
         }
     }
     $this->widget('bootstrap.widgets.TbMenu', array(

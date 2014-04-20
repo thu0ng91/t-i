@@ -1,11 +1,15 @@
 <?php
 class BookModule extends FWModule
 {
+    public $cacheConfig = null;
+
     public function init()
     {
         parent::init();
 
         $this->rewriteConfig();
+
+        $this->cacheConfig = Yii::app()->settings->get("BookCacheConfig", 'book-cache');
     }
 
     /**

@@ -27,8 +27,13 @@ $this->pageTitle=Yii::app()->name . ' - 基础属性';
 <!--      --><?php //echo $form->textFieldRow($model, 'SiteAttachmentPath'); ?>
       <?php echo $form->textAreaRow($model, 'SiteCopyright'); ?>
 
-<!--      --><?php //echo $form->dropDownListRow($model, 'SiteIsUsedCache', array('0' => '否', '1' => '是')); ?>
+      <?php echo $form->dropDownListRow($model, 'SiteIsUsedCache', array('0' => '否', '1' => '是'), array(
+          'hint'=> '只有站点开启缓存，首页及各子模块缓存才生效'
+      )); ?>
 
+    <?php echo $form->textFieldRow($model, 'SiteIndexCacheTime', array(
+        'hint'=> '单位秒'
+    )); ?>
       <div class="form-actions">
         <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'submit',

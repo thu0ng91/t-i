@@ -5,6 +5,40 @@
  */
 class ListController extends FWFrontController
 {
+
+    /**
+     * 过滤器
+     * 添加透明缓存
+     * @return array
+     */
+    public function filters() {
+        $ret = array();
+        if ($this->siteConfig && $this->siteConfig->SiteIsUsedCache && $this->module->cacheConfig && ($this->module->cacheConfig->BookIsCache == 1)) {
+            $ret[] = array (
+                'FWOutputCache + index',
+                'duration' => $this->module->cacheConfig->BookCategoryCacheTime,
+                'varyByParam' => array('title', 'page'),
+                'varyByExpression' => array('FWOutputCache', 'getExpression'),
+                'dependCacheKey'=> 'book-category-index' . (isset($_GET['title']) ? $_GET['title'] : ''),
+            );
+            $ret[] = array (
+                'FWOutputCache + rank',
+                'duration' => $this->module->cacheConfig->BookRankCacheTime,
+                'varyByParam' => array('page'),
+                'varyByExpression' => array('FWOutputCache', 'getExpression'),
+                'dependCacheKey'=> 'book-rank',
+            );
+            $ret[] = array (
+                'FWOutputCache + lastupdate',
+                'duration' => $this->module->cacheConfig->BookLastupdateCacheTime,
+                'varyByParam' => array('page'),
+                'varyByExpression' => array('FWOutputCache', 'getExpression'),
+                'dependCacheKey'=> 'book-lastupdate',
+            );
+        }
+
+        return $ret;
+    }
     /**
      * 分类首页
      * @throws CHttpException

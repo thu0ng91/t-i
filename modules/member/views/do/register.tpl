@@ -27,7 +27,7 @@
     <section class="loginBox row-fluid">
         <section class="span7 left">
             <h2>会员注册</h2>
-            <form action="{Yii::app()->createUrl("member/do/register")}" method="post">
+            <form action="{novel_link url="member/do/register"}" method="post">
             <p>账　　号：<input type="text" name="RegisterForm[username]" value="" /></p>
             <p>密　　码：<input type="password" name="RegisterForm[password]" /></p>
             <p>确认密码：<input type="password" name="RegisterForm[repassword]" /></p>
@@ -58,7 +58,7 @@
 </body>
 </html>
 <script>
-    var registerUrl = '{Yii::app()->createUrl("member/do/register")}';
+    var registerUrl = '{novel_link url="member/do/register"}';
     {literal}
     $(document).ready(function () {
         $(".register").bind("click", function () {

@@ -47,14 +47,14 @@
 </div>
 <div class="u_tips">
   <div class="info_login">
-    <div class="cs1">亲爱的小说迷，上次看到哪了，请查看<script type="text/javascript">yuedu();</script>&nbsp;&nbsp; <span id="loginPannel">当前你还没有登录，登录后可查看收藏在云端书架中的小说！<a href="{Yii::app()->createUrl("member/do/login")}">点击这里登陆</a></span></div>
+    <div class="cs1">亲爱的小说迷，上次看到哪了，请查看<script type="text/javascript">yuedu();</script>&nbsp;&nbsp; <span id="loginPannel">当前你还没有登录，登录后可查看收藏在云端书架中的小说！<a href="{novel_link url="member/do/login"}">点击这里登陆</a></span></div>
     <div class="cs2">
       {*<iframe width="380" height="20" scrolling="no" frameborder="0" src="/loginframe.php" marginwidth=0 marginheight=0 frameborder="0" allowTransparency="true">*}
       {*</iframe>*}
 
     </div>
   </div>
-    {*<a href="{Yii::app()->createUrl('shortcut/download')}" style="color:red">保存到桌面</a>*}
+    {*<a href="{novel_link url='shortcut/download'}" style="color:red">保存到桌面</a>*}
   <div id="banner" style="display:none;"></div>
   <div style="clear:both;height:0px;"></div>
 </div>

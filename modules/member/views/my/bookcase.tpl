@@ -8,7 +8,7 @@
 
                     <div class="book_news_title title">
                         <ul>
-                            <li>当前位置：<a href="{$FW_SITE_URL}">首页</a> &gt;<a href="{Yii::app()->createUrl('member/my/bookcase')}">我的书架</a></li>
+                            <li>当前位置：<a href="{$FW_SITE_URL}">首页</a> &gt;<a href="{novel_link url='member/my/bookcase'}">我的书架</a></li>
                         </ul>
                     </div>
 

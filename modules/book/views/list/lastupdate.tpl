@@ -17,7 +17,7 @@
                     <h4>作者：{$book->author} </h4><div class="bnew"><a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" target="_blank">{$book->lastchaptertitle}</a></div><div class='bnew'>
                     <span>最后更新：{$book->createtime|date_format:'Y-m-d'}</span>
                     </div>
-                    <p>{$book->summary}</p>
+                    <p>{$book->summary|truncate:20:'...'}</p>
                     </div>
                     {/foreach}
                 </div>

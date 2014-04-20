@@ -11,7 +11,7 @@ class SiteController extends FWFrontController
         if ($this->siteConfig && $this->siteConfig->SiteIsUsedCache) {
             $ret[] = array (
                 'FWOutputCache + index',
-                'duration' => 2592000,
+                'duration' => $this->siteConfig->SiteIndexCacheTime,
 //                'varyByParam' => '',
                 'varyByExpression' => array('FWOutputCache', 'getExpression'),
                 'dependCacheKey'=> 'novel-index',

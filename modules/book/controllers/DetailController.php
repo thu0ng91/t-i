@@ -6,6 +6,41 @@
 class DetailController extends FWFrontController
 {
     /**
+     * 过滤器
+     * 添加透明缓存
+     * @return array
+     */
+    public function filters() {
+        $ret = array();
+        if ($this->siteConfig && $this->siteConfig->SiteIsUsedCache && $this->module->cacheConfig && ($this->module->cacheConfig->BookIsCache == 1)) {
+            $ret[] = array (
+                'FWOutputCache + index',
+                'duration' => $this->module->cacheConfig->BookDetailCacheTime,
+                'varyByParam' => array('id'),
+                'varyByExpression' => array('FWOutputCache', 'getExpression'),
+                'dependCacheKey'=> 'book-detail-index' . $_GET['id'],
+//                'dependency' => array(
+//                    'class'=> 'FWCacheDependency',
+//                    'dependCacheKey'=> 'news-category' . $_GET['id'] . $_GET['page'],
+//                )
+            );
+//            $ret[] = array (
+//                'FWOutputCache + view',
+//                'duration' => 2592000,
+//                'varyByParam' => array('id'),
+//                'varyByExpression' => array('FWOutputCache', 'getExpression'),
+//                'dependCacheKey'=> 'news' . $_GET['id'],
+////                'dependency' => array(
+////                    'class'=> 'FWCacheDependency',
+////                    'dependCacheKey'=> 'news' . $_GET['id'],
+////                )
+//            );
+        }
+
+        return $ret;
+    }
+
+    /**
      * 小说目录页
      * @throws CHttpException
      */

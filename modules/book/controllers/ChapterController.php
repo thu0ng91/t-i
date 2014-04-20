@@ -5,6 +5,28 @@
  */
 class ChapterController extends FWFrontController
 {
+    /**
+     * 过滤器
+     * 添加透明缓存
+     * @return array
+     */
+    public function filters() {
+        $ret = array();
+
+        if ($this->siteConfig && $this->siteConfig->SiteIsUsedCache && $this->module->cacheConfig && ($this->module->cacheConfig->BookIsCache == 1)) {
+            $ret[] = array (
+                'FWOutputCache + index',
+                'duration' => $this->module->cacheConfig->BookChapterCacheTime,
+                'varyByParam' => array('bookid', 'id'),
+                'varyByExpression' => array('FWOutputCache', 'getExpression'),
+                'dependCacheKey'=> 'chapter-index' . $_GET['bookid'] . $_GET['id'],
+            );
+
+        }
+
+        return $ret;
+    }
+
     public function actionIndex()
     {
         $bookid = $_GET['bookid'];

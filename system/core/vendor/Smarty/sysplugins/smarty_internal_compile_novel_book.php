@@ -335,8 +335,10 @@ function _fw_get_book_list($params)
         }
     }
 
+    $defaultImageUrl = Yii::app()->theme->baseUrl . "/images/nocover.jpg";
+
     foreach ($newList as $k => $v) {
-        $v->coverImageUrl = H::getStaticAbsoluteUrl($imageMap[$v->id], false);
+        $v->coverImageUrl = isset($imageMap[$v->id]) ? H::getStaticAbsoluteUrl( $imageMap[$v->id] , false) : $defaultImageUrl;
         $v->category = $categoryMap[$v->cid];
         $v->url =  Yii::app()->createUrl('book/detail/index', array('id' => $v->id));
     }

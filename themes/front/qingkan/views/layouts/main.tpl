@@ -25,7 +25,7 @@
 	<div id="top">
 		<div id="top_cont">
 			<div id="login">
-				
+                &nbsp;&nbsp; <span id="loginPannel">当前你还没有登录，登录后可查看收藏在云端书架中的小说！<a href="{novel_link url="member/do/login"}">点击这里登陆</a></span>
 			</div>
 			<div id="top_menu">
 				<ul>
@@ -88,6 +88,24 @@
 		<p><span style="font-family:arial;">Copyright &copy; 2014 <a href="{$FW_SITE_PUB_URL}" target="_blank">	{$siteinfo->SiteName}</a> </span>
 		</p>
 	</div>
+    <script>
+        {literal}
+        $(document).ready(function () {
+
+            function showLoginInfo(r)
+            {
+                if (typeof r == 'object' && r.result)  {
+                    var p = $("#loginPannel");
+                    var bookcaseUrl = SiteUrl + "/member/my/bookcase";
+                    p.html(r.data.username + " 你好，你可以访问 <a href='" + bookcaseUrl + "'>云端书架</a> 快速找到上次阅读过的章节");
+                }
+            }
+
+//        alert("aaa");
+            getLoginInfo(showLoginInfo);
+        });
+        {/literal}
+    </script>
 </body>
 </html>
 <!-- spend time {$TIME} -->

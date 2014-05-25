@@ -763,3 +763,7 @@ color:#333;
 {
     content: " 页";
 }
+#login{float:left}
+#loginPannel{line-height: 30px}
+#loginPannel a{color:#0000cc}
+#loginPannel a:hover{text-decoration: none}

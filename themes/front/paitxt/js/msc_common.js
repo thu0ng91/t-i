@@ -1,3 +1,6 @@
+if (SiteUrl == '/') {
+    SiteUrl = "";
+}
 function addBookmark(title,url) {
   if(!title){title =document.title};
   if(!url){url=window.location.href}

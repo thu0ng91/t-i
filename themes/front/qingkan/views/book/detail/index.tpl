@@ -22,7 +22,7 @@
             </div>
             <div class="sy_bt01">
                 <ul>
-                    <li class="a2"><h1 class="h1title">{$book->title}</h1><span class="tauthor">作者：{$book->author}></li>
+                    <li class="a2"><h1 class="h1title">{$book->title}</h1><span class="tauthor">作者：{$book->author}</span></li>
                     <li class="a3">作品类别：<a target="_blank" href="{novel_category_link id=$book->category->id}">{$book->category->title}</a>&#12288;总字数：{$book->wordcount}&#12288;更新时间：{$book->updatetime|date_format:'Y-m-d H:i:s'}</li>
                 </ul>
             </div>

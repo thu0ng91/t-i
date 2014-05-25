@@ -1,4 +1,9 @@
 <?php
+if (defined('YII_DEBUG')) {
+    error_reporting(E_ALL);
+} else {
+    error_reporting(0);
+}
 defined('DS') or define('DS',DIRECTORY_SEPARATOR);
 
 defined('FW_ROOT_PATH') or define('FW_ROOT_PATH', dirname(__FILE__));
@@ -15,7 +20,7 @@ require_once('version.php');
 $yii=dirname(__FILE__).'/system/framework/yii.php';
 $globals=dirname(__FILE__).'/system/core/globals.php';
 
-defined('YII_DEBUG') or define('YII_DEBUG',true);
+//defined('YII_DEBUG') or define('YII_DEBUG',true);
 
 defined('YII_TRACE_LEVEL') or define('YII_TRACE_LEVEL',3);
 require_once($yii);

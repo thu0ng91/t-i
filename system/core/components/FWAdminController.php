@@ -48,10 +48,11 @@ class FWAdminController extends CController
 
                 }
             }
-
-            if (!empty($menus)) {
+			if (!empty($menus)) {
+            	$this->topMenus[] = $menus['top'];
+			}
+            if (!empty($menus) && null != $this->module) {
                 $menus['top']['active'] = $this->module->id == $m->name ? true : false;
-                $this->topMenus[] = $menus['top'];
 
                 if ($this->module->id == $m->name) {
                     $this->leftMenus = $menus['left'];

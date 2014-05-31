@@ -37,7 +37,7 @@ $this->pageTitle=Yii::app()->name;
         array(
             'name'=>'status',
 //            'type' => 'raw',
-            'value' => 'Yii::app()->params[moduleStatus][$data->status]',
+            'value' => 'Yii::app()->params["moduleStatus"][$data->status]',
         ),
 //        array('name'=>'fwversion', ),
 //        array('name'=>'cid', 'value' => '$data->category->title', 'filter' => $categorys),

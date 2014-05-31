@@ -57,7 +57,7 @@ class ModulesController extends FWAdminController
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 //			'categorys'=> Category::model()->showAllSelectCategory(Category::SHOW_ALLCATGORY),
-//            'model' => Modules::model(),
+            'model' => Modules::model(),
 		));
 	}
 
@@ -146,7 +146,7 @@ class ModulesController extends FWAdminController
             include_once $moduleFile;
             $moduleCls = ucfirst($m->name) . "Module";
             if (class_exists($moduleCls)) {
-                $setup = new $moduleCls();
+                $setup = new $moduleCls($m->name, null);
                 if ($setup instanceof IModule) {
                     $r = $setup->install();
                     if ($r) {
@@ -340,7 +340,7 @@ class ModulesController extends FWAdminController
                     include_once $moduleFile;
                     $moduleCls = ucfirst($name) . "Module";
                     if (class_exists($moduleCls)) {
-                        $m = new $moduleCls();
+                        $m = new $moduleCls($name, null);
                         if ($m instanceof IModule) {
                             $modules[$name] = array();
 //                            $modules[$name]['module'] = $m;

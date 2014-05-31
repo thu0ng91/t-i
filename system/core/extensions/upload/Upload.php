@@ -39,9 +39,11 @@ class Upload{
 		if(!is_dir($dir)){
 			if(!is_dir(dirname($dir))){
 				self::recursionMkDir(dirname($dir));
-				mkdir($dir,'0777');
+				mkdir($dir);
+                chmod($dir, 0777);
 			}else{
-				mkdir($dir,'0777');
+				mkdir($dir);
+                chmod($dir, 0777);
 			}
 		}
 	}

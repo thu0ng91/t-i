@@ -1,6 +1,6 @@
 <?php
 if (defined('YII_DEBUG')) {
-    error_reporting(E_ALL);
+    error_reporting(E_ALL&~E_DEPRECATED&~E_NOTICE);
 } else {
     error_reporting(0);
 }

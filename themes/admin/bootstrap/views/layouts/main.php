@@ -57,8 +57,8 @@ $this->widget('bootstrap.widgets.TbNavbar',array(
 )); ?>
 
 <div class="clear"></div>
-<div class="container" id="page">
-
+<!-- <div class="container" id="page">-->
+<div id="page">
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
@@ -67,10 +67,10 @@ $this->widget('bootstrap.widgets.TbNavbar',array(
 
 <div class="container-fluid">
   <div class="row-fluid">
-	<div class="span3">
+	<div class="span3" style="width:15%;">
 		<?php $this->renderPartial('//layouts/left-menu'); ?>
 	</div>
-	  <div class="span9">
+	  <div class="span9" style="width:80%;">
         <?php $this->renderPartial('//layouts/flash-message'); ?>
 		<?php echo $content; ?>
 	  </div>
@@ -79,7 +79,7 @@ $this->widget('bootstrap.widgets.TbNavbar',array(
 	
 	<div class="clear"></div>
 
-	<div id="footer">
+	<div id="footer" style="text-align:center;border-top:1px #ccc solid;padding:10px 0;">
         Copyright &copy; <?php echo date('Y'); ?> by <?php echo Yii::app()->name; ?> <br/>
 	</div><!-- footer -->
 

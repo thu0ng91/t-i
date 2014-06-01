@@ -2,5 +2,7 @@
 /protected/runtime/
 assets
 runtime
+runtime/*
 txt
 uploads
+.*

@@ -14,7 +14,7 @@ class FWAdminController extends CController
 
 	public function init()
 	{
-		if(Yii::app()->user->isGuest&&$this->id!=='site'){
+		if(Yii::app()->user->isGuest && $this->id !== 'site'){
 			Yii::app()->user->setFlash('actionInfo','您尚未登录系统！');
 			$this->redirect(array('/site/login'));
 		}
@@ -48,15 +48,17 @@ class FWAdminController extends CController
 
                 }
             }
-			if (!empty($menus)) {
-            	$this->topMenus[] = $menus['top'];
-			}
+            
             if (!empty($menus) && null != $this->module) {
                 $menus['top']['active'] = $this->module->id == $m->name ? true : false;
 
                 if ($this->module->id == $m->name) {
                     $this->leftMenus = $menus['left'];
                 }
+            }
+
+            if (!empty($menus)) {
+                $this->topMenus[] = $menus['top'];
             }
         }
 

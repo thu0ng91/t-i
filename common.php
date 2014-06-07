@@ -8,6 +8,7 @@ defined('DS') or define('DS',DIRECTORY_SEPARATOR);
 
 defined('FW_ROOT_PATH') or define('FW_ROOT_PATH', dirname(__FILE__));
 defined('FW_MODULE_BASE_PATH') or define('FW_MODULE_BASE_PATH', FW_ROOT_PATH . DS . "modules");
+defined('FW_PLUGIN_BASE_PATH') or define('FW_PLUGIN_BASE_PATH', FW_ROOT_PATH . DS . "plugins");
 
 defined('BASE_THEME_DIR') or define('BASE_THEME_DIR',"themes");
 defined('BASE_THEME_PATH') or define('BASE_THEME_PATH', FW_ROOT_PATH. DS . BASE_THEME_DIR);

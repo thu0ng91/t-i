@@ -39,6 +39,7 @@
     } elseif ($this->menupanel[0] == 'modules') {
         $menus = array(
             array('label'=>'模块管理', 'url'=> $this->createUrl('modules/index'), 'active'=> $this->id == 'modules' ? true : false),
+            array('label'=>'插件管理', 'url'=> $this->createUrl('plugins/index'), 'active'=> $this->id == 'plugins' ? true : false),
 //            array('label'=>'新闻管理', 'url'=> $this->createUrl('news/index'), 'active'=> $this->id == 'news' ? true : false),
             //            array('label'=>'伪静态设置', 'url'=> $this->createUrl('system/rewrite'), 'active'=> $this->action->id == 'rewrite' ? true : false),
         );

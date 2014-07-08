@@ -58,6 +58,10 @@ class DoController extends FWFrontController
 
         $model = new RegisterForm();
 
+//        $evt = new FWHookEvent($this, null);
+
+        FWHook::run("member", "beforeRegister", new FWHookEvent($this, null));
+
         if(isset($_POST['RegisterForm']))
         {
             $model->attributes = $_POST['RegisterForm'];
@@ -74,9 +78,11 @@ class DoController extends FWFrontController
                 $model->status = Yii::app()->params['status']['ischecked'];
 //                $model->attributes['status'] = Yii::app()->params['status']['ischecked'];
                 if ($model->save()) {
+                    FWHook::run("member", "afterRegisterSuccess", new FWHookEvent($this, array($model)));
                     Yii::app()->user->setFlash('actionInfo','恭喜，注册成功！请登陆！');
                     $this->redirect(array('login'));
                 } else {
+//                    FWHook::run("member", "afterRegisterFailed", new FWHookEvent($this, array($model)));
                     Yii::app()->user->setFlash('actionInfo',"注册失败，请联系管理员！");
                     $this->refresh();
                 }

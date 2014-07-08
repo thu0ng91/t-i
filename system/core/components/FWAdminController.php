@@ -109,6 +109,7 @@ class FWAdminController extends CController
             }
 
             if (!empty($menus)) {
+                $menus['top']['url'] = $this->createUrl($menus['top']['url']);
                 $this->pluginMenus[] = $menus['top'];
             }
         }

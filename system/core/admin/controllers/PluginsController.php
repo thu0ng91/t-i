@@ -8,12 +8,12 @@ class PluginsController extends FWAdminController
     protected function menus()
     {
         return array(
-            'modules',
+            'plugins',
         );
     }
 
     protected $message = array(
-        'install_error:plugsin_is_installed' => '安装插件失败，插件已经安装',
+        'install_error:plugin_is_installed' => '安装插件失败，插件已经安装',
         'install_error:fwversion_not_support' => '安装插件失败，该插件依赖飞舞小说系统版本为：%s，当前飞舞系统版本为：%s',
         'install_error' => '安装插件失败',
         'install_success' => '安装插件成功',
@@ -69,10 +69,10 @@ class PluginsController extends FWAdminController
     {
         $localPlugins = $this->scanPlugins();
 
-        $modules = Plugins::model()->findAll();
+        $plugins = Plugins::model()->findAll();
 
         $upgradeCount = 0;
-        foreach ($modules as $k => $v) {
+        foreach ($plugins as $k => $v) {
             if (isset($localPlugins[$v->name])) {
                 if (version_compare($localPlugins[$v->name]['config']['version'], $v->version) > 0) { // 发现升级版
                     if (version_compare($localPlugins[$v->name]['config']['version'], $v->upgradeversion) > 0) {
@@ -131,7 +131,7 @@ class PluginsController extends FWAdminController
         }
 
         if ($m->status == 1) {
-            echo $this->message['install_error:plugsin_is_installed'];
+            echo $this->message['install_error:plugin_is_installed'];
             Yii::app()->end();
         }
 
@@ -141,15 +141,25 @@ class PluginsController extends FWAdminController
             Yii::app()->end();
         }
 
-        $pluginFile = FW_PLUGIN_BASE_PATH . DS . $m->name . DS ."install.php";
+        $pluginFile = FW_PLUGIN_BASE_PATH . DS . $m->name . DS . ucfirst($m->name) . "Plugin.php";
 
         try {
             include_once $pluginFile;
-
-            $m->status = 1;
-            $m->save();
-            echo $this->message['install_success'];
-            Yii::app()->end();
+            $pluginCls = ucfirst($m->name) . "Plugin";
+            if (class_exists($pluginCls)) {
+                $setup = new $pluginCls();
+                if ($setup instanceof FWPlugin) {
+                    $r = $setup->install();
+                    if ($r) {
+                        $m->status = 1;
+                        $m->save();
+                        echo $this->message['install_success'];
+                        Yii::app()->end();
+                    }
+                }
+            } else {
+                throw new Exception();
+            }
         } catch (Exception $e) {
             echo $this->message['install_error'];
             Yii::app()->end();
@@ -173,7 +183,7 @@ class PluginsController extends FWAdminController
         }
 
 //        if ($m->status == 1) {
-//            echo $this->message['install_error:plugsin_is_installed'];
+//            echo $this->message['install_error:plugin_is_installed'];
 //            Yii::app()->end();
 //        }
 
@@ -183,14 +193,31 @@ class PluginsController extends FWAdminController
             Yii::app()->end();
         }
 
-        $pluginFile = FW_PLUGIN_BASE_PATH . DS . $m->name . DS . "upgrade.php";
+        $pluginFile = FW_PLUGIN_BASE_PATH . DS . $m->name . DS .  ucfirst($m->name) . "Plugin.php";
+
 
         try {
             include_once $pluginFile;
-            $m->status = 1;
-            $m->save();
-            echo $this->message['install_success'];
-            Yii::app()->end();
+            $pluginCls = ucfirst($m->name) . "Plugin";
+            if (class_exists($pluginCls)) {
+                $setup = new $pluginCls();
+                if ($setup instanceof FWPlugin && version_compare($m->upgradeversion, $m->version) > 0) {
+                    $r = $setup->upgrade($m->version);
+                    if ($r) {
+                        $m->version = $m->upgradeversion;
+//                        $m->status = 1;
+                        $m->save();
+                        echo $this->message['install_success'];
+                        Yii::app()->end();
+                    }
+                } else {
+                    echo $this->message['install_error'];
+                    Yii::app()->end();
+                }
+            } else {
+                echo $this->message['install_error'];
+                Yii::app()->end();
+            }
         } catch (Exception $e) {
             echo $this->message['install_error'];
             Yii::app()->end();
@@ -215,14 +242,17 @@ class PluginsController extends FWAdminController
 
         // 已经安装，需要先执行卸载
         if ($m->status == 1) {
-            $pluginFile = FW_PLUGIN_BASE_PATH . DS . $m->name . DS . "uninstall.php";
+            $pluginFile = FW_PLUGIN_BASE_PATH . DS . $m->name . DS .  ucfirst($m->name) . "Plugin.php";
 
             try {
                 include_once $pluginFile;
-//                $m->status = 1;
-//                $m->save();
-//                echo $this->message['install_success'];
-//                Yii::app()->end();
+                $pluginCls = ucfirst($m->name) . "Plugin";
+                if (class_exists($pluginCls)) {
+                    $setup = new $pluginCls();
+                    if ($setup instanceof IModule) {
+                        $r = $setup->uninstall();
+                    }
+                }
             } catch (Exception $e) {
             }
         }
@@ -300,28 +330,28 @@ class PluginsController extends FWAdminController
         $dir = FW_PLUGIN_BASE_PATH ;
 
         $iterator = new DirectoryIterator($dir);
-        $modules = array();
+        $plugins = array();
         foreach ($iterator as $f) {
             $name = $f->getFilename();
 //            $ext = $f->getExtension();
 //            $ext = strtolower($ext);
             if ($f->isDir() && !$f->isDot()) {
 //                $pluginFile = $f->getPathname() . DS . ucfirst($name) . "install.php";
-                $moduleConfigFile = $f->getPathname() . DS . "install.config.php";
-                if (is_file($moduleConfigFile)) {
+                $pluginConfigFile = $f->getPathname() . DS . "install.config.php";
+                if (is_file($pluginConfigFile)) {
 //                    include_once $pluginFile;
-//                    $moduleCls = ucfirst($name) . "Module";
-//                    if (class_exists($moduleCls)) {
-//                        $m = new $moduleCls($name, null);
+//                    $pluginCls = ucfirst($name) . "Module";
+//                    if (class_exists($pluginCls)) {
+//                        $m = new $pluginCls($name, null);
 //                        if ($m instanceof IModule) {
-                            $modules[$name] = array();
-//                            $modules[$name]['module'] = $m;
-                            $modules[$name]['config'] = include_once $moduleConfigFile;
+                            $plugins[$name] = array();
+//                            $plugins[$name]['plugin'] = $m;
+                            $plugins[$name]['config'] = include_once $pluginConfigFile;
 //                        }
 //                    }
                 }
             }
         }
-        return $modules;
+        return $plugins;
     }
 }

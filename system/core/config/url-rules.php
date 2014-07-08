@@ -10,6 +10,7 @@ return array(
     'login' => 'site/login',
     'logout' => 'site/logout',
     'register' => 'site/register',
+    'plugin/<_p:\w+>/<_c:\w+>/<_a:\w+>' => 'plugin<_p><_c>/<_a>',
 //    '<_c:install>/<_a>' => 'install/<_a>',
 //    'bk/<title:\w+>/index' => 'book/list/index',
 

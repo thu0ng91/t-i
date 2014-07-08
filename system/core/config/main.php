@@ -13,13 +13,14 @@ $basePath = dirname(__FILE__).DIRECTORY_SEPARATOR.'..';
 
 Yii::setPathOfAlias('bootstrap', $basePath . '/extensions/bootstrap');
 Yii::setPathOfAlias('fwmodule', $basePath . '/../../modules/');
+Yii::setPathOfAlias('plugin', FW_PLUGIN_BASE_PATH);
 
 return array(
 	'basePath'=> $basePath,
 	'name'=> '飞舞小说系统',
 	'language'=>'zh_cn',
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log', 'pluginLoader'),
 	'viewPath'=>'.',
     'runtimePath'=> $basePath .'/../../runtime/front',
     'modulePath'=> $basePath .'/../../modules',
@@ -157,6 +158,9 @@ return array(
             'dbComponentId'     => 'db',
             'createTable'       => true,
             'dbEngine'      => 'MyISAM',
+        ),
+        'pluginLoader' => array(
+            'class' => 'PluginLoader',
         ),
 	),
 	// application-level parameters that can be accessed

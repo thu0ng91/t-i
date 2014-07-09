@@ -57,7 +57,11 @@
 //                $v['active'] = strpos($v['url'], '/' . $this->id) !== false ;
 //            }
 
-            $v['active'] = strpos($v['url'], $this->id . '/' . $this->action->id) !== false ;
+            if ($this instanceof FWPluginAdminController) {
+                $v['active'] = strpos($v['url'], "plugin/" . $this->getPluginName() . "/" . $this->id . '/' . $this->action->id) !== false;
+            } else {
+                $v['active'] = strpos($v['url'], $this->id . '/' . $this->action->id) !== false;
+            }
 //            print_r($v);
             if ($v['active'] && !$leftMenuIsSelected) {
                 $leftMenuIsSelected = true;
@@ -70,7 +74,7 @@
             foreach ($menus as $k => $v) {
 //                $v['url'] = Yii::app()->createUrl($v['url']);
 
-                if (!$v['active']) {
+                if (!$v['active'] && !($this instanceof FWPluginAdminController)) {
                     $v['active'] = strpos($v['url'], '/' . $this->id) !== false ;
                 }
                 $menus[$k] = $v;

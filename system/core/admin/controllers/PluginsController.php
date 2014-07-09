@@ -8,7 +8,7 @@ class PluginsController extends FWAdminController
     protected function menus()
     {
         return array(
-            'plugins',
+            'modules',
         );
     }
 

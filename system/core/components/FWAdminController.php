@@ -100,16 +100,25 @@ class FWAdminController extends CController
                 }
             }
 
-            if (!empty($menus) && null != $this->module) {
-                $menus['top']['active'] = $this->module->id == 'plugin'? true : false;
+//            var_dump($this);
+            if (!empty($menus)  && $this instanceof FWPluginAdminController && null != $this->getPluginName()) {
+//                var_dump($this);
+                $pattern = "#plugin/" . $this->getPluginName() . "/#";
+                $menus['top']['active'] = preg_match($pattern, $menus['top']['url']) > 0 ? true : false;
 
-                if ($this->module->id == $m->name) {
+                if ($menus['top']['active']) {
                     $this->leftMenus = $menus['left'];
+
+//                    foreach ($this->leftMenus as $k => $v) {
+//                        $v['active'] = false;
+//                        $v['url'] = Yii::app()->createUrl($v['url']);
+//                        $this->leftMenus[$k] = $v;
+//                    }
                 }
             }
 
             if (!empty($menus)) {
-                $menus['top']['url'] = $this->createUrl($menus['top']['url']);
+                $menus['top']['url'] = Yii::app()->createUrl($menus['top']['url']);
                 $this->pluginMenus[] = $menus['top'];
             }
         }

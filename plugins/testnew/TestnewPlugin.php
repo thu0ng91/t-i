@@ -1,8 +1,8 @@
 <?php
 /**
- * Class TestPlugin
+ * Class TestnewPlugin
  */
-class TestPlugin extends FWPlugin {
+class TestnewPlugin extends FWPlugin {
 
     /**
      * 安装时调用

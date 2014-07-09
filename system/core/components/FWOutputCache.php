@@ -25,4 +25,35 @@ class FWOutputCache extends COutputCache {
 
         return null;
     }
+
+    public function run()
+    {
+        ob_start();
+        parent::run();
+
+        $content = ob_get_clean();
+
+//        $content .= "<!--" . Yii::app()->request->pathInfo . "-->";
+        echo $content;
+
+        $this->makeHtml($content);
+    }
+
+    /**
+     * 生成静态文件
+     * @param $content
+     */
+    public function makeHtml($content)
+    {
+        $dir = dirname(Yii::app()->request->pathInfo);
+        $fileName = basename(Yii::app()->request->pathInfo);
+
+        $dir = FW_ROOT_PATH . DS . $dir;
+        @mkdir($dir, 0777, true);
+
+        @chmod($dir, 0777);
+        $filePath = $dir . DS . $fileName;
+
+        file_put_contents($filePath, $content);
+    }
 }

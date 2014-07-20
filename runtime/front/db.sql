@@ -141,8 +141,6 @@ CREATE TABLE `modules` (
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 
-
-
 -- ----------------------------
 -- Table structure for settings
 -- ----------------------------
@@ -166,3 +164,25 @@ CREATE TABLE `tags` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `tag_uniq_name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='TAG表';
+
+
+-- ----------------------------
+-- Table structure for plugins
+-- ----------------------------
+DROP TABLE IF EXISTS `plugins`;
+CREATE TABLE `plugins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NOT NULL COMMENT '插件标题',
+  `name` varchar(50) NOT NULL COMMENT '插件名称：与插件目录名一致',
+  `author` varchar(10) NOT NULL COMMENT '插件作者',
+  `version` varchar(10) NOT NULL COMMENT '插件版本',
+  `upgradeversion` varchar(10) DEFAULT NULL COMMENT '插件升级版本号',
+  `fwversion` varchar(10) NOT NULL COMMENT '插件所需最低飞舞系统版本',
+  `description` varchar(500) NOT NULL COMMENT '插件描述',
+  `adminmenus` varchar(1000) DEFAULT NULL COMMENT '管理员菜单数组序列化',
+  `createtime` int(11) NOT NULL COMMENT '插件引入系统时间',
+  `updatetime` int(11) NOT NULL COMMENT '插件调整时间',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态：0 未安装 1 已安装 -1 已禁用',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `module_name_uniq` (`name`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

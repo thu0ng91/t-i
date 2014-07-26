@@ -20,8 +20,8 @@ class PluginLoader extends CApplicationComponent{
 //        if (!in_array('plugin', $tables)) {
 //            return;
 //        }
-        // 如果未安装，则不需load 插件，否则插件表不存在会导致错误
-        if (!H::checkIsInstall()) return;
+        // 如果访问的是前台页面，并且还未安装系统本身，则不需load 插件，否则插件表不存在会导致错误
+        if (false === Yii::getPathOfAlias('backend') && !H::checkIsInstall()) return;
 
         $ext=$this->getPluginClasses('plugin');
         $list=array();

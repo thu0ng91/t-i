@@ -41,7 +41,7 @@ class Block extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('blockname,content, status', 'required'),
+			array('blockname, content, template, status', 'required'),
 			array('sequence,cachetime, status', 'numerical', 'integerOnly'=>true),
 			array('blockname', 'length', 'max'=>50),
 			array('blocktype', 'length', 'max'=>25),
@@ -76,7 +76,8 @@ class Block extends CActiveRecord
 			'blocktype' => '区块类型',
 			'cachetime' => '缓存时间',
 			'sequence' => '排序',
-			'status' => '状态',
+			'status' => '状态',		
+			'template' => '区块外层',
 		);
 	}
 

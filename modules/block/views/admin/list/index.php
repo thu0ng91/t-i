@@ -63,7 +63,7 @@ $this->widget('bootstrap.widgets.TbButtonGroup', array(
                 ),
                 'delete' => array(
                     'label'=>'删除区块',     // text label of the button
-                    'url'=>'Yii::app()->createUrl("block/admin/list/delete",array("id"=>$data->bid))',       // a PHP expression for generating the URL of the button
+                    'url'=>'Yii::app()->createUrl("block/admin/list/delete",array("bid"=>$data->bid))',       // a PHP expression for generating the URL of the button
                     'imageUrl'=> '',  // image URL of the button. If not set or false, a text link is used
 //                    'icon' => 'eye-open',
                     'options'=> array('style'=>'cursor:pointer;'), // HTML options for the button tag

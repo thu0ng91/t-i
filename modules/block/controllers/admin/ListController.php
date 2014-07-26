@@ -39,7 +39,7 @@ class ListController extends FWAdminController
     		$type = 'novel';
     	}
 		$bid = Yii::app()->request->getParam('bid',null);
-		$result = $vars = array();
+		$vars = array();
         if(null == $bid){
         	$model = new Block;
         }else{
@@ -51,13 +51,88 @@ class ListController extends FWAdminController
         if(isset($_POST['Block']))
         {
         	if($_POST['Block']['blocktype'] == 'novel'){
-        		$_POST['Block']['vars'] = intval($_POST['sort_id']).'|'.intval($_POST['sort_type']).'|'.intval($_POST['sort_order']).'|'.intval($_POST['nums']);
+        		$sort_id = intval($_POST['sort_id']);
+        		$sort_type = intval($_POST['sort_type']);
+        		$sort_order = intval($_POST['sort_order']);
+        		$self_number = $_POST['self_number'];
+        		$nums = intval($_POST['nums']);
+        		$_POST['Block']['vars'] = $sort_id.'|'.$sort_type.'|'.$sort_order.'|'.$nums.'|'.$self_number;
         	}
             $model->attributes = $_POST['Block'];
-
+			$attributes = array(
+				'blockname','content','vars','blocktype','sequence','status','cachetime','template'
+			);
             if($model->save(true, $attributes)){
-            	$block_file_path = Yii::app()->basePath.'/../../runtime/blocks/block_'.$model->bid.'.tpl';
-            	file_put_contents($block_file_path,$model->content);
+            	//生成区块设置数据文件
+            	$block_file_path = Yii::app()->basePath.'/../../runtime/blocks/';
+            	if(!file_exists($block_file_path)){
+            		$this->dmkdir($block_file_path);
+            	}
+            	$str = '{novel_book ';
+            	if(empty($self_number)){
+	            	if($sort_id == 0){
+	            		$str .= 'cid=[0]';
+	            	}else{
+	            		$str .= 'cid=['.$sort_id.']';
+	            	}
+	            	
+					$str .= ' limit='.$nums;
+	            	switch ($sort_type){
+	            		case 1:
+	            			$ordername = 'allclicks';break;
+	            		case 2:
+	            			$ordername = 'monthclicks';break;
+	            		case 3:
+	            			$ordername = 'weekclicks';break;
+	            		case 4:
+	            			$ordername = 'dayclicks';break;
+	            		case 5:
+	            			$ordername = 'alllikenum';break;
+	            		case 6:
+	            			$ordername = 'monthlikenum';break;
+	            		case 7:
+	            			$ordername = 'weeklikenum';break;
+	            		case 8:
+	            			$ordername = 'daylikenum';break;
+	            		case 9:
+	            			$ordername = 'createtime';break;
+	            		case 10:
+	            			$ordername = 'favoritenum';break;
+	            		case 11:
+	            			$ordername = 'wordcount';break;
+	            		case 12:
+	            			$ordername = 'lastchaptertime';break;
+	            		case 13:
+	            			$ordername = 'recommendlevel';break;
+	            		default:
+	            			$ordername = 'allclicks';
+	             	}
+	             	if($sort_order == 1){
+	             		$str .= ' order="'.$ordername.' asc"';
+	             	}else{
+	             		$str .= ' order="'.$ordername.' desc"';
+	             	}
+            	}else{
+            		$str .= ' id=['.$self_number.']';
+            	}
+            	$str .= '}';
+            	
+            	$block_file = $block_file_path.'block_'.$model->bid.'.tpl';
+            	$content = str_replace('block',$str.$model->content.'{/novel_book}',$model->template);
+            	file_put_contents($block_file,$content);
+            	//生成区块设置数据
+            	$block_config_path = $block_file_path.'/block_'.$model->bid.'.conf';
+         	
+            	$block_config = json_encode(array(
+            		'status'=>$model->status,
+            		'cachetime'=>$model->cachetime,
+            		'blockname'=>$model->blockname,
+            		'blocktype'=>$model->blocktype,
+            		'sequence'=>$model->sequence,
+            		'vars'=>$model->vars,
+            	));
+            	file_put_contents($block_config_path,$block_config);
+            	
                 Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveSuccess']);
                 $this->refresh();
             }else if($model->validate()){
@@ -65,110 +140,32 @@ class ListController extends FWAdminController
                 $this->refresh();
             }
         }
-        $categories = null;
-		if($type == 'novel'){
-			Yii::import('book.models.*');
-	        $category = Category::model()->findAllByAttributes(array('status'=>1));
-	        foreach($category as $v){
-	        	$result[$v->id] = $v->title;
-	        	$categories = $result;
-	        }
-		}
-        
+        Yii::import('book.models.*');
         $this->render('create',array(
             'model'=>$model,'categories'=>Category::model()->showAllSelectCategory(Category::ALL_CATEGORY),'type'=>$type,'vars'=>$vars
         ));
     }
 
-    /**
-     * 会员更新
-     * @param $id
-     */
-    public function actionUpdate($id)
-    {
-        $model=$this->loadModel($id);
-
-        if(!empty($_POST['Member']))
-        {
-            $model->attributes=$_POST['Member'];
-//            $upload=CUploadedFile::getInstance($model,'imagefile');
-//            if(!empty($upload))
-//            {
-//                $model->imgurl = Upload::createFile($upload,'book','update',$model->imgurl);
-//            }
-
-//            if (strlen($_POST['Member']['password']))
-
-            $attributes = array(
-//                'username',
-                'password',
-                'repassword',
-                'email',
-                'status',
-            );
-            $s = str_pad("*", 32 , "*");
-            if ($_POST['Member']['password'] == $s) { // 表示不更新密码
-                unset($attributes[0], $attributes[1]);
-            }
-            if($model->save(true, $attributes)){
-//                // 保存新增tags
-//                $tagIdList = $_POST['book_tags'];
-//                $tagIdList = explode(",", $tagIdList);
-//                foreach ($tagIdList as $v) {
-//                    if (!is_numeric($v) || $v < 1) continue;
-//                    $m = new MemberTags();
-//                    $m->bookid = $model->id;
-//                    if ($v > 0) $m->tagid = intval($v);
-//                    $m->save();
-//                }
-//
-//                $images = CUploadedFile::getInstancesByName('images');
-//
-//                if (isset($images) && count($images) > 0) {
-//                    foreach ($images as $k => $image) {
-//                        $imgUrl = Upload::createFile($image, 'book', 'create');
-//                        $m = new MemberImage();
-//                        $m->bookid = $model->id;
-//                        $m->imgurl = $imgUrl;
-//                        $m->iscover = 1;
-//                        $m->save();
-//                    }
-//
-//                    // 更新主表封面图信息
-//                    $model->hascover = 1;
-//                    $model->update(array(
-//                        'hascover',
-//                    ));
-//                }
-
-                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['updateSuccess']);
-//                $this->redirect(array('bookList','menupanel'=>$_GET['menupanel'],'cid'=>$_GET['cid'],'title'=>$_GET['title']));
-                $this->refresh();
-            }else if($model->validate()){
-                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['updateFail']);
-//                $this->redirect(array('bookList','menupanel'=>$_GET['menupanel'],'cid'=>$_GET['cid'],'title'=>$_GET['title']));
-                $this->refresh();
-            }
-        }
-
-//        $bookImages = MemberImage::model()->findAll('bookid=:bookid', array(
-//            ':bookid' => $model->id,
-//        ));
-        $this->render('update',array(
-            'model'=>$model,
-//            'bookimages' => $bookImages,
-//            'categorys'=>Category::model()->showAllSelectCategory(),
-        ));
-    }
-
-    /**
-     * Returns the data model based on the primary key given in the GET variable.
-     * If the data model is not found, an HTTP exception will be raised.
-     * @param integer the ID of the model to be loaded
-     */
+	public function actionDelete(){
+		$id = intval(Yii::app()->request->getParam('bid',null));
+		if(Yii::app()->request->isPostRequest)
+		{
+			// we only allow deletion via POST request
+			if($this->loadModel($id)->delete()){
+				Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['deleteSuccess']);
+			}else {
+				Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['deleteFail']);
+			}
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+			if(!isset($_GET['ajax']))
+				$this->redirect($_POST['returnUrl']);
+		}
+		else
+			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+	}
     public function loadModel($id)
     {
-        $model=Member::model()->findByPk((int)$id);
+        $model = Block::model()->findByPk((int)$id);
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
         return $model;

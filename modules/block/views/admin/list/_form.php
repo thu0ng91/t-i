@@ -44,7 +44,7 @@ $shaixuan = '<div class="control-group" id="showInput" style="height:30px;line-h
 </div>';
 $paixu = '<div class="control-group" id="showInput" style="height:30px;line-height:30px;">
     <label style="float:left;">指定小说ID<span class="required">*</span></label>
-    <div id="articleList" style="float:left;padding-left:10px;">'.CHtml::textField('nums',isset($vars[3]) ? $vars[3] : '',array('id'=>'nums','style' => 'width:160px;')).'
+    <div id="articleList" style="float:left;padding-left:10px;">'.CHtml::textField('self_number',isset($vars[4]) ? $vars[4] : '',array('id'=>'self_number','style' => 'width:160px;')).'
     </div>
 </div>';
 $this->widget('bootstrap.widgets.TbTabs', array(
@@ -64,7 +64,16 @@ $this->widget('bootstrap.widgets.TbTabs', array(
        <?php echo CHtml::textField('nums',isset($vars[3]) ? $vars[3] : '',array('id'=>'nums','style' => 'width:160px;'));?>
     </div>
 </div>
-<?php echo $form->textAreaRow($model,'content',array('class'=>'span5','style'=>'width:500px;height:200px','hint'=>'可调用字段')); ?>
+
+<?php
+$templatetags = '';
+foreach(Yii::app()->controller->module['templatetags'] as $k=>$v){
+	$templatetags .= '<div style="width:250px;float:left;">'.$k.$v.'</div>';
+}
+$templatetags .= '<div style="clear:both;"></div>'
+?>
+<?php echo $form->textAreaRow($model,'template',array('class'=>'span5','style'=>'width:500px;height:100px')); ?>
+<?php echo $form->textAreaRow($model,'content',array('class'=>'span5','style'=>'width:500px;height:200px','hint'=>$templatetags)); ?>
 <?php echo $form->textFieldRow($model, 'cachetime',array('hint'=>'根据设置的秒数自动更新数据')); ?>
 <div class="form-actions">
     <?php $this->widget('bootstrap.widgets.TbButton', array(

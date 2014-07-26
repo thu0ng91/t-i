@@ -246,7 +246,7 @@ class ModulesController extends FWAdminController
                 include_once $moduleFile;
                 $moduleCls = ucfirst($m->name) . "Module";
                 if (class_exists($moduleCls)) {
-                    $setup = new $moduleCls();
+                    $setup = new $moduleCls($m->name, null);
                     if ($setup instanceof IModule) {
                         $r = $setup->uninstall();
                     }

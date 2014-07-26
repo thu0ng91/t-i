@@ -36,7 +36,7 @@ class FWOutputCache extends COutputCache {
 //        $content .= "<!--" . Yii::app()->request->pathInfo . "-->";
         echo $content;
 
-        $this->makeHtml($content);
+//        $this->makeHtml($content);
     }
 
     /**

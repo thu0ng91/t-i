@@ -12,7 +12,17 @@ class PluginLoader extends CApplicationComponent{
     public function init()
     {
         parent::init();
-        
+
+
+//        $schema = Yii::app()->db->schema;
+//        $tables = $schema->findTableNames();
+//
+//        if (!in_array('plugin', $tables)) {
+//            return;
+//        }
+        // 如果未安装，则不需load 插件，否则插件表不存在会导致错误
+        if (!H::checkIsInstall()) return;
+
         $ext=$this->getPluginClasses('plugin');
         $list=array();
 

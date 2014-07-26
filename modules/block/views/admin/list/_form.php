@@ -72,7 +72,7 @@ foreach(Yii::app()->controller->module['templatetags'] as $k=>$v){
 }
 $templatetags .= '<div style="clear:both;"></div>'
 ?>
-<?php echo $form->textAreaRow($model,'template',array('class'=>'span5','style'=>'width:500px;height:100px')); ?>
+<?php echo $form->textAreaRow($model,'template',array('class'=>'span5','style'=>'width:500px;height:100px','hint'=>'{$block}代表区块内容<br />{$blockname}代表区块标题')); ?>
 <?php echo $form->textAreaRow($model,'content',array('class'=>'span5','style'=>'width:500px;height:200px','hint'=>$templatetags)); ?>
 <?php echo $form->textFieldRow($model, 'cachetime',array('hint'=>'根据设置的秒数自动更新数据')); ?>
 <div class="form-actions">

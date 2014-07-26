@@ -22,13 +22,36 @@ function smarty_function_novel_block($params, &$smarty){
     Yii::import("block.models.*");
     $id = intval($params['id']);
 
-    // 从数据库中
-
     $blockFile = FW_ROOT_PATH . DS . "runtime" . DS . "blocks" . DS . "block_" . $id . ".tpl";
-
     if (!file_exists($blockFile)) return "";
+    $blockConfigFile = FW_ROOT_PATH . DS . "runtime" . DS . "blocks" . DS . "block_" . $id . ".conf";
 
-    $r = $smarty->getSubTemplate($blockFile, null, null, null, null, null, null);
+    $cacheTime = null;
+    $blockStatus = 4;
+    if (file_exists($blockFile)) {
+        $blockConfig = file_get_contents($blockConfigFile);
+        $blockConfig = json_decode($blockConfig, true);
+
+        $cacheTime = $blockConfig['cachetime'];
+
+        $blockStatus = intval($blockConfig['status']);
+    }
+
+    switch ($blockStatus) {
+        case 1:
+            return "";
+            break;
+        case 2:
+            if (!Yii::app()->user->isGuest) return "";
+            break;
+        case 3:
+            if (Yii::app()->user->isGuest) return "";
+            break;
+        default:
+            break;
+    }
+
+    $r = $smarty->getSubTemplate($blockFile, null, null, Smarty::CACHING_LIFETIME_SAVED, $cacheTime, null, null);
 
     return $r;
 

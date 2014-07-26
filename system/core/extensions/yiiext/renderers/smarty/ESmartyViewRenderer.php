@@ -162,12 +162,18 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
 		$this->getSmarty()->setTemplateDir(Yii::app()->getViewPath());
 		$compileDir = isset($this->config['compile_dir']) ?
 					  $this->config['compile_dir'] : Yii::app()->getRuntimePath().'/smarty/compiled/';
+        $cacheDir = isset($this->config['cache_dir']) ?
+            $this->config['cache_dir'] : Yii::app()->getRuntimePath().'/smarty/cached/';
 
 		// create compiled directory if not exists
 		if(!file_exists($compileDir)){
 			mkdir($compileDir, $this->directoryPermission, true);
 		}
+        if(!file_exists($cacheDir)){
+            mkdir($cacheDir, $this->directoryPermission, true);
+        }
 		$this->getSmarty()->setCompileDir($compileDir); // no check for trailing /, smarty does this for us
+		$this->getSmarty()->setCacheDir($cacheDir); // no check for trailing /, smarty does this for us
 
 		//Register default template handler. This allow us to use yii aliases in the smarty templates.
 		//You shoud set path without extension

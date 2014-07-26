@@ -128,4 +128,4 @@
     })
 {/literal}
 </script>
-{*{novel_block id=4}*}
+{novel_block id=1}

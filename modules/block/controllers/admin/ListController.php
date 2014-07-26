@@ -118,7 +118,8 @@ class ListController extends FWAdminController
             	$str .= '}';
             	
             	$block_file = $block_file_path.'block_'.$model->bid.'.tpl';
-            	$content = str_replace('block',$str.$model->content.'{/novel_book}',$model->template);
+                $content = str_replace('{$blockname}',$model->blockname,$model->template);
+            	$content = str_replace('{$block}',$str.$model->content.'{/novel_book}',$content);
             	file_put_contents($block_file,$content);
             	//生成区块设置数据
             	$block_config_path = $block_file_path.'/block_'.$model->bid.'.conf';

@@ -42,6 +42,8 @@ class BlockModule extends FWModule
      */
     public function uninstall()
     {
+        $cmd = Yii::app()->db->createCommand();
+        $cmd->dropTable("block");
         return true;
     }
 

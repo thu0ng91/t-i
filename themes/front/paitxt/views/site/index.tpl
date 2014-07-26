@@ -128,3 +128,4 @@
     })
 {/literal}
 </script>
+{*{novel_block id=4}*}

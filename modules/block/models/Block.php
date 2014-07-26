@@ -6,23 +6,12 @@
  * The followings are the available columns in table 'block':
  * @property integer $bid
  * @property string $blockname
- * @property string $modname
- * @property string $filename
- * @property string $classname
- * @property integer $side
- * @property string $title
- * @property string $description
  * @property string $content
  * @property string $vars
  * @property string $template
- * @property integer $cachetime
- * @property integer $contenttype
- * @property integer $weight
- * @property integer $showstatus
- * @property integer $custom
- * @property integer $canedit
- * @property integer $publish
- * @property integer $hasvars
+ * @property integer $blocktype
+ * @property integer $sequence
+ * @property integer $status
  */
 class Block extends CActiveRecord
 {
@@ -52,12 +41,14 @@ class Block extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, description, content, vars', 'required'),
-			array('side, cachetime, contenttype, weight, showstatus, custom, canedit, publish, hasvars', 'numerical', 'integerOnly'=>true),
-			array('blockname, modname, filename, classname, template', 'length', 'max'=>50),
+			array('blockname,content, status', 'required'),
+			array('sequence,cachetime, status', 'numerical', 'integerOnly'=>true),
+			array('blockname', 'length', 'max'=>50),
+			array('blocktype', 'length', 'max'=>25),
+			array('vars', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('bid, blockname, modname, filename, classname, side, title, description, content, vars, template, cachetime, contenttype, weight, showstatus, custom, canedit, publish, hasvars', 'safe', 'on'=>'search'),
+			array('bid, blockname, content, vars, template, blocktype, sequence, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,24 +70,13 @@ class Block extends CActiveRecord
 	{
 		return array(
 			'bid' => 'Bid',
-			'blockname' => 'Blockname',
-			'modname' => 'Modname',
-			'filename' => 'Filename',
-			'classname' => 'Classname',
-			'side' => 'Side',
-			'title' => 'Title',
-			'description' => 'Description',
-			'content' => 'Content',
-			'vars' => 'Vars',
-			'template' => 'Template',
-			'cachetime' => 'Cachetime',
-			'contenttype' => 'Contenttype',
-			'weight' => 'Weight',
-			'showstatus' => 'Showstatus',
-			'custom' => 'Custom',
-			'canedit' => 'Canedit',
-			'publish' => 'Publish',
-			'hasvars' => 'Hasvars',
+			'blockname' => '区块标题',
+			'content' => '区块内容',
+			'vars' => '区块参数',
+			'blocktype' => '区块类型',
+			'cachetime' => '缓存时间',
+			'sequence' => '排序',
+			'status' => '状态',
 		);
 	}
 
@@ -113,23 +93,12 @@ class Block extends CActiveRecord
 
 		$criteria->compare('bid',$this->bid);
 		$criteria->compare('blockname',$this->blockname,true);
-		$criteria->compare('modname',$this->modname,true);
-		$criteria->compare('filename',$this->filename,true);
-		$criteria->compare('classname',$this->classname,true);
-		$criteria->compare('side',$this->side);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('description',$this->description,true);
 		$criteria->compare('content',$this->content,true);
 		$criteria->compare('vars',$this->vars,true);
-		$criteria->compare('template',$this->template,true);
-		$criteria->compare('cachetime',$this->cachetime);
-		$criteria->compare('contenttype',$this->contenttype);
-		$criteria->compare('weight',$this->weight);
-		$criteria->compare('showstatus',$this->showstatus);
-		$criteria->compare('custom',$this->custom);
-		$criteria->compare('canedit',$this->canedit);
-		$criteria->compare('publish',$this->publish);
-		$criteria->compare('hasvars',$this->hasvars);
+		$criteria->compare('cachetime',$this->cachetime,true);
+		$criteria->compare('blocktype',$this->blocktype);
+		$criteria->compare('sequence',$this->sequence);
+		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

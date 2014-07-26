@@ -17,6 +17,7 @@
 class Category extends BaseModel
 {
 	const SHOW_SELECT='————请选择————';
+	const ALL_CATEGORY='全部分类';
 	const SHOW_TOPCATGORY='————顶级分类————';
 	const SHOW_ALLCATGORY='————查看全部分类————';
 	public $imagefile;

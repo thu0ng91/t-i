@@ -1,24 +1,11 @@
 CREATE TABLE `block` (
   `bid` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `blockname` varchar(50) NOT NULL DEFAULT '',
-  `modname` varchar(50) NOT NULL DEFAULT '',
-  `filename` varchar(50) NOT NULL DEFAULT '',
-  `classname` varchar(50) NOT NULL DEFAULT '',
-  `side` tinyint(3) NOT NULL DEFAULT '0',
-  `title` text NOT NULL,
-  `description` text NOT NULL,
   `content` mediumtext NOT NULL,
-  `vars` text NOT NULL,
-  `template` varchar(50) NOT NULL DEFAULT '',
-  `cachetime` int(11) NOT NULL DEFAULT '0',
-  `contenttype` tinyint(3) NOT NULL DEFAULT '0',
-  `weight` mediumint(8) unsigned NOT NULL DEFAULT '0',
-  `showstatus` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `custom` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `canedit` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `publish` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `hasvars` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`bid`),
-  KEY `modname` (`modname`),
-  KEY `publish` (`publish`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `vars` varchar(255) NOT NULL,
+  `blocktype` varchar(10) NOT NULL DEFAULT '0',
+  `sequence` mediumint(8) unsigned NOT NULL DEFAULT '0',
+  `status` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `cachetime` int(10) NOT NULL,
+  PRIMARY KEY (`bid`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;

@@ -1,43 +1,16 @@
 <?php
 /**
- * 会员管理
+ * 区块管理
  * Class ListController
  */
 class ListController extends FWAdminController
 {
     /**
-     * 会员列表
+     * 区块列表
      */
     public function actionIndex()
     {
       $criteria=new CDbCriteria();
-		/*      
-    //        $criteria->addCondition('status=:stauts');
-    //        $criteria->params[':status'] = Yii::app()->params['status']['ischecked'];
-
-      if(!empty($_GET['Member']['username']))
-          $criteria->addSearchCondition('username',$_GET['Member']['username']);
-
-//      if(!empty($_GET['Member']['author']))
-//          $criteria->addSearchCondition('author',$_GET['Member']['author']);
-
-//      if(!empty($_GET['Member']['cid'])){
-//          $categoryList=array();
-//          $categoryList[] = $_GET['Member']['cid'];
-//          Category::model()->getAllCategoryIds($categoryList,Category::model()->findAll(), $_GET['Member']['cid']);
-//          $criteria->addInCondition('cid',$categoryList);
-//      }
-
-//      if(isset($_GET['Member']['recommendlevel'])){
-//          $criteria->compare('recommendlevel', $_GET['Member']['recommendlevel']);
-//      }
-
-        if(isset($_GET['Member']['status'])){
-            $criteria->compare('status', $_GET['Member']['status']);
-        } else {
-            $criteria->addNotInCondition('status', array(Yii::app()->params['status']['isdelete']));
-        }
-*/
       $dataProvider=new CActiveDataProvider('Block',array(
           'criteria'=>$criteria,
           'pagination'=>array(
@@ -47,10 +20,6 @@ class ListController extends FWAdminController
               'defaultOrder'=>array(
                   'bid' => CSort::SORT_DESC,
               ),
-//              'attributes'=>array(
-//                  'bid',
-//                  'createtime',
-//              ),
           ),
       ));
       $this->render('index',array(
@@ -61,61 +30,34 @@ class ListController extends FWAdminController
     }
 
     /**
-     * 会员创建
+     * 区块创建
      */
     public function actionCreate()
     {
-        $model=new Member;
-//        $cid=$_GET['cid'];
-//        if(!empty($cid))
-//            $model->cid=$cid;
-        if(isset($_POST['Member']))
+    	$type = Yii::app()->request->getParam('type',null);
+    	if(null == $type || !isset(Yii::app()->controller->module['blocktype'][$type])){//如果区块类型为空或者不存在，重置类型为小说类型
+    		$type = 'novel';
+    	}
+		$bid = Yii::app()->request->getParam('bid',null);
+		$result = $vars = array();
+        if(null == $bid){
+        	$model = new Block;
+        }else{
+        	$model = Block::model()->findByPk($bid);
+        	$vars = explode('|',$model->vars);
+        }
+		
+
+        if(isset($_POST['Block']))
         {
-            $model->attributes=$_POST['Member'];
-//            $upload = CUploadedFile::getInstance($model,'imagefile');
-//            if(!empty($upload))
-//            {
-//                $model->imgurl = Upload::createFile($upload,'book','create');
-//            }
-            $attributes = array(
-                'username',
-                'password',
-                'repassword',
-                'email',
-                'status',
-            );
+        	if($_POST['Block']['blocktype'] == 'novel'){
+        		$_POST['Block']['vars'] = intval($_POST['sort_id']).'|'.intval($_POST['sort_type']).'|'.intval($_POST['sort_order']).'|'.intval($_POST['nums']);
+        	}
+            $model->attributes = $_POST['Block'];
 
             if($model->save(true, $attributes)){
-//                // 保存 tags
-//                $tagIdList = $_POST['book_tags'];
-//                $tagIdList = explode(",", $tagIdList);
-//                foreach ($tagIdList as $v) {
-//                    if (!is_numeric($v) || $v < 1) continue;
-//                    $m = new MemberTags();
-//                    $m->bookid = $model->id;
-//                    if ($v > 0) $m->tagid = intval($v);
-//                    $m->save();
-//                }
-//
-//                $images = CUploadedFile::getInstancesByName('images');
-//
-//                if (isset($images) && count($images) > 0) {
-//                    foreach ($images as $k => $image) {
-//                        $imgUrl = Upload::createFile($image, 'book', 'create');
-//                        $m = new MemberImage();
-//                        $m->bookid = $model->id;
-//                        $m->imgurl = $imgUrl;
-//                        $m->iscover = 1;
-//                        $m->save();
-//                    }
-//
-//                    // 更新主表封面图信息
-//                    $model->hascover = 1;
-//                    $model->update(array(
-//                        'hascover',
-//                    ));
-//                }
-
+            	$block_file_path = Yii::app()->basePath.'/../../runtime/blocks/block_'.$model->bid.'.tpl';
+            	file_put_contents($block_file_path,$model->content);
                 Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveSuccess']);
                 $this->refresh();
             }else if($model->validate()){
@@ -123,9 +65,18 @@ class ListController extends FWAdminController
                 $this->refresh();
             }
         }
+        $categories = null;
+		if($type == 'novel'){
+			Yii::import('book.models.*');
+	        $category = Category::model()->findAllByAttributes(array('status'=>1));
+	        foreach($category as $v){
+	        	$result[$v->id] = $v->title;
+	        	$categories = $result;
+	        }
+		}
+        
         $this->render('create',array(
-            'model'=>$model,
-//            'categorys'=>Category::model()->showAllSelectCategory(),
+            'model'=>$model,'categories'=>Category::model()->showAllSelectCategory(Category::ALL_CATEGORY),'type'=>$type,'vars'=>$vars
         ));
     }
 

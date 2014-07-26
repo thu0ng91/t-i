@@ -1,16 +1,11 @@
 <?php
-/* @var $this SiteController */
-/* @var $model LoginForm */
-/* @var $form CActiveForm  */
-
-$this->pageTitle=Yii::app()->name . ' - 添加会员';
-//$this->breadcrumbs=array(
-//	'Login',
-//);
+$this->pageTitle=Yii::app()->name . ' - 添加'.Yii::app()->controller->module['blocktype'][$type];
 ?>
 
 <?php $this->renderPartial('_form', array(
     'model' => $model,
-//    'categorys' => $categorys,
+    'categories' => $categories,
+	'type' => $type,
+	'vars'=>$vars
 )); ?>
 

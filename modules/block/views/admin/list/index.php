@@ -4,12 +4,19 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 
-<?php $this->widget('bootstrap.widgets.TbButton', array(
-    'label'=>'新建区块',
-    'url' => Yii::app()->createUrl('block/admin/list/create'),
-    'type'=>'primary', // null, 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
-    'size'=>'null', // null, 'large', 'small' or 'mini'
-)); ?>
+<?php
+foreach(Yii::app()->controller->module['blocktype'] as $k=>$v){
+	$qukuai[] = array('label'=>'新建'.$v,'url'=>Yii::app()->createUrl('block/admin/list/create',array('type'=>$k)));
+}
+
+$this->widget('bootstrap.widgets.TbButtonGroup', array(
+        'type'=>'primary', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+        'buttons'=>array(
+            array('label'=>'新建区块', 'url'=>'#'),
+            array('items'=>$qukuai),
+            ),
+        ));
+?>
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
     'type'=>'striped bordered condensed',
@@ -17,16 +24,7 @@ $this->pageTitle=Yii::app()->name;
     'template'=>"{items}\n{pager}",
     'filter' => $model,
     'columns'=>array(
-//        array('name'=>'id', 'header'=>'#'),
-//        array(
-////            'selectableRows' => 0,
-//            'header' => '<input type="checkbox" /> 全选',
-////            'footer' => '<button type="button" onclick="GetCheckbox();" style="width:76px">批量删除</button>',
-//            'class' => 'CCheckBoxColumn',
-//            'headerHtmlOptions' => array('width'=>'33px'),
-//            'checkBoxHtmlOptions' => array('name' => 'selectdel[]'),
-//        ),
-        array('name'=>'bid', 'header' => '模块编号', 'filter' => false),
+        array('name'=>'bid', 'header' => '区块ID','htmlOptions'=>array('style'=>'width: 80px;')),
 //        array('name'=>'username', ),
 //        array(
 //            'name'=>'imgurl',
@@ -35,7 +33,9 @@ $this->pageTitle=Yii::app()->name;
 //            'htmlOptions'=>array('style'=>'width: 20px;height:20px'),
 //             'filter' => false
 //        ),
-        array('name'=>'blockname', 'filter' => false),
+        array('name'=>'sequence', 'header' => '排序'),
+        array('name'=>'blockname', 'header' => '区块名称'),
+        array('name'=>'blcoktype', 'header' => '区块类型', 'value' => 'Yii::app()->controller->module["blocktype"][$data->blocktype]', 'filter' => false),
 //        array('name'=>'cid', 'value' => '$data->category->title', 'filter' => $categorys),
 //        array('name'=>'volumecount', 'value' => '$data->volumecount', 'filter' => false),
 ////        array('name'=>'chaptercount', 'value' => '$data->chaptercount', 'filter' => false),
@@ -46,7 +46,7 @@ $this->pageTitle=Yii::app()->name;
 //        array('name'=>'createtime', 'value' => 'date("Y-m-d H:i:s", $data->createtime)', 'filter' => false),
 //        array('name'=>'lastlogintime', 'value' => '$data->lastlogintime != null ? date("Y-m-d H:i:s", $data->lastlogintime) : ""', 'filter' => false),
 //        array('name'=>'loginhits', 'filter'=>false),
-//        array('name'=>'status', 'value' => 'Yii::app()->params["statusLabel"][$data->status]', 'filter' => Yii::app()->params['statusAction']),
+        array('name'=>'status', 'header' => '区块状态', 'value' => 'Yii::app()->params["blockstatus"][$data->status]', 'filter' => Yii::app()->params['blockstatus']),
         array(
             'class'=>'bootstrap.widgets.TbButtonColumn',
             'template'=>"{update}{delete}",
@@ -54,7 +54,7 @@ $this->pageTitle=Yii::app()->name;
             'buttons' => array(
                 'update' => array(
                     'label'=>'编辑区块',     // text label of the button
-                    'url'=>'Yii::app()->createUrl("block/admin/list/update",array("id"=>$data->bid))',       // a PHP expression for generating the URL of the button
+                    'url'=>'Yii::app()->createUrl("block/admin/list/create",array("bid"=>$data->bid))',       // a PHP expression for generating the URL of the button
                     'imageUrl'=> '',  // image URL of the button. If not set or false, a text link is used
 //                    'icon' => 'eye-open',
                     'options'=> array('style'=>'cursor:pointer;'), // HTML options for the button tag

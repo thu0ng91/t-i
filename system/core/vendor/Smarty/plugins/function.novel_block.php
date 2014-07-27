@@ -51,7 +51,21 @@ function smarty_function_novel_block($params, &$smarty){
             break;
     }
 
-    $r = $smarty->getSubTemplate($blockFile, null, null, Smarty::CACHING_LIFETIME_SAVED, $cacheTime, null, null);
+    $cacheDir = $smarty->cache_dir;
+    $cacheFile = $cacheDir . "block." . $id . ".cache";
+
+    $isReCache = true;
+
+    if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < $cacheTime) {
+        $isReCache = false;
+    }
+
+    if ($isReCache) {
+        $r = $smarty->getSubTemplate($blockFile, null, null, Smarty::CACHING_LIFETIME_CURRENT, $cacheTime, null, null);
+        file_put_contents($cacheFile, $r);
+    } else {
+        $r = file_get_contents($cacheFile);
+    }
 
     return $r;
 

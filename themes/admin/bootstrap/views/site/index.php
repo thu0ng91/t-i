@@ -11,7 +11,7 @@ $this->pageTitle=Yii::app()->name;
 <h4><?php $this->widget('bootstrap.widgets.TbLabel', array(
         'type'=>'success', // 'success', 'warning', 'important', 'info' or 'inverse'
         'label'=> Yii::app()->user->name,
-    )); ?>　您好！欢迎使用<?php echo Yii::app()->name;?> ,我们的官方网站：<a href="http://www.free55.net">点击访问</a></h4>
+    )); ?>　您好！欢迎使用<?php echo Yii::app()->name;?> ,我们的官方网站：<a href="http://www.yunyuewang.com">点击访问</a></h4>
 
 <p><?php $this->widget('bootstrap.widgets.TbButton', array(
         'type' => 'primary',

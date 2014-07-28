@@ -25,7 +25,7 @@ return array (
   'DOM extension' => 'DOM扩展模块',
   'PDO extension' => 'PDO扩展模块',
   'cUrl extension' => 'cUrl扩展模块',
-  'All <a href="http://www.free55.net/">DB-related classes</a>' => '所有和<a href="http://www.free55.net/">数据库相关的类</a>',
+  'All <a href="http://www.yunyuewang.com/">DB-related classes</a>' => '所有和<a href="http://www.yunyuewang.com/">数据库相关的类</a>',
   'Memcache extension' => 'Memcache扩展模块',
   'APC extension' => 'APC扩展模块',
   'Mcrypt extension' => 'Mcrypt扩展模块',

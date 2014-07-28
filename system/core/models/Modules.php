@@ -77,7 +77,7 @@ class Modules extends CActiveRecord
 			'name' => '模块目录',
 			'author' => '作者',
 			'version' => '当前版本',
-			'fwversion' => '最低飞舞版本',
+			'fwversion' => '最低云阅版本',
 			'description' => '模块介绍',
 			'createtime' => '发布时间',
 			'updatetime' => '更改时间',

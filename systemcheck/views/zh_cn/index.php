@@ -4,28 +4,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="content-language" content="en"/>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
-<title>飞舞小说系统 <?php echo getYiiVersion(); ?> 安装环境检查</title>
+<title>云阅小说系统 <?php echo getYiiVersion(); ?> 安装环境检查</title>
 </head>
 
 <body>
 <div id="page">
 
 <div id="header">
-<h1>飞舞小说系统 <?php echo getYiiVersion(); ?> 安装环境检查</h1>
+<h1>云阅小说系统 <?php echo getYiiVersion(); ?> 安装环境检查</h1>
 </div><!-- header-->
 
 <div id="content">
 <h2>检查内容</h2>
 <p>
-本程序用于确认您的服务器配置是否能满足运行<a href="http://www.free55.net/">飞舞小说系统<?php echo getYiiVersion(); ?></a>要求。它将检查服务器所运行的PHP版本，查看是否安装了合适的PHP扩展模块，以及确认php.ini文件是否正确设置。
+本程序用于确认您的服务器配置是否能满足运行<a href="http://www.yunyuewang.com/">云阅小说系统<?php echo getYiiVersion(); ?></a>要求。它将检查服务器所运行的PHP版本，查看是否安装了合适的PHP扩展模块，以及确认php.ini文件是否正确设置。
 </p>
 
 <h2>检查结果</h2>
 <p>
 <?php if($result>0): ?>
-恭喜！您的服务器配置完全符合飞舞小说系统的要求。<a href="../index.php/install/index"><b>开始安装飞舞小说系统<?php echo getYiiVersion(); ?></b></a>
+恭喜！您的服务器配置完全符合云阅小说系统的要求。<a href="../index.php/install/index"><b>开始安装云阅小说系统<?php echo getYiiVersion(); ?></b></a>
 <?php else: ?>
-您的服务器配置未能满足飞舞小说系统的要求。
+您的服务器配置未能满足云阅小说系统的要求。
 <?php endif; ?>
 </p>
 

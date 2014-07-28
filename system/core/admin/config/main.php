@@ -12,7 +12,7 @@ $frontendArray=require_once($frontend.'/config/main.php');
 unset($frontendArray['components']['urlManager'], $frontendArray['components']['viewRenderer']);
 
 $backendArray=array(
-	'name'=>'飞舞小说系统',
+	'name'=>'云阅小说系统',
 	'basePath'=>$frontend,
     'viewPath'=>$backend.'/views',
 	'controllerPath'=> $backend.'/controllers',

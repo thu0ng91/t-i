@@ -4,14 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="content-language" content="en"/>
 <link rel="stylesheet" type="text/css" href="css/main.css" />
-<title>飞舞小说系统系统环境检测</title>
+<title>云阅小说系统系统环境检测</title>
 </head>
 
 <body>
 <div id="page">
 
 <div id="header">
-<h1>飞舞小说系统系统环境检测</h1>
+<h1>云阅小说系统系统环境检测</h1>
 </div><!-- header-->
 
 <div id="content">

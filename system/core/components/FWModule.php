@@ -1,6 +1,6 @@
 <?php
 /**
- * 飞舞模块基类
+ * 云阅模块基类
  * Class FWModule
  */
 

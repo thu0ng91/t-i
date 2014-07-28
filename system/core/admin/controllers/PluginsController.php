@@ -14,7 +14,7 @@ class PluginsController extends FWAdminController
 
     protected $message = array(
         'install_error:plugin_is_installed' => '安装插件失败，插件已经安装',
-        'install_error:fwversion_not_support' => '安装插件失败，该插件依赖飞舞小说系统版本为：%s，当前飞舞系统版本为：%s',
+        'install_error:fwversion_not_support' => '安装插件失败，该插件依赖云阅小说系统版本为：%s，当前云阅系统版本为：%s',
         'install_error' => '安装插件失败',
         'install_success' => '安装插件成功',
         'uninstall_error' => '卸载插件失败',

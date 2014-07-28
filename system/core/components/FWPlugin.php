@@ -1,7 +1,7 @@
 <?php if ( ! defined('YII_PATH')) exit('No direct script access allowed');
 
 /**
- * 飞舞插件核心类
+ * 云阅插件核心类
  * Class FWPlugin
  */
 class FWPlugin extends CApplicationComponent{

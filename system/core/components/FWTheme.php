@@ -1,6 +1,6 @@
 <?php
 /**
- * 飞舞主题机制
+ * 云阅主题机制
  * Class FWTheme
  */
 class FWTheme extends CTheme {

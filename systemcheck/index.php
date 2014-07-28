@@ -5,61 +5,61 @@ $requirements=array(
 		t('yii','PHP version'),
 		true,
 		version_compare(PHP_VERSION,"5.3.0",">="),
-		'<a href="http://www.free55.net">飞舞小说系统</a>',
+		'<a href="http://www.yunyuewang.com">云阅小说系统</a>',
 		t('yii','PHP 5.3.0 or higher is required')),
 	array(
 		t('yii','$_SERVER variable'),
 		true,
 		($message=checkServerVar()) === '',
-		'<a href="http://www.free55.net">飞舞小说系统</a>',
+		'<a href="http://www.yunyuewang.com">云阅小说系统</a>',
 		'系统核心'),
 	array(
 		t('yii','Reflection extension'),
 		true,
 		class_exists('Reflection',false),
-		'<a href="http://www.free55.net">飞舞小说系统</a>',
+		'<a href="http://www.yunyuewang.com">云阅小说系统</a>',
 		'系统核心'),
 	array(
 		t('yii','PCRE extension'),
 		true,
 		extension_loaded("pcre"),
-		'<a href="http://www.free55.net">飞舞小说系统</a>',
+		'<a href="http://www.yunyuewang.com">云阅小说系统</a>',
 		'系统核心'),
 	array(
 		t('yii','SPL extension'),
 		true,
 		extension_loaded("SPL"),
-		'<a href="http://www.free55.net">飞舞小说系统</a>',
+		'<a href="http://www.yunyuewang.com">云阅小说系统</a>',
 		'系统核心'),
 	array(
 		t('yii','GD extension'),
 		true,
 		($message=checkGD()) === '',
-		'<a href="http://www.free55.net">飞舞小说系统</a>',
+		'<a href="http://www.yunyuewang.com">云阅小说系统</a>',
 		'用于图像处理'),
 	array(
 		t('yii','cUrl extension'),
 		true,
 		extension_loaded("curl"),
-		'<a href="http://www.free55.net">飞舞小说系统</a>',
+		'<a href="http://www.yunyuewang.com">云阅小说系统</a>',
 		'用于加载远程数据'),
 	array(
 		t('yii','PDO extension'),
 		true,
 		extension_loaded('pdo'),
-		'<a href="http://www.free55.net">飞舞小说系统</a>',
+		'<a href="http://www.yunyuewang.com">云阅小说系统</a>',
 		t('yii','用于访问MySQL数据库')),
 	array(
 		t('yii','PDO MySQL extension'),
 		true,
 		extension_loaded('pdo_mysql'),
-		'<a href="http://www.free55.net">飞舞小说系统</a>',
+		'<a href="http://www.yunyuewang.com">云阅小说系统</a>',
 		t('yii','用于访问MySQL数据库')),
 	array(
 		t('yii','Url rewrite is open'),
 		true,
 		checkRewrite(),
-		'<a href="http://www.free55.net">飞舞小说系统</a>',
+		'<a href="http://www.yunyuewang.com">云阅小说系统</a>',
 		t('yii','用于生成有利于SEO的URL')),
 );
 
@@ -177,7 +177,7 @@ function getPreferredLanguage()
 function getServerInfo()
 {
 	$info[]=isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : '';
-	$info[]='<a href="http://www.free55.net/">飞舞小说系统</a>/'.getYiiVersion();
+	$info[]='<a href="http://www.yunyuewang.com/">云阅小说系统</a>/'.getYiiVersion();
 	$info[]=@strftime('%Y-%m-%d %H:%M',time());
 
 	return implode(' ',$info);

@@ -17,7 +17,7 @@ Yii::setPathOfAlias('plugin', FW_PLUGIN_BASE_PATH);
 
 return array(
 	'basePath'=> $basePath,
-	'name'=> '飞舞小说系统',
+	'name'=> '云阅小说系统',
 	'language'=>'zh_cn',
 	// preloading 'log' component
 	'preload'=>array('log', 'pluginLoader'),

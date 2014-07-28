@@ -105,4 +105,7 @@ class Block extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	public function getBlockTemp($id){
+		return '{block id='.$id.'}';
+	}
 }

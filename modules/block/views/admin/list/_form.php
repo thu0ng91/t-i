@@ -64,11 +64,13 @@ $this->widget('bootstrap.widgets.TbTabs', array(
        <?php echo CHtml::textField('nums',isset($vars[3]) ? $vars[3] : '',array('id'=>'nums','style' => 'width:160px;'));?>
     </div>
 </div>
-
+<style>
+.tags{width:250px;float:left;}
+</style>
 <?php
 $templatetags = '';
 foreach(Yii::app()->controller->module['templatetags'] as $k=>$v){
-	$templatetags .= '<div style="width:250px;float:left;">'.$k.$v.'</div>';
+	$templatetags .= '<div class="tags">'.$k.$v.'</div>';
 }
 $templatetags .= '<div style="clear:both;"></div>'
 ?>

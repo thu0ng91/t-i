@@ -64,15 +64,13 @@ class ListController extends FWAdminController
 			);
             if($model->save(true, $attributes)){
             	//生成区块设置数据文件
-            	$block_file_path = Yii::app()->basePath.'/../../runtime/blocks/';
+            	$block_file_path = FW_ROOT_PATH.DS.runtime.DS.blocks.DS;
             	if(!file_exists($block_file_path)){
             		$this->dmkdir($block_file_path);
             	}
             	$str = '{novel_book ';
             	if(empty($self_number)){
-	            	if($sort_id == 0){
-	            		$str .= 'cid=[0]';
-	            	}else{
+	            	if($sort_id != 0){
 	            		$str .= 'cid=['.$sort_id.']';
 	            	}
 	            	
@@ -122,7 +120,7 @@ class ListController extends FWAdminController
             	$content = str_replace('{$block}',$str.$model->content.'{/novel_book}',$content);
             	file_put_contents($block_file,$content);
             	//生成区块设置数据
-            	$block_config_path = $block_file_path.'/block_'.$model->bid.'.conf';
+            	$block_config_path = $block_file_path.DS.'block_'.$model->bid.'.conf';
          	
             	$block_config = json_encode(array(
             		'status'=>$model->status,

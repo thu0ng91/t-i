@@ -30,7 +30,7 @@ $menus = array(
     array('label'=> '插件菜单', 'url'=>'#', 'active' => $this->menupanel[0] == 'plugins' ? true : false, 'items'=> $this->pluginMenus),
 );
 
-$menus = CMap::mergeArray($this->topMenus, $menus);
+$menus = CMap::mergeArray($menus,$this->topMenus);
 
 foreach ($menus as $k => $v) {
     $v['url'] = Yii::app()->createUrl($v['url']);

@@ -10,7 +10,7 @@ return array(
 	'description' => '小说会员系统', // 模块详细说明
     'adminmenus' => array(
         'top' => array(
-            'label' => '会员管理v1.0.0',
+            'label' => '会员管理',
             'url' => 'member/admin/list/index',
         ),
         'left' => array(

@@ -10,7 +10,7 @@ return array(
 	'description' => '小说区块管理', // 模块详细说明
     'adminmenus' => array(
         'top' => array(
-            'label' => '区块管理v1.0.0',
+            'label' => '区块管理',
             'url' => 'block/admin/list/index',
         ),
         'left' => array(

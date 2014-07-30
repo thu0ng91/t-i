@@ -46,7 +46,7 @@ class DetailController extends FWFrontController
      */
     public function actionIndex()
     {
-        $id = $_GET['id'];
+        $id = intval($_GET['id']);
 
         $book = Book::model()->find("id=:id and status=:status", array(
             ':id' => $id,
@@ -80,7 +80,12 @@ class DetailController extends FWFrontController
         $this->setSEOVar("小说简介", $book->summary);
 
         $this->setAllSEOInfo("小说页");
-
+		//链接处理
+		$uservote_link = Yii::app()->createUrl('book/detail/uservote',array('id'=>$id));
+		$this->assign("uservote_link", $uservote_link);
+		$addbookcase_link = Yii::app()->createUrl('book/detail/addbookcase',array('id'=>$id));
+		$this->assign("addbookcase_link", $addbookcase_link);
+		
         $this->render("index");
     }
 
@@ -90,7 +95,7 @@ class DetailController extends FWFrontController
      */
     public function actionInfo()
     {
-        $id = $_GET['id'];
+        $id = intval($_GET['id']);
 
         $book = Book::model()->find("id=:id and status=:status", array(
             ':id' => $id,
@@ -133,7 +138,7 @@ class DetailController extends FWFrontController
      */
     public function actionDownload()
     {
-        $id = $_GET['id'];
+        $id = intval($_GET['id']);
         $book = Book::model()->find("id=:id and status=:status", array(
             ':id' => $id,
             ':status' => Yii::app()->params['status']['ischecked'],
@@ -167,10 +172,71 @@ class DetailController extends FWFrontController
 
         Yii::app()->end();
     }
-
+	public function actionUservote(){
+		//需要做仿制刷新处理，后面完善
+		$id = Yii::app()->request->getParam('id',null);
+		$model = Book::model()->findByPk($id);
+		
+		$nowtime = time();
+		$nowdate=date('Y-m-d', $nowtime);
+		$nowweek=date('w', $nowtime);
+		$addnum = 1;
+		$lastdate=date('Y-m-d', $model->lastliketime);
+		$lastweek=date('w', $model->lastliketime);
+		if($lastweek==0) $lastweek=7;
+		//$v['visitnum'] = intval($v['visitnum'] * $addnum);
+		
+		$allstr='alllikenum=alllikenum+'.$addnum;
+		if($nowdate==$lastdate || $nowtime < $model->lastliketime){
+			$daystr='daylikenum=daylikenum+'.$addnum;
+			$weekstr='weeklikenum=weeklikenum+'.$addnum;
+			$monthstr='monthlikenum=monthlikenum+'.$addnum;
+		}else{
+			$daystr='daylikenum='.$addnum;
+			if($nowweek <= $lastweek || $nowtime - $model->lastliketime > 604800){
+				$weekstr='weeklikenum='.$addnum;
+			}else{
+				$weekstr='weeklikenum=weeklikenum+'.$addnum;
+			}
+			if(substr($nowdate,0,7) == substr($lastdate,0,7)){
+				$monthstr='monthlikenum=monthlikenum+'.$addnum;
+			}else{
+				$monthstr='monthlikenum='.$addnum;
+			}
+		}
+		$sql = 'UPDATE book SET lastliketime='.$nowtime.', '.$daystr.', '.$weekstr.', '.$monthstr.', '.$allstr.' WHERE id='.$id;
+		Yii::app()->db->createCommand($sql)->execute();
+		echo '<meta charset="utf-8" /><script>alert("感谢您的推荐！");window.history.back(-1);</script>';
+		//$this->redirect(array('/book/detail/index','id'=>$id));
+		Yii::app()->end();
+	}
+	
+	public function actionAddbookcase(){
+		if(!Yii::app()->user->id){
+			echo '<meta charset="utf-8" /><script>alert("请先登录");window.history.back(-1);</script>';
+			Yii::app()->end();
+		}
+		$id = Yii::app()->request->getParam('id',null);
+		$model = Bookcase::model()->findByAttributes(array('userid'=>Yii::app()->user->id,'book_id'=>$id));
+		if(null != $model){
+			echo '<meta charset="utf-8" /><script>alert("您已经收藏过该书");window.history.back(-1);</script>';
+			Yii::app()->end();
+		}else{
+			$model = new Bookcase();
+			$model->userid = Yii::app()->user->id;
+			$model->username = Yii::app()->user->name;
+			$model->book_id = $id;
+			$model->lastviewtime = time();
+			$model->dateline = time();
+			$model->status = 1;
+			$model->save();
+			echo '<meta charset="utf-8" /><script>alert("您成功收藏该书");window.history.back(-1);</script>';
+			Yii::app()->end();
+		}
+	}
     public function actionDownPage()
     {
-        $id = $_GET['id'];
+        $id = intval($_GET['id']);
         $book = Book::model()->find("id=:id and status=:status", array(
             ':id' => $id,
             ':status' => Yii::app()->params['status']['ischecked'],

@@ -1,6 +1,14 @@
 if (SiteUrl == '/') {
     SiteUrl = "";
 }
+$(document).ready(function(){
+	$('.addbookcases').click(function(){
+		alert(123);
+	});
+	$('#addbookcases').click(function(){
+		alert(321);
+	});
+}
 function addBookmark(title,url) {
   if(!title){title =document.title};
   if(!url){url=window.location.href}
@@ -22,6 +30,7 @@ function addBookmark(title,url) {
  */
 function addBookcase(bookId, chapterId, callback)
 {
+	alert(bookId);return;
     var url = SiteUrl + "/member/my/ajaxAddBookcase/bookId/" + bookId + "/chapterId/" + chapterId;
     $.post(url, function(data) {
         if (typeof callback == 'function') callback(data);

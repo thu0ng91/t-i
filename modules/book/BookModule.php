@@ -45,7 +45,6 @@ class BookModule extends FWModule
         // Url 重写
         $m = Yii::app()->settings->get("BookRewriteConfig", "book");
         if ($m) {
-
             if ($m->BookCategoryRule) {
                 $r = $m->BookCategoryRule;
                 $r = str_replace('{pinyin}', '<title:\w+>', $r);
@@ -86,7 +85,11 @@ class BookModule extends FWModule
                 $r = array( $r =>  'book/list/rank');
                 Yii::app()->urlManager->addRules($r, false);
             }
-
+            //'bookcase/<id:\d+>'=>array('novel/bookcase'),
+			$r = array( '<id:\d+>' =>  'book/detail/uservote');
+            Yii::app()->urlManager->addRules($r, false);
+            $r = array( '<id:\d+>' =>  'book/detail/addbookcase');
+            Yii::app()->urlManager->addRules($r, false);
         }
         return;
     }

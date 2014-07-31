@@ -1,7 +1,7 @@
 <?php 
  return array (
   'class' => 'CDbConnection',
-  'connectionString' => 'mysql:host=localhost;dbname=yunyue',
+  'connectionString' => 'mysql:host=localhost;dbname=book',
   'emulatePrepare' => true,
   'username' => 'root',
   'password' => 'root',
@@ -9,5 +9,6 @@
   'tablePrefix' => '',
   'enableProfiling' => true,
   'enableParamLogging' => true,
+  'schemaCachingDuration' => 0,
 );
 ?>

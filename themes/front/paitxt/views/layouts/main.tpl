@@ -10,6 +10,7 @@
 <script type="text/javascript">
     var SiteUrl = '{$FW_SITE_URL}';
 </script>
+
 <script type="text/javascript" src="{$FW_THEME_URL}/js/jquery.min.js"></script>
 <script src="{$FW_THEME_URL}/js/msc_common.js" type="text/javascript" language="javascript"></script>
 </head>

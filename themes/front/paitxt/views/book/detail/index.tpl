@@ -32,7 +32,10 @@
                         </div>
                         <div class="clear"></div>
                     </div>
-
+<div style="padding:10px;"><!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1694191"></script>
+<!-- UY END --></div>
                     <div class="book_article_texttable">
                         {$i=0}
                         {$tagIsClosed = false}
@@ -71,6 +74,7 @@
                             {/if}
                         {/foreach}
                      </div>
+                     
                 </div>
             </div>
         </div>

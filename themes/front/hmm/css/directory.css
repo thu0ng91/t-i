@@ -1,0 +1,246 @@
+﻿.directory_left{
+	float:left;
+	width:737px;
+	height:1000px;
+	margin-right:5px;
+	border:1px solid #c4c4c4;
+}
+
+.directory_right{
+	float:right;
+	width:208px;
+	height:auto;
+}
+
+.position{
+	background-image:url(../images/directory/jianbian233.png);
+	float:left;
+	width:737px;
+	height:35px;
+	border-bottom:1px solid #c4c4c4;
+	line-height:35px;
+	font-size:14px;
+}
+
+
+.directory_img_home{
+	background: url(../images/allimgs.png) no-repeat;
+	background-position:-5px -45px;
+	width:20px;
+	height: 20px;
+	float: left;
+	margin-top:3px;
+	margin-left:8px;
+}
+
+.divbox{
+	margin-top:50px;
+}
+
+.hide{
+	width:100% ;
+}
+
+.td_tx{
+	width:581px;
+}
+
+.tabvalue{
+	width:538px;
+	height:135px;
+}
+
+.tablist ul{height:25px; margin:0px; padding:0px;}
+.tablist li{float:left; height:24px; list-style:none; margin-right:3px;}
+.tablist li a{float:left; height:24px; line-height:24px; padding:0px 10px; display:block; font-weight:normal;  text-decoration:none; color:#000000;border:1px solid #c2c2c2;border-bottom:none; background:#efefef}
+.tablist li a.selected{font-weight:bold; background:#ffffff; border-top:2px solid #458fce; height:24px; position:relative; margin-bottom:-1px;color:#025b81}
+.tabcontent{clear:both; border-top:1px solid #dddddd;}
+.directory_distext_jj{padding:3px;border:0;height:100%;width:100%;}
+.directory_distext_left{
+	margin-top:10px;
+	margin-left:10px;
+	color:#454545;
+	float:left;
+	width:250px;
+	height:125px;
+ }
+ 
+ .directory_distext_label{
+	margin-top:15px;
+ }
+.directory_distext_right{
+	margin-top:10px;
+	margin-left:10px;
+	color:#454545;
+	float:right;
+	width:250px;
+	height:125px;
+ }
+ 
+ .directory_distext_buttom{
+	margin-left:145px;
+ }
+ .directory_distext_buttom a:link {
+	color:#000000;
+	text-decoration: none;
+}
+ .directory_distext_buttom a:visited {
+    color:#000000;
+    text-decoration:none;
+}
+ .directory_distext_buttom a:hover { 
+	color:#000000;
+	text-decoration:none;
+}
+ 
+ .directory_text_a{
+	margin:10px 20px 0 10px;
+	border:1px solid #c4c4c4;
+	float:left;
+	width:80px;
+	height:23px;
+	background:url(../images/directory/jianbiandi.png);
+	text-align:center;
+	line-height:23px;
+ }
+ 
+.djydimg1{
+	background: url(../images/allimgs.png) no-repeat;
+	background-position:-100px -28px;
+	width:20px;
+	height: 20px;
+	float: left;
+	margin-left:2px;
+	margin-top:4px;
+ }
+ .djydimg2{
+	background: url(../images/allimgs.png) no-repeat;
+	background-position:-120px -28px;
+	width:20px;
+	height: 20px;
+	float: left;
+	margin-left:2px;
+	margin-top:4px;
+ }
+ .djydimg3{
+	background: url(../images/allimgs.png) no-repeat;
+	background-position:-138px -28px;
+	width:20px;
+	height: 20px;
+	float: left;
+	margin-left:2px;
+	margin-top:4px;
+ }
+ .djydimg4{
+	background: url(../images/allimgs.png) no-repeat;
+	background-position:-155px -28px;
+	width:20px;
+	height: 20px;
+	float: left;
+	margin-left:2px;
+	margin-top:4px;
+ }
+ .dj{
+	color:#025b81;
+ }
+ .djvip{
+	color:red;
+ }
+
+ 
+ .directory_AD{
+	margin:16px 0 0 0;
+	border-top:1px solid #c4c4c4;
+	border-bottom:1px solid #c4c4c4;
+	width:100%;
+	height:90px;
+ }
+ 
+ .fenmian{
+	color:blue;
+	margin:3px 5px 0 6px;
+	line-height:14px;
+	float:left;
+	width:18px;
+	height:auto;
+	border-right:1px solid #000;
+ }
+
+.directory_AD_book_img{ float:left;margin-right:1px;height:82px;}
+.directory_AD_book_shuming{font-size:12px;margin:3px;color:blue}
+.zuozhe{color:blue}
+.directory_AD_book__fenlei{margin:3px;}
+.directory_AD_book_jianjie{margin:3px;}
+.directory_AD_book_text{ width:100px;height:85px;float:left;margin-right:5px;}
+.directory_AD_book_jieshao{height:60px; }
+.directory_AD_book_yd{}
+.directory_AD_book_t1{margin:3px 0 0 2px;float:left;width:170px;height:80px}
+
+.zjzj{
+	margin-top:10px;
+	margin-left:14px;
+	background:url(../images/directory/lanshejianbian.png);
+	border:1px solid #c4c4c4;
+	float:left;
+	width:131px;
+	height:18px;
+	font-size:14px;
+	text-align:center;
+	line-height:18px;
+}
+
+.zud{
+	color:#5b5c5c;
+	margin-left:20px;
+	font-size:18px;
+	width:100%;
+	float:left;
+	height:25px;
+	margin-top:10px;
+}
+
+.t_book_name{
+	color:#4f4f4f;
+	border-top:1px solid #c4c4c4;
+	border-bottom:1px solid #c4c4c4;
+	margin-top:10px;
+	float:left;
+	text-align:center;
+	font-size:20px;
+	line-height:35px;
+	width:100%;
+	height:35px;
+}
+
+.directory_all{
+	color:#535353;
+	float:left;
+	width:100%;
+	font-size:14px;
+}
+
+.directory_rows{
+	margin-top:5px;
+	width:100%;
+	height:18px;
+	float:left;
+}
+
+.directory_d{
+	width:245px;
+	float:left;
+}
+
+.chapt{
+	margin:10px 5px 0 10px;
+	float:left;
+	width:auto;
+	height:16px;
+}
+.chaptx{
+	margin:10px 5px 0 10px;
+	float:left;
+	width:auto;
+	height:16px;
+	
+}

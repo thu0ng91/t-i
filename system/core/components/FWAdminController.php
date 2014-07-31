@@ -70,10 +70,10 @@ class FWAdminController extends CController
 //		}else{
 //			$this->menupanel = explode('|','content|short');;
 //		}
-
-        $plugins = Plugins::model()->findAll('status=:status', array(
-            ':status' => Yii::app()->params['status']['ischecked'],
-        ));
+$plugins = array();
+        //$plugins = Plugins::model()->findAll('status=:status', array(
+         //   ':status' => Yii::app()->params['status']['ischecked'],
+       // ));
 
         // 后台菜单配置
         foreach ($plugins as $m) {

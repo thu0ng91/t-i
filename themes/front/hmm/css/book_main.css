@@ -1,0 +1,177 @@
+﻿a:link {
+	color:#000000;
+	text-decoration: none;
+}
+a:visited {
+    color:#000000;
+    text-decoration:none;
+}
+a:hover { 
+	color:red;
+	text-decoration:underline;
+}
+
+body{
+	font-size:12px;
+}
+.header{
+	margin-right: auto;
+	margin-left: auto;
+	vertical-align:middle;
+	text-align: center;
+	height:89px
+}
+.login{
+	width:100px;
+}
+.log{
+	margin-right:20px;
+	height:70px;
+	width:182px
+}
+.AD{
+	height:59px;
+	width:734px
+}
+.navigat_i{ 
+	width:958px;
+	height:70px;
+	margin-bottom:2px;
+}
+.nav{
+	width:958px;
+	height:40px;
+	margin-right: auto;
+	margin-left: auto;
+	vertical-align:middle;
+}
+.nav_default{
+	float: left;
+	width: 100px;
+	height:41px;
+	text-align: center;
+	font-size: 20px;
+	color: white;
+	font-family: 宋体;
+	list-style-type:none;
+	line-height:41px;
+	background:url(../images/baigang.png)  no-repeat;
+	background-position:2px 0px;
+}
+.nav_now{
+	float: left;
+	width: 100px;
+	height:41px;
+	text-align:center;
+	font-size: 20px;
+	font-weight:blod;
+	color: white;
+	font-family: 宋体;
+	list-style-type:none;
+	line-height:41px;
+	background-color:#0e9ed5;
+}
+.navigation{	
+	text-align: center;
+}
+.navigat{	
+	width:100%;	
+	height:42px;	
+	margin:-5px 0 2px 0;	
+	background-color:#4ac2f1;
+}
+.nav li a:link{
+	color:white;
+text-decoration:none;
+}
+.nav li a:visited{
+	color:white;
+	text-decoration: none;
+}
+.footer{
+color: #000000;
+line-height: 22px;
+margin: 2em 0;
+text-align: center;
+font-family: arial,"simsun";
+width:100%;
+height:auto;
+float:left;
+}
+.footer a:link {
+	color:#000;
+	text-decoration: none;
+}
+.content{
+	width:958px;
+	margin:0 auto;
+	vertical-align:middle;
+}
+.left_z{ 
+	width:205px;
+	height:838px;
+	float:left;
+	border: 1px solid #e2e2e2;
+	border-right: 2px solid #e2e2e2;
+}
+.left_2{ 
+	margin-top:5px;
+	width:235px;
+	height:auto;float:left;border: 1px solid #e2e2e2;border-right: 2px solid #e2e2e2;}
+.left_dj{ margin-top:5px;width:235px;height:auto;float:left;border: 1px solid #e2e2e2;border-right: 2px solid #e2e2e2;}
+.title{width:205px;height:30px;background-image:url(../images/jianbian.png)}
+.xiant{height:1px;margin-bottom:15px;background-image:url(../images/jianpianxiantiao.png)}
+.xiant1{height:1px;margin-bottom:15px;background-image:url(../images/jianpianxiantiao235PX.png)}
+.xiant2{height:1px;margin-top:25px;background-image:url(../images/jianpianxiantiao235PX.png)}
+.title_2{width:235px;height:30px;background-image:url(../images/jianbian.png)}
+.text_t{float:left;margin:7px 0px 0 8px;font-size:18px;}
+.a_t{float:right;margin:7px 12px 0 5px;font-size:14px;}
+.book_zs{margin:8px 0 0 3px;width:auto;height:auto;}
+.dian2{margin-top:8px;border-bottom:1px dashed  #d8d8d8}
+.AD2{margin-top:16px;margin-bottom:9px;}
+.conter{width:526px;height:838px;float:left;margin:0 6px 0 6px;border: 1px solid #e2e2e2;border-right: 2px solid #e2e2e2;border-left: 2px solid #e2e2e2;}
+.title_j{ width:526px;height:30px;background-image:url(../images/jianbian.png);border-bottom:2px dashed  #e2e2e2;}
+.title_u{ width:705px;height:30px;background-image:url(../images/jianbian.png);border-bottom:1px solid  #d8d8d8;}
+.img_j{margin-left:7px;float:left}
+.center1{ width:510px;height:255px;float:left;margin-bottom:5px;}
+.t1{ width:240px;height:237px;float:left;}
+.book_img{ float:left;margin-right:1px;}
+.book_shuming{font-size:14px;margin:3px;}
+.book__fenlei{margin:3px;}
+.book_jianjie{margin:3px;}
+.book_text{ width:130px;height:125px;float:right;margin-right:5px}
+.book_jieshao{height:100px; }
+.book_yd{margin-left:50px;}
+.book_t1{margin:3px 0 0 3px;float:left;width:233px;height:242px}
+.book_t2{margin:3px 0 0 3px;float:right;width:233px;height:242px}
+.book_t3{margin:3px 0 10px 0;float:left;}
+.text2{font-size:12px}
+.mores{float:right;margin:7px 12px 0 5px;}
+.right_d{ width:205px;height:auto;float:left;border: 1px solid #e2e2e2;border-left: 2px solid #e2e2e2;}
+.right_t{ width:205px;height:448px;float:left;border: 1px solid #e2e2e2;border-left: 2px solid #e2e2e2;margin:5px 0 0 0;}
+.book_sm{font-size:12px;text-align:center;margin-right:2px;color:white;background: url(../images/allimgs.png)  no-repeat; float: left; background-position:-35px 0px; width:21px; height:16px;}
+.book_smr{font-size:12px;text-align:center;margin-right:2px;color:white;background: url(../images/allimgs.png)  no-repeat; float: left; background-position:-12px 0px; width:21px; height:16px;}
+.book_link{width:138px; float:left;}
+.book_link_d{width:165px; float:left;}
+.book_dj{width:25px;text-align:right;color:#cc0000}
+.book_tj{width:25px;text-align:right;color:#cc0000}
+.book_dj_2{width:120px;margin-left:52%;text-align:right;}
+.ckgd{float:right;margin:5%}
+.img_t{margin:7px 0 0 5px;float:left;height:16px;width:11px;background: url(../images/allimgs.png);}
+.AD3{float:left;width:958px;height:30px;background-image:url(../images/changtiao.png);margin-top:5px;}
+.AD3_1{margin:6px 0 0 5px;}
+.lists{height:20px;font-size:15px;font-family:宋体;line-height:30px;border-top:1px solid #e2e2e2;margin-top:1px}
+.updatelist{height:auto;margin-top:5px;float:right;border-right: 2px solid #e2e2e2;border-left: 2px solid #e2e2e2;}
+.updateli{margin:5px 0 0 0;height:16px;}
+.dian{width:100%;height:1px;margin-top:8px;background-image:url(../images/changxiantiao.png)}
+.type_s{ margin-left:27px;}
+.tit_char_s{ margin-left:50px;width:300px;}
+.author_s{ margin-left:210px;}
+.updatetime_s{margin-right:30px;width:auto;float:right;}
+.types{ text-align:center;width:88px;float:left;}
+.types span{color:#dd7705}
+.tit_char{ width:323px;float:left;}
+.bookname{color:#dd7705}
+.author{width:100px;color:#dd7705}
+.updatetime{margin-right:10px;width:auto;float:right;}
+

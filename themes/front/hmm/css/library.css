@@ -1,0 +1,82 @@
+﻿
+.left{float:left;width:710px}
+.right{float:right;width:238px}
+
+.searchlist {height:240px;width:700px;float:left;border:2px solid #cccccc;border-top:2px solid #ffa21e;}
+.searchl{width:620px;height:40px;margin-top:-12px;}
+.library_tie{background-color:#fff6e7;width:80px;height:40px;float:left;text-align: center;list-style-type:none;line-height:40px;}
+.searchlist li{height:30px;text-align:center;float:left;list-style-type:none;line-height:30px;margin-left:10px;margin-top:5px;}
+.searchcur{background-color:#ffa21e;width:55px;}
+
+.library_xs{float:right;margin-right:115px}
+.librarylist{width:700px;height:auto;margin-top:5px;float:left;border:2px solid #cccccc;}
+.title_library_types{background-color:#cccccc;height:30px;line-height:30px;margin-top:-12px}
+.library_book_id{width:40px;float:left;list-style-type:none;margin-left:-20px;margin-right:3px}
+.library_book_m{width:270px;float:left;list-style-type:none;margin-right:3px}
+.library_book_a{width:90px;float:left;list-style-type:none;margin-right:3px}
+.library_book_c{width:60px;float:left;list-style-type:none;margin-right:3px}
+.library_book_d{width:70px;float:left;list-style-type:none;margin-right:3px}
+.library_book_l{float:left;list-style-type:none;}
+.title_library_typelist{height:30px;line-height:30px;margin-top:-10px}
+.library_book_img{background-image:url(../images/library/v.png);width:17px;height:17px;float:left;margin:6px 3px 0 0}
+.library_book_name{width:88px;color:#00B8FF;font-size:14px;font-family:黑体}
+.library_book_path{width:160px;}
+.fenye{
+	float:left;
+	width:720px;
+	text-align:center;
+	font-size:12px;
+	color:#333;
+	margin-bottom:5px;
+}
+.yema{
+	border:1px solid #aeaeae;
+	width:29px;
+	height:22px;
+	line-height:22px;
+	vertical-align:middle;
+	text-align:center;
+	display:inline-block;
+	background-color:#ededed
+}
+.yemaset input{
+   border:1px solid #e99314;
+   width:29px;
+   height:22px;
+   background:#fff;
+   vertical-align:middle;
+   text-align:center
+} 
+.subd{
+	float:right;
+	margin-top:10px;
+}
+.sub{
+	border:1px #ff0000;
+	display:inline-block;
+	margin-top:10px;
+	margin-right:15px;
+	width:48px;
+	height:22px;
+	background-image:url(../images/btnBg.jpg)
+}
+.intext{
+	display:inline-block;
+	height:22px;
+	line-height:22px;
+}
+.counpags{
+	display:inline-block;
+	height:22px;
+	line-height:22px;
+}
+.now{
+   border:1px solid ##e2e2e2;
+   width:30px;
+   height:20px;
+   background:#fff;
+   vertical-align:middle;
+   text-align:center;
+   margin-left:5px;
+   margin-right:5px;
+}

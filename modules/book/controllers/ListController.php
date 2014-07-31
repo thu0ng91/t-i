@@ -202,7 +202,7 @@ class ListController extends FWFrontController
         $this->setAllSEOInfo("分类页");
         $this->assign("list", $list);
         $this->assign("pages", $pages);
-        $this->render("lastupdate");
+        $this->render("initial", array('initial'=>$initial));
     }
     /**
      * 全本
@@ -227,6 +227,6 @@ class ListController extends FWFrontController
         $this->setAllSEOInfo("分类页");
         $this->assign("list", $list);
         $this->assign("pages", $pages);
-        $this->render("lastupdate");
+        $this->render("quanben");
     }
 }

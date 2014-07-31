@@ -45,7 +45,10 @@ function smarty_modifier_date_format($string, $format=null, $default_date='', $f
     }
     */
 
-    $timestamp = strtotime($string);
+    $timestamp = $string;
+    if (!is_numeric($string)) {
+      $timestamp = strtotime($string);
+    }
 
     return date($format, $timestamp);
 

@@ -20,16 +20,16 @@
                                 <tr>
                                     <td width="20%"><b>小说</b></td>
                                     <td width="35%"><b>最新章节</b></td>
-                                    <td width="30%"><b>上次阅读章节</b></td>
-                                    <td width="25%"><b>上次阅读时间</b></td>
+                                    <td width="30%"><b>上次阅读时间</b></td>
+                                    <td width="25%"><b>操作</b></td>
                                 </tr>
 
                                 {foreach $list as $item}
                                     <tr>
-                                    <td><a href="{novel_book_link id=$item->bookid}">{$item->title}</a></td>
-                                    <td><a href="{novel_chapter_link bookid=$item->bookid id=$item->lastchapterid}">{$item->lastchaptertitle}</a></td>
-                                    <td><a href="{novel_chapter_link bookid=$item->bookid id=$item->readchapterid}">{$item->readchaptertitle}</a></td>
-                                    <td>{$item->updatetime|date_format:'Y-m-d H:i'}</td>
+                                    <td><a href="{novel_book_link id=$item->book_id}">{$item->title}</a></td>
+                                    <td><a href="{novel_chapter_link bookid=$item->book_id id=$item->lastchapterid}">{$item->lastchaptertitle}</a></td>
+                                    <td>{$item->lastviewtime|date_format:'Y-m-d H:i'}</td>
+                                    <td><a href="/member/my/deletebookcase/id/{$item->id}">删除</a></td>
                                     </tr>
                                 {foreachelse}
                                     <tr>

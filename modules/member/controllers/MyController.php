@@ -20,9 +20,9 @@ class MyController extends MemberController
         $db = Yii::app()->db;
 
         $sql = "select
-                b.title,b.lastchapterid,b.lastchaptertitle,mb.id,mb.readchaptertitle,mb.readchapterid,mb.bookid,mb.updatetime
-                from book b, member_book mb where mb.bookid=b.id and mb.memberid=:memberid
-                order by mb.updatetime desc
+                b.title,b.lastchapterid,b.lastchaptertitle,mb.id,mb.lastviewtime,mb.book_id
+                from book b, bookcase mb where mb.book_id=b.id and mb.userid=:memberid and mb.status=1
+                order by mb.id desc
                 limit 100
                ";
 
@@ -41,7 +41,15 @@ class MyController extends MemberController
 
         $this->render("bookcase");
     }
-
+	public function actionDeletebookcase(){
+		$id = Yii::app()->request->getParam('id',null);
+		$model = Bookcase::model()->findByPk($id);
+		if(null != $model){
+			$model->status = 2;
+			$model->save();
+		}
+		$this->redirect('/member/my/bookcase');
+	}
     /**
      * 添加到书架
      * @param int $bookId

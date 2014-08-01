@@ -58,7 +58,13 @@ class DetailController extends FWFrontController
         }
 
         $this->assign("book", $book);
-
+    	if(Yii::app()->user->id){
+			$bookcase = Bookcase::model()->findByAttributes(array('book_id'=>$id,'userid'=>Yii::app()->user->id));
+			if(null != $bookcase){
+				$bookcase->lastviewtime = time();
+				$bookcase->save();
+			}
+        }
         $criteria = new CDbCriteria();
         $criteria->compare("bookid", $book->id);
         $criteria->order = "chapterorder asc";
@@ -105,7 +111,7 @@ class DetailController extends FWFrontController
         if (!$book) {
             throw new CHttpException(404);
         }
-
+        
         $this->assign("book", $book);
 
         $criteria = new CDbCriteria();
@@ -172,9 +178,21 @@ class DetailController extends FWFrontController
 
         Yii::app()->end();
     }
+    /**
+     * 小说推荐
+     */
 	public function actionUservote(){
-		//需要做仿制刷新处理，后面完善
 		$id = Yii::app()->request->getParam('id',null);
+		if(!Yii::app()->user->id){
+			echo '<meta charset="utf-8" /><script>alert("请先登录");window.history.back(-1);</script>';
+			Yii::app()->end();
+		}
+		$cacheKey = 'uservote_'.$id.'_'.Yii::app()->user->id;
+		$cacheValue = Yii::app()->cache->get($cacheKey);
+		if(null != $cacheValue){
+			echo '<meta charset="utf-8" /><script>alert("今天您已经推荐过这本书了！");window.history.back(-1);</script>';
+			Yii::app()->end();
+		}
 		$model = Book::model()->findByPk($id);
 		
 		$nowtime = time();
@@ -206,11 +224,17 @@ class DetailController extends FWFrontController
 		}
 		$sql = 'UPDATE book SET lastliketime='.$nowtime.', '.$daystr.', '.$weekstr.', '.$monthstr.', '.$allstr.' WHERE id='.$id;
 		Yii::app()->db->createCommand($sql)->execute();
+		//计算当天剩余秒数
+		$endtime = strtotime(date('Y-m-d',time()))+86400;
+		$votetime = $endtime-time();
+		Yii::app()->cache->set($cacheKey, 1, $votetime);
 		echo '<meta charset="utf-8" /><script>alert("感谢您的推荐！");window.history.back(-1);</script>';
 		//$this->redirect(array('/book/detail/index','id'=>$id));
 		Yii::app()->end();
 	}
-	
+	/**
+	 * 加入书架
+	 */
 	public function actionAddbookcase(){
 		if(!Yii::app()->user->id){
 			echo '<meta charset="utf-8" /><script>alert("请先登录");window.history.back(-1);</script>';
@@ -219,6 +243,8 @@ class DetailController extends FWFrontController
 		$id = Yii::app()->request->getParam('id',null);
 		$model = Bookcase::model()->findByAttributes(array('userid'=>Yii::app()->user->id,'book_id'=>$id));
 		if(null != $model){
+			$model->status = 1;
+			$model->save();
 			echo '<meta charset="utf-8" /><script>alert("您已经收藏过该书");window.history.back(-1);</script>';
 			Yii::app()->end();
 		}else{

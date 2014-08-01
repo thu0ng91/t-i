@@ -106,6 +106,6 @@ class Block extends CActiveRecord
 		));
 	}
 	public function getBlockTemp($id){
-		return '{block id='.$id.'}';
+		return '{novel_block id='.$id.'}';
 	}
 }

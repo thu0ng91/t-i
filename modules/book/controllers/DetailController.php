@@ -184,14 +184,12 @@ class DetailController extends FWFrontController
 	public function actionUservote(){
 		$id = Yii::app()->request->getParam('id',null);
 		if(!Yii::app()->user->id){
-			echo '<meta charset="utf-8" /><script>alert("请先登录");window.history.back(-1);</script>';
-			Yii::app()->end();
+			echo '请先登录';Yii::app()->end();
 		}
 		$cacheKey = 'uservote_'.$id.'_'.Yii::app()->user->id;
 		$cacheValue = Yii::app()->cache->get($cacheKey);
 		if(null != $cacheValue){
-			echo '<meta charset="utf-8" /><script>alert("今天您已经推荐过这本书了！");window.history.back(-1);</script>';
-			Yii::app()->end();
+			echo '今天您已经推荐过这本书了！';Yii::app()->end();
 		}
 		$model = Book::model()->findByPk($id);
 		
@@ -228,25 +226,21 @@ class DetailController extends FWFrontController
 		$endtime = strtotime(date('Y-m-d',time()))+86400;
 		$votetime = $endtime-time();
 		Yii::app()->cache->set($cacheKey, 1, $votetime);
-		echo '<meta charset="utf-8" /><script>alert("感谢您的推荐！");window.history.back(-1);</script>';
-		//$this->redirect(array('/book/detail/index','id'=>$id));
-		Yii::app()->end();
+		echo '感谢您的推荐！';Yii::app()->end();
 	}
 	/**
 	 * 加入书架
 	 */
 	public function actionAddbookcase(){
 		if(!Yii::app()->user->id){
-			echo '<meta charset="utf-8" /><script>alert("请先登录");window.history.back(-1);</script>';
-			Yii::app()->end();
+			echo '请先登录';Yii::app()->end();
 		}
 		$id = Yii::app()->request->getParam('id',null);
 		$model = Bookcase::model()->findByAttributes(array('userid'=>Yii::app()->user->id,'book_id'=>$id));
 		if(null != $model){
 			$model->status = 1;
 			$model->save();
-			echo '<meta charset="utf-8" /><script>alert("您已经收藏过该书");window.history.back(-1);</script>';
-			Yii::app()->end();
+			echo '您已经收藏过该书';Yii::app()->end();
 		}else{
 			$model = new Bookcase();
 			$model->userid = Yii::app()->user->id;
@@ -256,8 +250,7 @@ class DetailController extends FWFrontController
 			$model->dateline = time();
 			$model->status = 1;
 			$model->save();
-			echo '<meta charset="utf-8" /><script>alert("您成功收藏该书");window.history.back(-1);</script>';
-			Yii::app()->end();
+			echo '您成功收藏该书';Yii::app()->end();
 		}
 	}
     public function actionDownPage()

@@ -1,9 +1,4 @@
 <link href="{$FW_THEME_URL}/css/style2.css" rel="stylesheet" type="text/css">
-<script>
-	function addBookcase(bookId){
-		$.post("abc.jsp", bookId, function (result) { alert(result); }, "text");
-	}
-</script>
 <!--列表-->
 <div class="main">
     <div id="centerl">
@@ -23,8 +18,8 @@
                             <div class="book_news_style_text2">
                                 <h1>{$book->title}</h1>
                                 <h2>作者：{$book->author}</h2>
-                                <h2><a href="{$addbookcase_link}">加入书架</a></h2>
-                                <h2><a href="{$uservote_link}">推荐本书</a></h2>
+                                <h2><a href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a></h2>
+                                <h2><a href="javascript:;" onclick="uservote({$book->id})">推荐本书</a></h2>
                                 <h3>{$book->title}最新章节：<a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">{$book->lastchaptertitle}</a><br><br><span id="adin_top"></span></h3>
                             </div>
                             <div class="book_article_title">小说介绍：</div>

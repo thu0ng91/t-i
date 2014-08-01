@@ -386,20 +386,24 @@ function readCookie(name) {
 //书架
 function addbook(bid)
 {
-	
-	url="/modules/article/addbookcase.php?bid="+bid;
+	//http://free55.cn/book/detail/addbookcase/id/2.html
+	url="/book/detail/addbookcase/id/"+bid+".html";
 	Ajax.Request(url,{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));}});
 	url2="/sendbookcase.php?id="+bid;
 	Ajax.Request(url2);
 }
-function addbookcase(bid,cid)
+//加入书架
+function addbookcase(bid)
 {
-	
-	url="/modules/article/addbookcase.php?bid="+bid+"&cid="+cid;
+	url="/book/detail/addbookcase/id/"+bid+".html";
 	Ajax.Request(url,{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));}});
-	//Ajax.Tip(event,url,3000);
 }
-
+//网友推荐小说
+function uservote(bid)
+{
+	url="/book/detail/uservote/id/"+bid+".html";
+	Ajax.Request(url,{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));}});
+}
 
 function dlglogin()
 {

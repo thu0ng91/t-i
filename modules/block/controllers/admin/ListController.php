@@ -102,6 +102,8 @@ class ListController extends FWAdminController
 	            			$ordername = 'lastchaptertime';break;
 	            		case 13:
 	            			$ordername = 'recommendlevel';break;
+	            		case 14:
+	            			$ordername = 'flag';break;
 	            		default:
 	            			$ordername = 'allclicks';
 	             	}

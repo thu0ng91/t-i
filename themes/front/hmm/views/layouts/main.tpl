@@ -5,10 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=7">
 <title>{$title}</title>
 <meta name="keywords" content="{$keywords|strip_tags}"/>
-<link href="{$FW_THEME_URL}/css/book_main.css" rel="stylesheet">
-
 <link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
-<link href="{$FW_THEME_URL}/css/book_index.css" rel="stylesheet"/>
 <script src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 </head>
 <body>
@@ -17,7 +14,7 @@
 <div class="logo"><a href="/"><img src="{$FW_THEME_URL}/images/logo.png" /></a></div>
 <div class="search_meta">
 <div class="search_box"><form action="/s/" method="get" id="search_from_top" accept-charset="gb2312" onSubmit="return search.check_searchform()"><input name="search_type" id="search_type" type="hidden" value=""><input type="text" class="search_focus" id="keyword" name="keyword" value="请输入书名/作者/标签
-" autocomplete="off"/><button type="submit" class="btn_search" id="search_top">搜小说</button></form></div>
+" /><button type="submit" class="btn_search" id="search_top">搜小说</button></form></div>
 <div id="search_result" class="suggest_wrap" style="display:none;">
 <div class="suggest_box">
 <ul id="search_result_list"></ul>

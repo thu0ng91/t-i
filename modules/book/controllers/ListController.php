@@ -89,6 +89,7 @@ class ListController extends FWFrontController
 
         //      print_r(Yii::app()->hasModule("test"));
         //      $this->renderPartial("index");
+
         $this->render("index");
     }
 

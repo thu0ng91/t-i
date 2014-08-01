@@ -32,18 +32,23 @@ return array(
     	'10'=>'收藏数',
     	'11'=>'文章字数',
     	'12'=>'最新更新',
-    	'13'=>'本站推荐'
+    	'13'=>'本站推荐',
+    	'14'=>'全本小说'
     ),
     'order'=>array(
     	'1'=>'由小到大',
     	'2'=>'由大到小',
     ),
     'templatetags'=>array(
+    	'{novel_book_link id=$item->id}'=>'小说链接',
+    	'{$item->coverImageUrl}'=>'小说封面',
+    	'{$category->title}'=>'分类名称',
     	'{$item->id}'=>'小说id',
     	'{$item->title}'=>'小说标题',
     	'{$item->author}'=>'小说作者',
     	'{$item->authorid}'=>'作者id',
     	'{$item->cid}'=>'分类ID',
+    	'{$item->category->url}'=>'分类链接',
     	'{$item->flag}'=>'全本状态',
     	'{$item->keywords}'=>'关键词',
     	'{$item->summary}'=>'简介',
@@ -54,7 +59,7 @@ return array(
     	'{$item->wordcount}'=>'字数',
     	'{$item->lastchapterid}'=>'最新章节ID',
     	'{$item->lastchaptertitle}'=>'最新章节标题',
-    	'{$item->lastchaptertime}'=>'最后更新章节时间',
+    	'{$item->lastchaptertime}'=>'最后更新时间',
     	'{$item->alllikenum}'=>'推荐总数',
     	'{$item->monthlikenum}'=>'月推荐数',
     	'{$item->weeklikenum}'=>'周推荐数',

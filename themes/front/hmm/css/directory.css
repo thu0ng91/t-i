@@ -50,12 +50,49 @@
 	height:135px;
 }
 
-.tablist ul{height:25px; margin:0px; padding:0px;}
-.tablist li{float:left; height:24px; list-style:none; margin-right:3px;}
-.tablist li a{float:left; height:24px; line-height:24px; padding:0px 10px; display:block; font-weight:normal;  text-decoration:none; color:#000000;border:1px solid #c2c2c2;border-bottom:none; background:#efefef}
-.tablist li a.selected{font-weight:bold; background:#ffffff; border-top:2px solid #458fce; height:24px; position:relative; margin-bottom:-1px;color:#025b81}
-.tabcontent{clear:both; border-top:1px solid #dddddd;}
-.directory_distext_jj{padding:3px;border:0;height:100%;width:100%;}
+.tablist ul{
+	height:25px;
+	margin:0px; 
+	padding:0px;
+}
+.tablist li{
+	float:left;
+	height:24px;
+	list-style:none;
+	margin-right:3px;
+}
+.tablist li a{
+	float:left; 
+	height:24px; 
+	line-height:24px;
+	padding:0px 10px; 
+	display:block; 
+	font-weight:normal;
+	text-decoration:none;
+	color:#000000;
+	border:1px solid #c2c2c2;
+	border-bottom:none; 
+	background:#efefef
+}
+.tablist li a.selected{
+	font-weight:bold; 
+	background:#ffffff;
+	border-top:2px solid #458fce;
+	height:24px; 
+	position:relative;
+	margin-bottom:-1px;
+	color:#025b81
+}
+.tabcontent{
+	clear:both; 
+	border-top:1px solid #dddddd;
+}
+.directory_distext_jj{
+	padding:3px;
+	border:0;
+	height:100%;
+	width:100%;
+}
 .directory_distext_left{
 	margin-top:10px;
 	margin-left:10px;
@@ -166,15 +203,38 @@
 	border-right:1px solid #000;
  }
 
-.directory_AD_book_img{ float:left;margin-right:1px;height:82px;}
-.directory_AD_book_shuming{font-size:12px;margin:3px;color:blue}
-.zuozhe{color:blue}
-.directory_AD_book__fenlei{margin:3px;}
-.directory_AD_book_jianjie{margin:3px;}
-.directory_AD_book_text{ width:100px;height:85px;float:left;margin-right:5px;}
-.directory_AD_book_jieshao{height:60px; }
-.directory_AD_book_yd{}
-.directory_AD_book_t1{margin:3px 0 0 2px;float:left;width:170px;height:80px}
+.directory_AD_book_img{
+	float:left;
+	margin-right:1px;
+	height:82px;
+}
+.directory_AD_book_shuming{
+	font-size:12px;
+	margin:3px;
+	color:blue
+}
+.zuozhe{
+	color:blue
+}
+.directory_AD_book__fenlei , .directory_AD_book_jianjie {
+	margin:3px;
+}
+.directory_AD_book_text{
+	width:100px;
+	height:85px;
+	float:left;
+	margin-right:5px;
+}
+.directory_AD_book_jieshao{
+	height:60px;
+}
+
+.directory_AD_book_t1{
+	margin:3px 0 0 2px;
+	float:left;
+	width:170px;
+	height:80px
+}
 
 .zjzj{
 	margin-top:10px;
@@ -242,5 +302,4 @@
 	float:left;
 	width:auto;
 	height:16px;
-	
 }

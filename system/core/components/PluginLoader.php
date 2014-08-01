@@ -68,9 +68,9 @@ class PluginLoader extends CApplicationComponent{
         
         $ext=$plugins =array();
         // 加载所有插件的hook
-        //$plugins = Plugins::model()->findAll("status=:status", array(
-         //   ':status' => 1,//Yii::app()->params['status']['ischecked'],
-        //));
+        $plugins = Plugins::model()->findAll("status=:status", array(
+            ':status' => 1,//Yii::app()->params['status']['ischecked'],
+        ));
 
         foreach ($plugins as $m) {
 //            include_once FW_PLUGIN_BASE_PATH . DS . $m->name . DS . "hook.php";

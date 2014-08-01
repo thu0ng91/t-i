@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 class BookModule extends FWModule
 {
     public $cacheConfig = null;
@@ -86,9 +86,9 @@ class BookModule extends FWModule
                 Yii::app()->urlManager->addRules($r, false);
             }
             //'bookcase/<id:\d+>'=>array('novel/bookcase'),
-			$r = array( '<id:\d+>' =>  'book/detail/uservote');
+			$r = array( 'book/detail/uservote/<id:\d+>' =>  'book/detail/uservote');
             Yii::app()->urlManager->addRules($r, false);
-            $r = array( '<id:\d+>' =>  'book/detail/addbookcase');
+            $r = array( 'book/detail/uservote/<id:\d+>' =>  'book/detail/addbookcase');
             Yii::app()->urlManager->addRules($r, false);
         }
         return;

@@ -1,7 +1,7 @@
 <?php 
  return array (
   'class' => 'CDbConnection',
-  'connectionString' => 'mysql:host=localhost;dbname=free55',
+  'connectionString' => 'mysql:host=localhost;dbname=yunyue',
   'emulatePrepare' => true,
   'username' => 'root',
   'password' => 'root',

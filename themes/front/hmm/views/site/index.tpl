@@ -1,370 +1,197 @@
-<script type="text/javascript">index_top();</script>
-<div class="indexboxone clearfix">
-    <div class="indexboxonel">
-        <div id="consone">
-            {* 分类头条 *}
-            <ul style="display: block;" class="">
-            {novel_book order='recommendlevel desc,createtime desc' where='recommendlevel<=9' limit=19}
-            {if $block.first}
-                <div class="indexonell">
-                    <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
-                    <h2><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h2>
-					<span>{$item->summary|trim|truncate:50:'...'}
-					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
-					</span>
-                </div>
-            {/if}
-            {if $block.index == 1}
-                <div class="indexonelc">
-                    <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
-					<span>{$item->summary|trim|truncate:50:'...'}
-					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
-					</span>
-            {/if}
-            {if $block.index == 2 && $block.total > 1}
-                    <ul class="clearfix">
-            {/if}
-            {if $block.index >= 2 && $block.index <= 9}
-                        <li><a href="{$item->category->url}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
-            {/if}
-            {if ($block.last && $block.index > 1 && $block.index <= 9) || $block.index == 9}
-                    </ul>
-            {/if}
-            {if !$block.last && $block.index == 10}
-                    <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
-                    <span>{$item->summary|trim|truncate:50:'...'}
-                    <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
-                    </span>           
-                    <ul class="clearfix">
-             {/if}
+﻿
+<!--container begin-->
+<div	class="container" style="margin-top: 5px;"><!--row_a begin-->
+<div class="row_a clearfix">
+<div class="col_a clearfix"><!--col_slider begin--> <!--col_slider begin-->
+<div id="J_slideContainer" class="col_slider">
+<div class="slider_pic clearfix">
+{novel_block id=8}
+<ul id="J_showImg" class="slider_show">
+	<li style="display: block"><a href="/book/12450/" target="_blank"
+		title="武破九霄"><img src="/UploadFile/2014718/20140718014026542654.jpg"
+		title="武破九霄" width="205" height="267" alt="武破九霄" /></a></li>
+	<li><a href="/book/3612/" target="_blank" title="透视之眼"><img
+		src="/UploadFile/2014718/20140718015425162516.jpg" title="透视之眼"
+		width="205" height="267" alt="透视之眼" /></a></li>
+	<li><a href="/book/2901/" target="_blank" title="校花的贴身高手"><img
+		src="/UploadFile/2014718/20140718022852455245.jpg" title="校花的贴身高手"
+		width="205" height="267" alt="校花的贴身高手" /></a></li>
+</ul>
+<ul id="J_slideThumb" class="slider_nav">
+	<li style="display: block"><img
+		src="/UploadFile/2014718/20140718014026542654.jpg" width="64"
+		height="85" alt="" /></li>
+	<li><img src="/UploadFile/2014718/20140718015425162516.jpg" width="64"
+		height="85" alt="" /></li>
+	<li><img src="/UploadFile/2014718/20140718022852455245.jpg" width="64"
+		height="85" alt="" /></li>
+</ul>
+<div class="img_overview" style="top: 0"><i class="arrow"></i></div>
+</div>
+<ul id="J_showInfo" class="slider_desc">
+	<li style="display: block">
+	<p class="desc_hd"><a class="sub_link" title="武破九霄" href="/book/12450/"
+		target="_blank">《武破九霄》苍笑天</a></p>
+	<p class="desc_bd">静坐江湖风又起，千古王侯再争雄。这是一个乱世，一个诸侯并起的时代武者路上尸山血海，爱恨情仇，在这条白骨森森的路上，谁能走...<a
+		class="more" href="/book/12450/" title="武破九霄" target="_blank">阅读&gt;&gt;</a></p>
+	</li>
+	<li>
+	<p class="desc_hd"><a class="sub_link" title="透视之眼" href="/book/3612/"
+		target="_blank">《透视之眼》星辉1</a></p>
+	<p class="desc_bd">徐青本是一位率性冲动的平凡少年，一次不平凡的际遇让他拥有了一双神奇的透视之眼，从此他的生活发生了不可思议的改变，财富唾手...<a
+		class="more" href="/book/3612/" title="透视之眼" target="_blank">阅读&gt;&gt;</a></p>
+	</li>
+	<li>
+	<p class="desc_hd"><a class="sub_link" title="校花的贴身高手"
+		href="/book/2901/" target="_blank">《校花的贴身高手》鱼人二代</a></p>
+	<p class="desc_bd">一个大山里走出来的绝世高手，一块能预知未来的神秘玉佩……林逸是一名普通学生，不过，他还身负另外一个重任，那就是追校花！而...<a
+		class="more" href="/book/2901/" title="校花的贴身高手" target="_blank">阅读&gt;&gt;</a></p>
+	</li>
+</ul>
+</div>
+<!--col_slider end--> <!--col_main begin-->
+<div class="col_main">
+<div class="hd"><a class="spec" href="/book/57414/" title="江湖我独行"
+	target="_blank">《江湖我独行》心之弈剑</a></div>
+<div class="bd">
+<ul class="clearfix">
+	<li><a class="sub_link" href="/list/1.html" target="_blank">[玄幻]</a><a
+		href="/book/56375/" title="火爆禁区" target="_blank">一坨胖子《火爆禁区》</a></li>
+	<li><a class="sub_link" href="/list/4.html" target="_blank">[历史]</a><a
+		href="/book/57768/" title="重生之超级游戏大亨" target="_blank">离火加农炮《重生之超级游戏大亨》</a></li>
+	<li><a class="sub_link" href="/list/55590.html" target="_blank">[历史]</a><a
+		href="/book/56420/" title="移动藏经阁" target="_blank">汉宝《移动藏经阁》</a></li>
+	<li><a class="sub_link" href="/list/6.html" target="_blank">[科幻]</a><a
+		href="/book/39167/" title="征服权能" target="_blank">一念乱天机《征服权能》</a></li>
+	<li><a class="sub_link" href="/list/11317.html" target="_blank">[武侠]</a><a
+		href="/book/49163/" title="大魔" target="_blank">汉隶《大魔》</a></li>
+	<li><a class="sub_link" href="/list/4.html" target="_blank">[历史]</a><a
+		href="/book/55988/" title="逍遥在电影世界" target="_blank">申宫若愚《逍遥在电影世界》</a></li>
+	<li><a class="sub_link" href="/list/37784.html" target="_blank">[历史]</a><a
+		href="/book/56119/" title="我的岳父大人叫吕布" target="_blank">大哥有枪《我的岳父大人叫吕布》</a></li>
+	<li><a class="sub_link" href="/list/3673.html" target="_blank">[武侠]</a><a
+		href="/book/48956/" title="金牌江湖" target="_blank">红金《金牌江湖》</a></li>
+	<li><a class="sub_link" href="/list/3.html" target="_blank">[都市]</a><a
+		href="/book/36908/" title="纵横三国的铁血骑兵" target="_blank">我的伤心谁做主《纵横三国的铁血骑兵》</a></li>
+	<li><a class="sub_link" href="/list/52275.html" target="_blank">[历史]</a><a
+		href="/book/54850/" title="奥法重生" target="_blank">老骚《奥法重生》</a></li>
+</ul>
+</div>
+<div class="hd"><a class="spec" href="/book/35009/" title="异世无冕邪皇"
+	target="_blank">《异世无冕邪皇》半块铜板</a></div>
+<div class="bd">
+<ul class="clearfix">
+	<li><a class="sub_link" href="/list/3.html" target="_blank">[都市]</a><a
+		href="/book/35017/" title="逍遥岛主" target="_blank">和尚用潘婷《逍遥岛主》</a></li>
+	<li><a class="sub_link" href="/list/1.html" target="_blank">[玄幻]</a><a
+		href="/book/13458/" title="神职高手" target="_blank">纹茫《神职高手》</a></li>
+	<li><a class="sub_link" href="/list/1.html" target="_blank">[玄幻]</a><a
+		href="/book/12601/" title="无敌天下" target="_blank">神见《无敌天下》</a></li>
+	<li><a class="sub_link" href="/list/1.html" target="_blank">[玄幻]</a><a
+		href="/book/34834/" title="无限之高端玩家" target="_blank">幻疾风01《无限之高端玩家》</a></li>
+	<li><a class="sub_link" href="/list/5.html" target="_blank">[网游]</a><a
+		href="/book/4021/" title="捡个杀手做老婆" target="_blank">花刺1913《捡个杀手做老婆》</a></li>
+	<li><a class="sub_link" href="/list/8.html" target="_blank">[其它]</a><a
+		href="/book/33101/" title="韩娱霸者" target="_blank">允木果《韩娱霸者》</a></li>
+	<li><a class="sub_link" href="/list/1.html" target="_blank">[玄幻]</a><a
+		href="/book/3314/" title="武逆" target="_blank">只是小虾米《武逆》</a></li>
+	<li><a class="sub_link" href="/list/8.html" target="_blank">[其它]</a><a
+		href="/book/3239/" title="三国小兵之霸途" target="_blank">一级烟枪王《三国小兵之霸途》</a></li>
+	<li><a class="sub_link" href="/list/1.html" target="_blank">[玄幻]</a><a
+		href="/book/3074/" title="吞噬苍穹" target="_blank">虾米XL《吞噬苍穹》</a></li>
+	<li><a class="sub_link" href="/list/3.html" target="_blank">[都市]</a><a
+		href="/book/57855/" title="大宋的智慧" target="_blank">贺坚强《大宋的智慧》</a></li>
+</ul>
+</div>
+</div>
+<!--col_main begin--></div>
+<!--mod_a begin-->
+<div class="col_b mod mod_a">
+<div class="hd">
+<div class="tab_hd">
+<ul class="mod_tab clearfix">
+	<li class="cur" id="week-rank-bind"><span>周排行榜</span></li>
+	<li id="month-rank-bind"><span>月排行榜</span></li>
+</ul>
+</div>
+</div>
+<div class="bd">
+<!-- 周排行榜 -->
+{novel_block id=6}
 
-             {if $block.index > 10 && $block.index <= 18}
-                        <li><a href="{$item->category->url}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
-             {/if}                       
-                {if ($block.last && $block.index > 10 && $block.index <= 18) || $block.index == 18}
-                    </ul>
-                {/if}
-                {if $block.last && $block.total > 1}
-                </div>
-                {/if}
-                {/novel_book}
-            </ul>
+<!-- 月排行榜 -->
+{novel_block id=7}
+</div>
+</div>
+<!--mod_a end--></div>
+<!--row_a end--> <!--row_b begin-->
+<div class="row_b clearfix">
+<div class="col_a"><!--free_book begin-->
+<div class="mod_box free_book">
+<div class="mod_hd">
+<h3 class="tit">完结推荐</h3>
+<a class="more" href="/list/wanjie.html" target="_blank">更多&gt;&gt;</a></div>
+<div class="mod_bd img_scroll"><a class="btn btn_lt btn_lt_none"
+	id="prev" href="javascript:void(0);"></a> <a class="btn btn_rt"
+	id="next" href="javascript:void(0);"></a>
+<div class="show_box">
+<ul class="clearfix">
+	<li>
+		<a href="/book/16920/" title="超级仙医" target="_blank">
+			<img	src="/UploadFile/2014718/20140718013246894689.jpg" alt="超级仙医"	title="超级仙医" />
+			<span>超级仙医</span>
+		</a>
+	</li>
+	<li><a href="/book/20035/" title="三国之我是皇太子" target="_blank">
+	<img	src="/UploadFile/2014718/20140718015136523652.jpg" alt="三国之我是皇太子"	title="三国之我是皇太子" /><span>三国之我是皇太子</span></a>
+	</li>
+	<li><a href="/book/28159/" title="妖孽保镖" target="_blank"><img
+		src="/UploadFile/2014718/20140718011663326332.jpg" alt="妖孽保镖"
+		title="妖孽保镖" /><span>妖孽保镖</span></a></li>
+	<li><a href="/book/2903/" title="斗破苍穹" target="_blank"><img
+		src="/UploadFile/2014718/20140718011931023102.jpg" alt="斗破苍穹"
+		title="斗破苍穹" /><span>斗破苍穹</span></a></li>
+	<li><a href="/book/5639/" title="御医" target="_blank"><img
+		src="/UploadFile/2014718/20140718011139243924.jpg" alt="御医" title="御医" /><span>御医</span></a></li>
+	<li><a href="/book/3039/" title="黄金瞳" target="_blank"><img
+		src="/UploadFile/2014718/20140718012110271027.jpg" alt="黄金瞳"
+		title="黄金瞳" /><span>黄金瞳</span></a></li>
+	<li><a href="/book/2889/" title="仙逆" target="_blank"><img
+		src="/UploadFile/2014718/2014071801110473473.jpg" alt="仙逆" title="仙逆" /><span>仙逆</span></a></li>
+	<li><a href="/book/16645/" title="一路官场" target="_blank"><img
+		src="/UploadFile/2014718/20140718011331623162.jpg" alt="一路官场"
+		title="一路官场" /><span>一路官场</span></a></li>
+	<li><a href="/book/16791/" title="超级盗贼" target="_blank"><img
+		src="/UploadFile/2014718/20140718012673057305.jpg" alt="超级盗贼"
+		title="超级盗贼" /><span>超级盗贼</span></a></li>
+	<li><a href="/book/13211/" title="重生之快意纵横" target="_blank"><img
+		src="/UploadFile/2014718/20140718020486368636.jpg" alt="重生之快意纵横"
+		title="重生之快意纵横" /><span>重生之快意纵横</span></a></li>
+</ul>
+</div>
+</div>
+</div>
+<!--free_book end--> <!--recommend_book begin-->
+<!-- 最近更新 -->
+{novel_block id=5}
+<!--recommend_book end--></div>
+<div class="col_b">
+<!-- 总推荐 -->
+{novel_block id=4}
 
-            {foreach [1,2,4,5,6,7,8,9,10,11,12,13] as $v}
-            {novel_book cid=[$v] order='recommendlevel desc,createtime desc' where='recommendlevel<=8' limit=19}
-            {if $block.first}
-            <ul class="hidden">
-                <div class="indexonell">
-                    <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
-                    <h2><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h2>
-                    <span>{$item->summary|trim|truncate:50:'...'}
-                    <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
-                    </span>
-                </div>
-            {/if}
-            {if $block.index == 1}
-                <div class="indexonelc">
-                    <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
-                    <span>{$item->summary|trim|truncate:50:'...'}
-                    <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
-                    </span>
-            {/if}
-            {if $block.index == 2 && $block.total > 1}
-                <ul class="clearfix">
-            {/if}
-            {if $block.index >= 2 && $block.index <= 9}
-                        <li><a href="{$item->category->url}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
-            {/if}
-            {if ($block.last && $block.index > 1 && $block.index <= 9) || $block.index == 9}
-                    </ul>
-            {/if}
-            {if !$block.last && $block.index == 10}
-                    <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
-                    <span>{$item->summary|trim|truncate:50:'...'}
-                    <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
-                    </span>           
-                    <ul class="clearfix">
-             {/if}
 
-             {if $block.index > 10 && $block.index <= 18}
-                        <li><a href="{$item->category->url}" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
-             {/if}                       
-                {if ($block.last && $block.index > 10 && $block.index <= 18) || $block.index == 18}
-                    </ul>
-                {/if}
-                {if $block.last && $block.total > 1}
-                </div>
-            </ul>                
-                {/if}
-                {/novel_book}
-            {/foreach}
-
-        </div>
-        <div class="indexonelr" id="tabsone">
-            <ul>
-                <li class="cur">热书</li>
-                {foreach [1,2,4,5,6,7,8,9,10,11,12,13] as $v}
-                {novel_category id=[$v]}
-                <li>{$item->title}</li>
-                {/novel_category}
-                {/foreach}
-                {*
-                <li>玄幻</li>
-                <li>奇幻</li>
-                <li>武侠</li>
-                <li>仙侠</li>
-                <li>都市</li>
-                <li>言情</li>
-                <li>历史</li>
-                <li>军事</li>
-                <li>网游</li>
-                <li>竞技</li>
-                <li>科幻</li>
-                <li>灵异</li>
-                *}
-            </ul>
-        </div>
-    </div>
-    {*榜单*}
-    <div class="indexboxoner">
-        <div class="rtit" id="tabstwo">
-            <h3>编辑推荐</h3>
-            <ul>
-                <li class="">日</li>
-                <li class="cur">周</li>
-                <li class="">月</li>
-            </ul>
-        </div>
-        <div id="constwo">
-        {foreach ["day", "week", "month"] as $v}
-            <div style="display: {if $v == 'week'}block{else}none{/if};" class="rcenter">
-        	{novel_book_rank order=$v limit=11}
-            	{if $block.first}
-                <div class="figure clearfix">
-                    <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
-                    <div class="figurer">
-                        <h4><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h4>
-                        <span>{$item->summary|trim|truncate:15:'...'}</span><a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
-                    </div>
-                </div>
-                <ul class="clearfix">
-                {/if}
-                {if !$block.first}
-                    <li><a href="xianxia" class="i1">[{$item->category->title}]</a><a href="{novel_book_link id=$item->id type='index'}" class="i2">{$item->title}</a></li>
-                {/if}
-
-                {if $block.last}
-                </ul>
-                {/if}
-             {/novel_book_rank}
-            </div>
-        {/foreach}
-        </div>
-    </div>
+<!-- 最近入库 -->
+{novel_block id=3}
 </div>
 
-{*属性类别*}
-<div class="c_bline">
-</div>
-<div class="wrapone">
-    <div class="tabstit" id="tabszxsb">
-        <ul>
-            <li class="cur">最新大作</li>
-            <li class="">畅销小说</li>
-            <li class="">言情推荐</li>
-            <li>最新上榜</li>
-            <li class="last">全本小说</li>
-        </ul>
-    </div>
-    <div id="conszxsb">
-        <ul style="display: block;" class="clearfix imgitems">
-  		{novel_book order='allclicks desc, createtime desc' limit=12}
-            <li><a href="{novel_book_link id=$item->id}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->title}"></a>
-                <h3><a href="{novel_book_link id=$item->id}" target="_blank">{$item->title}</a></h3>
-                {$item->summary|trim|truncate:10:'...'}<span class="lzzico"></span></li>
-       	{/novel_book}
-        </ul>
 
-        <ul style="display: none;" class="clearfix imgitems hidden">
-  		{novel_book order='allclicks desc' limit=12} 
-            <li><a href="{novel_book_link id=$item->id}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->title}"></a>
-                <h3><a href="{novel_book_link id=$item->id}" target="_blank">{$item->title}</a></h3>
-                {$item->summary|trim|truncate:10:'...'}<span class="lzzico"></span></li>
-       	{/novel_book}
-        </ul>
-
-
-        <ul style="display: none;" class="clearfix imgitems hidden">
-  		{novel_book cid=[10] limit=12} 
-            <li><a href="{novel_book_link id=$item->id}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->title}"></a>
-                <h3><a href="{novel_book_link id=$item->id}" target="_blank">{$item->title}</a></h3>
-                {$item->summary|trim|truncate:10:'...'}<span class="lzzico"></span></li>
-       	{/novel_book}
-        </ul>
-
-
-        <ul style="display: none;" class="clearfix imgitems hidden">
-  		{novel_book order='lastchaptertime desc' limit=12} 
-            <li><a href="{novel_book_link id=$item->id}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->title}"></a>
-                <h3><a href="{novel_book_link id=$item->id}" target="_blank">{$item->title}</a></h3>
-                {$item->summary|trim|truncate:10:'...'}<span class="lzzico"></span></li>
-       	{/novel_book}
-        </ul>
-
-         <ul style="display: none;" class="clearfix imgitems hidden">
-  		{novel_book order='lastchaptertime desc' limit=12} 
-            <li><a href="{novel_book_link id=$item->id}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->title}"></a>
-                <h3><a href="{novel_book_link id=$item->id}" target="_blank">{$item->title}</a></h3>
-                {$item->summary|trim|truncate:10:'...'}<span class="lzzico"></span></li>
-       	{/novel_book}
-        </ul>       
-
-
-	    </div>
 </div>
 
-<script type="text/javascript">index_middle();</script>
-{*分类推荐*}
-{*
-<div class="blinebgs"></div>
-<div class="clearfix wraptwo wrapfive">
-    <div class="w690">
-        <div class="titone">
-            <h2 id="t2"><a href="/index/type-wuxia">武侠</a>-<a href="/index/type-xianxia">仙侠</a></h2>
-            <span><a href="/intro/247001">仙逆苍穹</a>|<a href="/intro/247000">五行仙帝</a>|<a href="/intro/246997">剑本凡铁</a>|<a href="/intro/2469968">狩猎荒古</a>|<a href="/intro/229878">飘渺寻仙传</a>|<a href="/intro/229861">大炼气士</a></span>
-        </div>
-        <ul class="clearfix imgitems imgitemstwo">
-            <li><a href="/intro/37614" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422121926082608.jpg" alt=""><strong>任怨</strong></a>
-                <h3><a href="/intro/37614">斩仙</a></h3>
-                前世，杨晨与人为善</li>
-            <li><a href="/intro/44829" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422120473177317.jpg" alt=""><strong>宅猪      </strong></a>
-                <h3><a href="/intro/44829">帝尊</a></h3>
-                武道可以通神！武道</li>
-            <li><a href="/intro/37532" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422120370707070.jpg" alt=""><strong>说梦者</strong></a>
-                <h3><a href="/intro/37532">大圣传</a></h3>
-                妖魔中的至高无上者</li>
-            <li><a href="/intro/41222" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422120245714571.jpg" alt=""><strong>我吃西红柿</strong></a>
-                <h3><a href="/intro/41222">莽荒纪</a></h3>
-                在《莽荒纪》这个世</li>
-            <li><a href="/intro/12636" class="imgcss"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422120282708270.jpg" alt=""><strong>曳光</strong></a>
-                <h3><a href="/intro/12636">无仙</a></h3>
-                请看：一个小道士的</li>
-        </ul>
-        <div class="clearfix fontitems">
-            <ul>
-                <li><a href="/intro/162231">华山三弟子</a>：不学独孤九剑，不练吸星大法。华山武功天下第一。</li>
-                <li><a href="/intro/46879">死人经</a>：为不善乎显明之中者，人得而诛之；为不善于幽闭之中者</li>
-                <li><a href="/intro/37558">百炼成仙</a>：仙路崎岖，百般磨练终成正果一个没有灵根的少年，一个</li>
-                <li><a href="/intro/37639">新格物致道</a>：科学虽揭示外物规律，却无助于性命；天地万物自蕴大道</li>
-            </ul>
-        </div>
-    </div>
-    <div class="w246">
-        <div class="tittwo">
-            <h2>热门排行</h2>
-            <ul>
-                <li class="">日</li>
-                <li>周</li>
-                <li class="cur">月</li>
-            </ul>
-        </div>
-        <div class="clearfix olwrap">
-            <ol style="display: none;">
-                <li><a href="/intro/41222">莽荒纪</a>：在《莽荒纪》这个世界</li>
-                <li><a href="/intro/43995">少年医仙</a>：阎王判你三更死，我能</li>
-                <li><a href="/intro/35471">我的美女老师</a>：刚毕业的大学生秦朝，</li>
-                <li><a href="/intro/37413">遮天</a>：冰冷与黑暗并存的宇宙</li>
-                <li><a href="/intro/44731">极品修真邪少</a>：
-                    逆天妖孽陈青帝，以
-                </li>
-                <li><a href="/intro/44901">我的狐仙老婆</a>：普普通通的高中生刘弈</li>
-                <li><a href="/intro/37982">星辰变</a>：一名孩童，天生无法修</li>
-                <li><a href="/intro/37435">圣堂</a>：一次裸奔捡到半神神格</li>
-                <li><a href="/intro/37444">求魔</a>：
-                    《求魔》是耳根继《
-                </li>
-                <li><a href="/intro/37631">仙逆</a>：修道，修仙，修真。神</li>
-            </ol>
-            <ol style="display: none;" class="hidden">
-                <li><a href="/intro/41222">莽荒纪</a>：在《莽荒纪》这个世界</li>
-                <li><a href="/intro/35471">我的美女老师</a>：刚毕业的大学生秦朝，</li>
-                <li><a href="/intro/43995">少年医仙</a>：阎王判你三更死，我能</li>
-                <li><a href="/intro/37413">遮天</a>：冰冷与黑暗并存的宇宙</li>
-                <li><a href="/intro/44901">我的狐仙老婆</a>：普普通通的高中生刘弈</li>
-                <li><a href="/intro/44731">极品修真邪少</a>：
-                    逆天妖孽陈青帝，以
-                </li>
-                <li><a href="/intro/37435">圣堂</a>：一次裸奔捡到半神神格</li>
-                <li><a href="/intro/37444">求魔</a>：
-                    《求魔》是耳根继《
-                </li>
-                <li><a href="/intro/37982">星辰变</a>：一名孩童，天生无法修</li>
-                <li><a href="/intro/37631">仙逆</a>：修道，修仙，修真。神</li>
-            </ol>
-            <ol style="display: block;" class="hidden">
-                <li><a href="/intro/41222">莽荒纪</a>：在《莽荒纪》这个世界</li>
-                <li><a href="/intro/35471">我的美女老师</a>：刚毕业的大学生秦朝，</li>
-                <li><a href="/intro/43995">少年医仙</a>：阎王判你三更死，我能</li>
-                <li><a href="/intro/37413">遮天</a>：冰冷与黑暗并存的宇宙</li>
-                <li><a href="/intro/44901">我的狐仙老婆</a>：普普通通的高中生刘弈</li>
-                <li><a href="/intro/44731">极品修真邪少</a>：
-                    逆天妖孽陈青帝，以
-                </li>
-                <li><a href="/intro/37435">圣堂</a>：一次裸奔捡到半神神格</li>
-                <li><a href="/intro/37444">求魔</a>：
-                    《求魔》是耳根继《
-                </li>
-                <li><a href="/intro/37982">星辰变</a>：一名孩童，天生无法修</li>
-                <li><a href="/intro/37631">仙逆</a>：修道，修仙，修真。神</li>
-            </ol>
-        </div>
-    </div>
-</div>
-*}
 
-{* 最新、最热*}
-<div class="blinebgs"></div>
-<div class="clearfix wrapone bitems">
-    <div id="tabsthree" class="tabstit">
-        <ul>
-            <li class="cur">最新更新</li>
-            <li class="last">热门小说</li>
-        </ul>
-    </div>
-    <div class="recently_list" id="consthree">
-        <ul style="display: block;">
-        {novel_book order='lastchaptertime desc' limit=20}
-            <li><span class="recnums_r">{$block.iteration}</span><span class="r_spanone"><a href="{$item->category->url}">{$item->category->title}</a> | <a href="{novel_book_link id=$item->id}">{$item->title} </a></span><span class="r_spantwo"><i>更新至</i>&nbsp;&nbsp;<a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a></span><span class="r_spanthree">{$item->lastchaptertime|date_format:"Y-m-d H:i:s"}</span><span class="r_spanfour">{$item->allclicks}</span><span class="r_spanfive"><a href="{novel_book_download_link id=$item->id}">TXT下载&gt;&gt;</a></span></li>
-        {/novel_book}
-        </ul>
-        <ul style="display: none;" class="hidden">
-        {novel_book_rank order="all" limit=20}
-            <li><span class="recnums_r">{$block.iteration}</span><span class="r_spanone"><a href="{novel_book_link id=$item->id}">{$item->category->title}</a> | <a href="{novel_book_link id=$item->id}">{$item->title} </a></span><span class="r_spantwo"><i>更新至</i>&nbsp;&nbsp;<a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a></span><span class="r_spanthree">{$item->lastchaptertime|date_format:"Y-m-d H:i:s"}</span><span class="r_spanfour">{$item->allclicks}</span><span class="r_spanfive"><a href="{novel_book_download_link id=$item->id}">TXT下载&gt;&gt;</a></span></li>
-        {/novel_book_rank} 
-        </ul>
-    </div>
-</div>
+<dl class="famous clearfix" style="border: none">
+	<dt>友情连接：</dt>
+	<a href="http://www.txt2013.com" target="_blank">万书网</a>
+	<dd></dd>
+</dl>
 
-{* 友情链接 *}
-<div class="link">
-    <div class="linktop clearfix">
-        <h3>精品小说网站</h3>
-    </div>
-    <div class="linkbody">
-    {*
-        <a href="http://book.hao123.com" targdt="_blank">小说</a>|<a href="http://book.hao123.com/index/ph" targdt="_blank">小说排行榜</a>|<a href="http://www.kanshu.com" targdt="_blank">看书网</a>|<a href="http://www.zhaoxiaoshuo.com" targdt="_blank">找小说</a>|<a href="http://b.faloo.com" targdt="_blank">飞卢小说</a>|<a href="http://www.bxwx.org" targdt="_blank">笔下文学</a>|<a href="http://read.guanhuaju.com/" targdt="_blank">冠华居小说网 </a>|<a href="http://www.wjsw.com/" targdt="_blank">万卷书屋</a>|<a href="http://www.hongshu.com/" targdt="_blank">红薯小说网</a>|<a href="http://www.fmx.cn" targdt="_blank">凤鸣轩小说网</a>|<a href="http://www.xs8.cn/" targdt="_blank">言情小说吧</a>|<a href="http://www.cc222.com" targdt="_blank">烟雨红尘</a>|<a href="http://www.qwsy.com/" targdt="_blank">蔷薇言情小说</a>|<a href="http://www.feiku.com" targdt="_blank">飞库电子书</a>|<a href="http://www.tusuu.com/" targdt="_blank">txt小说下载</a>|<a href="http://www.yuncheng.com" targdt="_blank">云中书城</a>|<a href="http://www.huanxia.com " targdt="_blank">幻侠小说网</a>|<a href="http://www.motie.com" targdt="_blank">磨铁中文网</a>|<a href="http://www.shuhai.com" targdt="_blank">书海小说网</a>|<a href="http://www.txt8.net" targdt="_blank">txt小说下载吧</a>|<a href="http://www.sxcnw.net " targdt="_blank">书香电子书</a>|<a href="http://www.abada.com" targdt="_blank">小说下载网</a>|<a href="http://www.bookbao.com/" targdt="_blank">书包网</a>|<a href="http://www.cuiweiju.com/" targdt="_blank">翠微居小说</a>|<a href="http://www.duwenzhang.com/" targdt="_blank">文章阅读网</a>|<a href="http://www.3gsc.com.cn/" targdt="_blank">3G小说网</a>|<a href="http://bbs.txtnovel.com/" targdt="_blank">书香门第TXT</a>|<a href="http://www.msxf.net" targdt="_blank">陌上香坊</a>|<a href="http://www.txtbook.com.cn" targdt="_blank">乐读电子书</a>|<a href="http://www.2kxs.com" targdt="_blank">2k小说</a>|<a href="http://www.juyit.com" targdt="_blank">君子聚义</a>|<a href="http://www.ibook8.com/" targdt="_blank">txt电子书下载</a>|<a href="http://www.tadu.com/?cid=1914" targdt="_blank">塔读文学</a>|<a href="http://www.paipaitxt.com" targdt="_blank">派派小说论坛</a>|<a href="http://www.feifantxt.com" targdt="_blank">非凡小说网</a>|<a href="http://www.zongheng.com " targdt="_blank">纵横中文网 </a>|<a href="http://www.rain8.com/ " targdt="_blank">雨枫轩小说</a>|<a href="http://www.bayueju.com" targdt="_blank">八月居小说网</a>|<a href="http://www.17k.com/ " targdt="_blank">17K小说网</a>|
-    *}
-    </div>
-</div>
-<div class="blinebgs"></div>
-
-{* 回到顶部*}
-<div id="fix-area" class="fix-area">
-    <a style="visibility: visible;" class="go-top-btn" href="#" target="_self">返回顶部</a>
-    {*
-    <a class="feedback-btn boxy" href="#feedback">反馈</a>
-    <div id="shortcut-goerwei" class="shortcut-erweiwrap" style="height:120px;">
-        <a class="g_icon clz"></a><a class="shortcut-goerwei" href="http://www.hao123.com/shouji"><span class="top">万本小说免费读</span><span class="shortcut-goerwei-pic"><img src="http://imgs.imgshao123.net/images/1233459.png" border="0" height="70px" width="70px"></span><span>点击或扫描下载</span></a>
-    </div>
-    *}
 </div>

@@ -14,94 +14,7 @@ a:hover {
 body{
 	font-size:12px;
 }
-.header{
-	margin-right: auto;
-	margin-left: auto;
-	vertical-align:middle;
-	text-align: center;
-	height:89px
-}
-.login{
-	width:100px;
-}
-.log{
-	margin-right:20px;
-	height:70px;
-	width:182px
-}
-.AD{
-	height:59px;
-	width:734px
-}
-.navigat_i{ 
-	width:958px;
-	height:70px;
-	margin-bottom:2px;
-}
-.nav{
-	width:958px;
-	height:40px;
-	margin-right: auto;
-	margin-left: auto;
-	vertical-align:middle;
-}
-.nav_default{
-	float: left;
-	width: 100px;
-	height:41px;
-	text-align: center;
-	font-size: 20px;
-	color: white;
-	font-family: 宋体;
-	list-style-type:none;
-	line-height:41px;
-	background:url(../images/baigang.png)  no-repeat;
-	background-position:2px 0px;
-}
-.nav_now{
-	float: left;
-	width: 100px;
-	height:41px;
-	text-align:center;
-	font-size: 20px;
-	font-weight:blod;
-	color: white;
-	font-family: 宋体;
-	list-style-type:none;
-	line-height:41px;
-	background-color:#0e9ed5;
-}
-.navigation{	
-	text-align: center;
-}
-.navigat{	
-	width:100%;	
-	height:42px;	
-	margin:-5px 0 2px 0;	
-	background-color:#4ac2f1;
-}
-.nav li a:link{
-	color:white;
-text-decoration:none;
-}
-.nav li a:visited{
-	color:white;
-	text-decoration: none;
-}
-.footer{
-color: #000000;
-line-height: 22px;
-margin: 2em 0;
-text-align: center;
-font-family: arial,"simsun";
-width:100%;
-height:auto;
-float:left;
-}
-.footer a:link {
-	color:#000;
-	text-decoration: none;
-}
+
 .content{
 	width:958px;
 	margin:0 auto;
@@ -114,10 +27,7 @@ float:left;
 	border: 1px solid #e2e2e2;
 	border-right: 2px solid #e2e2e2;
 }
-.left_2{ 
-	margin-top:5px;
-	width:235px;
-	height:auto;float:left;border: 1px solid #e2e2e2;border-right: 2px solid #e2e2e2;}
+.left_2{ margin-top:5px;width:235px;height:auto;float:left;border: 1px solid #e2e2e2;border-right: 2px solid #e2e2e2;}
 .left_dj{ margin-top:5px;width:235px;height:auto;float:left;border: 1px solid #e2e2e2;border-right: 2px solid #e2e2e2;}
 .title{width:205px;height:30px;background-image:url(../images/jianbian.png)}
 .xiant{height:1px;margin-bottom:15px;background-image:url(../images/jianpianxiantiao.png)}

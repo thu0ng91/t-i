@@ -27,6 +27,28 @@
                         </div>
                         <div class="clear"></div>
                     </div>
+<!--评论-->
+<link href="{$FW_THEME_URL}/css/comment.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{$FW_THEME_URL}/js/comment.js"></script>
+<div id="msgBox" class="radius">
+	<form>
+		<img src="{$FW_THEME_URL}/images/avatar.bmp" style="display:none;" />
+         <div><textarea id="conBox" class="f-text radius"></textarea></div>
+         <div class="tr">
+            <p>
+               <span><i class="countTxt">还能输入</i><strong class="maxNum">140</strong><i>个字</i></span>
+                <input id="sendBtn" type="button" value="" title="快捷键 Ctrl+Enter"  />
+                <input id="userName" type="hidden" value="{Yii::app()->user->name}" />
+            </p>
+        </div>
+    </form>
+    <div class="list">
+        <h3><span>大家在说</span></h3>
+        <ul>
+        </ul>
+    </div>	
+</div>
+<!--评论结束-->
 <div style="padding:10px;"><!-- UY BEGIN -->
 <div id="uyan_frame"></div>
 <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1694191"></script>

@@ -24,7 +24,7 @@
                                     <td width="25%"><b>操作</b></td>
                                 </tr>
 
-                                {foreach $list as $item}
+                                {foreach from=$list item=item}
                                     <tr>
                                     <td><a href="{novel_book_link id=$item->book_id}">{$item->title}</a></td>
                                     <td><a href="{novel_chapter_link bookid=$item->book_id id=$item->lastchapterid}">{$item->lastchaptertitle}</a></td>

@@ -262,7 +262,7 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
 		// current controller properties will be accessible as {$this->property}
 		if (!isset($data['this'])) $data['this'] = $context;
 		// Yii::app()->... is available as {Yii->...} (deprecated, use {Yii::app()->...} instead, Smarty3 supports this.)
-//		$data['Yii'] = Yii::app();
+		$data['Yii'] = Yii::app();
 		// time and memory information
 		$data['TIME'] = sprintf('%0.5f',Yii::getLogger()->getExecutionTime());
 		$data['MEMORY'] = round(Yii::getLogger()->getMemoryUsage()/(1024*1024),2).' MB';

@@ -37,7 +37,7 @@ function _compile_novel_block_start($tag, $tag_args, &$compiler)
             return;
     }
 
-    $from = _fw_custom_var_export($from);
+    $from = _fw_custom_var_export($attrs);
 
     $output = '<?php ';
     $output .= "include_once SMARTY_CORE_DIR . 'core.novel_block.php';\n";
@@ -249,11 +249,17 @@ function _fw_get_book_list($params)
 
         $sql .= ' and cid in(' . implode(',' , $cid) . ")";
 
+    } elseif (isset($params['cid'])) {
+        $cid = explode(",", $params['cid']);
+        $sql .= ' and cid in(' . implode(',' , $cid) . ")";
     }
 
     if (isset($params['id']) && is_array($params['id'])) {
 
         $sql .= ' and id in(' . implode(',' , $params['id']) . ")";
+    } elseif (isset($params['id'])) {
+        $id = explode(",", $params['id']);
+        $sql .= ' and id in(' . implode(',' , $id) . ")";
     }
 
 
@@ -261,6 +267,9 @@ function _fw_get_book_list($params)
         $recommendLevel = $params['recommend'];
 
         $sql .= ' and recommendlevel in(' . implode(',' , $recommendLevel) . ")";
+    } elseif (isset($params['recommend'])) {
+        $recommend = explode(",", $params['recommend']);
+        $sql .= ' and recommendlevel in(' . implode(',' , $recommend) . ")";
     }
 
     if (isset($params['where'])) {
@@ -373,6 +382,9 @@ function _fw_get_book_category_list($params)
     if (isset($params['id']) && is_array($params['id'])) {
 
         $sql .= ' and id in(' . implode(',' , $params['id']) . ")";
+    }  elseif (isset($params['id'])) {
+        $id = explode(",", $params['id']);
+        $sql .= ' and id in(' . implode(',' , $id) . ")";
     }
 
 
@@ -486,11 +498,17 @@ function _fw_get_book_rank_list($params)
 
         $sql .= ' and cid in(' . implode(',' , $cid) . ")";
 
+    } elseif (isset($params['cid'])) {
+        $cid = explode(",", $params['cid']);
+        $sql .= ' and cid in(' . implode(',' , $cid) . ")";
     }
 
     if (isset($params['id']) && is_array($params['id'])) {
 
         $sql .= ' and id in(' . implode(',' , $params['id']) . ")";
+    } elseif (isset($params['id'])) {
+        $id = explode(",", $params['id']);
+        $sql .= ' and id in(' . implode(',' , $id) . ")";
     }
 
 
@@ -498,6 +516,9 @@ function _fw_get_book_rank_list($params)
         $recommendLevel = $params['recommend'];
 
         $sql .= ' and recommendlevel in(' . implode(',' , $recommendLevel) . ")";
+    } elseif (isset($params['recommend'])) {
+        $recommend = explode(",", $params['recommend']);
+        $sql .= ' and recommendlevel in(' . implode(',' , $recommend) . ")";
     }
 
     if (isset($params['where'])) {

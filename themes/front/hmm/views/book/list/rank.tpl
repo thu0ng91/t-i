@@ -36,8 +36,8 @@
 		</tr>
 	</thead>
 	<tbody>
-		{if isset($smarty.get.id)}
-		{novel_book  limit=30 order="lastchaptertime desc" cid=[$smarty.get.id]}
+		{if $smarty.get.id}
+		{novel_book  limit=30 order="lastchaptertime desc" cid=$smarty.get.id}
 		<tr>
 			<td class="font11">{$block.iteration}</td>
 			<td class="cell_left">

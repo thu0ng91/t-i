@@ -29,7 +29,7 @@
 function smarty_modifier_date_format($string, $format=null, $default_date='', $formatter='auto')
 {
     if ($format === null) {
-        $format = '%Y-%m%-d';
+        $format = 'Y-m-d';
     }
     /**
     * Include the {@link shared.make_timestamp.php} plugin

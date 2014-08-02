@@ -168,7 +168,7 @@ class ListController extends FWAdminController
 			);
             if($model->save(true, $attributes)){
             	//生成区块设置数据文件
-            	$block_file_path = FW_ROOT_PATH.DS.runtime.DS.blocks.DS;
+            	$block_file_path = FW_ROOT_PATH.DS.'runtime'.DS.'blocks'.DS;
             	if(!file_exists($block_file_path)){
             		$this->dmkdir($block_file_path);
             	}
@@ -218,6 +218,56 @@ class ListController extends FWAdminController
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+	}
+	public function actionExport(){
+		$results = Block::model()->findAll();
+		foreach($results as $v){
+			$r['bid'] = $v->bid;
+			$r['blockname'] = $v->blockname;
+			$r['content'] = $v->content;
+			$r['template'] = $v->template;
+			$r['vars'] = $v->vars;
+			$r['blocktype'] = $v->blocktype;
+			$r['sequence'] = $v->sequence;
+			$r['status'] = $v->status;
+			$r['cachetime'] = $v->cachetime;
+			$s[] = $r;
+		}
+
+		$data = base64_encode(json_encode($s));
+		$file_path = FW_ROOT_PATH.DS.'runtime'.DS.'blocks'.DS.'dbbackup';
+		if(!file_exists($file_path)){
+            $this->dmkdir($file_path);
+        }
+        $date = date('Y-m-d',time());
+        $filename = $file_path.DS.'block'.$date.'.txt';
+        file_put_contents($filename,$data);
+        Yii::app()->user->setFlash('actionInfo','导出区块数据成功,文件保存在'.$filename);
+        $this->redirect(array('admin/list/index'));
+	}
+	public function actionInsert(){
+		if($_FILES){
+			$data = file_get_contents($_FILES['insertdata']['tmp_name']);
+			$data = json_decode(base64_decode($data));
+			$sql = 'TRUNCATE TABLE block';
+			Yii::app()->db->createCommand($sql)->query();
+			foreach($data as $v){
+				$model = new Block();
+				$model->bid = $v->bid;
+				$model->blockname = $v->blockname;
+				$model->content = $v->content;
+				$model->template = $v->template;
+				$model->vars = $v->vars;
+				$model->blocktype = $v->blocktype;
+				$model->sequence = $v->sequence;
+				$model->status = $v->status;
+				$model->cachetime = $v->cachetime;
+				$model->save();
+			}
+			Yii::app()->user->setFlash('actionInfo','导入区块数据成功');
+        	$this->redirect(array('admin/list/index'));
+		}
+		$this->render('insert');
 	}
     public function loadModel($id)
     {

@@ -16,6 +16,19 @@ $this->widget('bootstrap.widgets.TbButtonGroup', array(
             array('items'=>$qukuai),
             ),
         ));
+$this->widget('bootstrap.widgets.TbButtonGroup',
+	array(
+		'type'=>'primary', // '', 'primary', 'info', 'success', 'warning', 'danger' or 'inverse'
+		'buttons'=>array(
+			array('label'=>'区块数据', 'url'=>'#'),
+			array('items'=>array(
+					array('label'=>'导入区块数据','url'=>Yii::app()->createUrl('block/admin/list/insert')),
+					array('label'=>'导出区块数据','url'=>Yii::app()->createUrl('block/admin/list/export')),
+				)
+			),
+		),
+	)
+);
 ?>
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(

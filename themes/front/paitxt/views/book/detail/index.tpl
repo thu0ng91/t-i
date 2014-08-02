@@ -32,27 +32,35 @@
 <script type="text/javascript" src="{$FW_THEME_URL}/js/comment.js"></script>
 <div id="msgBox" class="radius">
 	<form>
-		<img src="{$FW_THEME_URL}/images/avatar.bmp" style="display:none;" />
-         <div><textarea id="conBox" class="f-text radius"></textarea></div>
+		<img src="{$FW_THEME_URL}/images/avatar.bmp" style="display:none;" id="user_avatar" />
+         <div><textarea id="conBox" class="f-text radius" oninput="changeNum(event)" onpropertychange="changeNum(event)" ></textarea></div>
          <div class="tr">
             <p>
                <span><i class="countTxt">还能输入</i><strong class="maxNum">140</strong><i>个字</i></span>
                 <input id="sendBtn" type="button" value="" title="快捷键 Ctrl+Enter"  />
                 <input id="userName" type="hidden" value="{Yii::app()->user->name}" />
+                <input id="bookid" type="hidden" value="{$book->id}" />
             </p>
         </div>
     </form>
     <div class="list">
-        <h3><span>大家在说</span></h3>
+        <h3><span>共计<i style="color:red">{$count_commends}</i> 条评论</span></h3>
         <ul>
+        	 {foreach $commends as $commend}
+        	 	<li>
+        	 		<div class="userPic"><img src="/themes/front/paitxt/images/avatar.bmp"></div>
+	        	 	<div class="content" style="text-align:left">
+		        	 	<div class="userName">{$commend->username}:</div>
+		        	 	<div class="msgInfo">{$commend->content}</div>
+		        	 	<div class="times"><span>{$commend->dateline|date_format:'m月d日 H:i'}</span></div>
+	        	 	</div>
+        	 	</li>
+        	 {/foreach}
         </ul>
     </div>	
 </div>
 <!--评论结束-->
-<div style="padding:10px;"><!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=1694191"></script>
-<!-- UY END --></div>
+
                     <div class="book_article_texttable">
                         {$i=0}
                         {$tagIsClosed = false}

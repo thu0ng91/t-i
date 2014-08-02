@@ -379,4 +379,12 @@ class Book extends BaseModel
 
         return false;
     }
+    public static function getBookName($id){
+    	$data = Book::model()->findByPk($id);
+    	if(null == $data){
+    		return '无';
+    	}else{
+    		return $data->title;
+    	}
+    }
 }

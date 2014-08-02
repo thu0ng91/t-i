@@ -22,6 +22,7 @@ $this->pageTitle=Yii::app()->name;
     'type'=>'striped bordered condensed',
     'dataProvider'=>$dataProvider,
     'template'=>"{items}\n{pager}",
+	'id'=>'chapter',
 //    'filter' => $model,
     'columns'=>array(
 //        array('name'=>'id', 'header'=>'#'),

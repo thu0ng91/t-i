@@ -16,16 +16,14 @@ $this->pageTitle=Yii::app()->name;
     'dataProvider'=>$dataProvider,
     'template'=>"{items}\n{pager}",
     'filter' => $model,
+	'id'=>'book',
     'columns'=>array(
-//        array('name'=>'id', 'header'=>'#'),
-//        array(
-////            'selectableRows' => 0,
-//            'header' => '<input type="checkbox" /> 全选',
-////            'footer' => '<button type="button" onclick="GetCheckbox();" style="width:76px">批量删除</button>',
-//            'class' => 'CCheckBoxColumn',
-//            'headerHtmlOptions' => array('width'=>'33px'),
-//            'checkBoxHtmlOptions' => array('name' => 'selectdel[]'),
-//        ),
+array(
+    'class' => 'CCheckBoxColumn',
+    'selectableRows' => 2,
+    'footer' => '<button type="button" onclick="GetCheckbox();" style="width:76px">批量删除</button>',
+    'checkBoxHtmlOptions' => array('name' => 'id[]'), //name在js中会用到
+),
         array('name'=>'id', 'header' => '小说编号', 'filter' => false),
         array('name'=>'title', ),
 //        array(
@@ -82,3 +80,26 @@ $this->pageTitle=Yii::app()->name;
 
     ),
 )); ?>
+<script type="text/javascript">
+    /*<![CDATA[*/
+    var GetCheckbox = function (){
+        var data=new Array();
+        $('input:checkbox[name="id[]"]').each(function (){
+            //根据上边定义checkbox名字获取选中项，然后放到数组
+            if($(this).attr("checked")=="checked"){
+                data.push($(this).val());
+            }
+        });
+        if(data.length > 0){
+            $.post('<?php echo CHtml::normalizeUrl(array('/book/admin/book/delall/')); ?>',{'id[]':data}, function (data) {
+                var ret = $.parseJSON(data);
+                if (ret != null && ret.success != null && ret.success) {
+                    $.fn.yiiGridView.update('book'); //这里是CGridView中定义的id
+                }
+            });
+        }else{
+            alert("请选择要删除的关键字!");
+        }
+    }
+    /*]]>*/
+</script>

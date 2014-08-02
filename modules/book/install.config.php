@@ -34,6 +34,10 @@ return array(
                 'label' => '小说缓存清除',
                 'url' => 'book/admin/cacheconfig/clear',
             ),
+            array(
+                'label' => '小说评论管理',
+                'url' => 'book/admin/comment/index',
+            ),
         )
     ),
 );

@@ -38,7 +38,11 @@ class ListController extends FWAdminController
     	if(null == $type || !isset(Yii::app()->controller->module['blocktype'][$type])){//如果区块类型为空或者不存在，重置类型为小说类型
     		$type = 'novel';
     	}
+    	
 		$bid = Yii::app()->request->getParam('bid',null);
+    	if($type == 'custom'){
+    		$this->redirect(array('admin/list/custom/','bid'=>$bid));exit;
+    	}
 		$vars = array();
         if(null == $bid){
         	$model = new Block;
@@ -146,7 +150,58 @@ class ListController extends FWAdminController
             'model'=>$model,'categories'=>Category::model()->showAllSelectCategory(Category::ALL_CATEGORY),'type'=>$type,'vars'=>$vars
         ));
     }
+	public function actionCustom($bid){
+		$vars = array();
+        if(null == $bid){
+        	$model = new Block;
+        }else{
+        	$model = Block::model()->findByPk($bid);
+        }
+		
 
+        if(isset($_POST['Block']))
+        {
+        	$_POST['Block']['vars'] = '';
+            $model->attributes = $_POST['Block'];
+			$attributes = array(
+				'blockname','content','vars','blocktype','sequence','status','cachetime','template'
+			);
+            if($model->save(true, $attributes)){
+            	//生成区块设置数据文件
+            	$block_file_path = FW_ROOT_PATH.DS.runtime.DS.blocks.DS;
+            	if(!file_exists($block_file_path)){
+            		$this->dmkdir($block_file_path);
+            	}
+            	
+            	$block_file = $block_file_path.'block_'.$model->bid.'.tpl';
+                $content = str_replace('{$blockname}',$model->blockname,$model->template);
+            	$content = str_replace('{$block}',$model->content,$content);
+            	file_put_contents($block_file,$content);
+            	//生成区块设置数据
+            	$block_config_path = $block_file_path.DS.'block_'.$model->bid.'.conf';
+         	
+            	$block_config = json_encode(array(
+            		'status'=>$model->status,
+            		'cachetime'=>$model->cachetime,
+            		'blockname'=>$model->blockname,
+            		'blocktype'=>$model->blocktype,
+            		'sequence'=>$model->sequence,
+            		'vars'=>$model->vars,
+            	));
+            	file_put_contents($block_config_path,$block_config);
+            	
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveSuccess']);
+                $this->refresh();
+            }else if($model->validate()){
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveFail']);
+                $this->refresh();
+            }
+        }
+        Yii::import('book.models.*');
+        $this->render('self',array(
+            'model'=>$model,'type'=>'custom',
+        ));
+	}
 	public function actionDelete(){
 		$id = intval(Yii::app()->request->getParam('bid',null));
 		if(Yii::app()->request->isPostRequest)

@@ -45,7 +45,7 @@ $this->widget('bootstrap.widgets.TbButtonGroup', array(
             'buttons' => array(
                 'update' => array(
                     'label'=>'编辑区块',     // text label of the button
-                    'url'=>'Yii::app()->createUrl("block/admin/list/create",array("bid"=>$data->bid))',       // a PHP expression for generating the URL of the button
+                    'url'=>'Yii::app()->createUrl("block/admin/list/create",array("bid"=>$data->bid,"type"=>$data->blocktype))',       // a PHP expression for generating the URL of the button
                     'imageUrl'=> '',  // image URL of the button. If not set or false, a text link is used
 //                    'icon' => 'eye-open',
                     'options'=> array('style'=>'cursor:pointer;'), // HTML options for the button tag

@@ -8,7 +8,6 @@
 
 <!--container begin-->
 <div class="container clearfix">
-
 <div class="col_a"><!--rec_book begin-->
 <div class="mod_box rec_book">
 <div class="mod_hd">

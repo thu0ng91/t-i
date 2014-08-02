@@ -273,4 +273,18 @@ class BookController extends FWAdminController
             throw new CHttpException(404,'The requested page does not exist.');
         return $model;
     }
+	public function actionDelall() {
+        if (Yii::app()->request->isPostRequest) {
+            $criteria = new CDbCriteria;
+            $criteria->addInCondition('id', $_POST['id']);
+            Book::model()->deleteAll($criteria); //News换成你的模型
+
+            if (isset(Yii::app()->request->isAjaxRequest)) {
+                echo CJSON::encode(array('success' => true));
+            } else
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+        }
+        else
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+    }
 }

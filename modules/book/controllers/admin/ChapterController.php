@@ -242,5 +242,4 @@ class ChapterController extends FWAdminController
         }
         return $volumes;
     }
-
 }

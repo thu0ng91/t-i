@@ -11,7 +11,7 @@ return array(
     	'novel'=>'小说区块',
     	//'user'=>'用户区块',
     	//'comment'=>'评论区块',
-    	//'self'=>'自定义区块'
+    	'custom'=>'自定义区块'
     ),
     'blockstatus'=>array(
     	'1'=>'不显示',

@@ -37,8 +37,8 @@
                 <section class="span1"><input type="submit" value=" 注册 " class="btn btn-primary"></section>
             </section>
             <section class="row-fluid">
-                {if Yii::app()->user->hasFlash('actionInfo')}
-                <p class="text-error">{Yii::app()->user->getFlash('actionInfo')}</p>
+                {if $Yii->user->hasFlash('actionInfo')}
+                <p class="text-error">{$Yii->user->getFlash('actionInfo')}</p>
                 {/if}
              </section>
             </form>

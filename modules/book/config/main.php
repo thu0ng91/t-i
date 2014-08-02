@@ -8,7 +8,7 @@ return array(
         'list_count' => 50, // 默认后台列表展示条数
     ),
     'front' => array(
-        'category_list_count' => 16, // 分类页展示条数
+        'category_list_count' => 30, // 分类页展示条数
         'seo' => array(
             '标题' => array(
                 '分类页' => "{分类名}_{站点名}",

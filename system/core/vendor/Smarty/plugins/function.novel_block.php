@@ -61,7 +61,7 @@ function smarty_function_novel_block($params, &$smarty){
     }
 
     if ($isReCache) {
-        $r = $smarty->getSubTemplate($blockFile, null, null, Smarty::CACHING_LIFETIME_CURRENT, $cacheTime, null, null);
+        $r = $smarty->fetch($blockFile);
         file_put_contents($cacheFile, $r);
     } else {
         $r = file_get_contents($cacheFile);

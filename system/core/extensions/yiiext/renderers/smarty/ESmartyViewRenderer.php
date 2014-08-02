@@ -133,33 +133,33 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
 
 		// need this to avoid Smarty rely on spl autoload function,
 		// this has to be done since we need the Yii autoload handler
-		if (!defined('SMARTY_SPL_AUTOLOAD')) {
-		    define('SMARTY_SPL_AUTOLOAD', 0);
-		} elseif (SMARTY_SPL_AUTOLOAD !== 0) {
-			throw new CException('ESmartyViewRenderer cannot work with SMARTY_SPL_AUTOLOAD enabled. Set SMARTY_SPL_AUTOLOAD to 0.');
-		}
-
-		// including Smarty class and registering autoload handler
-		require_once('sysplugins/smarty_internal_data.php');
+//		if (!defined('SMARTY_SPL_AUTOLOAD')) {
+//		    define('SMARTY_SPL_AUTOLOAD', 0);
+//		} elseif (SMARTY_SPL_AUTOLOAD !== 0) {
+//			throw new CException('ESmartyViewRenderer cannot work with SMARTY_SPL_AUTOLOAD enabled. Set SMARTY_SPL_AUTOLOAD to 0.');
+//		}
+//
+//		// including Smarty class and registering autoload handler
+//		require_once('sysplugins/smarty_internal_data.php');
 		require_once('Smarty.class.php');
 
 		// need this since Yii autoload handler raises an error if class is not found
 		// Yii autoloader needs to be the last in the autoload chain
-		spl_autoload_unregister('smartyAutoload');
-		Yii::registerAutoloader('smartyAutoload');
+//		spl_autoload_unregister('smartyAutoload');
+//		Yii::registerAutoloader('smartyAutoload');
 
 		// configure smarty
-		if (is_array($this->config)) {
-			foreach ($this->config as $key => $value) {
-				if ($key{0} != '_') { // not setting semi-private properties
-					$this->getSmarty()->$key = $value;
-				}
-			}
-		}
+//		if (is_array($this->config)) {
+//			foreach ($this->config as $key => $value) {
+//				if ($key{0} != '_') { // not setting semi-private properties
+//					$this->getSmarty()->$key = $value;
+//				}
+//			}
+//		}
 		$this->getSmarty()->_file_perms = $this->filePermission;
 		$this->getSmarty()->_dir_perms = $this->directoryPermission;
 
-		$this->getSmarty()->setTemplateDir(Yii::app()->getViewPath());
+		$this->getSmarty()->template_dir = Yii::app()->getViewPath();
 		$compileDir = isset($this->config['compile_dir']) ?
 					  $this->config['compile_dir'] : Yii::app()->getRuntimePath().'/smarty/compiled/';
         $cacheDir = isset($this->config['cache_dir']) ?
@@ -172,53 +172,53 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
         if(!file_exists($cacheDir)){
             mkdir($cacheDir, $this->directoryPermission, true);
         }
-		$this->getSmarty()->setCompileDir($compileDir); // no check for trailing /, smarty does this for us
-		$this->getSmarty()->setCacheDir($cacheDir); // no check for trailing /, smarty does this for us
+		$this->getSmarty()->compile_dir = $compileDir; // no check for trailing /, smarty does this for us
+		$this->getSmarty()->cache_dir = $cacheDir; // no check for trailing /, smarty does this for us
 
 		//Register default template handler. This allow us to use yii aliases in the smarty templates.
 		//You shoud set path without extension
 		//for example {include file="application.views.layout.main"}
-		$this->getSmarty()->default_template_handler_func = create_function('$type, $name', 'return Yii::getPathOfAlias($name) . "' . $this->fileExtension .'";'); 
+//		$this->getSmarty()->default_template_handler_func = create_function('$type, $name', 'return Yii::getPathOfAlias($name) . "' . $this->fileExtension .'";');
  
-		$this->getSmarty()->addPluginsDir(Yii::getPathOfAlias($this->smartyDir.'.plugins'));
-		if(!empty($this->pluginsDir)){
-		    $plugin_path = Yii::getPathOfAlias($this->pluginsDir);
-			$this->getSmarty()->addPluginsDir($plugin_path);
-		}
-
-		if ($this->prefilters){
-			foreach ($this->prefilters as $filter) {
-			    $this->registerFilter('pre',$filter);
-			}
-		}
-
-		if ($this->postfilters){
-			foreach ($this->postfilters as $filter) {
-			    $this->registerFilter('post',$filter);
-			}
-		}
-
-		if ($this->functions){
-			foreach ($this->functions as $name => $plugin) {
-			    $this->getSmarty()->registerPlugin('function',$name,$plugin);
-			}
-		}
-
-		if ($this->blocks){
-			foreach ($this->blocks as $name => $plugin) {
-			    $this->getSmarty()->registerPlugin('block',$name,$plugin);
-			}
-		}
-		
-		if ($this->modifiers){
-			foreach ($this->modifiers as $name => $plugin) {
-			    $this->getSmarty()->registerPlugin('modifier',$name,$plugin);
-			}
-		}
-
-		if(!empty($this->configDir)){
-			$this->getSmarty()->addConfigDir(Yii::getPathOfAlias($this->configDir));
-		}
+//		$this->getSmarty()->addPluginsDir(Yii::getPathOfAlias($this->smartyDir.'.plugins'));
+//		if(!empty($this->pluginsDir)){
+//		    $plugin_path = Yii::getPathOfAlias($this->pluginsDir);
+//			$this->getSmarty()->addPluginsDir($plugin_path);
+//		}
+//
+//		if ($this->prefilters){
+//			foreach ($this->prefilters as $filter) {
+//			    $this->registerFilter('pre',$filter);
+//			}
+//		}
+//
+//		if ($this->postfilters){
+//			foreach ($this->postfilters as $filter) {
+//			    $this->registerFilter('post',$filter);
+//			}
+//		}
+//
+//		if ($this->functions){
+//			foreach ($this->functions as $name => $plugin) {
+//			    $this->getSmarty()->registerPlugin('function',$name,$plugin);
+//			}
+//		}
+//
+//		if ($this->blocks){
+//			foreach ($this->blocks as $name => $plugin) {
+//			    $this->getSmarty()->registerPlugin('block',$name,$plugin);
+//			}
+//		}
+//
+//		if ($this->modifiers){
+//			foreach ($this->modifiers as $name => $plugin) {
+//			    $this->getSmarty()->registerPlugin('modifier',$name,$plugin);
+//			}
+//		}
+//
+//		if(!empty($this->configDir)){
+//			$this->getSmarty()->addConfigDir(Yii::getPathOfAlias($this->configDir));
+//		}
 	}
 
 	/**
@@ -262,7 +262,7 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
 		// current controller properties will be accessible as {$this->property}
 		if (!isset($data['this'])) $data['this'] = $context;
 		// Yii::app()->... is available as {Yii->...} (deprecated, use {Yii::app()->...} instead, Smarty3 supports this.)
-//		$data['Yii'] = Yii::app();
+		$data['Yii'] = Yii::app();
 		// time and memory information
 		$data['TIME'] = sprintf('%0.5f',Yii::getLogger()->getExecutionTime());
 		$data['MEMORY'] = round(Yii::getLogger()->getMemoryUsage()/(1024*1024),2).' MB';
@@ -282,13 +282,19 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
 
         $this->getSmarty()->assign($data);
 		/** @var Smarty_Internal_Template $template */
-		$template = $this->getSmarty()->createTemplate($sourceFile, null, null, $this->getSmarty(), true);
+//		$template = $this->getSmarty()->createTemplate($sourceFile, null, null, $this->getSmarty(), true);
+//
+//		// render or return
+//		if($return)
+//			return $template->fetch();
+//		else
+//			$template->display();
 
-		// render or return
-		if($return)
-			return $template->fetch();
-		else
-			$template->display();
+        if ($return) {
+            return $this->getSmarty()->fetch($sourceFile);
+        } else {
+            $this->getSmarty()->display($sourceFile);
+        }
 	}
 
 	/**
@@ -297,6 +303,6 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
 	 */
 	public function clearCompileDir()
 	{
-		$this->getSmarty()->clearCompiledTemplate();
+		$this->getSmarty()->clear_all_cache();
 	}
 }

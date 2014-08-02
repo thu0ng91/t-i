@@ -7,7 +7,7 @@
                     <h5 class="current">{$category->title}</h5>
                 </div>
                 <div class="books">
-                    {foreach $list as $book}
+                    {foreach from=$list item=book}
                     <div class="bk">
                     <div class="pic">
                     <a href='{novel_book_link id=$book->id}' title='{$book->title}' target="_blank">

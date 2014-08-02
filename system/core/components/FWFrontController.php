@@ -84,13 +84,13 @@ class FWFrontController extends CController
 
         // 设定默认页面关键字
         $smarty = $this->getSmarty();
-        if (!$smarty->getTemplateVars("title")) {
+        if (!$smarty->get_template_vars("title")) {
             $this->assign("title", $this->siteConfig->SiteName);
         }
-        if (!$smarty->getTemplateVars("keywords")) {
+        if (!$smarty->get_template_vars("keywords")) {
             $this->assign("keywords", $this->siteConfig->SiteKeywords);
         }
-        if (!$smarty->getTemplateVars("description")) {
+        if (!$smarty->get_template_vars("description")) {
             $this->assign("description", $this->siteConfig->SiteIntro);
         }
     }

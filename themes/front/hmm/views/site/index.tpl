@@ -7,21 +7,13 @@
 <div id="J_slideContainer" class="col_slider">
 <div class="slider_pic clearfix">
 {novel_block id=8}
-
-<ul id="J_slideThumb" class="slider_nav">
-	<li style="display: block"><img
-		src="/UploadFile/2014718/20140718014026542654.jpg" width="64"
-		height="85" alt="" /></li>
-	<li><img src="/UploadFile/2014718/20140718015425162516.jpg" width="64"
-		height="85" alt="" /></li>
-	<li><img src="/UploadFile/2014718/20140718022852455245.jpg" width="64"
-		height="85" alt="" /></li>
-</ul>
+{novel_block id=15}
 <div class="img_overview" style="top: 0"><i class="arrow"></i></div>
 </div>
 {novel_block id=9}
 </div>
-<!--col_slider end--> <!--col_main begin-->
+<!--col_slider end--> 
+<!--col_main begin-->
 {novel_block id=11}
 {novel_block id=12}
 </div>

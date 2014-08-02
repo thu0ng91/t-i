@@ -110,7 +110,7 @@
 </div>
 <div class="bd">
 <ul class="mod_con clearfix">
-{novel_book  limit=10 order="alllikenum desc" cid=[$category->id]}<li>
+{novel_book  limit=10 order="createtime desc" cid=[$category->id]}<li>
 		{if $block.iteration <= 3}
 		<i class="num hot">{$block.iteration}</i>
 		{else}
@@ -120,7 +120,8 @@
 		<a href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:16:"...":true}</a>
 		<span style="float:right">{$item->createtime|date_format:"m-d"}</span>
 		</div>
-	</li>{/novel_book}
+	</li>
+{/novel_book}
 </ul>
 </div>
 </div>
@@ -131,17 +132,19 @@
 </div>
 <div class="bd">
 <ul class="mod_con clearfix">
-{novel_book  limit=10 order="lastchaptertime desc" cid=[$category->id]}<li>
+{novel_book  limit=10 order="lastchaptertime desc" cid=[$category->id]}
+	<li>
 		{if $block.iteration <= 3}
 		<i class="num hot">{$block.iteration}</i>
 		{else}
 		<i class="num">{$block.iteration}</i>
 		{/if}
 		<div class="tit">
-		<a href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:16:"...":true}</a>
-		<span style="float:right">{$item->lastchaptertime|date_format:"m-d"}</span>
+			<a href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:16:"...":true}</a>
+			<span style="float:right">{$item->lastchaptertime|date_format:"m-d"}</span>
 		</div>
-	</li>{/novel_book}
+	</li>
+{/novel_book}
 </ul>
 </div>
 </div>

@@ -1,85 +1,62 @@
-<link href="{$FW_THEME_URL}/css/style2.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="{$FW_THEME_URL}/js/font.js"></script>
-<!--列表-->
-<div class="main">
-    <div id="centerl">
-        <div class="padding">
-            <div class="box" style="width:980px;">
-                <script>style_top();</script>
-                <div style="text-align:left;font-size:14px">
-                    <span>热门推荐：</span>
-                    {novel_book cid=[$book->category->id] where='recommendlevel<=4' order='createtime desc,allclicks desc' limit=16}
-                    <a href="{novel_book_link id=$item->id}">{$item->title}</a>
-                    {/novel_book}  
-                </div>
-                <div class="book_middle_article">
-                    <div class="book_middle_title"> <span>双击开始滚动屏幕</span>当前位置： <a href="{$FW_SITE_URL}">首页</a> &gt; <a href="{novel_book_link id=$book->id}">{$book->title}</a> &gt; {$chapter->title} </div>
 
-                    <center><script>style();</script></center>
+<link href="{$FW_THEME_URL}/css/sty1.css" rel="stylesheet">
+<link href="{$FW_THEME_URL}/css/footer.css" rel="stylesheet" type="text/css"/>
+<link href="{$FW_THEME_URL}/css/directory.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
+<link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
 
-                    <div id="bgdiv" class="book_middle_text">
-                        <dl>
-                            {*<div class="adtext"></div>*}
-                            <dt>{$chapter->title}</dt>
-                            <div class="sdt"><script type="text/javascript">TplTextSelect();</script>
-                            {*
-                                <div id="TextSelect">
-                                    <div class="ts1">
-                                        <span>选择背景颜色：</span>
-                                        <a onclick="SetBgColor('#dcecf5')" href="javascript:void(0)"><img width="15" height="18" border="0" alt="" src="{$FW_THEME_URL}/images/icon01.gif"></a>
-                                        <a onclick="SetBgColor('#e7f4fe')" href="javascript:void(0)"><img width="15" height="18" border="0" alt="" src="{$FW_THEME_URL}/images/icon02.gif"></a>
-                                        <a onclick="SetBgColor('#edf6d0')" href="javascript:void(0)"><img width="15" height="18" border="0" alt="" src="{$FW_THEME_URL}/images/icon03.gif"></a>
-                                        <a onclick="SetBgColor('#f5f1e7')" href="javascript:void(0)"><img width="15" height="18" border="0" alt="" src="{$FW_THEME_URL}/images/icon04.gif"></a>
-                                        <a onclick="SetBgColor('#eae8f7')" href="javascript:void(0)"><img width="15" height="18" border="0" alt="" src="{$FW_THEME_URL}/images/icon05.gif"></a>
-                                        <a onclick="SetBgColor('#fef4f0')" href="javascript:void(0)"><img width="15" height="18" border="0" alt="" src="{$FW_THEME_URL}/images/icon06.gif"></a>
-                                        <a onclick="SetBgColor('#ebf4ef')" href="javascript:void(0)"><img width="15" height="18" border="0" alt="" src="{$FW_THEME_URL}/images/icon07.gif"></a>
-                                        <a onclick="SetBgColor('#fafafa')" href="javascript:void(0)"><img width="15" height="18" border="0" alt="" src="{$FW_THEME_URL}/images/icon08.gif"></a>
-                                    </div>
-                                    <div class="ts2">
-                                        <span>选择字体：</span>
-                                        <a onclick="SetfontSize(17)" href="javascript:void(0)"><img width="21" height="21" border="0" alt="" src="{$FW_THEME_URL}/images/icon09.gif"></a>
-                                        <a onclick="SetfontSize(12)" href="javascript:void(0)"><img width="21" height="21" border="0" alt="" src="{$FW_THEME_URL}/images/icon10.gif"></a>
-                                        <a onclick="SetfontSize(10)" href="javascript:void(0)"><img width="21" height="21" border="0" alt="" src="{$FW_THEME_URL}/images/icon11.gif"></a></div>
-                                    <div class="ts3">
-                                        <span>滚动速度：</span>
-                                        <a onclick="SetSpeed(1)" href="javascript:void(0)"><img width="21" height="21" border="0" alt="" src="{$FW_THEME_URL}/images/icon12.gif"></a>
-                                        <a onclick="SetSpeed(20)" href="javascript:void(0)"><img width="21" height="21" border="0" alt="" src="{$FW_THEME_URL}/images/icon13.gif"></a>
-                                        <a onclick="SetSpeed(40)" href="javascript:void(0)"><img width="21" height="21" border="0" alt="" src="{$FW_THEME_URL}/images/icon14.gif"></a></div>
-                                    <div class="ts4">
-                                        <a onclick="YaHei()" href="javascript:void(0)">雅黑字体</a>&nbsp;
-                                        <a onclick="SetDefault()" href="javascript:void(0)">默认字体</a>&nbsp;
-                                        <a onclick="SetFont()" href="javascript:void(0)">设置字体</a>&nbsp;
-                                        <a href="javascript:addBookmarkAjax('31593', '7088945');">加入书签</a></div>
-                                </div>
-                                *}
-                            </div>
-                            <dd>
+<div class="main myset"><script>show_pagetop();</script></div>
+<div id="a_main">
+<div class="bdtop"></div>
+<div class="bdsub" id="amain">
+<dl>
+	<dt>
+	<p class="fr">
+		<a rel="nofollow"	href="#" target="_blank">加入书签</a> | 
+		<a rel="nofollow"	href="#" target="_blank">推荐本书</a>	|	 
+		<a href="目录页.html">返回书页</a>
+	</p>
+<!--path begin-->
+<div class="wrap_in path1">当前位置： <a href="{$FW_SITE_URL}">云阅首页 </a>&gt; <a
+	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a>&gt;
+<a href="{novel_book_link id=$book->id}">{$book->title}</a></div>
+<!--path end-->
+	</dt>
+	<dd>
+		<h1>第一个</h1>
+		<h3>
+			<a	href="#"	>上一章</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<a	href="目录页.html" >返回目录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<a	href="#"	>下一章</a>
+		</h3>
+	</dd>
+	<dd class="read_AD">
+			<img src="{$FW_THEME_URL}/images/read/AD.jpg" />
+	</dd>
+	 <div id="contents"><!--go-->{$chapter->content|replace:"\n":"<br />&nbsp;&nbsp;&nbsp;&nbsp;"} <!--over--></div>
+	</dd>
+	
 
-                                <div id="booktext"><!--go-->{$chapter->content|replace:"\n":"<br />&nbsp;&nbsp;&nbsp;&nbsp;"} <!--over--></div>
-                            </dd>
-                        </dl>
-                    </div>
-                </div>
-
-                <center><script>style_feetone();</script></center>
-                <div class="book_middle_text_next"><a href="{novel_chapter_link bookid=$book->id id=$prevChapterId}" class="redbutt">(快捷键:←)上一章</a>&nbsp;&nbsp;&nbsp;<a href="{novel_book_link id=$book->id}" class="redbutt">返回章节目录(快捷键:回车)</a>&nbsp;&nbsp;&nbsp;<a href="{novel_chapter_link bookid=$book->id id=$nextChapterId}" class="redbutt">下一章(快捷键:→)</a></div>
-
-                <center><script>style_feettwo();</script></center>
-                <div style="text-align:left;font-size:14px">
-                    <span>新书推荐：</span>
-                    {novel_book cid=[$book->category->id] where='recommendlevel<=3' order='createtime desc,allclicks desc' limit=16}
-                    <a href="{novel_book_link id=$item->id}">{$item->title}</a>
-                    {/novel_book}  
-                </div>
-
-            </div>
-        </div>
-    </div>
+	<dd id="contfoot">
+		<a href="Javascript:void(0);"	class="keep"><span class="read_keep" >&nbsp;</span>没看完？将本书加入收藏</a>
+		<a rel="nofollow"	href="Javascript:void(0);" class="case" target="_blank"><span class="read_case" >&nbsp;</span>我是会员，将本书放入书架</a>
+		<a href="Javascript:void(0);" class="copy"><span class="read_copy" >&nbsp;</span>复制本书地址，传给QQ/MSN上的好友</a>
+		<a rel="nofollow"	href="Javascript:void(0);" class="report" target="_blank"><span class="read_report" >&nbsp;</span>章节错误？点此举报</a>
+	</dd>
+	<dd id="tipscent"></dd>
+	<dd id="footlink">
+	<a	href="#"	class="redbutt">上一章</a>
+	<a	href="#" class="redbutt">返回章节目录</a>
+	<a	href="#"	class="redbutt">下一章</a></dd>
+	<dd id="tipsfoot"></dd>
+</dl>
+<div class="cl"></div>
 </div>
-<!--end 列表-->
-{*<script src="{$FW_THEME_URL}/js/jquery.min.js" type="text/javascript" language="javascript"></script>*}
-{*<script src="{$FW_THEME_URL}/js/font.js" type="text/javascript" language="javascript"></script>*}
-<script type="text/javascript" src="{$FW_THEME_URL}/js/common1.js"></script>
+</div>
+<div class="cl" style="height: 8px;"></div>
+
 
 <script language=javascript>
     //上一页链接

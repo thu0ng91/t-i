@@ -70,9 +70,14 @@ class DetailController extends FWFrontController
         $criteria->order = "chapterorder asc";
 
         $chapterList = Chapter::customModel($book->id)->findAll($criteria);
-
         $this->assign("chapters", $chapterList);
-
+		
+        $chapterListst = array_slice($chapterList, 0, 9);
+        $this->assign("chapterst", $chapterListst);
+        
+        $result = array_reverse($chapterList);
+        $chapterListla = array_slice($chapterList, 0, 9);
+        $this->assign("chapterla", $result);
         // 更新小说点击统计
         $book->updateClickStats();
 

@@ -40,7 +40,7 @@
 	<li><span>更新到：</span> <a target="_blank"
 		href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}"
 		> 第{$book->lastchapterid}章 {$book->lastchaptertitle}</a>
-	<span class="time">{$item->updatetime|date_format:'Y-m-d H:i:s'}</span>
+	<span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}</span>
 	</li>
 </ul>
 </div>
@@ -55,7 +55,7 @@
 
 <div class="contents_list">
 <ul class="clearfix">
-	{foreach $chapterla as $chapter}
+	{foreach from=$chapterla item=chapter}
 	<li><a target="_blank"
 		href="{novel_chapter_link bookid=$book->id id=$chapter->id}"> {if
 	((count($chapterla)) - ($chapter->id)) >= 2 } 第{$chapter->id}章
@@ -69,7 +69,7 @@
 <p class="total"><a id="link_ck" class="sub_link" href="javascript:;" >查看全部章节</a></p>
 <div class="contents_list1" id="contents_list" style="display: none">
 <ul class="clearfix">
-	{foreach $chapters as $chapter}
+	{foreach from=$chapters item=chapter}
 	<li><a target="_blank"
 		href="{novel_chapter_link bookid=$book->id id=$chapter->id}">第{$chapter->id}章
 	{$chapter->title}</a></li>
@@ -80,7 +80,7 @@
 
 <div class="contents_list" id="contents_list1">
 <ul class="clearfix">
-	{foreach $chapterst as $chapter}
+	{foreach from=$chapterst item=chapter}
 	<li><a target="_blank"
 		href="{novel_chapter_link bookid=$book->id id=$chapter->id}">第{$chapter->id}章
 	{$chapter->title}</a></li>
@@ -138,7 +138,7 @@
 </div>
 <div class="bd">
 <ul class="mod_con clearfix">
-	{novel_book limit=10 order="allclicks desc" cid=[$category->id]}
+	{novel_book limit=10 order="allclicks desc" cid=$category->id}
 	<li>{if $block.iteration <= 3} <i class="num hot">{$block.iteration}</i>
 	{else} <i class="num">{$block.iteration}</i> {/if}
 	<div class="tit"><a href="{novel_book_link id=$item->id}"

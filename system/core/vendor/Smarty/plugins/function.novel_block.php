@@ -29,8 +29,15 @@ function smarty_function_novel_block($params, &$smarty){
     $cacheTime = null;
     $blockStatus = 4;
     if (file_exists($blockFile)) {
-        $blockConfig = file_get_contents($blockConfigFile);
-        $blockConfig = json_decode($blockConfig, true);
+        if (file_exists($blockConfigFile)) {
+            $blockConfig = file_get_contents($blockConfigFile);
+            $blockConfig = json_decode($blockConfig, true);
+        } else {
+            $blockConfig = array(
+                'cachetime' => 3600,
+                'status' => 1,
+            );
+        }
 
         $cacheTime = $blockConfig['cachetime'];
 

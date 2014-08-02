@@ -39,7 +39,7 @@
 
 	
 	<ul class="clearfix">
-	{foreach $list as $item}
+	{foreach from=$list item=item}
 		<li>
 		<div class="imgbox">
 			<a href="{novel_book_link id=$item->id}" target="_blank"> 
@@ -110,7 +110,7 @@
 </div>
 <div class="bd">
 <ul class="mod_con clearfix">
-{novel_book  limit=10 order="createtime desc" cid=[$category->id]}<li>
+{novel_book  limit=10 order="createtime desc" cid=$category->id}<li>
 		{if $block.iteration <= 3}
 		<i class="num hot">{$block.iteration}</i>
 		{else}
@@ -132,7 +132,7 @@
 </div>
 <div class="bd">
 <ul class="mod_con clearfix">
-{novel_book  limit=10 order="lastchaptertime desc" cid=[$category->id]}
+{novel_book  limit=10 order="lastchaptertime desc" cid=$category->id}
 	<li>
 		{if $block.iteration <= 3}
 		<i class="num hot">{$block.iteration}</i>

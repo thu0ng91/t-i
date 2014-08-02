@@ -242,7 +242,11 @@ class ListController extends FWAdminController
         $date = date('Y-m-d',time());
         $filename = $file_path.DS.'block'.$date.'.txt';
         file_put_contents($filename,$data);
-        Yii::app()->user->setFlash('actionInfo','导出区块数据成功,文件保存在'.$filename);
+        header("Content-type: application/octet-stream");
+	    header('Content-Disposition: attachment; filename="' . basename($filename) . '"');
+	    header("Content-Length: ". filesize($filename));
+	    readfile($filename);
+        Yii::app()->user->setFlash('actionInfo','导出区块数据成功,文件同时保存在'.$filename);
         $this->redirect(array('admin/list/index'));
 	}
 	public function actionInsert(){

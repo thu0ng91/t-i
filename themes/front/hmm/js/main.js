@@ -53,55 +53,22 @@ function IsNum(e) {
 } 
 
 
-//tab效果
-function selecttab(obj){
-	var i = 0;
-	var n = 0;
-	var tabs = obj.parentNode.parentNode.getElementsByTagName("li"); 
-	for(i=0; i<tabs.length; i++){
-		tmp = tabs[i].getElementsByTagName("a")[0];
-		if(tmp == obj){
-			tmp.className="selected";
-			n=i;
-		}else{
-			tmp.className="";
-		}
- 	}
-	var tabchilds = obj.parentNode.parentNode.parentNode.parentNode.childNodes;
-	var tabcontent;
-	for(i=tabchilds.length-1; i>=0; i--){
-		if(typeof tabchilds[i].tagName != "undefined" && tabchilds[i].tagName.toLowerCase() == "div"){
-			tabcontent = tabchilds[i];
-			break;
-		}
-	}
-	var contents = tabcontent.childNodes;
-	var k = 0;
-	for(i=0; i<contents.length; i++){
-		if(typeof contents[i].tagName != "undefined" && contents[i].tagName.toLowerCase() == "div"){
-			contents[i].style.display = k==n ? "block" : "none";
-			k++;
-		}
- 	}
-}
 
-
-function ck()
-{
-    var input = document.getElementsByTagName("input");
+$("#link_ck").click(function(){
+	var a = $("#link_ck");
 	
-    for (var i=0;i<input.length ;i++ )
-    {
-        if(input[i].type=="checkbox")
-		{
-			if(input[i].checked == true) 
-			{
-				input[i].checked = false;
-			}
-			else 
-			{
-				input[i].checked = true;
-			}
-		}
-    }
-}
+	var add = $("#contents_list1");
+	var addt = $("#contents_list");
+	if (a.html() == "查看全部章节"){
+	     setTimeout(function(){add.slideUp(800);},0);
+	     setTimeout(function(){addt.slideDown(1000);},500);
+	     setTimeout(function(){a.html("点击即可返回");},1200);
+	} else {
+		setTimeout(function(){add.slideDown(1000);},500);
+		setTimeout(function(){addt.slideUp(800);},0);
+		setTimeout(function(){a.html("查看全部章节");},1200);
+	}
+});
+
+
+

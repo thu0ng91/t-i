@@ -1,229 +1,155 @@
-<link href="{$FW_THEME_URL}/css/directory.css" rel="stylesheet">
-<link href="{$FW_THEME_URL}/css/directory20130605.css" rel="stylesheet">
-<style type="text/css">
-{literal}
-    .bdshare_b{float:left;margin:10px 10px;border:2px solid #FFF;background-color:#1B68B0;width:150px;height:40px;text-align: center;font-size:20px;line-height:40px;}
-    .bdshare_b:hover{background-color:#81AF19}
-    div.bdshare_b a{color:#FFF;text-decoration:none}
-    div.bdshare_b a:hover{color:#FFF;text-decoration:none}
-{/literal}
-</style>
+<link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
 
-<script>bookinfo_banner_top();</script>
-<div class="crumbswrap">
-    <span>当前位置：</span><a href="{$FW_SITE_URL}">首页</a>&gt;<a href="{novel_category_link id=$book->category->id}">{$book->category->title}</a><em>&gt;&nbsp;{$book->title}</em>
+<!--path begin-->
+<div class="wrap_in path">当前位置： <a href="{$FW_SITE_URL}">云阅首页 </a>&gt; <a
+	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a>&gt;
+<a href="{novel_book_link id=$book->id}">{$book->title}</a></div>
+<!--path end-->
+<!--container begin-->
+<div class="container clearfix">
+
+<div class="col_a"><!--book_intro begin-->
+<div class="mod_box book_intro" id="book_intro">
+
+<div class="book_info clearfix">
+<div class="cover">
+<div class="imgbox"><img src="{$book->coverImageUrl}"
+	alt="{$book->title}"></div>
+<ul class="op_list">
+</ul>
 </div>
-<div class="clearfix wrap980">
-    <div class="wrap706">
-        <div class="con_lwrap">
-            <span class="lzzico"></span>
-            <div class="con_limg">
-                <img src="{$book->coverImageUrl}" alt="{$book->title}">
-                {*
-                <a href="{novel_book_download_link id=$book->id}" class="">TXT下载</a>
-                *}
-                {*
-                <a href="#feedback" class="cwfk boxy">错误反馈</a>
-                <a href="#" class="sccs">收藏此书</a>
-                *}
-                {*
-                <!-- Baidu Button BEGIN -->
-                <div id="bdshare" class="bdshare_b" style="margin-left:28px;margin-top:7px; _margin-left:14px;_margin-top:7px;;">
-                    <a href="#" class="fxcs" style="padding-left:30px;">分享此书</a>
-                </div>
-                <script src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=387158" type="text/javascript" id="bdshare_js" data="type=button&amp;uid=0"></script>
-                <!-- Baidu Button END -->
-                *}
-            </div>
-            <div class="r420">
-                <h1>{$book->title}</h1>
-                <p class="author">
-                    作者：<span class="black"><a href="#" target="_blank">{$book->author}</a></span>
-                </p>
-                <div class="r_cons">
-                {$book->summary}
-                </div>
-                <div class="r_tools">
-                    {*
-                    <a href="/intro/132154/chaptershow.html" class="startedbtn" target="_blank">开始阅读</a><a href="/intro/132154/chapter.html" class="diralinks">目录</a><a href="/intro/132154/chapterlist.html" class="newchapter">最新章节</a>
-                    *}
-                </div>
-                <div class="lastrecord">
-                    最新章节：<strong><a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" target="_blank">{$book->lastchaptertitle}</a></strong>
-                    <div class="jianj">
-                    </div>
-                </div>
-                <div>
-                    <div class="bdshare_b" style="margin-left:0px">
-                        <a href="{novel_book_download_link id=$book->id}" class="">TXT下载</a>
-                    </div>
-                    <!-- Baidu Button BEGIN -->
-                    <div id="bdshare" class="bdshare_b" style="color:#FFF;font-size:20px;text-align:center !important">
-                        <a href="#">分享此书</a>
-                    </div>
-                    <script src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=387158" type="text/javascript" id="bdshare_js" data="type=button&amp;uid=0"></script>
-                    <!-- Baidu Button END -->                
-                </div>
-            </div>
-        </div>
-        <div class="bline706">
-        </div>
-    </div>
-    
-<div class="w262">
-        <div class="crtitbox">
-            <div class="tittwo">
-                <h2>热门排行</h2>
-                <ul>
-                    <li class="cur">日</li>
-                    <li>周</li>
-                    <li>月</li>
-                </ul>
-            </div>
-        </div>
-        <div class="crconsbox">
-       {foreach ["day", "week", "month"] as $v} 
-            <div{if !$v@first} class="hidden"{/if}>
-            {novel_book_rank order=$v cid=[$book->category->id] limit=5}
-            {if $block.first}
-                <div class="cimgsfont">
-                    <a class="imgcss" href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
-                    <h3><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h3>
-                    作者：{$item->author}
-                    <p>
-                        {$item->summary|trim|truncate:15:'...'}
-                    </p>
-                </div>
-                <ol class="clearfix olcrwrap">
-            {/if}
-                    <li><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
-            {if $block.last}
-                </ol>
-            {/if}
-            {/novel_book_rank}
-            </div>
-        {/foreach}
+<div class="info"><span class="state">{if $book->flag == 1} 连载中 {else}
+已完结 {/if}</span>
+<h2>{$book->title}</h2>
+<p class="book_intr"><span>作者：{$book->author}</span><span>分类：<a
+	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a></span><span>字数：<em>{$book->wordcount}</em></span></p>
+<p class="book_con">
+<p>{$book->summary}</p>
+</p>
+<div class="op clearfix"><a class="a_icon readnow"
+	href="/book/{$book->id}/1.html" target="_blank">开始阅读</a> <a
+	class="a_icon a_btn" href="{novel_book_download_link id=$book->id}" target="_blank">TXT下载</a>
+	<a class="a_icon view_all" href="#" target="_blank">评论</a>
+	<a class="a_icon view_all" href="#" target="_blank">推荐</a>
+	<a class="a_icon view_all" href="#" target="_blank">加入书架</a>
+<span id="added_store" class="a_icon addedshelf" style="display: none;"></span>
+</div>
+<div class="tip_box"><span class="arrow_out"></span> <span
+	class="arrow_in"></span>
+<ul class="tip_con clearfix">
+	<li><span>更新到：</span> <a target="_blank"
+		href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}"
+		> 第{$book->lastchapterid}章 {$book->lastchaptertitle}</a>
+	<span class="time">{$item->updatetime|date_format:'Y-m-d H:i:s'}</span>
+	</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="book_contents">
+<div class="hd">
+<h3>《{$book->title}》最新章节</h3>
+</div>
+<div class="bd">
+<div class="book_news" style="margin-top: 0px;">
 
-        </div>
-        <div class="lbline708">
-        </div>    
+<div class="contents_list">
+<ul class="clearfix">
+	{foreach $chapterla as $chapter}
+	<li><a target="_blank"
+		href="{novel_chapter_link bookid=$book->id id=$chapter->id}"> {if
+	((count($chapterla)) - ($chapter->id)) >= 2 } 第{$chapter->id}章
+	{$chapter->title} {else} <font color=red>第{$chapter->id}章
+	{$chapter->title}</font> {/if} </a></li>
+	{/foreach}
+</ul>
 </div>
 
-<div class="clearfix"></div>
-
-<div class="clearfix wrap980">
-    <div class="wrap706">
-    {*
-        <div class="dirlboxs">
-            <div class="clearfix dirconthree">
-                <ol id="dirsort01">
-                {assign "i" 1}
-                {foreach $chapters as $item}
-                    <li><strong>{$i}</strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
-                    {assign "i" $i +1}
-                {/foreach}
-                </ol>
-            </div>
-        </div>
-        <div class="bline706">
-        </div>
-        *}
-    </div>
-    {*
-    <div class="w262">
-        <div class="ritemboxtwo">
-            <div class="tittwo">
-                <h2>热门排行</h2>
-                <ul>
-                    <li class="cur">日</li>
-                    <li>周</li>
-                    <li>月</li>
-                </ul>
-            </div>
-            <div id="dirconsone">
-            {foreach ['day', 'month', 'week'] as $t}
-                <div {if !$t@first}class="hidden"{/if}>
-                {novel_book_rank order=$t cid=[$book->cid] limit=12}
-                    {if $block.first}
-                    <div class="cimgsfont">
-                        <a class="imgcss" href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
-                        <h3><a href="{novel_book_link id=$item->id}"></a></h3>
-                        作者：{$item->author}
-                        <p>
-                            {$item->summary|trim|truncate:30:"......"}
-                        </p>
-                    </div>
-                    <ol class="clearfix olcrwrap">
-                    {/if}
-                    {if !$block.first}
-                        <li><span>{$item.allclicks}</span><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
-                    {/if}
-                    {if $block.last}
-                    </ol>
-                    {/if}
-                {/novel_book_rank}
-                </div>
-            {/foreach} 
-            </div>
-        </div>
-        <div class="bline706">
-        </div>
-    </div>
-    *}
+<!-- 总目录 -->
+<p class="total"><a id="link_ck" class="sub_link" href="javascript:;" >查看全部章节</a></p>
+<div class="contents_list1" id="contents_list" style="display: none">
+<ul class="clearfix">
+	{foreach $chapters as $chapter}
+	<li><a target="_blank"
+		href="{novel_chapter_link bookid=$book->id id=$chapter->id}">第{$chapter->id}章
+	{$chapter->title}</a></li>
+	{/foreach}
+</ul>
 </div>
-{assign "newestChapters" array_reverse(array_slice($chapters, -7, -1, true))}
+<!-- 总目录 -->
 
-<div class="wrapone">
-        <h2 style="font-size:14px">最新更新章节</h2>
-        <div class="dirlboxs">
-            <div class="clearfix dirconthree">
-                <ol id="dirsort01">
-                {assign "i" 1}
-                {foreach $newestChapters as $item}
-                    <li><strong></strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
-                    {assign "i" $i +1}
-                {/foreach}
-                </ol>
-            </div>
-        </div>
-        <div class="bline706">
-        </div>
+<div class="contents_list" id="contents_list1">
+<ul class="clearfix">
+	{foreach $chapterst as $chapter}
+	<li><a target="_blank"
+		href="{novel_chapter_link bookid=$book->id id=$chapter->id}">第{$chapter->id}章
+	{$chapter->title}</a></li>
+	{/foreach}
+</ul>
 </div>
 
-<div class="crumbswrap">
-    <span>推荐阅读：</span>
-        {novel_book cid=[$book->category->id] where='recommendlevel<=6' order='createtime desc,allclicks desc' limit=14}
-        <a href="{novel_book_link id=$item->id}">{$item->title}</a>
-        {/novel_book}    
 </div>
+</div>
+</div>
+<!--book_intro end--> <!--book_img beigin-->
+<div class="mod_box book_img">
+<div class="mod_hd">
+<h3 class="tit">看过<em>《{$book->title}》</em>的人还看过</h3>
+</div>
+<div class="mod_bd">
+	<div class="img_list">
+		<ul class="clearfix  lazyload_box">
+			{novel_book limit=10 order="alllikenum desc" cid=$book->category->id}
+			<li>
+			<a href="{novel_book_link id=$item->id}" title="{$item->title|truncate:16:"...":true}" target="_blank">
+			<img src="{$item->coverImageUrl}" alt="{$item->title|truncate:16:"...":true}"	title="{$item->title|truncate:16:"...":true}" />
+			<span>{$item->title|truncate:16:"...":true}</span>
+			</a>
+			</li>
+			{/novel_book}
+		</ul>
+	</div>
+</div>
+</div>
+<!--book_img end--></div>
+</div>
+<div class="col_b"><!--mod_a begin-->
+<div class="mod mod_a">
+<div class="hd">
+<div class="tab_hd">
+<ul class="mod_tab clearfix">
+	<li class="cur" id="week-rank-bind"><span>周排行榜</span></li>
+	<li id="month-rank-bind"><span>月排行榜</span></li>
+</ul>
+</div>
+</div>
+<div class="bd">
+<!-- 周排行榜 -->
+{novel_block id=6}
 
-<div class="wrapone">
-        <h2 style="font-size:14px">全部章节</h2>
-        <div class="dirlboxs">
-            <div class="clearfix dirconthree">
-                <ol id="dirsort01">
-                {assign "i" 1}
-                {foreach $chapters as $item}
-                    <li><strong>{$i}</strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
-                    {assign "i" $i +1}
-                {/foreach}
-                </ol>
-            </div>
-        </div>
-        <div class="bline706">
-        </div>
+<!-- 月排行榜 -->
+{novel_block id=7}
 </div>
-
-<div class="wrapone">
-    <h2 class="youlovetit">猜你喜欢</h2>
-    <ul class="clearfix imgitems">
-        {novel_book cid=[$book->cid] where='recommendlevel<=5' order='createtime desc,allclicks desc' limit=6}
-        <li><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->lastchaptertitle}"><strong>{$item->lastchaptertitle}</strong></a>
-        <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
-        {$item->summary|trim|truncate:20:"..."}</li>
-        {/novel_book}
-    </ul>
 </div>
-<div class="blinebgs">
+<!--mod_a end--> <!--mod begin-->
+<div class="mod">
+<div class="hd">
+<h3 class="tit">{$book->category->title}排行榜</h3>
 </div>
-<script>bookinfo_banner_bottom();</script>
+<div class="bd">
+<ul class="mod_con clearfix">
+	{novel_book limit=10 order="allclicks desc" cid=[$category->id]}
+	<li>{if $block.iteration <= 3} <i class="num hot">{$block.iteration}</i>
+	{else} <i class="num">{$block.iteration}</i> {/if}
+	<div class="tit"><a href="{novel_book_link id=$item->id}"
+		target="_blank">{$item->title|truncate:16:"...":true}</a> <span
+		style="float: right">{$item->createtime|date_format:"m-d"}</span></div>
+	</li>
+	{/novel_book}
+</ul>
+</div>
+</div>
+<!--mod end--> <!--act_box begin-->
+</div>
+</div>
+<!--container end-->

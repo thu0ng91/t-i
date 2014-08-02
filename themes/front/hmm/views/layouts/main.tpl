@@ -37,7 +37,9 @@
 <div class="nav nav_other">
 <ul class="clearfix">
 <li ><a href="{$FW_SITE_URL}" target="_self">首页</a></li>
-{novel_menu}<li><a href="{$item->url}">{$item->title}</a></li>{/novel_menu}
+{novel_menu}
+<li><a href="{$item->url}">{$item->title}</a></li>
+{/novel_menu}
 <li><a href="{novel_lastupdate_link}">最新更新</a></li>
 <li><a href="{novel_rank_link}">小说排行榜</a></li>
 </ul>
@@ -62,10 +64,10 @@
     <a href="#">产品答疑</a>
     <br>
     Copyright &copy; 1996 - 2014 YUN Corporation, All Rights Reserved <br>
-    上海云阅信息技术有限公司<a target="_blank" href="#>版权所有</a>
+    上海云阅信息技术有限公司<a target="_blank" href="#">版权所有</a>
 </div>
 <!--footer end-->
-<script type="text/javascript" src="{$FW_THEME_URL}/js/start.js"></script>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/index.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/common1.js"></script>
 </body>

@@ -42,14 +42,14 @@
 .book_list .info .spec{color:#f60;}
 
 /*row_box*/
-.row_box{width:988px;border:1px solid #DCDCDC;background-color:#f4f8fb;}
+.row_box{width:988px;border:1px solid #DCDCDC;background-color:#f0faed;}
 .row_aside{float:left;width:110px;font-size:14px;text-align:center;}
 .row_content{float:left;width:836px;margin-left:-1px;padding:21px 21px 19px 20px;border-left:1px solid #DCDCDC;background-color:#fff;overflow:hidden;}
-.row_aside .hd{height:39px;line-height:39px;color:#f60;font-weight:700;border:1px solid #DCDCDC;border-width:0 1px 1px 0;}
+.row_aside .hd{height:39px;line-height:39px;color:#60914e;font-weight:700;border:1px solid #DCDCDC;border-width:0 1px 1px 0;}
 .row_aside li{position:relative;float:left;width:109px;height:38px;line-height:38px;border:1px solid #DCDCDC;border-width:0 1px 1px 0;}
-.row_aside a{position:absolute;left:-1px;display:block;width:111px;height:38px;overflow:hidden;}
+.row_aside a{position:absolute;left:-1px;display:block;width:111px;height:38px;overflow:hidden;color:#60914e}
 .row_aside a:hover{width:101px;padding-right:4px;color:#3876b2;text-decoration:none;border-left:5px solid #4e9700;border-right:1px solid #fff;background-color:#fff;}
-.row_aside .cur{width:101px;padding-right:4px;color:#f60;font-weight:700;border-left:5px solid #4e9700;border-right:1px solid #fff;background-color:#fff;}
+.row_aside .cur{width:101px;padding-right:4px;color:#2f96e3;font-weight:700;border-left:5px solid #2f96e3;border-right:1px solid #fff;background-color:#fff;}
 .row_aside .cur:hover{color:#3876b2}
 
 
@@ -69,6 +69,15 @@
 .path a{color:#999;}
 .path a:hover{color:#f60}
 .path .sub_link{color:#3876b2;}
+.path1{
+margin: 2px auto 3px;
+font-size: 12px;
+color: #999;
+}
+.path1 i{margin:0 5px;font-family:simsun;}
+.path1 a{color:#999;}
+.path1 a:hover{color:#f60}
+.path1 .sub_link{color:#3876b2;}
 
 
 /*img_list*/
@@ -112,7 +121,7 @@
 .mod_b .bd{padding-right:0;}
 .mod_b .bd a{float:left;margin-right:18px; white-space:nowrap}
 
-.book_info .op_list li,.a_icon,.book_info .state,.contents_list li a,.book_spread,.cartoon_chapter li a{background:url(/images/skin_detail.png) no-repeat 0 0}
+.book_info .op_list li,.a_icon,.book_info .state,.contents_list li a,.book_spread,.cartoon_chapter li a{background:url(../images/skin_detail.png) no-repeat 0 0}
 /* =page detail */
 .book_intro{margin-bottom:10px;padding:10px;font-size:12px;}
 
@@ -126,7 +135,7 @@
 .i_feed{background-position:-285px 2px;}
 .i_down{background-position:-288px -38px;}
 .i_share{background-position:-286px -88px;}
-#bdshare{float:none!important;_margin-top:7px;line-height:14px!important;background:url(/images/skin_detail.png) no-repeat -286px -88px!important;} 
+#bdshare{float:none!important;_margin-top:7px;line-height:14px!important;background:url(../images/skin_detail.png) no-repeat -286px -88px!important;} 
 
 
 .book_info .info{position:relative;overflow:hidden;zoom:1;line-height:22px;}
@@ -168,8 +177,13 @@
 .contents_list li{float:left;display:inline;margin:2px 13px 0 0;width:232px;height:35px;font-size:14px;}
 .contents_list li a{float:left;width:202px;padding-left:28px;height:33px;color:#333;line-height:33px;border:1px solid #e6f4fe;border-radius:3px;background-color:#fafdfe;background-position:-282px -126px;overflow:hidden;}
 .contents_list li a:hover{color:#333;text-decoration:none;border-color:#d5edfe;background-color:#fff;}
-.book_contents .total{position:relative;width:723px;height:7px;font-size:0;border-top:1px dashed #d7d7d7; margin-bottom:20px;}
-.book_contents .total .sub_link{position:absolute;left:312px;top:-9px;padding:0 7px;font-size:14px;background-color:#fff;}
+.contents_list1{width:723px;margin-bottom:24px;overflow:hidden}
+.contents_list1 ul{width:735px;margin-right:-13px;}
+.contents_list1 li{float:left;display:inline;margin:2px 13px 0 0;width:232px;height:35px;font-size:14px;}
+.contents_list1 li a{float:left;width:202px;padding-left:28px;height:33px;color:#333;line-height:33px;border:1px solid #e6f4fe;border-radius:3px;background-color:#fafdfe;background-position:-282px -126px;overflow:hidden;}
+.contents_list1 li a:hover{color:#333;text-decoration:none;border-color:#d5edfe;background-color:#fff;}
+.book_contents .total{margin-top:10px;position:relative;width:723px;height:7px;font-size:0;border-top:1px dashed #d7d7d7; margin-bottom:20px;}
+.book_contents .total .sub_link{margin-top:-10px;position:absolute;left:312px;top:-3px;padding:0px;font-size:14px;background:#fff}
 .book_contents .vip_box{height:39px;margin-top:15px;font-size:14px;color:#f60;}
 .book_contents .vip_box li{float:left;display:inline}
 .book_contents .vip_box .con{float:left;height:37px;padding:0 14px;line-height:37px;border-radius:4px;border:1px solid #ffe4cc;background-color:#fffefa;}
@@ -235,7 +249,7 @@
 .data_render .order_3{font-size:15px;color:#6fb9f5;}
 .data_render a{color:#666;}
 .data_render a:hover{color:#f60;}
-.data_render .sub_link{font-size:14px;color:#3876b2}
+.data_render .sub_link{font-size:14px;color:#60914e}
 .data_render .sub_link:hover{color:#f60;}
 .data_render .other_link{margin-left:10px;color:#999;}
 .data_render .other_link:hover{color:#f60;}
@@ -271,7 +285,7 @@
 
 .book_chapter h2{
 padding-top:20px;font-size: 30px;
-font-family: "Î¢ÈíÑÅºÚ";
+font-family: "Î¢ï¿½ï¿½ï¿½Åºï¿½";
 font-weight: normal;
 text-align: center;
 line-height: 40px;

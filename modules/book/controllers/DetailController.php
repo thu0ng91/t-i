@@ -99,10 +99,10 @@ class DetailController extends FWFrontController
 		$this->assign("addbookcase_link", $addbookcase_link);
 		//评论内容
 		$comments = null;
-		$comments = Comment::model()->findAllByAttributes(array('book_id'=>$id),array('order'=>'digest desc,id desc','limit'=>2));
+		$comments = Comment::model()->findAllByAttributes(array('book_id'=>$id),array('order'=>'digest desc,id desc','limit'=>5));
 		$count_commends = Comment::model()->countByAttributes(array('book_id'=>$id));
-		
-        $this->render("index",array('commends'=>$comments,'count_commends'=>$count_commends));
+		$username = Yii::app()->user->name;
+        $this->render("index",array('commends'=>$comments,'count_commends'=>$count_commends,'username'=>$username));
     }
 
     /**

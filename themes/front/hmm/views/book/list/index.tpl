@@ -1,6 +1,5 @@
 
-<script
-	src="{$FW_THEME_URL}/js/javascripts/ua.js"></script>
+
 <link
 	href="{$FW_THEME_URL}/css/global.css" rel="stylesheet" />
 <link
@@ -157,7 +156,6 @@
 
 
 <script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
-<!--<script type="text/javascript" src="{$FW_THEME_URL}/js/jquery.lazyload.js"></script>  -->
 <script	type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
 <script	src="{$FW_THEME_URL}/js/jquery.cookie.js"></script>
-<script	src="{$FW_THEME_URL}/js/favorite.js"></script>
+<script	src="{$FW_THEME_URL}/js/ua.js"></script>

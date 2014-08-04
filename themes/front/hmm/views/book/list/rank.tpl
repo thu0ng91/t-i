@@ -37,7 +37,7 @@
 	</thead>
 	<tbody>
 		{if $smarty.get.id}
-		{novel_book  limit=30 order="lastchaptertime desc" cid=$smarty.get.id}
+		{novel_book  limit=30 order="allclicks desc" cid=$smarty.get.id}
 		<tr>
 			<td class="font11">{$block.iteration}</td>
 			<td class="cell_left">
@@ -80,10 +80,7 @@
 </div>
 </div>
 </div>
-</div>
 <!--container end-->
 
-<script
-	type="text/javascript" src="{$FW_THEME_URL}/js/jquery.lazyload.js"></script>
-<script
-	type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
+<script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery.lazyload.js"></script>
+<script	type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>

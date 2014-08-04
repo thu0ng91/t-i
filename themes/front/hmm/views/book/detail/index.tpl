@@ -30,8 +30,8 @@
 	href="/book/{$book->id}/1.html" target="_blank">开始阅读</a> <a
 	class="a_icon a_btn" href="{novel_book_download_link id=$book->id}" target="_blank">TXT下载</a>
 	<a class="a_icon view_all" href="#" target="_blank">评论</a>
-	<a class="a_icon view_all" href="#" target="_blank">推荐</a>
-	<a class="a_icon view_all" href="#" target="_blank">加入书架</a>
+	<a class="a_icon view_all" href="javascript:;" onclick="uservote({$book->id})">推荐</a>
+	<a class="a_icon view_all" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a>
 <span id="added_store" class="a_icon addedshelf" style="display: none;"></span>
 </div>
 <div class="tip_box"><span class="arrow_out"></span> <span
@@ -91,6 +91,39 @@
 </div>
 </div>
 </div>
+<!--评论-->
+<link href="{$FW_THEME_URL}/css/comment.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="{$FW_THEME_URL}/js/comment.js"></script>
+<div id="msgBox" class="radius">
+	<form>
+		<img src="{$FW_THEME_URL}/images/avatar.bmp" style="display:none;" id="user_avatar" />
+         <div><textarea id="conBox" class="f-text radius" oninput="changeNum(event)" onpropertychange="changeNum(event)" ></textarea></div>
+         <div class="tr">
+            <p>
+               <span><i class="countTxt">还能输入</i><strong class="maxNum">140</strong><i>个字</i></span>
+                <input id="sendBtn" type="button" value="" title="快捷键 Ctrl+Enter"  />
+                <input id="userName" type="hidden" value="{$username}" />
+                <input id="bookid" type="hidden" value="{$book->id}" />
+            </p>
+        </div>
+    </form>
+    <div class="list">
+        <h3><span>共计<i style="color:red">{$count_commends}</i> 条评论</span></h3>
+        <ul>
+        	 {foreach from=$commends item=commend}
+        	 	<li>
+        	 		<div class="userPic"><img src="{$FW_THEME_URL}/images/avatar.bmp"></div>
+	        	 	<div class="content" style="text-align:left">
+		        	 	<div class="userName">{$commend->username}:</div>
+		        	 	<div class="msgInfo">{$commend->content}</div>
+		        	 	<div class="times"><span>{$commend->dateline|date_format:'m月d日 H:i'}</span></div>
+	        	 	</div>
+        	 	</li>
+        	 {/foreach}
+        </ul>
+    </div>	
+</div>
+<!--评论结束-->
 <!--book_intro end--> <!--book_img beigin-->
 <div class="mod_box book_img">
 <div class="mod_hd">

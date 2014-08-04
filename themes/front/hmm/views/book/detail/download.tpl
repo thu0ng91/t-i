@@ -27,7 +27,7 @@
 <DIV id="Chapters">{$book->title}[章节列表]
 
 <UL>
-{foreach $chapters as $item}	
+{foreach from=$chapters item=item}	
 <li><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></li>
 {/foreach}
 </UL>

@@ -392,12 +392,17 @@ function addbook(bid)
 	url2="/sendbookcase.php?id="+bid;
 	Ajax.Request(url2);
 }
-function addbookcase(bid,cid)
+//加入书架
+function addbookcase(bid)
 {
-	
-	url="/modules/article/addbookcase.php?bid="+bid+"&cid="+cid;
+	url="/book/detail/addbookcase/id/"+bid+".html";
 	Ajax.Request(url,{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));}});
-	//Ajax.Tip(event,url,3000);
+}
+//网友推荐小说
+function uservote(bid)
+{
+	url="/book/detail/uservote/id/"+bid+".html";
+	Ajax.Request(url,{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));}});
 }
 
 

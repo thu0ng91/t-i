@@ -7,6 +7,7 @@
 <meta name="keywords" content="{$keywords|strip_tags}"/>
 <link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
 <script src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
+<script src="{$FW_THEME_URL}/js/common.js" type="text/javascript" language="javascript"></script>
 </head>
 <body>
 <!--header begin-->

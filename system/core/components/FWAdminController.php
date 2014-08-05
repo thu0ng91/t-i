@@ -12,6 +12,7 @@ class FWAdminController extends CController
     public $topMenus = array();
     public $leftMenus = array();
     public $pluginMenus = array();
+    public $moduleMenus = array();
 
 	public function init()
 	{
@@ -59,7 +60,9 @@ class FWAdminController extends CController
             }
 
             if (!empty($menus)) {
-                $this->topMenus[] = $menus['top'];
+//                $this->topMenus[] = $menus['top'];
+                $menus['top']['url'] = Yii::app()->createUrl($menus['top']['url']);
+                $this->moduleMenus[] = $menus['top'];
             }
         }
 
@@ -70,7 +73,7 @@ class FWAdminController extends CController
 //		}else{
 //			$this->menupanel = explode('|','content|short');;
 //		}
-$plugins = null;
+        $plugins = null;
         $plugins = Plugins::model()->findAll('status=:status', array(
             ':status' => Yii::app()->params['status']['ischecked'],
         ));

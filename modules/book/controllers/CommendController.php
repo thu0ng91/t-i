@@ -4,7 +4,8 @@
  * @author go123
  *
  */
-class CommendController extends FWFrontController{
+class CommendController extends FWModuleFrontController {
+
 	public function actionAjaxsubmitcommend(){
 		$book_id = intval(Yii::app()->request->getParam('bookid',null));
 		$book = Book::model()->findByPk($book_id);

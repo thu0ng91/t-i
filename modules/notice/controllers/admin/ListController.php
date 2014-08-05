@@ -3,7 +3,7 @@
  * 公告管理
  * Class ListController
  */
-class ListController extends FWAdminController
+class ListController extends FWModuleAdminController
 {
     /**
      * 公告列表

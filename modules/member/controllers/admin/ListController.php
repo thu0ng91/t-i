@@ -3,7 +3,7 @@
  * 会员管理
  * Class ListController
  */
-class ListController extends FWAdminController
+class ListController extends FWModuleAdminController
 {
     /**
      * 会员列表

@@ -3,7 +3,7 @@
  * 小说缓存配置
  * Class BookController
  */
-class CacheconfigController extends FWAdminController
+class CacheconfigController extends FWModuleAdminController
 {
     public function actionIndex()
     {

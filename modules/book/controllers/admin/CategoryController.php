@@ -3,7 +3,7 @@
  * 小说分类管理
  * Class CategoryController
  */
-class CategoryController extends FWAdminController
+class CategoryController extends FWModuleAdminController
 {
 //    protected function menus()
 //    {

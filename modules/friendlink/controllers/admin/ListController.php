@@ -3,7 +3,7 @@
  * 区块管理
  * Class ListController
  */
-class ListController extends FWAdminController
+class ListController extends FWModuleAdminController
 {
     /**
      * 区块列表

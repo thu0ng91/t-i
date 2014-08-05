@@ -3,7 +3,7 @@
  * 小说章节模块
  * Class DetailController
  */
-class ChapterController extends FWFrontController
+class ChapterController extends FWModuleFrontController
 {
     /**
      * 过滤器

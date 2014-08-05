@@ -3,7 +3,7 @@
  * 小说管理
  * Class BookController
  */
-class BookController extends FWAdminController
+class BookController extends FWModuleAdminController
 {
     /**
      * 小说列表

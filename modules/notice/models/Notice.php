@@ -39,7 +39,7 @@ class Notice extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, content, views, status, dateline', 'required'),
+			array('title, content, views, status', 'required'),
 			array('status', 'numerical', 'integerOnly'=>true),
 			array('title', 'length', 'max'=>255),
 			array('views', 'length', 'max'=>6),
@@ -49,7 +49,12 @@ class Notice extends CActiveRecord
 			array('id, title, content, views, status, dateline', 'safe', 'on'=>'search'),
 		);
 	}
-
+	public function beforeSave(){
+		if ($this->isNewRecord){
+			$this->dateline = time();
+		}
+		return parent::beforeSave();
+	}
 	/**
 	 * @return array relational rules.
 	 */
@@ -68,11 +73,11 @@ class Notice extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'content' => 'Content',
-			'views' => 'Views',
-			'status' => 'Status',
-			'dateline' => 'Dateline',
+			'title' => '标题',
+			'content' => '内容',
+			'views' => '查看数',
+			'status' => '状态',
+			'dateline' => '时间',
 		);
 	}
 

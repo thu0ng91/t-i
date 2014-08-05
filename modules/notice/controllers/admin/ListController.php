@@ -1,12 +1,12 @@
 <?php
 /**
- * 区块管理
+ * 公告管理
  * Class ListController
  */
 class ListController extends FWAdminController
 {
     /**
-     * 区块列表
+     * 公告列表
      */
     public function actionIndex()
     {
@@ -30,7 +30,7 @@ class ListController extends FWAdminController
     }
 
     /**
-     * 区块创建
+     * 公告创建
      */
     public function actionCreate()
     {
@@ -45,30 +45,6 @@ class ListController extends FWAdminController
 
 		if(isset($_POST['Notice']))
 		{
-			
-//			$images = CUploadedFile::getInstancesByName('images');
-//
-//            if (isset($images)) {
-//                $imgUrl = Upload::createFile($images, 'book', 'create');
-//                $model->logo = $imgUrl;
-//            }
-//            VAR_DUMP($images);exit;
-			if(isset($_FILES['Notice']['name']['logo']) && !empty($_FILES['Notice']['name']['logo'])){
-				$file = CUploadedFile::getInstance($model,'logo');
-				$filename = $file->getName();//获取文件名
-				$filesize = $file->getSize();//获取文件大小
-				$filetype = $file->getType();//获取文件类型
-				$filename1 = iconv("utf-8", "gb2312", $filename);//这里是处理中文的问题，非中文不需要
-				$uploadPath = "uploads/friendlink/";
-				$uploadfile = $uploadPath.$filename1;
-				$this->dmkdir($uploadPath);
-				$file->saveAs($uploadfile,true);//上传操作
-				$nowtime = time();
-				rename($uploadfile,$uploadPath.$nowtime.'.jpg');
-				$_POST['Notice']['logo'] = $uploadPath.$nowtime.'.jpg';
-			}else{
-				unset($_POST['Notice']['logo']);
-			}
 			$model->attributes=$_POST['Notice'];
 			if($model->save())
 				$this->redirect(array('index'));
@@ -90,5 +66,15 @@ class ListController extends FWAdminController
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
         return $model;
+    }
+	public function actionUpload()
+    {
+        Yii::import('application.extensions.upload.*');
+        $callback = $_GET['CKEditorFuncNum'];
+        if ($_FILES['upload']['name']) {
+            $up = CUploadedFile::getInstanceByName("upload");
+            $imgUrl = Upload::createFile($up, "images", "create");
+            echo '<script type="text/javascript">window.parent.CKEDITOR.tools.callFunction('.$callback.', "'.Yii::app()->baseUrl.$imgUrl.'")</script>';
+        }
     }
 }

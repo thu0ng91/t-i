@@ -7,7 +7,7 @@ address,caption,em{font-weight:normal;font-style:normal;}
 .display{ display :block!important;}
 .radius{-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;behavior: url(pie.htc);}
 
-#msgBox{width:500px;background:#fff;border-radius:5px;margin:10px auto;padding-top:10px;}
+#msgBox{width:500px;background:#fff;border-radius:5px;margin:10px auto;padding-top:10px;display:none}
 #msgBox form{padding:0 20px 15px;}
 #msgBox form h1{font-weight:400;font:400 18px/1.5 "微软雅黑";}
 #msgBox form div{position:relative;color:#999;margin-top:10px;}

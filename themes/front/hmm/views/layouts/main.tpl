@@ -43,18 +43,15 @@
 {/novel_menu}
 <li><a href="{novel_lastupdate_link}">最新更新</a></li>
 <li><a href="{novel_rank_link}">小说排行榜</a></li>
+
 </ul>
 </div>
 <!--nav_other end-->
-
 <!--header end-->
-
-
-	{$content}
-
+{$content}
 <!-- footer -->
 <div class="footer">
-    <br>
+    <br />
     <a href="#">云阅简介</a> |
 	<a href="#">联系我们</a> |
     <a href="#">合作伙伴</a> |
@@ -63,9 +60,9 @@
     <a href="#">网站地图</a> |
     <a href="#">会员注册</a> |
     <a href="#">产品答疑</a>
-    <br>
+    <br />
     Copyright &copy; 1996 - 2014 YUN Corporation, All Rights Reserved <br>
-    上海云阅信息技术有限公司<a target="_blank" href="#">版权所有</a>
+    上海云阅信息技术有限公司版权所有
 </div>
 <!--footer end-->
 <script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>

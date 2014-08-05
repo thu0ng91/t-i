@@ -1,10 +1,5 @@
-
-
-<link
-	href="{$FW_THEME_URL}/css/global.css" rel="stylesheet" />
-<link
-	href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
-
+<link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet" />
+<link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
 <!--container begin-->
 <div class="container clearfix">
 <div class="col_a"><!--rec_book begin-->
@@ -31,12 +26,9 @@
 <div class="mod_box cata_book">
 <div class="mod_hd clearfix">
 <h3 class="tit">{$category->title}小说大全</h3>
-
 </div>
 <div class="mod_bd">
 <div class="book_list lazyload_box">
-
-	
 	<ul class="clearfix">
 	{foreach from=$list item=item}
 		<li>
@@ -44,7 +36,7 @@
 			<a href="{novel_book_link id=$item->id}" target="_blank"> 
 			<img width="90" height="118" src="{$item->coverImageUrl}"	alt="{$item->title}" title="{$item->title}" />
 			 <span class="txt_bg">
-			{if $item->flag == 1}连载 {$item->wordcount}万{else}完结 {$item->wordcount}万{/if}
+			{if $item->flag == 1}连载 {else}完结 {$item->wordcount}万{/if}
 			</span>
 			</a>
 		</div>
@@ -77,14 +69,7 @@
             </div>
             {/if}
         </div>
-<!-- <div class="page">
-	<a href='/list/1_0_1.html' class=a_btn>首页</a> <a
-	href='/list/1_0_1.html' class=a_btn>上一页</a> <span class="num"><a
-	class='cur'>1</a> <a href="/list/1_0_2.html" title="第2页">2</a> </span><a
-	href='/list/1_0_2.html' class=a_btn>下一页</a> <a target='_self'
-	href='/list/1_0_731.html' class=a_btn>尾页</a>
-</li>
-</div>-->
+
 </div>
 </div>
 <!--cata_book end--></div>

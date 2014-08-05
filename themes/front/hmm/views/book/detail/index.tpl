@@ -1,5 +1,4 @@
 <link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
-
 <!--path begin-->
 <div class="wrap_in path">当前位置： <a href="{$FW_SITE_URL}">云阅首页 </a>&gt; <a
 	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a>&gt;
@@ -26,21 +25,20 @@
 <p class="book_con">
 <p>{$book->summary}</p>
 </p>
-<div class="op clearfix"><a class="a_icon readnow"
-	href="/book/{$book->id}/1.html" target="_blank">开始阅读</a> <a
-	class="a_icon a_btn" href="{novel_book_download_link id=$book->id}" target="_blank">TXT下载</a>
-	<a class="a_icon view_all" href="#" target="_blank">评论</a>
+<div class="op clearfix">
+	<a class="a_icon readnow" href="/book/{$book->id}/1.html" target="_blank">开始阅读</a> 
+	<a class="a_icon a_btn" href="{novel_book_download_link id=$book->id}" target="_blank">TXT下载</a>
 	<a class="a_icon view_all" href="javascript:;" onclick="uservote({$book->id})">推荐</a>
 	<a class="a_icon view_all" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a>
-<span id="added_store" class="a_icon addedshelf" style="display: none;"></span>
+	<span id="added_store" class="a_icon addedshelf" style="display: none;"></span>
 </div>
 <div class="tip_box"><span class="arrow_out"></span> <span
 	class="arrow_in"></span>
 <ul class="tip_con clearfix">
 	<li><span>更新到：</span> <a target="_blank"
 		href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}"
-		> 第{$book->lastchapterid}章 {$book->lastchaptertitle}</a>
-	<span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}</span>
+		> 第{$book->lastchapterid}章 {$book->lastchaptertitle} </a>
+	<span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span>
 	</li>
 </ul>
 </div>
@@ -48,19 +46,27 @@
 </div>
 <div class="book_contents">
 <div class="hd">
-<h3>《{$book->title}》最新章节</h3>
+<ul>
+<li><h3><a href="javascript:;" onclick="ta()">最新章节</a></h3></li>
+<li><h3><a href="javascript:;" onclick="ta()">评论</a></h3></li>
+</ul>
 </div>
-<div class="bd">
+<div class="bd" id="ted">
 <div class="book_news" style="margin-top: 0px;">
 
 <div class="contents_list">
 <ul class="clearfix">
+	{$i = 0}
 	{foreach from=$chapterla item=chapter}
-	<li><a target="_blank"
-		href="{novel_chapter_link bookid=$book->id id=$chapter->id}"> {if
-	((count($chapterla)) - ($chapter->id)) >= 2 } 第{$chapter->id}章
-	{$chapter->title} {else} <font color=red>第{$chapter->id}章
-	{$chapter->title}</font> {/if} </a></li>
+	<li>
+		<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$chapter->id}"> 
+		{if	$i++ <= 2 }
+			<font color=red>{$chapter->title}</font>
+		{else}
+			{$chapter->title} 
+		 {/if} 
+		 </a>
+	 </li>
 	{/foreach}
 </ul>
 </div>
@@ -70,9 +76,9 @@
 <div class="contents_list1" id="contents_list" style="display: none">
 <ul class="clearfix">
 	{foreach from=$chapters item=chapter}
-	<li><a target="_blank"
-		href="{novel_chapter_link bookid=$book->id id=$chapter->id}">第{$chapter->id}章
-	{$chapter->title}</a></li>
+	<li>
+		<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$chapter->id}">{$chapter->title}</a>
+	</li>
 	{/foreach}
 </ul>
 </div>
@@ -82,7 +88,7 @@
 <ul class="clearfix">
 	{foreach from=$chapterst item=chapter}
 	<li><a target="_blank"
-		href="{novel_chapter_link bookid=$book->id id=$chapter->id}">第{$chapter->id}章
+		href="{novel_chapter_link bookid=$book->id id=$chapter->id}">
 	{$chapter->title}</a></li>
 	{/foreach}
 </ul>

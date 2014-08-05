@@ -1,4 +1,9 @@
-﻿function changeNum(){
+﻿function ta(){
+	$("#msgBox").toggle();
+	$("#ted").toggle();
+}
+
+function changeNum(){
 	var conBox = $("#conBox").val();
 	var str = 0;
 	var abcnum = 0;
@@ -23,7 +28,6 @@
 }
 
 $(function(){
-		
 
 		//文本框获取焦点
 		$("#conBox").focus(function(){

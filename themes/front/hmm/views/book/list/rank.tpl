@@ -1,4 +1,6 @@
-﻿<script src="{$FW_THEME_URL}/js/ua.js"></script>
+﻿
+<div style="width:100%;margin-top:-21px;"></div>
+<script src="{$FW_THEME_URL}/js/ua.js"></script>
 <link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
 <!--container begin-->
 <div class="container row_box clearfix">
@@ -12,8 +14,6 @@
 </ul>
 </div>
 <div class="row_content" style="padding-top: 5px;">
-
-
 <div class="bd">
 <div class="tab_content">
 <table class="data_render">

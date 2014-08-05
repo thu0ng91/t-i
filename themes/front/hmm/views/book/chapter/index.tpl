@@ -3,17 +3,18 @@
 <link href="{$FW_THEME_URL}/css/footer.css" rel="stylesheet" type="text/css"/>
 <link href="{$FW_THEME_URL}/css/directory.css" rel="stylesheet" type="text/css"/>
 <link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
-
+<script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
 <div class="main myset"><script>show_pagetop();</script></div>
+
 <div id="a_main">
 <div class="bdtop"></div>
 <div class="bdsub" id="amain">
 <dl>
 	<dt>
-	<p class="fr">
-		<a rel="nofollow"	href="#" target="_blank">加入书签</a> | 
-		<a rel="nofollow"	href="#" target="_blank">推荐本书</a>	|	 
-		<a href="目录页.html">返回书页</a>
+	<p class="fr">	
+		<a class="nofollow" href="javascript:;" onclick="uservote({$book->id})">推荐 </a>|
+		<a class="nofollow" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a> |
+		<a href="{novel_chapter_link bookid=$book->id id=$nextChapterId}">返回书页</a>
 	</p>
 <!--path begin-->
 <div class="wrap_in path1">当前位置： <a href="{$FW_SITE_URL}">云阅首页 </a>&gt; <a
@@ -22,11 +23,11 @@
 <!--path end-->
 	</dt>
 	<dd>
-		<h1>第一个</h1>
+		<h1>{$chapter->title}</h1>
 		<h3>
-			<a	href="#"	>上一章</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a	href="目录页.html" >返回目录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a	href="#"	>下一章</a>
+			<a	href="{novel_chapter_link bookid=$book->id id=$prevChapterId}">上一章</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<a	href="{novel_chapter_link bookid=$book->id id=$nextChapterId}" >返回目录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<a	href="{novel_chapter_link bookid=$book->id id=$nextChapterId}">下一章</a>
 		</h3>
 	</dd>
 	<dd class="read_AD">
@@ -35,18 +36,19 @@
 	 <div id="contents"><!--go-->{$chapter->content|replace:"\n":"<br />&nbsp;&nbsp;&nbsp;&nbsp;"} <!--over--></div>
 	</dd>
 	
-
+<!-- 
 	<dd id="contfoot">
 		<a href="Javascript:void(0);"	class="keep"><span class="read_keep" >&nbsp;</span>没看完？将本书加入收藏</a>
 		<a rel="nofollow"	href="Javascript:void(0);" class="case" target="_blank"><span class="read_case" >&nbsp;</span>我是会员，将本书放入书架</a>
 		<a href="Javascript:void(0);" class="copy"><span class="read_copy" >&nbsp;</span>复制本书地址，传给QQ/MSN上的好友</a>
 		<a rel="nofollow"	href="Javascript:void(0);" class="report" target="_blank"><span class="read_report" >&nbsp;</span>章节错误？点此举报</a>
 	</dd>
+ -->
 	<dd id="tipscent"></dd>
 	<dd id="footlink">
-	<a	href="#"	class="redbutt">上一章</a>
-	<a	href="#" class="redbutt">返回章节目录</a>
-	<a	href="#"	class="redbutt">下一章</a></dd>
+	<a	href="{novel_chapter_link bookid=$book->id id=$prevChapterId}"	class="redbutt">上一章</a>
+	<a	href="{novel_chapter_link bookid=$book->id id=$nextChapterId}" class="redbutt">返回章节目录</a>
+	<a	href="{novel_chapter_link bookid=$book->id id=$nextChapterId}"	class="redbutt">下一章</a></dd>
 	<dd id="tipsfoot"></dd>
 </dl>
 <div class="cl"></div>
@@ -99,6 +101,6 @@
     });
     {/literal}
 </script>
-<script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
+
 <script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>

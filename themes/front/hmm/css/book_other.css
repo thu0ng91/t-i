@@ -170,6 +170,8 @@ color: #999;
 
 /* book_contents */
 .book_contents .hd{border-bottom:3px solid #d2e6f5;}
+.book_contents .hd ul{list-style-type:none;}
+.book_contents .hd li{float:left;margin-left:15px;}
 .book_contents .hd h3{height:35px;font:700 14px/35px simsun;color:#333;}
 .book_contents .bd{padding-top:5px;*zoom:1;}
 .contents_list{width:723px;margin-bottom:24px;overflow:hidden}

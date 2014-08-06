@@ -18,8 +18,10 @@ $this->pageTitle=Yii::app()->name;
         'type' => 'primary',
         'size' => 'normal',
         'label' => '获取更多帮助',
-        'url' => 'http://www.yunyuewang.com/',
+        'url' => 'http://www.yunyuewang.com/bbs',
         'htmlOptions' => array('target' => '_blank'),
     )); ?></p>
-
+<div>
+	<iframe style="border:none;" src="http://www.yunyuewang.com/index.php?r=yunyue/iframenotice" width="500" height="200"></iframe>
+</div>
 <?php $this->endWidget(); ?>

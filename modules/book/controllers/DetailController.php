@@ -3,7 +3,7 @@
  * 小说信息模块，小说章节列表模块
  * Class DetailController
  */
-class DetailController extends FWFrontController
+class DetailController extends FWModuleFrontController
 {
     /**
      * 过滤器

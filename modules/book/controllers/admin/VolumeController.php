@@ -3,7 +3,7 @@
  * 分卷分卷管理
  * Class ChapterController
  */
-class VolumeController extends FWAdminController
+class VolumeController extends FWModuleAdminController
 {
     /**
      * 分卷列表

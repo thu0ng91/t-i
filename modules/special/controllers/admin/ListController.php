@@ -1,17 +1,17 @@
 <?php
 /**
- * 公告管理
+ * 专题管理
  * Class ListController
  */
 class ListController extends FWModuleAdminController
 {
     /**
-     * 公告列表
+     * 专题列表
      */
     public function actionIndex()
     {
       $criteria=new CDbCriteria();
-      $dataProvider=new CActiveDataProvider('Notice',array(
+      $dataProvider=new CActiveDataProvider('Special',array(
           'criteria'=>$criteria,
           'pagination'=>array(
               'pageSize'=> $this->module['admin']['list_count'],
@@ -25,44 +25,57 @@ class ListController extends FWModuleAdminController
       $this->render('index',array(
           'dataProvider'=>$dataProvider,
 //          'categorys'=> Category::model()->showAllSelectCategory(Category::SHOW_ALLCATGORY),
-          'model' => Notice::model(),
+          'model' => Special::model(),
       ));
     }
 
     /**
-     * 公告创建
+     * 专题创建和编辑
      */
     public function actionCreate()
     {
     	$id = intval(Yii::app()->request->getParam('id',null));
-		$model = Notice::model()->findByPk($id);
+		$model = Special::model()->findByPk($id);
 		if($model === null) {
-			$model = new Notice();
+			$model = new Special();
 		}
 
+		$folder = Yii::app()->modulePath.DS.'special'.DS.'views'.DS.'detail'.DS;
+
+		$fp = @opendir($folder);
+		$arr_file = array();
+		if(false != $fp){
+			while(false!=$file=readdir($fp)){
+			    if($file!='.' &&$file!='..'){
+			        $filename = explode('.',$file);
+			        $arr_file[$filename[0]]=$filename[0];
+			    }
+			}
+		}
+		closedir($fp);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Notice']))
+		if(isset($_POST['Special']))
 		{
-			$model->attributes=$_POST['Notice'];
+			$model->attributes=$_POST['Special'];
 			if($model->save())
 				$this->redirect(array('index'));
 		}
     	
         $this->render('create',array(
-            'model'=>$model
+            'model'=>$model,'arr_file'=>$arr_file
         ));
     }
 	
 	public function actionDelete(){
 		$id = intval(Yii::app()->request->getParam('id',null));
-		Notice::model()->deleteByPk($id);
+		Special::model()->deleteByPk($id);
 	}
 
     public function loadModel($id)
     {
-        $model = Notice::model()->findByPk((int)$id);
+        $model = Special::model()->findByPk((int)$id);
         if($model===null)
             throw new CHttpException(404,'The requested page does not exist.');
         return $model;

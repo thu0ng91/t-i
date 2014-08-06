@@ -26,6 +26,7 @@ $menus = array(
 //    array('label'=> '广告管理', 'url'=> 'ads/index', 'active' => $this->menupanel[0] == 'ads' ? true : false),
 //    array('label'=> '用户管理', 'url'=> 'user/index', 'active' => $this->menupanel[0] == 'user' ? true : false),
     array('label'=> '扩展管理', 'url'=> 'modules/index', 'active' => $this->menupanel[0] == 'modules' ? true : false),
+    array('label'=> '模块菜单', 'url'=> '#', 'active' => $this->menupanel[0] == 'extend' ? true : false, 'items'=> $this->moduleMenus),
 //    array('label'=> '插件菜单', 'url'=> 'plugins/index', 'active' => $this->menupanel[0] == 'plugins' ? true : false),
     array('label'=> '插件菜单', 'url'=>'#', 'active' => $this->menupanel[0] == 'plugins' ? true : false, 'items'=> $this->pluginMenus),
 );

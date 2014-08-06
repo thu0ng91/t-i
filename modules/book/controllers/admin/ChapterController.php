@@ -3,7 +3,7 @@
  * 章节管理
  * Class ChapterController
  */
-class ChapterController extends FWAdminController
+class ChapterController extends FWModuleAdminController
 {
 //    protected function menus()
 //    {

@@ -1,5 +1,6 @@
 <?php
-class CommentController extends FWAdminController{
+class CommentController extends FWModuleAdminController{
+
 	public function actionIndex(){
 		$criteria=new CDbCriteria();
     //        $criteria->addCondition('status=:stauts');

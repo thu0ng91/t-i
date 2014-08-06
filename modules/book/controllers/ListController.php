@@ -3,7 +3,7 @@
  * 小说分类
  * Class ListController
  */
-class ListController extends FWFrontController
+class ListController extends FWModuleFrontController
 {
 
     /**

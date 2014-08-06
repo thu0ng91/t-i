@@ -3,7 +3,7 @@
  * 小说设置
  * Class BookController
  */
-class SettingController extends FWAdminController
+class SettingController extends FWModuleAdminController
 {
     public function actionRewrite()
     {

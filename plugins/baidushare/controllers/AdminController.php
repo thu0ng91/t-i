@@ -7,11 +7,13 @@ class AdminController extends FWPluginAdminController {
 
     public function actionIndex()
     {
-        $this->render("index");
-    }
-
-    public function actionTip()
-    {
-        $this->render("tip");
+    	$cacheCategory =  'baidushare';
+    	$data = Yii::app()->cache->get($cacheCategory);
+    	if($_POST){    		
+    		Yii::app()->cache->set($cacheCategory,$_POST['content']);
+    		Yii::app()->user->setFlash('actionInfo','设置成功');
+            $this->refresh();
+    	}
+        $this->render("index",array('data'=>$data));
     }
 }

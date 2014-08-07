@@ -11,14 +11,71 @@ class MyController extends MemberController
         var_dump(Yii::app()->themeManager->baseUrl);
         exit;
     }
-
+	
+     /**
+     * 会员信息
+     */
+	public function actionInformation()
+    {	
+    	$userinfo = Yii::app()->user->info;
+    	$this->assign("list", $userinfo);
+        $this->render("information");
+    }
+    
+    /**
+     * 会员头像上传
+     */
+	public function actionphotoupload()
+    {
+    	$uid = Yii::app()->user->id;
+    	$model = Member::model()->findByPk($uid);
+    	if(null == $model){//如果用户不存在
+    		//这里要加上跳转提示
+    		echo '用户不存在';
+    		Yii::app()->end();
+    	}
+    	if($_FILES){
+    		if (!file_exists('uploads')){
+    			mkdir ("uploads"); 
+    		} else {
+    			if (!file_exists('uploads/member')){
+    				mkdir ("uploads/member"); 
+    			} else {
+	            	$filename = $_FILES['userimg']['name'];//获取文件名
+					//$filesize = $file->getSize();//获取文件大小
+					//$filetype = $file->getType();//获取文件类型
+					$filename1 = iconv("utf-8", "gb2312", $filename);//这里是处理中文的问题，非中文不需要
+					$filename1 = $model->id . $filename1;
+    				$uploadPath = "uploads/member/";
+					$uploadfile = $uploadPath.$filename1;
+					move_uploaded_file($_FILES["userimg"]["tmp_name"],$uploadPath .$filename1);
+					$model->avatar = $filename1;
+					echo $model->avatar;  //输出  QQͼƬ20140614112850.jpg
+    				$model->save();
+    				var_dump($model->getErrors());exit;
+					$this->redirect('/member/my/information');
+    			}
+    		}
+        }
+        $this->render("photoupload");
+   	}
+    
+     /**
+     * 会员密码修改
+     */
+	public function actionpwdupdate()
+    {
+        $this->render("pwdupdate");
+    }
+    
     /**
      * 会员书架
      */
     public function actionBookcase()
     {
+    	
         $db = Yii::app()->db;
-
+	
         $sql = "select
                 b.title,b.lastchapterid,b.lastchaptertitle,mb.id,mb.lastviewtime,mb.book_id
                 from book b, bookcase mb where mb.book_id=b.id and mb.userid=:memberid and mb.status=1
@@ -99,4 +156,5 @@ class MyController extends MemberController
 
         $this->jsonOuputAndEnd(false);
     }
+    
 }

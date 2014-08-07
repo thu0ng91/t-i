@@ -138,8 +138,6 @@
 </div>
 <!--container end-->
 <!--footer beigin-->
-
-
 <script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 <script	type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
 <script	src="{$FW_THEME_URL}/js/jquery.cookie.js"></script>

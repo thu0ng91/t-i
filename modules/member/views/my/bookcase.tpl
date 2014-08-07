@@ -1,55 +1,63 @@
-<link href="{$FW_THEME_URL}/css/style2.css" rel="stylesheet" type="text/css">
-<!--列表-->
-<div class="main">
-    <div id="centerl">
-        <div class="padding">
-            <div class="box" style="width:980px;">
-                <div class="book_news" style="margin-top:0px;">
-
-                    <div class="book_news_title title">
-                        <ul>
-                            <li>当前位置：<a href="{$FW_SITE_URL}">首页</a> &gt;<a href="{novel_link url='member/my/bookcase'}">我的书架</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="book_news_style">
-                        {*<div class="book_news_style_img1"><img src="{$book->coverImageUrl}" width="130" height="150" /><br /><br /><a href="{novel_book_download_link id=$book->id}" target="_blank">{$book->title}TXT下载</a></div>*}
-                        {*<div class="book_news_style_form1">*}
-
-                            <table width="100%" class="bookcase">
-                                <tr>
-                                    <td width="20%"><b>小说</b></td>
-                                    <td width="35%"><b>最新章节</b></td>
-                                    <td width="30%"><b>上次阅读时间</b></td>
-                                    <td width="25%"><b>操作</b></td>
-                                </tr>
-
-                                {foreach from=$list item=item}
-                                    <tr>
-                                    <td><a href="{novel_book_link id=$item->book_id}">{$item->title}</a></td>
-                                    <td><a href="{novel_chapter_link bookid=$item->book_id id=$item->lastchapterid}">{$item->lastchaptertitle}</a></td>
-                                    <td>{$item->lastviewtime|date_format:'Y-m-d H:i'}</td>
-                                    <td><a href="/member/my/deletebookcase/id/{$item->id}">删除</a></td>
-                                    </tr>
-                                {foreachelse}
-                                    <tr>
-                                        <td colspan="4">还没有小说在书架中，赶快去添加吧！</td>
-                                    </tr>
-                                {/foreach}
-                            </table>
-                        {*</div>*}
-                        {*<div class="clear"></div>*}
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-    </div>
+<link href="{$FW_THEME_URL}/css/user.css" rel="stylesheet" />
+<div id="btod">
+<div id="user">
+	<div id="userinfo_left">
+		<span id="title">个人中心</span>
+		<div id="user_cur">
+			<a href="/member/my/information" class="user_f">用户资料</a>
+			<a href="/member/my/photoupload.html" class="user_f">设置头像</a>
+			<a href="/member/my/pwdupdate.html" class="user_f">修改密码</a>
+			<a href="/member/my/bookcase.html" id="user_fcur">我的书架</a>
+			<a href="/member/do/actionLogout" class="user_f">退出登录</a>
+		</div>
+	</div>
+	<div id="userinfo_right">
+		<div id="user_title_bookcase"><ul><li class="li_cur" id="li_cur" onclick="stb(2)">我的书架</li><li class="li_uncur"  id="li_uncur" onclick="stb(1)">最近阅读</li></ul></div>
+		<div id="user_colo">
+			<form action="" method="">
+			<div id="user_tconter">
+				<table width="100%" class="bookcase" id="bookcase" >
+	                <tr>
+	                <th width="65%">　[作品名称]&nbsp;最新章节</th>
+	                <th width="25%">上次阅读时间</th>
+	                <th width="10%">操作</th>
+	                </tr>
+	               {foreach from=$list item=it}
+	                	<tr>
+	                    <td>　<a href="{novel_book_link id=$it->book_id}">[{$it->title}]</a>
+	                    	<a href="{novel_chapter_link bookid=$it->book_id id=$it->lastchapterid}">{$it->lastchaptertitle}</a></td>
+	                        <td>{$it->lastviewtime|date_format:'Y-m-d H:i'}</td>
+	                        <td><a href="/member/my/deletebookcase/id/{$it->id}">删除</a></td>
+	                        </tr>
+	                {foreachelse}
+	                     <tr>
+	                         <td colspan="4">还没有小说在书架中，赶快去添加吧！</td>
+	                     </tr>
+	                {/foreach}
+                </table>
+				<!--	最近阅读		-->
+                <table width="100%" class="bookcase" id="bookcases" style="display:none">
+	                <tr>
+	                <th width="65%">　[作品名称]&nbsp;最新章节</th>
+	                <th width="25%">上次阅读时间</th>
+	                <th width="10%">操作</th>
+	                </tr>
+	               {foreach from=$list item=it}
+	                	<tr>
+	                    <td>　<a href="{novel_book_link id=$it->book_id}">[{$it->title}]</a>
+	                    	<a href="{novel_chapter_link bookid=$it->book_id id=$it->lastchapterid}">{$it->lastchaptertitle}</a></td>
+	                        <td>{$it->lastviewtime|date_format:'Y-m-d H:i'}</td>
+	                        <td><a href="/member/my/deletebookcase/id/{$it->id}">删除</a></td>
+	                        </tr>
+	                {foreachelse}
+	                     <tr>
+	                         <td colspan="4">您已经很久没有看过书了 -_^!</td>
+	                     </tr>
+	                {/foreach}
+                </table>
+			</div>
+			</form>
+		</div>
+	</div>
 </div>
-<!--end 列表-->
-{*<script>*}
-    {*{literal}*}
-    {*window.lastread.set()*}
-    {*{/literal}*}
-{*</script>*}
+</div>

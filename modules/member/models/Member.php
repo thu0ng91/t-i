@@ -54,6 +54,7 @@ class Member extends BaseModel
 			array('level, vip_level, createtime, updatetime, lastlogintime, status, loginhits', 'numerical', 'integerOnly'=>true),
 			array('username, password, realname, telephone, qq, email', 'length', 'max'=>32),
 			array('address', 'length', 'max'=>200),
+			array('avatar', 'length', 'max'=>50),
 			array('username','unique','caseSensitive'=>false,'message'=>'用户名<span style="color:blue">{value}</span>已经被注册，请更换'),
 			array('email', 'email', 'allowEmpty' => true),
 			array('password', 'length', 'min'=>6, 'max' => 32, 'allowEmpty' => false),
@@ -87,6 +88,7 @@ class Member extends BaseModel
 			'repassword' => '确认密码',
 			'realname' => '真实姓名',
 			'level' => '会员等级',
+			'avatar' => '头像',
 			'vip_level' => '会员VIP等级',
 			'telephone' => '电话',
 			'qq' => 'QQ',
@@ -139,6 +141,7 @@ class Member extends BaseModel
 		$criteria->compare('password',$this->password,true);
 		$criteria->compare('realname',$this->realname,true);
 		$criteria->compare('level',$this->level);
+		$criteria->compare('avatar',$this->avatar);
 		$criteria->compare('vip_level',$this->vip_level);
 		$criteria->compare('telephone',$this->telephone,true);
 		$criteria->compare('qq',$this->qq,true);

@@ -18,7 +18,7 @@
         <ul class="clearfix">
 
             {foreach from=$list item=item}
-            <li><span class="width57">{$item@iteration}</span><span class="width369 jhfd">[{$item->category->title}]<a href="{novel_book_link id=$item->id}" class="green" target="_blank">{$item->title}</a><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="gray" target="_blank">{$item->lastchaptertitle}</a></span><span class="width85 green">连载中</span><span class="width84">{$item->wordcount}</span><span class="width111"><a href="#" class="nichen">{$item->author}</a></span></li>
+            <li><span class="width57">{$item->iteration}</span><span class="width369 jhfd">[{$item->category->title}]<a href="{novel_book_link id=$item->id}" class="green" target="_blank">{$item->title}</a><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="gray" target="_blank">{$item->lastchaptertitle}</a></span><span class="width85 green">连载中</span><span class="width84">{$item->wordcount}</span><span class="width111"><a href="#" class="nichen">{$item->author}</a></span></li>
             {/foreach}
         </ul>
         <div class="dirtools">

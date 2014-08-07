@@ -127,7 +127,19 @@ font-size: 14px;}
 .botoomhot a{float:left;margin:0 13px;color:#666;}
 .botoomhot a:hover{color:#f60;}
 
-.footer{height:78px;font-size:12px;text-align:center;}
+.footer{
+line-height: 22px;
+margin: 2em 0;
+text-align: center;
+width:100%;
+height:auto;
+float:left;
+font-size:12px;
+}
+.footer a:link {
+	color:#000;
+	text-decoration: none;
+}
 .copyright{font-size:11px;color:#999; line-height:25px;}
 .copyright a{color:#999}
 .copyright a:hover{color:#f60}

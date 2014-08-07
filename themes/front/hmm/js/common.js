@@ -1,4 +1,4 @@
-//取得一个对象，相当于getElementById()
+﻿//取得一个对象，相当于getElementById()
 function GetObjcet() {
   var elements = new Array();
   for (var i = 0; i < arguments.length; i++) {
@@ -354,15 +354,7 @@ function GetObj(objName){
 	}
 }
 
-//退出书签
-//function bookmark()
-//{
-//if(readCookie("bookmark")!="yes") 
-//{
-//saveCookie("bookmark","yes",1);
-//window.external.AddFavorite('http://www.shushaoye.com', '520xs');
-//}
-//}
+
 
 function saveCookie(name,value,days) {
      if (days) {
@@ -626,5 +618,23 @@ function removebook(k){
 function yuedu(){
 document.writeln("<a href=\"javascript:showbook();\" style=\"font-weight:bold\">阅读记录</a>");
 }
-
 window.lastread = new LastRead();
+
+
+function stb(ta) {
+	if(ta == 1) {
+		$("#li_cur").removeClass("li_cur");
+		$("#li_cur").addClass("li_uncur");
+		$("#li_uncur").removeClass("li_uncur");
+		$("#li_uncur").addClass("li_cur");
+		$("#bookcase").toggle();
+		$("#bookcases").toggle();
+	} else {
+		$("#li_cur").removeClass("li_uncur");
+		$("#li_cur").addClass("li_cur");
+		$("#li_uncur").removeClass("li_cur");
+		$("#li_uncur").addClass("li_uncur");
+		$("#bookcase").toggle();
+		$("#bookcases").toggle();
+	}
+}

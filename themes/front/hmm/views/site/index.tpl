@@ -1,5 +1,4 @@
-﻿
-<link href="{$FW_THEME_URL}/css/book_index.css" rel="stylesheet"/>
+﻿<link href="{$FW_THEME_URL}/css/book_index.css" rel="stylesheet"/>
 <!--container begin-->
 <div	class="container" style="margin-top: 5px;"><!--row_a begin-->
 <div class="row_a clearfix">
@@ -77,3 +76,4 @@
 </dl>
 
 </div>
+{hook name="onSiteIndex"}

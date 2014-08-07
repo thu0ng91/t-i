@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class SiteController extends FWPluginFrontController {
+class HookController extends FWPluginFrontController {
 
     public function actionIndex()
     {
@@ -15,9 +15,9 @@ class SiteController extends FWPluginFrontController {
         $this->render('index');
     }
 
-    public function onRegister(FWHookEvent $evt)
+    public function onSiteIndex()
     {
-//        $this->renderPartial("index");
+        $this->renderPartial("index");
     }
 
 }

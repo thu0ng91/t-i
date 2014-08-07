@@ -37,10 +37,6 @@ class TestnewPlugin extends FWPlugin {
      */
     public function hooks()
     {
-        return array(
-            'member' => array(
-                'beforeRegister' => array('site', 'onRegister'),
-            ),
-        );
+        return array();
     }
 }

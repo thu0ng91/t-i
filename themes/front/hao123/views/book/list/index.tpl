@@ -24,8 +24,8 @@
         *}
         <ul class="clearfix">
 
-            {foreach $list as $item}
-            <li><span class="width57">{$item@iteration}</span><span class="width369 jhfd">[{$category->title}]<a href="{novel_book_link id=$item->id}" class="green" target="_blank">{$item->title}</a><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="gray" target="_blank">{$item->lastchaptertitle}</a></span><span class="width85 green">连载中</span><span class="width84"><a href="{novel_book_download_link id=$item->id}">TXT下载</a></span><span class="width111"><a href="#" class="nichen">{$item->author}</a></span></li>
+            {foreach from=$list item=item name=book}
+            <li><span class="width57">{$smarty.foreach.book.iteration}</span><span class="width369 jhfd">[{$category->title}]<a href="{novel_book_link id=$item->id}" class="green" target="_blank">{$item->title}</a><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="gray" target="_blank">{$item->lastchaptertitle}</a></span><span class="width85 green">连载中</span><span class="width84"><a href="{novel_book_download_link id=$item->id}">TXT下载</a></span><span class="width111"><a href="#" class="nichen">{$item->author}</a></span></li>
             {/foreach}
         </ul>
         <div class="dirtools">

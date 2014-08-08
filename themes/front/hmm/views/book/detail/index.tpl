@@ -30,7 +30,7 @@
 	<a class="a_icon readnow" href="/book/{$book->id}/1.html" target="_blank">开始阅读</a> 
 	<a class="a_icon a_btn" href="{novel_book_download_link id=$book->id}" target="_blank">TXT下载</a>
 	<a class="a_icon view_all" href="javascript:;" onclick="uservote({$book->id})">推荐</a>
-	<a class="a_icon view_all" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a>
+	<a class="a_icon view_bookcase" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a>
 	<span id="added_store" class="a_icon addedshelf" style="display: none;"></span>
 </div>
 <div class="tip_box"><span class="arrow_out"></span> <span
@@ -46,10 +46,10 @@
 </div>
 </div>
 <div class="book_contents">
-<div class="hd">
+<div class="hd clearfix">
 <ul>
-<li><h3><a href="javascript:;" onclick="ta()">最新章节</a></h3></li>
-<li><h3><a href="javascript:;" onclick="ta()">评论</a></h3></li>
+<li><h3><a href="javascript:;" onclick="ta(1)" style="background:#d2e6f5;" id="newchapter">最新章节</a></h3></li>
+<li><h3><a href="javascript:;" onclick="ta(2)" style="background:#f2f2f2;" id="newcomment">评论</a></h3></li>
 </ul>
 </div>
 <div class="bd" id="ted">

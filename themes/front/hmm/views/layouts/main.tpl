@@ -6,6 +6,7 @@
 <title>{$siteinfo->SiteName}</title>
 <meta name="keywords" content="{$keywords|strip_tags}"/>
 <link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 </head>
 <body>
 <!--header begin-->
@@ -64,7 +65,7 @@
     上海云阅信息技术有限公司版权所有
 </div>
 <!--footer end-->
-<script type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
+
 <script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/index.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/common1.js"></script>

@@ -1,6 +1,15 @@
-﻿function ta(){
-	$("#msgBox").toggle();
-	$("#ted").toggle();
+﻿function ta(type){
+	if(type == "1"){
+		document.getElementById('newcomment').style.backgroundColor="#f2f2f2";
+		document.getElementById('newchapter').style.backgroundColor="#d2e6f5";
+		$("#msgBox").hide();$("#ted").show();
+	}else{
+		document.getElementById('newcomment').style.backgroundColor="#d2e6f5";
+		document.getElementById('newchapter').style.backgroundColor="#f2f2f2";
+		$("#msgBox").show();$("#ted").hide();
+		//$("#ted").toggle();
+	}
+	
 }
 
 function changeNum(){

@@ -61,8 +61,13 @@ class FWAdminController extends CController
 
             if (!empty($menus)) {
 //                $this->topMenus[] = $menus['top'];
-                $menus['top']['url'] = Yii::app()->createUrl($menus['top']['url']);
-                $this->moduleMenus[] = $menus['top'];
+
+                if ($installConfig && isset($installConfig['iscore']) && $installConfig['iscore']) {
+                    $this->topMenus[] = $menus['top'];
+                } else {
+                    $menus['top']['url'] = Yii::app()->createUrl($menus['top']['url']);
+                    $this->moduleMenus[] = $menus['top'];
+                }
             }
         }
 

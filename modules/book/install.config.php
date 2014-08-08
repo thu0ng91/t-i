@@ -27,6 +27,10 @@ return array(
                 'url' => 'book/admin/setting/rewrite',
             ),
             array(
+                'label' => '小说静态配置',
+                'url' => 'book/admin/setting/makeHtml',
+            ),
+            array(
                 'label' => '小说缓存配置',
                 'url' => 'book/admin/cacheconfig/index',
             ),

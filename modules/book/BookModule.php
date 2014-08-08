@@ -56,6 +56,7 @@ class BookModule extends FWModule
             if ($m->BookIndexRule) {
                 $r = $m->BookIndexRule;
                 $r = str_replace('{id}', '<id:\d+>', $r);
+                $r = str_replace('{dir}', '<dir:\d+>', $r);
                 $r = array( $r =>  'book/detail/index');
                 Yii::app()->urlManager->addRules($r, false);
             }
@@ -64,6 +65,7 @@ class BookModule extends FWModule
                 $r = $m->BookChapterDetailRule;
                 $r = str_replace('{bookid}', '<bookid:\d+>', $r);
                 $r = str_replace('{id}', '<id:\d+>', $r);
+                $r = str_replace('{dir}', '<dir:\d+>', $r);
                 $r = array( $r =>  'book/chapter/index');
                 Yii::app()->urlManager->addRules($r, false);
             }

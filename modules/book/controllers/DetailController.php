@@ -13,17 +13,17 @@ class DetailController extends FWModuleFrontController
     public function filters() {
         $ret = array();
         if ($this->siteConfig && $this->siteConfig->SiteIsUsedCache && $this->module->cacheConfig && ($this->module->cacheConfig->BookIsCache == 1)) {
-//            $ret[] = array (
-//                'FWOutputCache + index',
-//                'duration' => $this->module->cacheConfig->BookDetailCacheTime,
-//                'varyByParam' => array('id'),
-//                'varyByExpression' => array('FWOutputCache', 'getExpression'),
-//                'dependCacheKey'=> 'book-detail-index' . $_GET['id'],
-////                'dependency' => array(
-////                    'class'=> 'FWCacheDependency',
-////                    'dependCacheKey'=> 'news-category' . $_GET['id'] . $_GET['page'],
-////                )
-//            );
+            $ret[] = array (
+                'FWOutputCache + index',
+                'duration' => $this->module->cacheConfig->BookDetailCacheTime,
+                'varyByParam' => array('id'),
+                'varyByExpression' => array('FWOutputCache', 'getExpression'),
+                'dependCacheKey'=> 'book-detail-index' . $_GET['id'],
+//                'dependency' => array(
+//                    'class'=> 'FWCacheDependency',
+//                    'dependCacheKey'=> 'news-category' . $_GET['id'] . $_GET['page'],
+//                )
+            );
 //            $ret[] = array (
 //                'FWOutputCache + view',
 //                'duration' => 2592000,

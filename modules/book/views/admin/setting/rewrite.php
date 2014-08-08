@@ -23,18 +23,18 @@ $this->pageTitle=Yii::app()->name . ' - 小说连载模块伪静态设置';
 
 <!--      --><?php //echo $form->dropDownListRow($model, 'UrlSuffix', CMap::mergeArray(array('-1' => '请选择'), Yii::app()->params['urlSuffix'])); ?>
       <?php echo $form->textFieldRow($model, 'BookCategoryRule', array(
-          'hint'=> "可用变量：<br /> {pinyin}，表示分类拼音 <br /> 示例：<br /> category/{pinyin} <br /> fenlei/{pinyin}"
+          'hint'=> "可用变量：<br /> {pinyin}表示分类拼音 <br /> 示例：<br /> category/{pinyin} <br /> fenlei/{pinyin}"
       )); ?>
       <?php echo $form->textFieldRow($model, 'BookInfoRule', array(
-          'hint'=> "可用变量：<br /> {id}，表示小说编号 <br />示例：<br /> book/info/{id} <br /> novel/info/{id}"
+          'hint'=> "可用变量：<br /> {id}表示小说编号 <br />示例：<br /> book/info/{id} <br /> novel/info/{id}"
       )); ?>
 
     <?php echo $form->textFieldRow($model, 'BookIndexRule', array(
-        'hint'=> "可用变量：<br /> {id}，表示小说编号 <br />示例：<br /> book/index/{id} <br /> novel/index/{id}"
+        'hint'=> "可用变量：<br /> {id}表示小说编号；{dir} 表示小说编号除以1000取整 <br />示例：<br /> book/index/{id} <br /> novel/index/{id}"
     )); ?>
 
       <?php echo $form->textFieldRow($model, 'BookChapterDetailRule', array(
-          'hint'=> "可用变量：<br /> {bookid}，表示小说编号；{id}，表示小说章节编号 <br />示例：<br /> {bookid}/chapter/{id} <br /> {bookid}/zhangjie/{id}"
+          'hint'=> "可用变量：<br /> {bookid}表示小说编号；{dir} 表示小说编号除以1000取整；{id}，表示小说章节编号 <br />示例：<br /> {bookid}/chapter/{id} <br /> {bookid}/zhangjie/{id}"
       )); ?>
 
     <?php echo $form->textFieldRow($model, 'BookSearchRule', array(

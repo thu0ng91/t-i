@@ -8,7 +8,7 @@
 			<a href="/member/my/photoupload.html" class="user_f">设置头像</a>
 			<a href="/member/my/pwdupdate.html" class="user_f">修改密码</a>
 			<a href="/member/my/bookcase.html" id="user_fcur">我的书架</a>
-			<a href="/member/do/actionLogout" class="user_f">退出登录</a>
+			<a href="/member/do/logout" class="user_f">退出登录</a>
 		</div>
 	</div>
 	<div id="userinfo_right">

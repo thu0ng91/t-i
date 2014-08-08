@@ -51,7 +51,7 @@ class Member extends BaseModel
 		// will receive user inputs.
 		return array(
             array('username,password', 'required'),
-			array('level, vip_level, createtime, updatetime, lastlogintime, status, loginhits', 'numerical', 'integerOnly'=>true),
+			array('avatar, level, vip_level, createtime, updatetime, lastlogintime, status, loginhits', 'numerical', 'integerOnly'=>true),
 			array('username, password, realname, telephone, qq, email', 'length', 'max'=>32),
 			array('address', 'length', 'max'=>200),
 			array('avatar', 'length', 'max'=>50),
@@ -61,7 +61,7 @@ class Member extends BaseModel
 			array('repassword', 'compare', 'compareAttribute'=>'password', 'message' => "两次密码不一致"),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, password, realname, level, vip_level, telephone, qq, email, address, createtime, updatetime, lastlogintime, status, loginhits', 'safe', 'on'=>'search'),
+			array('id, username, password, realname, avatar, level, vip_level, telephone, qq, email, address, createtime, updatetime, lastlogintime, status, loginhits', 'safe', 'on'=>'search'),
 		);
 	}
 

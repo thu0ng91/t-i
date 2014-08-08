@@ -13,13 +13,47 @@ class MyController extends MemberController
     }
 	
      /**
+     * 会员头像获取
+     */
+	public function getAvatar($ava)
+    {	
+    	$avatar = "..".DS."..".DS."uploads/member/".$ava;
+    	return $avatar;
+    }
+    
+     /**
      * 会员信息
      */
 	public function actionInformation()
     {	
+    	$uid = Yii::app()->user->id;
+    	$connection = Yii::app()->db;
+    	$model = Member::model()->findByPk($uid);
+		$this->assign("avatar", $this->getAvatar($model->avatar));//头像
+		$this->assign("realname", $model->realname);
+		$this->assign("qq", $model->qq);
+		$this->assign("email", $model->email);
+		$this->assign("telephone", $model->telephone);
+		$this->assign("address", $model->address);
     	$userinfo = Yii::app()->user->info;
+    	$nsql = "select * from member where id='$userinfo->id'";
+    	$command = $connection->createCommand($nsql);
+    	$result = $command->execute();
     	$this->assign("list", $userinfo);
-        $this->render("information");
+    	if($_POST) {
+    		$sql = "update member set realname='".$_POST['realname']."',
+    		email='".$_POST['email']."',
+    		qq='".$_POST['qq']."',
+    		telephone='".$_POST['telephone']."',
+    		address='".$_POST['address']."'
+    		where id='$userinfo->id'";
+			$command = $connection->createCommand($sql);
+			$result = $command->execute();
+			$this->redirect('/member/my/information');
+    	} else {
+    		 $this->render("information");
+    	}
+    
     }
     
     /**
@@ -27,12 +61,15 @@ class MyController extends MemberController
      */
 	public function actionphotoupload()
     {
-    	$uid = Yii::app()->user->id;
+		$connection = Yii::app()->db;
+    	$uid = Yii::app()->user->id;  //用户ID
+    	$imgsize = 200;  			  //上传图片大小 K 为单位；
     	$model = Member::model()->findByPk($uid);
     	if(null == $model){//如果用户不存在
     		//这里要加上跳转提示
-    		echo '用户不存在';
-    		Yii::app()->end();
+    		$this->redirect('/member/my/information');
+    		echo "<script>alert('用户不存在');</script>";
+    		exit;
     	}
     	if($_FILES){
     		if (!file_exists('uploads')){
@@ -40,18 +77,30 @@ class MyController extends MemberController
     		} else {
     			if (!file_exists('uploads/member')){
     				mkdir ("uploads/member"); 
-    			} else {
+    			} else { 
 	            	$filename = $_FILES['userimg']['name'];//获取文件名
-					//$filesize = $file->getSize();//获取文件大小
-					//$filetype = $file->getType();//获取文件类型
-					$filename1 = iconv("utf-8", "gb2312", $filename);//这里是处理中文的问题，非中文不需要
-					$filename1 = $model->id . $filename1;
+	            	$filesize = $_FILES['userimg']['size'];//获取文件大小
+	            	if($filesize / 1000 >=$imgsize ) {
+	            		$this->render("photoupload");
+	            		echo "<script>alert('图片大小不能超过$imgsize');</script>";
+	            		exit;
+	            	}
+				 	$filename1 = substr($filename, -5);
+				 	$filename1 = preg_replace('/\W/','',$filename1);
+				 	$filename1 = preg_replace('/1-9/','',$filename1);
+					preg_match("/(jpg)|(jpeg)|(png)|(gif)/", $filename1,$s);
+					if(!$s) {
+						$this->render("photoupload");
+	            		echo "<script>alert('图片类型有误');</script>";
+	            		exit;
+					}
+					$filename1 = $uid . "." . $s[0];
     				$uploadPath = "uploads/member/";
 					$uploadfile = $uploadPath.$filename1;
 					move_uploaded_file($_FILES["userimg"]["tmp_name"],$uploadPath .$filename1);
-					$model->avatar = $filename1;
-    				$model->save();
-    				var_dump($model->getErrors());exit;
+					$sql = "update member set avatar='$filename1' where id='$uid'";
+					$command = $connection->createCommand($sql);
+					$result = $command->execute();
 					$this->redirect('/member/my/information');
     			}
     		}
@@ -64,6 +113,34 @@ class MyController extends MemberController
      */
 	public function actionpwdupdate()
     {
+    	$db = Yii::app()->db;
+    	$uid = Yii::app()->user->id;
+    	$model = Member::model()->findByPk($uid);
+    	if($_POST) {
+    		if($model->password == H::encrpyt($_POST['opwd'])) {
+    			if($_POST['npwd'] == null){
+    				$this->render('pwdupdate');
+            		echo "<script>alert('新密码不能为空');</script>";
+            		exit;
+    			}
+    			if($_POST['npwd'] == $_POST['rpwd']) {
+    				$sql = "update member set password='".H::encrpyt($_POST['npwd'])."' where id='$uid'";
+    				$command = $db->createCommand($sql);
+    				$result = $command->execute();
+    				$this->render('pwdupdate');
+    			} else {
+    				$this->render('pwdupdate');
+            		echo "<script>alert('新密码两次不相同');</script>";
+            		exit;
+    			}
+    		} else {
+    			$this->render('pwdupdate');
+            	echo "<script>alert('当前密码错误');</script>";
+            	exit;
+    		}
+    		$this->redirect('/member/my/information');
+            exit;
+    	}
         $this->render("pwdupdate");
     }
     

@@ -1,9 +1,12 @@
-
 <link href="{$FW_THEME_URL}/css/sty1.css" rel="stylesheet">
 <link href="{$FW_THEME_URL}/css/footer.css" rel="stylesheet" type="text/css"/>
 <link href="{$FW_THEME_URL}/css/directory.css" rel="stylesheet" type="text/css"/>
 <link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
-<script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
+<script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
+<script type="text/javascript" src="js/xs.js"></script>
+
 <div class="main myset"><script>show_pagetop();</script></div>
 
 <div id="a_main">
@@ -102,5 +105,4 @@
     {/literal}
 </script>
 
-<script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
-<script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>

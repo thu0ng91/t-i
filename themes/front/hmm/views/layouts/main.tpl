@@ -43,6 +43,7 @@
 {/novel_menu}
 <li><a href="{novel_lastupdate_link}">最新更新</a></li>
 <li><a href="{novel_rank_link}">小说排行榜</a></li>
+<li><a href="/member/my/information.html">个人中心</a></li>
 </ul>
 </div>
 <!--nav_other end-->

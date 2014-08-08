@@ -49,11 +49,12 @@ $(function(){
 				}
 				var conBox = $("#conBox").val();
 				//var oLi = document.createElement("li");
-				var oLi=$("<li></li>");
+				var oLi=$("#insertcomment");
 				var imgSrc = $("#user_avatar").attr("src");
 				var oDate = new Date();
-				oLi.html("<div class='userPic'><img src='" + imgSrc + "'/></div><div class='content' style='text-align:left'><div class='userName'>" + userName + ":</div><div class='msgInfo'>" + conBox + "</div><div class='times'><span>" + format((oDate.getMonth() + 1)) + "月" + format(oDate.getDate()) + "日 " + format(oDate.getHours()) + ":" + format(oDate.getMinutes()) + "</span></div></div>");
-				
+				//oLi.html("<div class='userPic'><img src='" + imgSrc + "'/></div><div class='content' style='text-align:left'><div class='userName'>" + userName + ":</div><div class='msgInfo'>" + conBox + "</div><div class='times'><span>" + format((oDate.getMonth() + 1)) + "月" + format(oDate.getDate()) + "日 " + format(oDate.getHours()) + ":" + format(oDate.getMinutes()) + "</span></div></div>");
+				oLi.html("<div class='comment_content' id='comment'><div class='c_block'></div><div class='comment_user'><img src='" + imgSrc + "'><br>" + userName + "</div><div class='comment_message' id='message'>" + conBox + "<div class='reply'>" + format((oDate.getMonth() + 1)) + "月" + format(oDate.getDate()) + "日 " + format(oDate.getHours()) + ":" + format(oDate.getMinutes()) + "</div></div></div>");
+						
 				var maxNum = 140;
 				$(".tr span").html("<span class='coutTxt'>还能输入</span><strong class='maxNum'>" + maxNum + "</strong><span>个字</span>");
 				if($(".list ul li").length == 0){
@@ -77,6 +78,3 @@ $(function(){
 			})
 				
 		});
-
-//1、css3样式，目前ie浏览器不支持css3，pie.htc文件可使ie兼容css3; 
-//2、js效果：文本框、头像获取焦点  文本框字数限制和提示改变  动态添加内容

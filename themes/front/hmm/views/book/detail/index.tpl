@@ -99,36 +99,37 @@
 </div>
 </div>
 <!--评论-->
-<link href="{$FW_THEME_URL}/css/comment.css" rel="stylesheet" type="text/css">
+<link href="{$FW_THEME_URL}/css/comment.css?123" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="{$FW_THEME_URL}/js/comment.js"></script>
-<div id="msgBox" class="radius">
+
+<div id="msgBox" class="radius clearfix">
+<div id="comment" class="comment_view">
+	<h3><a href="" target="_blank">更多书评»</a>《{$book->title}》最新评论</h3>
+	<div id="insertcomment"></div>
+	{foreach from=$commends item=commend}
+	<div class="comment_content" id="comment">
+		<div class="c_block"></div>
+		<div class="comment_user"><img src="{$FW_THEME_URL}/images/avatar.bmp"><br>{$commend->username}</div>
+		<div class="comment_message" id="message">{$commend->content}<div class="reply">{$commend->dateline|date_format:'m月d日 H:i'}</div></div>
+	</div>
+	{/foreach}
+	
 	<form>
-		<img src="{$FW_THEME_URL}/images/avatar.bmp" style="display:none;" id="user_avatar" />
-         <div><textarea id="conBox" class="f-text radius" oninput="changeNum(event)" onpropertychange="changeNum(event)" ></textarea></div>
+         <div>
+         	<textarea style="float:left;" id="conBox" class="f-text radius" oninput="changeNum(event)" onpropertychange="changeNum(event)" ></textarea>
+         	<p style="float:right;width: 210px;padding-left: 10px;">请大家认真评书，禁止灌水，刷分等，发现后扣除所发书评的所有积分。</p>
+         </div>
          <div class="tr">
             <p>
                <span><i class="countTxt">还能输入</i><strong class="maxNum">140</strong><i>个字</i></span>
                 <input id="sendBtn" type="button" value="" title="快捷键 Ctrl+Enter"  />
                 <input id="userName" type="hidden" value="{$username}" />
                 <input id="bookid" type="hidden" value="{$book->id}" />
+                <img src="{$FW_THEME_URL}/images/avatar.bmp" style="display:none;" id="user_avatar" />
             </p>
         </div>
     </form>
-    <div class="list">
-        <h3><span>共计<i style="color:red">{$count_commends}</i> 条评论</span></h3>
-        <ul>
-        	 {foreach from=$commends item=commend}
-        	 	<li>
-        	 		<div class="userPic"><img src="{$FW_THEME_URL}/images/avatar.bmp"></div>
-	        	 	<div class="content" style="text-align:left">
-		        	 	<div class="userName">{$commend->username}:</div>
-		        	 	<div class="msgInfo">{$commend->content}</div>
-		        	 	<div class="times"><span>{$commend->dateline|date_format:'m月d日 H:i'}</span></div>
-	        	 	</div>
-        	 	</li>
-        	 {/foreach}
-        </ul>
-    </div>	
+</div>
 </div>
 <!--评论结束-->
 <!--book_intro end--> <!--book_img beigin-->

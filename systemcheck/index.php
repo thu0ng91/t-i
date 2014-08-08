@@ -102,7 +102,7 @@ function checkGD()
 function checkRewrite()
 {
   if (extension_loaded('curl')) {
-    $url = 'http://'.$_SERVER['SERVER_NAME'] . $_SERVER["REQUEST_URI"];
+    $url = 'http://'.$_SERVER['HTTP_HOST'] . $_SERVER["REQUEST_URI"];
 
     $t = explode("systemcheck", $url);
 

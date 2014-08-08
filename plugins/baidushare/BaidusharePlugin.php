@@ -1,8 +1,8 @@
 <?php
 /**
- * Class TestnewPlugin
+ * Class BaidusharePlugin
  */
-class TestnewPlugin extends FWPlugin {
+class BaidusharePlugin extends FWPlugin {
 
     /**
      * 安装时调用
@@ -37,6 +37,8 @@ class TestnewPlugin extends FWPlugin {
      */
     public function hooks()
     {
-        return array();
+        return array(
+            'onBookIndexShare' => array('hook', 'onBookIndexShare'),
+        );
     }
 }

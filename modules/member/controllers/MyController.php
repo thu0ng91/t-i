@@ -50,7 +50,6 @@ class MyController extends MemberController
 					$uploadfile = $uploadPath.$filename1;
 					move_uploaded_file($_FILES["userimg"]["tmp_name"],$uploadPath .$filename1);
 					$model->avatar = $filename1;
-					echo $model->avatar;  //输出  QQͼƬ20140614112850.jpg
     				$model->save();
     				var_dump($model->getErrors());exit;
 					$this->redirect('/member/my/information');

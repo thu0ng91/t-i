@@ -34,9 +34,9 @@ class FWPlugin extends CApplicationComponent{
         $hook = $this->hooks();
 
         foreach ($hook as $n => $v) {
-            foreach ($v as $p => $v1) {
-                FWHook::install($n, $p, $m, strtolower($v[0]), $v[1]);
-            }
+//            foreach ($v as $p => $v1) {
+                FWHook::install($n, $m, strtolower($v[0]), $v[1]);
+//            }
         }
     }
     

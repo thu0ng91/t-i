@@ -32,6 +32,12 @@ function _compile_novel_block_start($tag, $tag_args, &$compiler)
     	case 'novel_category':
             $fn = '_fw_get_book_category_list';
     		break;
+        case 'novel_notice':
+            $fn = '_fw_get_book_notice_list';
+            break;
+        case 'novel_friendlink':
+            $fn = '_fw_get_book_friendlink_list';
+            break;
         default:
             $compiler->trigger_error("$tag tag don't support!");
             return;
@@ -636,4 +642,91 @@ function _fw_get_book_rank_list($params)
 }
 
 
+/**
+ * 内部函数
+ * 获取公告信息
+ * @param array $params
+ * @return array
+ */
+function _fw_get_book_notice_list($params)
+{
+    if (!Yii::app()->hasModule("notice")) {
+        return array();
+    }
+
+    Yii::import("notice.models.*");
+
+    if (isset($params['limit'])) {
+        $limit = intval($params['limit']);
+    } else {
+        $limit = 10;
+    }
+
+    $sql = "select * from notice where status=1 order by id desc limit " . $limit ;
+
+    $db = Yii::app()->db;
+
+    $cmd = $db->createCommand($sql);
+
+    $list = $cmd->queryAll();
+
+    $newList = array();
+
+    foreach ($list as $v) {
+        $v = (Object)$v;
+        $newList[] = $v;
+    }
+
+    unset($list);
+
+    foreach ($newList as $k => $v) {
+        $v->url =  Yii::app()->createUrl('notice/detail/index', array('id' => $v->id));
+    }
+
+    return $newList;
+}
+
+/**
+ * 内部函数
+ * 获取友情链接信息
+ * @param array $params
+ * @return array
+ */
+function _fw_get_book_friendlink_list($params)
+{
+    if (!Yii::app()->hasModule("friendlink")) {
+        return array();
+    }
+
+    Yii::import("friendlink.models.*");
+
+    if (isset($params['limit'])) {
+        $limit = intval($params['limit']);
+    } else {
+        $limit = 10;
+    }
+
+    $sql = "select * from friendlink where status=1 order by sequence desc limit " . $limit ;
+
+    $db = Yii::app()->db;
+
+    $cmd = $db->createCommand($sql);
+
+    $list = $cmd->queryAll();
+
+    $newList = array();
+
+    foreach ($list as $v) {
+        $v = (Object)$v;
+        $newList[] = $v;
+    }
+
+    unset($list);
+
+//    foreach ($newList as $k => $v) {
+//        $v->url =  Yii::app()->createUrl('notice/detail/index', array('id' => $v->id));
+//    }
+
+    return $newList;
+}
 ?>

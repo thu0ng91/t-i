@@ -7,7 +7,6 @@
     {*<meta name="author" content="Joychao <joy@joychao.cc>">*}
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 <link class="bootstrap library" rel="stylesheet" type="text/css" href="{$FW_THEME_URL}/css/bootstrap.min.css">
 <script class="bootstrap library" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js" type="text/javascript"></script>

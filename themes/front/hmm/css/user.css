@@ -1,7 +1,6 @@
 #btod{
 	width:100%;
 	height:500px;
-	background: url("../images/diwen.png");
 }
 #user{
 	width:990px;
@@ -9,21 +8,37 @@
 	margin: 0 auto;
 	text-align:center;
 }
+#user_head {
+	width:182px;
+	height:94px;
+	padding:8px;
+	border:1px solid #D9D7D8;
+	border-bottom:0px;
+}
 #userinfo_left{
+	border-bottom:0px;
 	margin-top:10px;
 	text-align:left;
 	background-color:white;
 	float:left;
-	width:250px;
-	height:170px;
+	width:200px;
+	height:auto;
 }
 #title{
+	color:#000;
 	font-size:18px;
 	margin-left:10px;
-	color:#2f96e3;
-	background: url('../images/xiaotupiao.png') no-repeat;
-	background-position: 2px 7px;
-	padding-left:25px;
+	height:38px;
+	line-height:38px;
+	display:block;
+	border-right:1px solid #D9D7D8;
+	border-top:1px solid #D9D7D8;
+}
+#titleimg {
+	float:left;
+	width:37px;
+	height:40px;
+	background: url('../images/yonghu.png') no-repeat;
 }
 #user_cur a:link {
     color:#000;
@@ -31,49 +46,86 @@
 }
 
 #user_cur a:hover {
-	color:white;
-	font-size:14px;
-	margin-top:7px;
-	display:block;
-	padding-left:30px;
-	border-left:10px solid #88b729;
-	background-color:#9bc43c;
+	color:#4991E6;
 	text-decoration:none;
-    }
-#user_fcur{
-	color:white;
-	font-size:14px;
-	margin-top:7px;
-	display:block;
-	padding-left:30px;
-	border-left:10px solid #88b729;
-	background-color:#9bc43c;
+}
+#user_cur span{
+	margin-right:12px;
+	margin-left:18px;
+	height:20px;
+	width:20px;
+	float:left;
+}
+
+#user_cur div{
+	background-color:#F7F6F4;
+	width:199px;
+	border-top:1px solid #D9D7D8;
+}
+#img1 {
+	margin-top:12px;
+	background: url('../images/yonghu.png') no-repeat;
+	background-position: 0px -50px;
+}
+#img2 {
+	margin-top:10px;
+	background: url('../images/yonghu.png') no-repeat;
+	background-position: -1px -131px;
+}
+#img3 {
+	margin-top:10px;
+	background: url('../images/yonghu.png') no-repeat;
+	background-position: 0px -75px;
+}
+#img4 {
+	margin-top:10px;
+	background: url('../images/yonghu.png') no-repeat;
+	background-position: -1px -243px;
+}
+#img5 {
+	margin-top:12px;
+	background: url('../images/yonghu.png') no-repeat;
+	background-position: 0px -105px;
 }
 .user_f{
 	font-size:14px;
-	margin-top:7px;
 	display:block;
-	padding-left:40px;
+	height:40px;
+	line-height:40px;
+	border-right:1px solid #D9D7D8;
+}
+#user_fcur {
+	color:#4991E6;
+	border-right:0px;
+	height:40px;
+	line-height:40px;
+	background-color:white;
+	font-size:14px;
+	display:block;
 }
 
 #userinfo_right{
-	width:720px;
+	width:788px;
 	height:500px;
 	text-align:left;
 	margin-top:10px;
 	float:right;
-
+	border-right:1px solid #D9D7D8;
+	border-bottom:1px solid #D9D7D8;
 }
 #user_title{
-	margin-left:20px;
-	border:1px solid #a3a3a3;
-	border-bottom:none;
-	color:#3c3c3c;
-	width:120px;
-	height:25px;
+	width:740px;
+	margin-left:-2px;
+	padding-left:50px;
+	height:40px;
+	line-height:40px;
+	border:1px solid #D9D7D8;
+	border-left:0px;
 	font-size:18px;
-	text-align:center;
-	background-color:white;
+}
+#user_cur {
+	border-bottom:1px solid #D9D7D8;
+	border-left:1px solid #D9D7D8;
 }
 #user_title_bookcase
 {
@@ -111,43 +163,66 @@
 #user_tconter{
 	font-size: 14px;
 	margin-left: 18px;
-	width: 684px;
+	width: 755px;
 	height: 385px;
-	background-color: #E8E8E8;
 }
 .user_ceet{
-	border:1px solid white;
-	width:180px;
+	margin-top:5px;
+	width:120px;
 	float:left;
 	text-align:right;
 	height:30px;
 	line-height:30px;
+	border:1px solid white;
 }
 .user_seec{
-	border:1px solid white;
-	height:30px;
-	width:500px;
+	margin-top:5px;
+	height:32px;
+	width:300px;
 	float:right;
 }
 .user_imt{
 	background-color:#F0FECB;
 	border:1px solid white;
-	width:180px;
+	width:60px;
 	float:left;
 	text-align:right;
-	height:100px;
-	line-height:100px;
+	height:60px;
+	line-height:60px;
+}
+.user_imgt{
+	width:60px;
+	float:right;
+	height:60px;
+	line-height:60px;
+	margin-right:200px;
 }
 .user_imts{
-	background-color:#F0FECB;
-	border:1px solid white;
-	height:100px;
-	width:500px;
+	margin-right:30px;
 	float:right;
 }.user_imts img{
 	margin-left:6px;
 	height:100px;
+	width:120px;
 	float:left;
+}
+.imgs{
+	margin-left:6px;
+	height:100px;
+	width:120px;
+	float:left;
+}
+.user_texs {
+	width:60%;
+}
+.user_tom{
+	margin-top: -137px;
+	float: left;
+	width: 1px;
+	height: 195px;
+	margin-left: -2px;
+	border-left: 1px solid #D9D7D8;
+	border-bottom: 1px solid #D9D7D8;
 }
 .user_seec input{
 	float:left;
@@ -156,9 +231,7 @@
 	height:22px;
 }
 #subd{
-	border:1px solid white;
 	float:left;
-	background-color:#F3F3F3;
 	height:130px;
 	width:682px;
 }
@@ -166,13 +239,14 @@
 	cursor:pointer;
 	margin-left:42%;
 	margin-top:50px;
-	color:white;
+	font-weight:900;
+	color:#000;
 	font-size:18px;
 	border:0;
-	height:40px;
+	height:42px;
 	width:123px;
-	background: url('../images/xiaotupiao.png') no-repeat;
-	background-position: 0px -20px;
+	background: url('../images/yonghu.png') no-repeat;
+	background-position: 0px -160px;
 }
 #uimg{
 	height:25px;
@@ -193,4 +267,85 @@ table tr td{
 table tr th{
 	font-size:16px;
 	height:40px;
+}
+
+.userxx {
+	padding-left:10px;
+	color:#5995BA;
+	float:left;
+	width:100px;
+	overflow:hidden;
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+}
+#userid {
+	height:40px;
+	width:192px;
+	float:right;
+}
+.user_pwd {
+	width:700px;
+	height:140px;
+	background-color:#E8E8E8
+}
+.user_pwd input{
+	font-size:16px;
+	margin-top:6px;
+	width:400px;
+	height:31px;
+	float:left;
+}
+.user_pwd span{
+	width:539px;
+	height:45px;
+	float:left;
+	border-bottom:1px solid white;
+}
+.user_ie{
+	width:100%;
+	height:40px;
+}
+.user_im{
+	width:100%;
+	height:100px;
+}
+.user_im p{
+	float:left;
+	height:100px;
+	line-height:100px;
+	width:150px;
+	text-align:right;
+}
+.user_ie p{
+	padding:5px;
+	border-right:1px solid white;
+	border-bottom:1px solid white;
+	float:left;
+	height:35px;
+	line-height:35px;
+	width:150px;
+	text-align:right;
+}
+.user_ce {
+	margin-top:5px;
+	float:left;
+	height:35px;
+	line-height:35px;
+	width:150px;
+	text-align:right;
+}
+#imgu{
+	float:left;
+	width:200px;
+	height:20px;
+}
+#imgt{
+	float:left;
+	width:200px;
+	height:90px;
+}
+#im_left {
+	float:left;
+	
 }

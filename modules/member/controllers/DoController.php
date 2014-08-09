@@ -45,8 +45,8 @@ class DoController extends FWFrontController
      */
     public function actionLogout()
     {
-        Yii::app()->user->logout();echo 1;
-        $this->redirect('/member/do/login');
+        Yii::app()->user->logout();
+        $this->renderPartial('login');
     }
 
     /**

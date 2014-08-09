@@ -51,7 +51,7 @@ class Member extends BaseModel
 		// will receive user inputs.
 		return array(
             array('username,password', 'required'),
-			array('avatar, level, vip_level, createtime, updatetime, lastlogintime, status, loginhits', 'numerical', 'integerOnly'=>true),
+			array('gender, level, vip_level, createtime, updatetime, lastlogintime, status, loginhits', 'numerical', 'integerOnly'=>true),
 			array('username, password, realname, telephone, qq, email', 'length', 'max'=>32),
 			array('address', 'length', 'max'=>200),
 			array('avatar', 'length', 'max'=>50),
@@ -89,6 +89,7 @@ class Member extends BaseModel
 			'realname' => '真实姓名',
 			'level' => '会员等级',
 			'avatar' => '头像',
+			'gender' => '性别',
 			'vip_level' => '会员VIP等级',
 			'telephone' => '电话',
 			'qq' => 'QQ',
@@ -142,6 +143,7 @@ class Member extends BaseModel
 		$criteria->compare('realname',$this->realname,true);
 		$criteria->compare('level',$this->level);
 		$criteria->compare('avatar',$this->avatar);
+		$criteria->compare('gender',$this->gender);
 		$criteria->compare('vip_level',$this->vip_level);
 		$criteria->compare('telephone',$this->telephone,true);
 		$criteria->compare('qq',$this->qq,true);

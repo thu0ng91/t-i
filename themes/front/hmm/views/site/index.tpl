@@ -67,13 +67,9 @@
 
 
 </div>
-
-
 <dl class="famous clearfix" style="border: none">
 	<dt>友情连接：</dt>
 	<a href="http://www.txt2013.com" target="_blank">万书网</a>
 	<dd></dd>
 </dl>
-
 </div>
-{hook name="onSiteIndex"}

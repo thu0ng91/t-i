@@ -26,9 +26,19 @@ class MyController extends MemberController
      */
 	public function actionInformation()
     {	
-    	$uid = Yii::app()->user->id;
     	$connection = Yii::app()->db;
+    	$uid = Yii::app()->user->id;
     	$model = Member::model()->findByPk($uid);
+    	$this->assign("uid", $uid);
+    	$this->assign("username", $model->username);
+    	
+    	if($model->vip_level == 1) {
+    		$this->assign("level", "黄金会员");
+    	} else {
+    		$this->assign("level", "青铜会员");
+    	}
+
+    	$this->assign("gender", $model->gender);
 		$this->assign("avatar", $this->getAvatar($model->avatar));//头像
 		$this->assign("realname", $model->realname);
 		$this->assign("qq", $model->qq);
@@ -43,6 +53,7 @@ class MyController extends MemberController
     	if($_POST) {
     		$sql = "update member set realname='".$_POST['realname']."',
     		email='".$_POST['email']."',
+    		gender='".$_POST['gender']."',
     		qq='".$_POST['qq']."',
     		telephone='".$_POST['telephone']."',
     		address='".$_POST['address']."'
@@ -62,9 +73,18 @@ class MyController extends MemberController
 	public function actionphotoupload()
     {
 		$connection = Yii::app()->db;
-    	$uid = Yii::app()->user->id;  //用户ID
-    	$imgsize = 200;  			  //上传图片大小 K 为单位；
+   		$uid = Yii::app()->user->id;
     	$model = Member::model()->findByPk($uid);
+    	$this->assign("uid", $uid);
+    	$this->assign("username", $model->username);
+    	$this->assign("avatar", $this->getAvatar($model->avatar));//头像
+    	
+    	if($model->vip_level == 1) {
+    		$this->assign("level", "黄金会员");
+    	} else {
+    		$this->assign("level", "青铜会员");
+    	}
+    	$imgsize = 200;  			  //上传图片大小 K 为单位；
     	if(null == $model){//如果用户不存在
     		//这里要加上跳转提示
     		$this->redirect('/member/my/information');
@@ -116,6 +136,15 @@ class MyController extends MemberController
     	$db = Yii::app()->db;
     	$uid = Yii::app()->user->id;
     	$model = Member::model()->findByPk($uid);
+    	$this->assign("uid", $uid);
+    	$this->assign("username", $model->username);
+    	$this->assign("avatar", $this->getAvatar($model->avatar));//头像
+    	
+    	if($model->vip_level == 1) {
+    		$this->assign("level", "黄金会员");
+    	} else {
+    		$this->assign("level", "青铜会员");
+    	}
     	if($_POST) {
     		if($model->password == H::encrpyt($_POST['opwd'])) {
     			if($_POST['npwd'] == null){
@@ -149,9 +178,18 @@ class MyController extends MemberController
      */
     public function actionBookcase()
     {
+    	$uid = Yii::app()->user->id;
+    	$model = Member::model()->findByPk($uid);
+    	$this->assign("uid", $uid);
+    	$this->assign("username", $model->username);
+    	$this->assign("avatar", $this->getAvatar($model->avatar));//头像
     	
+    	if($model->vip_level == 1) {
+    		$this->assign("level", "黄金会员");
+    	} else {
+    		$this->assign("level", "青铜会员");
+    	}
         $db = Yii::app()->db;
-	
         $sql = "select
                 b.title,b.lastchapterid,b.lastchaptertitle,mb.id,mb.lastviewtime,mb.book_id
                 from book b, bookcase mb where mb.book_id=b.id and mb.userid=:memberid and mb.status=1

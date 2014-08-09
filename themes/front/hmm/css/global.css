@@ -1,6 +1,6 @@
 ﻿@charset "utf-8";
 html,body,p,dl,dt,dd,table,td,th,input,img,form,div,span,ul,ol,li,h1,h2,h3,h4,h5,h6,select,fieldset,fieldset,input,button,sub,sup,textarea{margin:0;padding:0;}
-body{color:#666;background:#fbfbfb;word-wrap:break-word;word-break:break-all;font-family: "Microsoft YaHei" ,"微软雅黑", "宋体";}
+body{color:#666;background:white;word-wrap:break-word;word-break:break-all;font-family: "Microsoft YaHei" ,"微软雅黑", "宋体";}
 h1,h2,h3,h4,h5,h6{font-size:100%;}
 em,b,i,cite,sub,sup{font-style:normal;font-weight:100;}
 a{text-decoration:none;color:#333;outline:none;}

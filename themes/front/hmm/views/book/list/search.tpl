@@ -1,130 +1,126 @@
-{* 分类属性 *}
+<link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet" />
+<link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
+<!--container begin-->
+<div class="container clearfix">
+<div class="col_a"><!--rec_book begin-->
 
-<div class="listcon clearfix">
-    <div class="listconl">
-        <div class="listconltop">
-            <h5 class="current">关键字 “{$keyword|strip_tags}” 共找到{$pages->itemCount}个搜索结果</h5>
-        </div>
-        <div class="listconltop">
-            <span class="width57">序号</span><span class="width369">小说类别/小说书名/小说章节</span><span class="width85">状态</span><span class="width84">字数</span><span class="width111">小说作者</span>
-        </div>
-        {*
-        <div class="dirtools">
-            <div class="pages">
-                <a href="/index/type-qihuan/index.html">首页</a><a href="/index/type-qihuan/index.html">上一页</a><strong>1</strong><a href="/index/type-qihuan/index_2.html" title="第2页">2</a><a href="/index/type-qihuan/index_3.html" title="第3页">3</a><a href="/index/type-qihuan/index_4.html" title="第4页">4</a><a href="/index/type-qihuan/index_5.html" title="第5页">5</a><a href="/index/type-qihuan/index_6.html" title="第6页">6</a><a href="/index/type-qihuan/index_7.html" title="第7页">7</a><a href="/index/type-qihuan/index_8.html" title="第8页">8</a><a href="/index/type-qihuan/index_2.html">下一页</a><a target="_self" href="/index/type-qihuan/index_30.html">尾页</a>
-            </div>
-        </div>
-        *}
-        <ul class="clearfix">
+<!--rec_book end--> <!--cata_book begin-->
+<div class="mod_box cata_book">
+<div class="mod_hd clearfix">
+<h3 class="tit">关键字 “{$keyword|strip_tags}” 共找到{$pages->itemCount}个搜索结果</h3>
+</div>
+<div class="mod_bd">
+<div class="book_list lazyload_box">
+	<ul class="clearfix">
+	{foreach from=$list item=item}
+		<li>
+		<div class="imgbox">
+			<a href="{novel_book_link id=$item->id}" target="_blank"> 
+			<img width="90" height="118" src="{$item->coverImageUrl}"	alt="{$item->title}" title="{$item->title}" />
+			 <span class="txt_bg">
+			{if $item->flag == 1}连载 {else}完结 {$item->wordcount}万{/if}
+			</span>
+			</a>
+		</div>
+		<dl class="info">
+			<dt>
+				<a class="sub_link" href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:16:"...":true}</a>
+			</dt>
+			<dd>作者：<span>	{$item->author}</span></dd>
+			<dd>更新到：
+				<span>
+					<a class="more" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" target='_blank'>
+						 {$item->lastchaptertitle}</a>
+				</span>
+			
+				</dd>
+			<dd class="desc">{$item->summary|truncate:66:"...":true}&nbsp;
+			<a class="more" href="{novel_book_link id=$item->id}" title="{$item->title}" target="_blank">详细&gt;&gt;</a>
+			</dd>
+		</dl>
+		</li>
+		{/foreach}
+	</ul>
+	
 
-            {foreach from=$list item=item}
-            <li><span class="width57">{$item->iteration}</span><span class="width369 jhfd">[{$item->category->title}]<a href="{novel_book_link id=$item->id}" class="green" target="_blank">{$item->title}</a><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="gray" target="_blank">{$item->lastchaptertitle}</a></span><span class="width85 green">连载中</span><span class="width84">{$item->wordcount}</span><span class="width111"><a href="#" class="nichen">{$item->author}</a></span></li>
-            {/foreach}
-        </ul>
+</div>
         <div class="dirtools">
             {if $pages->pageCount > 1}
-            <div class="pages">
-                {widget name="CLinkPager" pages=$pages firstPageLabel="1" lastPageLabel=$pages->pageCount header="" prevPageLabel="<<" nextPageLabel=">>"}
-                {*
-                <a href="/index/type-qihuan/index.html">首页</a><a href="/index/type-qihuan/index.html">上一页</a><strong>1</strong><a href="/index/type-qihuan/index_2.html" title="第2页">2</a><a href="/index/type-qihuan/index_3.html" title="第3页">3</a><a href="/index/type-qihuan/index_4.html" title="第4页">4</a><a href="/index/type-qihuan/index_5.html" title="第5页">5</a><a href="/index/type-qihuan/index_6.html" title="第6页">6</a><a href="/index/type-qihuan/index_7.html" title="第7页">7</a><a href="/index/type-qihuan/index_8.html" title="第8页">8</a><a href="/index/type-qihuan/index_2.html">下一页</a><a target="_self" href="/index/type-qihuan/index_30.html">尾页</a>
-                *}
+            <div class="page">
+                {widget name="CLinkPager" pages=$pages firstPageLabel="1" lastPageLabel=$pages->pageCount header="" prevPageLabel="上一页" nextPageLabel="下一页"}
             </div>
             {/if}
         </div>
-    </div>
-    <div class="w262">
-        <div class="crtitbox">
-            <div class="tittwo">
-                <h2>热门排行</h2>
-                <ul>
-                    <li class="cur">日</li>
-                    <li>周</li>
-                    <li>月</li>
-                </ul>
-            </div>
-        </div>
-        <div class="crconsbox">
-	{php}
-	$this->assign("dwm", array("day", "week", "month"));
-	{/php}
-       {foreach from=$dwm item=v name="rank"} 
-            <div{if !$smarty.foreach.rank.first} class="hidden"{/if}>
-            {novel_book_rank order=$v limit=12}
-            {if $block.first}
-                <div class="cimgsfont">
-                    <a class="imgcss" href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
-                    <h3><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h3>
-                    作者：{$item->author}
-                    <p>
-                        {$item->summary|trim|truncate:15:'...'}
-                    </p>
-                </div>
-                <ol class="clearfix olcrwrap">
-            {/if}
-                    <li><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
-            {if $block.last}
-                </ol>
-            {/if}
-            {/novel_book_rank}
-            </div>
-        {/foreach}
 
-        </div>
-        <div class="lbline708">
-        </div>
-        <div class="clearfix l_rboxone">
-        {novel_book}
-            {if $block.first}
-            <ul class="clearfix ritemone">
-            {/if}
-            {if $block.index < 2}
-                {*if $block.first*}
-                <li><a href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"></a>
-                <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
-                <p>
-                    {$item->summary|trim|truncate:15:'...'}
-                </p>
-                </li>
-                {*/if*}
-            {/if}
-            {if $block.index == 2}
-            </ul>
-            {/if}
-            {if $block.index < 2 && $block.last}
-            </ul>
-            {/if}
-            {if $block.index == 2 && $block.total > 2}
-            <ul class="clearfix ritemtwo">
-            {/if}
-            {if $block.index >=2}
-                <li><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
-            {/if}
-            
-            {if $block.index > 2 && $block.last}
-            </ul>
-            {/if}
-        {/novel_book}
-        </div>
-        <div class="lbline708">
-        </div>
-        {*
-        <div class="l_rboxtwo">
-            <h2 class="rtitone">其他人也喜欢</h2>
-            <div class="clearfix ritemthree">
-                <a href="/intro/41283" target="_blank"><img src="http://imgs.imgshao123.net/UploadFile/2013530/20130530045716411641.jpg" alt=" 番外篇之连若水">校花的贴身保镖</a><a href="/intro/13211610" target="_blank"><img src="http://imgs.imgshao123.net/UploadFile/201377/20130707180432763276.jpg" alt="第863章 雷霆之势">风流医圣</a><a href="/intro/13043" target="_blank"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422124617491749.jpg" alt=" 第一百八十九章 尾声">穿越笑傲江湖</a><a href="/intro/37999" target="_blank"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422144535533553.jpg" alt="完本感言（新书《逆火》已发布！）">少女契约之书</a><a href="/intro/35477" target="_blank"><img src="http://imgs.imgshao123.net/UploadFile/2013529/20130529163662306230.jpg" alt="第2688章 说客">超级兵王</a><a href="/intro/35497" target="_blank"><img src="http://imgs.imgshao123.net/UploadFile/2013422/20130422175417621762.jpg" alt="推荐玄幻最新力作《斗龙》">战皇</a>
-            </div>
-        </div>
-        *}
-        <div class="lbline708">
-        </div>
-    </div>
 </div>
-{literal}
-<script>
-$(function(){
-    
-    clicktabs(".tittwo li",".crconsbox>div","cur");
+</div>
+<!--cata_book end--></div>
+<div class="col_b"><!--mod_a begin-->
+<div class="mod mod_a">
+<div class="hd">
+<div class="tab_hd">
+<ul class="mod_tab clearfix">
+	<li class="cur" id="week-rank-bind"><span>周排行榜</span></li>
+	<li id="month-rank-bind"><span>月排行榜</span></li>
+</ul>
+</div>
+</div>
+<div class="bd">{novel_block id=6} {novel_block id=7}</div>
+</div>
+<!--mod_a end--> <!--mod begin-->
+{novel_block id=13}
 
-});
-</script>
-{/literal}
+<div class="mod">
+<div class="hd">
+<h3 class="tit">{$category->title}最新入库</h3>
+</div>
+<div class="bd">
+<ul class="mod_con clearfix">
+{novel_book  limit=10 order="createtime desc" cid=$category->id}<li>
+		{if $block.iteration <= 3}
+		<i class="num hot">{$block.iteration}</i>
+		{else}
+		<i class="num">{$block.iteration}</i>
+		{/if}
+		<div class="tit">
+		<a href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:16:"...":true}</a>
+		<span style="float:right">{$item->createtime|date_format:"m-d"}</span>
+		</div>
+	</li>
+{/novel_book}
+</ul>
+</div>
+</div>
+
+<div class="mod">
+<div class="hd">
+<h3 class="tit">{$category->title}最新更新</h3>
+</div>
+<div class="bd">
+<ul class="mod_con clearfix">
+{novel_book  limit=10 order="lastchaptertime desc" cid=$category->id}
+	<li>
+		{if $block.iteration <= 3}
+		<i class="num hot">{$block.iteration}</i>
+		{else}
+		<i class="num">{$block.iteration}</i>
+		{/if}
+		<div class="tit">
+			<a href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:16:"...":true}</a>
+			<span style="float:right">{$item->lastchaptertime|date_format:"m-d"}</span>
+		</div>
+	</li>
+{/novel_book}
+</ul>
+</div>
+</div>
+<!--mod end--> <!--ad_box begin-->
+
+<!--ad_box end--></div>
+</div>
+<!--container end-->
+<!--footer beigin-->
+<script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
+<script	type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
+<script	src="{$FW_THEME_URL}/js/jquery.cookie.js"></script>
+<script	src="{$FW_THEME_URL}/js/ua.js"></script>

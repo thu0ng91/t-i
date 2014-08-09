@@ -1,89 +1,126 @@
-<script src="{$FW_THEME_URL}/js/ua.js"></script>
+<link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet" />
 <link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
 <!--container begin-->
-<div class="container row_box clearfix">
-<div class="row_aside">
-<div class="hd">最近更新</div>
-<ul class="clearfix">
-	<li><a class="cur" href="top.html">全部</a></li>
-{novel_menu}
-<li><a href="{novel_lastupdate_link}?id={$item->id}">{$item->title}</a></li>
-{/novel_menu}
+<div class="container clearfix">
+<div class="col_a"><!--rec_book begin-->
+
+<!--rec_book end--> <!--cata_book begin-->
+<div class="mod_box cata_book">
+<div class="mod_hd clearfix">
+<h3 class="tit">最近更新</h3>
+</div>
+<div class="mod_bd">
+<div class="book_list lazyload_box">
+	<ul class="clearfix">
+	{foreach from=$list item=item}
+		<li>
+		<div class="imgbox">
+			<a href="{novel_book_link id=$item->id}" target="_blank"> 
+			<img width="90" height="118" src="{$item->coverImageUrl}"	alt="{$item->title}" title="{$item->title}" />
+			 <span class="txt_bg">
+			{if $item->flag == 1}连载 {else}完结 {$item->wordcount}万{/if}
+			</span>
+			</a>
+		</div>
+		<dl class="info">
+			<dt>
+				<a class="sub_link" href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:16:"...":true}</a>
+			</dt>
+			<dd>作者：<span>	{$item->author}</span></dd>
+			<dd>更新到：
+				<span>
+					<a class="more" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" target='_blank'>
+						 {$item->lastchaptertitle}</a>
+				</span>
+			
+				</dd>
+			<dd class="desc">{$item->summary|truncate:66:"...":true}&nbsp;
+			<a class="more" href="{novel_book_link id=$item->id}" title="{$item->title}" target="_blank">详细&gt;&gt;</a>
+			</dd>
+		</dl>
+		</li>
+		{/foreach}
+	</ul>
+	
+
+</div>
+        <div class="dirtools">
+            {if $pages->pageCount > 1}
+            <div class="page">
+                {widget name="CLinkPager" pages=$pages firstPageLabel="1" lastPageLabel=$pages->pageCount header="" prevPageLabel="上一页" nextPageLabel="下一页"}
+            </div>
+            {/if}
+        </div>
+
+</div>
+</div>
+<!--cata_book end--></div>
+<div class="col_b"><!--mod_a begin-->
+<div class="mod mod_a">
+<div class="hd">
+<div class="tab_hd">
+<ul class="mod_tab clearfix">
+	<li class="cur" id="week-rank-bind"><span>周排行榜</span></li>
+	<li id="month-rank-bind"><span>月排行榜</span></li>
 </ul>
 </div>
-<div class="row_content" style="padding-top: 5px;">
+</div>
+<div class="bd">{novel_block id=6} {novel_block id=7}</div>
+</div>
+<!--mod_a end--> <!--mod begin-->
+{novel_block id=13}
 
-
+<div class="mod">
+<div class="hd">
+<h3 class="tit">{$category->title}最新入库</h3>
+</div>
 <div class="bd">
-<div class="tab_content">
-<table class="data_render">
-	<colgroup>
-		<col class="order">
-		<col class="book_name">
-		<col class="status">
-		<col class="num">
-		<col class="author">
-		<col class="uptime">
-	</colgroup>
-	<thead>
-		<tr>
-			<th>序号</th>
-			<th class="cell_left">小说书名<i>/</i>小说章节</th>
-			<th>状态</th>
-			<th>字数</th>
-			<th>作者</th>
-			<th>更新时间</th>
-		</tr>
-	</thead>
-	<tbody>
-		{if $smarty.get.id}
-		{novel_book  limit=30 order="lastchaptertime desc" cid=$smarty.get.id}
-		<tr>
-			<td class="font11">{$block.iteration}</td>
-			<td class="cell_left">
-			<div class="fix_txt"><a class="sub_link" href="{novel_book_link id=$item->id}"
-				target="_blank" title="{$item->title|truncate:16:"...":true}">《{$item->title|truncate:16:"...":true}》</a>
-				<a class="other_link"
-				href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" title="{$book->lastchaptertitle}" target="_blank">{$item->lastchaptertitle}</a>
-				 
-				</div>
-			</td>
-			<td><font color="#3876b2">{if $item->flag == 1} 连载中 {else} 已完结 {/if}</font></td>
-			<td>{$item->wordcount}</td>
-			<td>{$item->author}</td>
-			<td>{$item->createtime|date_format:"m-d"}</td>
-		</tr>
-		{/novel_book}
+<ul class="mod_con clearfix">
+{novel_book  limit=10 order="createtime desc" cid=$category->id}<li>
+		{if $block.iteration <= 3}
+		<i class="num hot">{$block.iteration}</i>
 		{else}
-		{novel_book limit=30 order="lastchaptertime desc" }
-		<tr>
-			<td class="font11">{$block.iteration}</td>
-			<td class="cell_left">
-			<div class="fix_txt"><a class="sub_link" href="{novel_book_link id=$item->id}"
-				target="_blank" title="{$item->title|truncate:16:"...":true}">《{$item->title|truncate:16:"...":true}》</a>
-				<a class="other_link"
-				href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" title="{$book->lastchaptertitle}" target="_blank">{$item->lastchaptertitle}</a>
-				 
-				</div>
-			</td>
-			<td><font color="#3876b2">{if $item->flag == 1} 连载中 {else} 已完结 {/if}</font></td>
-			<td>{$item->wordcount}</td>
-			<td>{$item->author}</td>
-			<td>{$item->createtime|date_format:"m-d"}</td>
-		</tr>
-		{/novel_book}
+		<i class="num">{$block.iteration}</i>
 		{/if}
-	</tbody>
-	</tbody>
-</table>
+		<div class="tit">
+		<a href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:16:"...":true}</a>
+		<span style="float:right">{$item->createtime|date_format:"m-d"}</span>
+		</div>
+	</li>
+{/novel_book}
+</ul>
 </div>
 </div>
+
+<div class="mod">
+<div class="hd">
+<h3 class="tit">{$category->title}最新更新</h3>
+</div>
+<div class="bd">
+<ul class="mod_con clearfix">
+{novel_book  limit=10 order="lastchaptertime desc" cid=$category->id}
+	<li>
+		{if $block.iteration <= 3}
+		<i class="num hot">{$block.iteration}</i>
+		{else}
+		<i class="num">{$block.iteration}</i>
+		{/if}
+		<div class="tit">
+			<a href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:16:"...":true}</a>
+			<span style="float:right">{$item->lastchaptertime|date_format:"m-d"}</span>
+		</div>
+	</li>
+{/novel_book}
+</ul>
 </div>
 </div>
+<!--mod end--> <!--ad_box begin-->
+
+<!--ad_box end--></div>
 </div>
 <!--container end-->
-
-<script
-	type="text/javascript" src="{$FW_THEME_URL}/js/jquery.lazyload.js"></script>
-<script
-	type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
+<!--footer beigin-->
+<script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
+<script	type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
+<script	src="{$FW_THEME_URL}/js/jquery.cookie.js"></script>
+<script	src="{$FW_THEME_URL}/js/ua.js"></script>

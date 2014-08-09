@@ -7,9 +7,9 @@
 <div class="row_aside">
 <div class="hd">分类排行榜</div>
 <ul class="clearfix">
-	<li><a class="cur" href="top.html">全部</a></li>
+	<li><a {if !$smarty.get.id }class="cur"{/if} href="top.html">全部</a></li>
 {novel_menu}
-<li><a href="{novel_rank_link}?id={$item->id}">{$item->title}</a></li>
+<li><a {if $smarty.get.id == $item->id}class="cur"{/if} href="{novel_rank_link}?id={$item->id}">{$item->title}</a></li>
 {/novel_menu}
 </ul>
 </div>
@@ -41,11 +41,10 @@
 		<tr>
 			<td class="font11">{$block.iteration}</td>
 			<td class="cell_left">
-			<div class="fix_txt"><a class="sub_link" href="{novel_book_link id=$item->id}"
-				target="_blank" title="{$item->title|truncate:16:"...":true}">《{$item->title|truncate:16:"...":true}》</a>
-				<a class="other_link"
-				href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" title="{$book->lastchaptertitle}" target="_blank">{$item->lastchaptertitle}</a>
-				 
+				<div class="fix_txt"><a class="sub_link" href="{novel_book_link id=$item->id}"
+					target="_blank" title="{$item->title|truncate:16:"...":true}">《{$item->title|truncate:16:"...":true}》</a>
+					<a class="other_link"
+					href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" title="{$book->lastchaptertitle}" target="_blank">{$item->lastchaptertitle}</a>
 				</div>
 			</td>
 			<td><font color="#3876b2">{if $item->flag == 1} 连载中 {else} 已完结 {/if}</font></td>

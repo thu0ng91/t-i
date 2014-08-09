@@ -5,14 +5,14 @@
 <div class="col_a"><!--rec_book begin-->
 <div class="mod_box rec_book">
 <div class="mod_hd">
-<h3 class="tit">{$category->title}小说全本推荐</h3>
+<h3 class="tit">{$category->title}小说推荐</h3>
 </div>
 <div class="mod_bd img_scroll"><a class="btn btn_lt btn_lt_none"
 	id="prev" href="javascript:void(0);"></a> <a class="btn btn_rt"
 	id="next" href="javascript:void(0);"></a>
 <div class="show_box">
 <ul class="clearfix">
-	{novel_book limit=10 order="flag" }
+	{novel_book limit=10 order="alllikenum" cid=$category->id}
 	<li><a href="{novel_book_link id=$item->id}" title="{$item->title}"
 		target="_blank"> <img src="{$item->coverImageUrl}"
 		alt="{$item->title}" title={$item->title}" /> <span>{$item->title}</span>

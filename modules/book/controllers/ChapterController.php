@@ -43,6 +43,8 @@ class ChapterController extends FWModuleFrontController
             throw new CHttpException(404);
         }
 
+        $chapter->content = $chapter->getContentFromFile();
+
         $this->assign("book", $book);
         $this->assign("chapter", $chapter);
 

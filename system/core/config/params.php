@@ -38,7 +38,7 @@ return array(
         '3' => '网站会员',
     ),
     'gather_auth_key' => '52694e26e7b55',
-    'urlSuffix' => array('.html', '.htm', '.shtml', '.asp', '.aspx', '.php'),
+    'urlSuffix' => array('.html'),
     'lockFile' => 'install.lock',
     'novelFlag' => array(
        '1' => '连载',

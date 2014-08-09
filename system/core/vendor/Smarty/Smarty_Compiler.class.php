@@ -585,6 +585,8 @@ class Smarty_Compiler extends Smarty {
             case 'novel_book_rank':
             case 'novel_menu':
             case 'novel_category':
+            case 'novel_notice':
+            case 'novel_friendlink':
                 $this->_push_tag($tag_command);
                 return _compile_novel_block_start($tag_command, $tag_args, $this);
                 break;
@@ -593,6 +595,8 @@ class Smarty_Compiler extends Smarty {
             case '/novel_book_rank':
             case '/novel_menu':
             case '/novel_category':
+            case '/novel_notice':
+            case '/novel_friendlink':
                 return _compile_novel_block_end(ltrim($tag_command, "/"), $this);
                 break;                
 

@@ -97,11 +97,11 @@ class Chapter extends ChapterDynamicDbModel
      */
     public function afterFind()
     {
-        $this->content = $this->getContentFromFile();
-
-        if (!empty($this->content)) {
-            $this->wordcount = H::getWordCount($this->content);
-        }
+//        $this->content = $this->getContentFromFile();
+//
+//        if (!empty($this->content)) {
+//            $this->wordcount = H::getWordCount($this->content);
+//        }
 
 //        return parent::afterFind();
     }
@@ -332,7 +332,7 @@ class Chapter extends ChapterDynamicDbModel
      * 从文件中读到小说章节内容
      * @return null|string
      */
-    protected function getContentFromFile()
+    public function getContentFromFile()
     {
         $p = $this->getArticleDataPath();
         if (!file_exists($p)) return null;

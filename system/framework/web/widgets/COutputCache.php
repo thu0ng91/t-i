@@ -343,4 +343,13 @@ class COutputCache extends CFilterWidget
 						'method'=>$action[1])));
 		}
 	}
+
+    /**
+     * 取得内容
+     * @return mixed
+     */
+    public function getContent()
+    {
+        return $this->_content;
+    }
 }

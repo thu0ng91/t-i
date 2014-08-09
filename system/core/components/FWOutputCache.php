@@ -31,28 +31,19 @@ class FWOutputCache extends COutputCache {
 //        ob_start();
         parent::run();
 
-        $content = ob_get_clean();
+        if (isset($this->owner->module) && $this->owner->module->id == 'book') {
+            $cfg = Yii::app()->settings->get("BookHtmlConfig", 'book-config-makehtml');
 
-//        $content .= "<!--" . Yii::app()->request->pathInfo . "-->";
-        echo $content;
-
-//var_dump($content);
-//        $this->makeHtml($content);
-//        var_dump($cfg, $this->owner->module->id);
-
-//        if (isset($this->owner->module) && $this->owner->module->id == 'book') {
-//            $cfg = Yii::app()->settings->get("BookHtmlConfig", 'book-config-makehtml');
-//
-//            if ($this->owner->id == 'detail' && $this->owner->action->id == 'index') {
-//                if ($cfg->BookDetailIndexIsMakeHtml == 1) { // 小说目录页符合生成静态条件
-//                    $this->makeHtml($content);
-//                }
-//            } elseif ($this->owner->id == 'chapter' && $this->owner->action->id == 'index') {
-//                if ($cfg->BookChapterIsMakeHtml == 1) { // 阅读页符合生成静态条件
-//                    $this->makeHtml($content);
-//                }
-//            }
-//        }
+            if ($this->owner->id == 'detail' && $this->owner->action->id == 'index') {
+                if ($cfg->BookDetailIndexIsMakeHtml == 1) { // 小说目录页符合生成静态条件
+                    $this->makeHtml($this->getContent());
+                }
+            } elseif ($this->owner->id == 'chapter' && $this->owner->action->id == 'index') {
+                if ($cfg->BookChapterIsMakeHtml == 1) { // 阅读页符合生成静态条件
+                    $this->makeHtml($this->getContent());
+                }
+            }
+        }
     }
 
     /**
@@ -63,6 +54,12 @@ class FWOutputCache extends COutputCache {
     {
         $dir = dirname(Yii::app()->request->pathInfo);
         $fileName = basename(Yii::app()->request->pathInfo);
+
+        $suffix  = substr(Yii::app()->request->pathInfo, strlen(Yii::app()->request->pathInfo) - 5);
+
+        if (strtolower($suffix) != '.html') {
+            $fileName = 'index.html';
+        }
 
         $dir = FW_ROOT_PATH . DS . $dir;
         @mkdir($dir, 0777, true);

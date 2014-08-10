@@ -47,7 +47,7 @@
 					href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" title="{$book->lastchaptertitle}" target="_blank">{$item->lastchaptertitle}</a>
 				</div>
 			</td>
-			<td><font color="#3876b2">{if $item->flag == 1} 连载中 {else} 已完结 {/if}</font></td>
+			<td><font color="#3876b2">{if $item->flag == 0} 连载中 {else} 已完结 {/if}</font></td>
 			<td>{$item->wordcount}</td>
 			<td>{$item->author}</td>
 			<td>{$item->createtime|date_format:"m-d"}</td>

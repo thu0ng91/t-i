@@ -34,7 +34,7 @@ CREATE TABLE `book` (
   `author` varchar(32) DEFAULT NULL COMMENT '作者',
   `authorid` int(10) NOT NULL DEFAULT '0' COMMENT '作者编号',
   `cid` int(10) DEFAULT NULL COMMENT '栏目',
-  `flag` tinyint(1) DEFAULT NULL COMMENT '小说完本标志：1 连载 2 完本 ',
+  `flag` tinyint(1) DEFAULT NULL COMMENT '小说完本标志：0 连载 1 完本 ',
   `keywords` varchar(255) DEFAULT NULL COMMENT '关键字',
   `summary` varchar(1000) DEFAULT NULL COMMENT '简介',
   `pinyin` varchar(200) DEFAULT NULL COMMENT '拼音',

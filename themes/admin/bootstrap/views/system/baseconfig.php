@@ -5,7 +5,11 @@
 
 $this->pageTitle=Yii::app()->name . ' - 基础属性';
 ?>
-
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href="#">基础属性</a>
+  </li>
+</ul>
     <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
       'id'=>'baseconfig-form',
       'type'=>'horizontal',

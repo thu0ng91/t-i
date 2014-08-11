@@ -46,7 +46,9 @@ class SystemController extends FWAdminController
 //			'categorys'=>Category::model()->showAllSelectCategory(),
 		));
 	}
-
+	public function actionNavigation(){
+		$this->render('navigation');
+	}
     public function actionRewrite()
     {
         $cacheCategory =  'system';

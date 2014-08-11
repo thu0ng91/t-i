@@ -1,9 +1,13 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name;
+$this->pageTitle=Yii::app()->name . ' - 评论管理';
 ?>
-
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href="#">评论管理</a>
+  </li>
+</ul>
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
     'type'=>'striped bordered condensed',
     'dataProvider'=>$dataProvider,

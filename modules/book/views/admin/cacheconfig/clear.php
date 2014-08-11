@@ -5,7 +5,11 @@
 
 $this->pageTitle=Yii::app()->name . ' - 小说连载模块缓存清除';
 ?>
-
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href="#">缓存清除</a>
+  </li>
+</ul>
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'cacheconfig-clear-form',
     'type'=>'horizontal',

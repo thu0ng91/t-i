@@ -5,7 +5,11 @@
 
 $this->pageTitle=Yii::app()->name . ' - 小说连载模块静态配置';
 ?>
-
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href="#">静态配置</a>
+  </li>
+</ul>
 <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
     'id'=>'BookHtmlConfig-form',
     'type'=>'horizontal',

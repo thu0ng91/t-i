@@ -5,7 +5,11 @@
 
 $this->pageTitle=Yii::app()->name . ' - 伪静态设置';
 ?>
-
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a href="#">伪静态设置</a>
+  </li>
+</ul>
     <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
       'id'=>'rewriteconfig-form',
       'type'=>'horizontal',

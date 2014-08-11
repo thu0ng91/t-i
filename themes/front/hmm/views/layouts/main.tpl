@@ -24,15 +24,13 @@
 </div>
 
 <div class="aside clearfix">
-<a class="sub_link i_store" href="/member/my/bookcase.html">我的书架<i class="i_n" id="favoriate_new" style="display:none;"></i></a>
-<div class="read_record" id="history_box">
-<i class="line">|</i>
-<div class="read_hd">阅读记录<i></i></div>
-<div class="record_box">
-<ul id="history_list"></ul>
-<p class="op_area"><a class="i_clear" href="javascript:void(0);" id="clear-history">清除历史记录</a></p>
-</div>
-</div>
+	{if $Yii->user->isGuest}
+	<span ></span><a class="c_login" href="{$Yii->createUrl('/member/do/login')}">登录</a>　|　
+	<a class="c_register" href="{$Yii->createUrl('/member/do/register')}">注册</a>
+	{else}
+	<span class="c_loginimg"></span><a  href="{$Yii->createUrl('/member/my/information')}">个人中心</a>
+	{/if}
+	
 </div>
 </div>
 <!--nav_other begin-->
@@ -44,7 +42,7 @@
 {/novel_menu}
 <li><a href="{novel_lastupdate_link}">最新更新</a></li>
 <li><a href="{novel_rank_link}">小说排行榜</a></li>
-<li><a href="/member/my/information.html">个人中心</a></li>
+
 </ul>
 </div>
 <!--nav_other end-->
@@ -53,14 +51,14 @@
 <!-- footer -->
 <div class="footer">
     <br />
-    <a href="#">云阅简介</a> |
-	<a href="#">联系我们</a> |
-    <a href="#">合作伙伴</a> |
-    <a href="#">广告服务</a> |
-    <a href="#">招聘信息</a> |
-    <a href="#">网站地图</a> |
-    <a href="#">会员注册</a> |
-    <a href="#">产品答疑</a>
+    <a href="http://www.yunyuewang.com/">云阅简介</a> |
+	<a href="http://www.yunyuewang.com/">联系我们</a> |
+    <a href="http://www.yunyuewang.com/">合作伙伴</a> |
+    <a href="http://www.yunyuewang.com/">广告服务</a> |
+    <a href="http://www.yunyuewang.com/">招聘信息</a> |
+    <a href="http://www.yunyuewang.com/">网站地图</a> |
+    <a href="http://www.yunyuewang.com/">会员注册</a> |
+    <a href="http://www.yunyuewang.com/">产品答疑</a>
     <br />
     Copyright &copy; 1996 - 2014 YUN Corporation, All Rights Reserved <br>
     上海云阅信息技术有限公司版权所有

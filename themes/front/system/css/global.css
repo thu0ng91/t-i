@@ -42,20 +42,11 @@ html{-webkit-text-size-adjust:none; overflow-y:scroll}
 .more:hover{color:#f60}
 
 .i_n,.mod_con .num,.img_scroll .btn,.i_clear,.sideicon_backtop,.sideicon_feedback,.pop_win .close,.pop_win .btn,.pop_win .i_right{background:url(../images/common.png) no-repeat 0 0}
-.c_loginimg {
+.i_store {
 	background: url(../images/allimgs.png) no-repeat;
-	background-position: -5px -50px;
-	width:20px;
-	height:15px;
-	float:left;
-	margin-top:3px;
+	background-position: -5px -45px;
 }
-.c_login {
 
-}
-.c_login {
-
-}
 /*header*/
 .header{position:relative;padding:12px 0 20px;z-index:1000;}
 .header .logo{float:left;width:273px;}
@@ -81,7 +72,7 @@ padding: 0;}
 .suggest_box .hover{background-color:#f6f6f6}
 .suggest_box .num{float:right;font-size:12px;color:#999;}
 .suggest_box strong{font-weight:700;}
-.i_store{float:left;position:relative;height:21px;padding:3px 12px 3px 17px;background-position:-288px 9px;}
+.i_store{float:left;position:relative;height:21px;padding:3px 12px 3px 17px;}
 .i_n{position:absolute;right:0;top:4px;width:9px;height:9px;background-position:-80px -30px;overflow:hidden;}
 .header .line{position:absolute;left:0;color:#dadada;}
 .header .read_record{float:left;position:relative;margin-left:9px;}
@@ -277,68 +268,3 @@ font-size:12px;
 
 .adtl2{ width:728px; margin:0 auto; margin-top:10px; margin-bottom:10px;}
 
-#file{height:30px;margin-top:30px;margin-left:18px;}
-
-.ztop{
-	border: 1px solid #dcdcdc;
-}
-.ztop strong{
-	padding:8px;
-	width:973px;
-	float:left;
-	border-bottom: 1px solid #dcdcdc;
-}
-.ztop p{
-	padding:8px;
-}
-
-.zbot{
-	width:100%;
-	height:auto;
-	margin-top:10px;
-	border: 1px solid #dcdcdc;
-}
-.zbot_tit{
-	padding: 4px 8px;
-	width:973px;
-	float:left;
-	background-color:#F3F3F3;
-	border-bottom: 1px solid #dcdcdc;
-}
-.zbot_cen{
-	padding-top:15px;
-}
-
-.zbot_left{
-	float:left;
-	width:45%;
-	height:165px;
-	margin-left:8px;
-}
-.zbot_right{
-	float:left;
-	width:45%;
-	height:165px;
-	margin-left:8px;
-}
-
-.book_re{
-	color:#4176FF;
-	float:right;
-}
-.book_na{
-	width:60%;
-	color:#A86527;
-}
-.zbot img{
-	margin-top:5px;
-	width:120px;
-	height:150px;
-	float:left;
-	border:1px solid #9EB9FF;
-}
-.left_te{
-	margin-top:2px;
-	float:right;
-	width:70%;
-}

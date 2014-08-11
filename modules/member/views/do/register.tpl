@@ -1,69 +1,124 @@
+
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>{$title}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {*<meta name="author" content="Joychao <joy@joychao.cc>">*}
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<link class="bootstrap library" rel="stylesheet" type="text/css" href="{$FW_THEME_URL}/css/bootstrap.min.css">
-<script class="bootstrap library" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js" type="text/javascript"></script>
-<script class="bootstrap library" src="{$FW_THEME_URL}/js/bootstrap.min.js" type="text/javascript"></script>
-<style type="text/css">
-    {literal}
-    *{margin:0;padding: 0;font-size:14px}
-    /*body{background: #444 url(http://sandbox.runjs.cn/uploads/rs/418/nkls38xx/carbon_fibre_big.png)}*/
-    .loginBox{width:420px;height:auto;padding:0 20px;border:1px solid #fff; color:#000; margin-top:40px; border-radius:8px;background: white;box-shadow:0 0 15px #222; background: -moz-linear-gradient(top, #fff, #efefef 8%);background: -webkit-gradient(linear, 0 0, 0 100%, from(#f6f6f6), to(#f4f4f4));font:11px/1.5em 'Microsoft YaHei' ;position: absolute;left:50%;top:50%;margin-left:-210px;margin-top:-115px;}
-    .loginBox h2{height:45px;font-size:20px;font-weight:normal;}
-    .loginBox .left{border-right:1px solid #ccc;height:100%;padding-right: 20px; }
-    {/literal}
-</style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=7">
+<title>{$siteinfo->SiteName}</title>
+<meta name="keywords" content="{$keywords|strip_tags}"/>
+<link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
+
 </head>
 <body>
-<div class="container">
-    <section class="loginBox row-fluid">
-        <section class="span7 left">
-            <h2>会员注册</h2>
-            <form action="{novel_link url="member/do/register"}" method="post">
-            <p>账　　号：<input type="text" name="RegisterForm[username]" value="" /></p>
-            <p>密　　码：<input type="password" name="RegisterForm[password]" /></p>
-            <p>确认密码：<input type="password" name="RegisterForm[repassword]" /></p>
-            <p>电子邮箱：<input type="text" name="RegisterForm[email]" /></p>
-            <section class="row-fluid">
-                {*<section class="span8 lh30"><label><input type="checkbox" name="rememberme" />下次自动登录</label></section>*}
-                <section class="span1"><input type="submit" value=" 注册 " class="btn btn-primary"></section>
-            </section>
-            <section class="row-fluid">
-                {if $Yii->user->hasFlash('actionInfo')}
-                <p class="text-error">{$Yii->user->getFlash('actionInfo')}</p>
-                {/if}
-             </section>
-            </form>
-        </section>
-        <section class="span5 right">
-            <h2>会员特权</h2>
-            <section>
-                <p>1.可享受阅读付费章节</p>
-                <p>2.可随心记录已读章节</p>
-                <p>3.可将喜爱的书籍放入书架</p>
-                <p></p>
-                {*<p><input type="button" value=" 注册 " class="btn register"></p>*}
-            </section>
-        </section>
-    </section><!-- /loginBox -->
-</div> <!-- /container -->
+<!--header begin-->
+<div class="header clearfix">
+<div class="logo"><a href="/"><img src="{$FW_THEME_URL}/images/logo.png" /></a></div>
+<div class="search_meta">
+	<div class="search_box">
+	<form id="search" name="search" action="{novel_search_link}" method="get" onSubmit="return qrsearch();">
+		<div class="serachwrap">
+			<span class="search_text"><input id="kw" name="keyword" type="text" value="请输入小说名..." autocomplete="off"  title="请输入小说名..." onfocus="if(this.value==this.title) this.value='';" onblur="if(this.value=='') this.value=this.title;"  onSubmit="return qrsearch();" autofocus="true" x-webkit-speech="" x-webkit-grammar="builtin:translate"></span>
+			<button type="submit" class="btn_search" id="search_top">搜小说</button>
+		</div>
+	</form>
+	</div>
+</div>
+<div class="aside clearfix">
+	{if $Yii->user->isGuest}
+	<span ></span><a class="c_login" href="{$Yii->createUrl('/member/do/login')}">登录</a>　|　
+	<a class="c_register" href="{$Yii->createUrl('/member/do/register')}">注册</a>
+	{else}
+	<span class="c_loginimg"></span><a  href="{$Yii->createUrl('/member/my/information')}">个人中心</a>
+	{/if}
+</div>
+</div>
+<!--nav_other begin-->
+<div class="nav nav_other">
+<ul class="clearfix">
+<li ><a href="{$FW_SITE_URL}" target="_self">首页</a></li>
+{novel_menu}
+<li><a href="{$item->url}">{$item->title}</a></li>
+{/novel_menu}
+<li><a href="{novel_lastupdate_link}">最新更新</a></li>
+<li><a href="{novel_rank_link}">小说排行榜</a></li>
+
+</ul>
+</div>
+<!--nav_other end-->
+<!--header end-->
+<link href="{$FW_THEME_URL}/css/style.css" type="text/css" rel="stylesheet" />
+<div id="content"><link rel="stylesheet" rev="stylesheet" href="{$FW_THEME_URL}/css/login.css" type="text/css" media="all" />
+<div class="box_mid fix">
+  <div class="regist fix">
+    <h4>会员注册</h4>
+    <div class="box_form">
+    <form action="{novel_link url='member/do/register'}" method="POST">
+	<fieldset>
+    <div class="form-item">
+        <div class="field-name">用户名：</div>
+        <div class="field-input">
+          <input type="text" name="RegisterForm[username]" value="" />
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="field-name">邮箱：</div>
+        <div class="field-input">
+         <input type="text" name="RegisterForm[email]" />
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="field-name">密码：</div>
+        <div class="field-input">
+          <input type="password" name="RegisterForm[password]" />
+        </div>
+    </div>
+    <div class="form-item">
+        <div class="field-name">确认密码：</div>
+        <div class="field-input">
+          <input type="password" name="RegisterForm[repassword]" />
+        </div>
+    </div>
+</fieldset>
+    <input type="submit" value=" 注册 " class="btn-sn">
+</form>
+
+    </div>
+  </div>
+  <div class="remark">   
+    <div class="t">已有云阅帐号？ <a href="{novel_link url='member/do/login'}" class="dl">登 录</a></div>
+    <dl>
+     <dt>注册成为会员，您将拥有：</dt>
+     <dd>&middot;可将喜爱的书籍放入书架</dd>
+     <dd>&middot;投推荐票给喜欢的小说,支持作者创作</dd>
+     <dd>&middot;升级为VIP,章节订阅最优惠</dd>
+     <dd>&middot;购买会员,最好的上架作品随便看</dd>
+    </dl>
+
+  </div>
+</div><!--box_mid end-->
+<!--rec_book end-->
+</div>
+
+<!--container end-->
+<!--footer beigin-->
+
+
+<!-- footer -->
+<div class="footer">
+    <br />
+    <a href="http://www.yunyuewang.com/">云阅简介</a> |
+	<a href="http://www.yunyuewang.com/">联系我们</a> |
+    <a href="http://www.yunyuewang.com/">合作伙伴</a> |
+    <a href="http://www.yunyuewang.com/">广告服务</a> |
+    <a href="http://www.yunyuewang.com/">招聘信息</a> |
+    <a href="http://www.yunyuewang.com/">网站地图</a> |
+    <a href="http://www.yunyuewang.com/">会员注册</a> |
+    <a href="http://www.yunyuewang.com/">产品答疑</a>
+    <br />
+    Copyright &copy; 1996 - 2014 YUN Corporation, All Rights Reserved <br>
+    上海云阅信息技术有限公司版权所有
+</div>
+<!--footer end-->
+<!-- spend time: {$TIME} -->
 </body>
 </html>
-<script>
-    var registerUrl = '{novel_link url="member/do/register"}';
-    {literal}
-    $(document).ready(function () {
-        $(".register").bind("click", function () {
-            window.location.href  = registerUrl;
-        });
-    });
-    {/literal}
-</script>

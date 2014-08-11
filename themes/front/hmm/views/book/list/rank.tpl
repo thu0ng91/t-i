@@ -5,7 +5,7 @@
 <!--container begin-->
 <div class="container row_box clearfix">
 <div class="row_aside">
-<div class="hd">分类排行榜</div>
+<div class="hd">排行榜</div>
 <ul class="clearfix">
 	<li><a {if !$smarty.get.id }class="cur"{/if} href="top.html">全部</a></li>
 {novel_menu}

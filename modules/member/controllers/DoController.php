@@ -14,7 +14,7 @@ class DoController extends FWFrontController
         Yii::app()->theme = "system";
 
         if(isset($_POST['LoginForm']))
-        {
+        { 
             $model = new LoginForm;
             $model->attributes=$_POST['LoginForm'];
 
@@ -27,8 +27,9 @@ class DoController extends FWFrontController
                     $m->updateLoginInfo();
                     $this->redirect(array('/site/index'));
                 }else{
-                    Yii::app()->user->setFlash('actionInfo','用户名或密码错误');
-                    $this->refresh();
+                	 $this->render("login");
+            		 echo "<script>alert('账号或密码错误');</script>";
+            		 exit;
                 }
             }
 
@@ -46,7 +47,8 @@ class DoController extends FWFrontController
     public function actionLogout()
     {
         Yii::app()->user->logout();
-        $this->renderPartial('login');
+//        $this->renderPartial('site/index');
+		$this->redirect(array('/site/index'));
     }
 
     /**

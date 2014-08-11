@@ -38,6 +38,6 @@ class DetailController extends FWModuleFrontController
 
         $this->assign("special", $special);
     	
-        $this->render($special->template);
+        $this->renderPartial($special->template);
     }
 }

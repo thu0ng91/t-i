@@ -3,7 +3,7 @@
 <div id="user">
 	<div id="userinfo_left">
 		<div id="user_head">
-			<img class="user_imt" src="{$avatar}" />
+			<img class="user_imt" src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}" />
 			<span class="userxx">{$username}</span>
 			<span style="padding-left:10px;">{$level}</span>
 			<p id="userid">　用户ID：{$uid}</p>
@@ -22,24 +22,25 @@
 	<div id="userinfo_right">
 		<div id="user_title">修改头像</div>
 		<div id="user_colo">
-			<form action="" method="post" enctype="multipart/form-data">  
 			<div id="user_tconter">
-				<div class="user_im">
-					<p>当前头像：</p>
-					<img class="imgs" src="{$avatar}" style="margin-left:20px;" />
-				</div>
-				<div class="user_im">
-					<p>修改头像：</p>
-					<input type="file" nama="userimg" style="margin-top:30px;margin-left:20px;height:25px;"/>
-					<div>　&nbsp;图片尺寸：小于200K ， 格式可为：JPG、GIF、PNG</div>
-				</div>
-				<div id="subd">
-					<input id="sub" type="submit" value="确认修改" />
+			<form action="" method="POST" enctype="multipart/form-data">
+			<div class="user_im">
+					<div class="user_im">
+						<p>当前头像：</p>
+						<img class="imgs" src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}" style="margin-left:20px;" />
+					</div>
+					<div class="user_im">
+						<p>修改头像：</p>
+						<input type="file" name="userimg" id="file"/> 
+						<div>　&nbsp;图片尺寸：小于200K ， 格式可为：JPG、GIF、PNG</div>
+					</div>	
+					<div id="subd">
+						<input id="sub" type="submit" value="确认提交" />
+					</div>
 				</div>
 			</div>
 			</form>
 			<div class="user_tom"></div>
-		</div>
 		</div>
 	</div>
 	<div id="userinfo_right">

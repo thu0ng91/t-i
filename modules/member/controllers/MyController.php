@@ -17,8 +17,13 @@ class MyController extends MemberController
      */
 	public function getAvatar($ava)
     {	
-    	$avatar = "..".DS."..".DS."uploads/member/".$ava;
-    	return $avatar;
+    	$avatar = FW_ROOT_PATH.DS.'uploads'.DS.'member'.DS.$ava;
+
+    	if(file_exists($avatar)) {
+    		return Yii::app()->baseUrl.DS.'uploads'.DS.'member'.DS.$ava;
+    	} else {
+    		return false;
+    	}
     }
     
      /**
@@ -39,7 +44,13 @@ class MyController extends MemberController
     	}
 
     	$this->assign("gender", $model->gender);
-		$this->assign("avatar", $this->getAvatar($model->avatar));//头像
+    	if($this->getAvatar($model->avatar) == false) {
+    		$avatar = false;
+    	} else {
+    		$avatar = $this->getAvatar($model->avatar);
+    	}
+    	
+		$this->assign("avatar", $avatar);//头像
 		$this->assign("realname", $model->realname);
 		$this->assign("qq", $model->qq);
 		$this->assign("email", $model->email);
@@ -85,12 +96,7 @@ class MyController extends MemberController
     		$this->assign("level", "青铜会员");
     	}
     	$imgsize = 200;  			  //上传图片大小 K 为单位；
-    	if(null == $model){//如果用户不存在
-    		//这里要加上跳转提示
-    		$this->redirect('/member/my/information');
-    		echo "<script>alert('用户不存在');</script>";
-    		exit;
-    	}
+    	
     	if($_FILES){
     		if (!file_exists('uploads')){
     			mkdir ("uploads"); 

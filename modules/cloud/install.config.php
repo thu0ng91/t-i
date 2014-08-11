@@ -31,6 +31,14 @@ return array(
                 'label' => '帮助中心',
                 'url' => 'cloud/admin/list/help',
             ),
+            array(
+                'label' => '云广告',
+                'url' => 'cloud/admin/list/ad',
+            ),
+            array(
+                'label' => '云服务器',
+                'url' => 'cloud/admin/list/vps',
+            ),
         )
     ),
 );

@@ -32,4 +32,16 @@ class ListController extends FWAdminController
 	public function actionHelp(){
 		$this->render('help');
 	}
+/**
+     * 云服务器
+     */
+	public function actionVps(){
+		$this->render('vps');
+	}
+	/**
+     * 云广告
+     */
+	public function actionAd(){
+		$this->render('ad');
+	}
 }

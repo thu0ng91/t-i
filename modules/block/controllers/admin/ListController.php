@@ -68,75 +68,7 @@ class ListController extends FWModuleAdminController
 			);
             if($model->save(true, $attributes)){
             	//生成区块设置数据文件
-            	$block_file_path = FW_ROOT_PATH.DS.runtime.DS.blocks.DS;
-            	if(!file_exists($block_file_path)){
-            		$this->dmkdir($block_file_path);
-            	}
-            	$str = '{novel_book ';
-            	if(empty($self_number)){
-	            	if($sort_id != 0){
-	            		$str .= 'cid=['.$sort_id.']';
-	            	}
-	            	
-					$str .= ' limit='.$nums;
-	            	switch ($sort_type){
-	            		case 1:
-	            			$ordername = 'allclicks';break;
-	            		case 2:
-	            			$ordername = 'monthclicks';break;
-	            		case 3:
-	            			$ordername = 'weekclicks';break;
-	            		case 4:
-	            			$ordername = 'dayclicks';break;
-	            		case 5:
-	            			$ordername = 'alllikenum';break;
-	            		case 6:
-	            			$ordername = 'monthlikenum';break;
-	            		case 7:
-	            			$ordername = 'weeklikenum';break;
-	            		case 8:
-	            			$ordername = 'daylikenum';break;
-	            		case 9:
-	            			$ordername = 'createtime';break;
-	            		case 10:
-	            			$ordername = 'favoritenum';break;
-	            		case 11:
-	            			$ordername = 'wordcount';break;
-	            		case 12:
-	            			$ordername = 'lastchaptertime';break;
-	            		case 13:
-	            			$ordername = 'recommendlevel';break;
-	            		case 14:
-	            			$ordername = 'flag';break;
-	            		default:
-	            			$ordername = 'allclicks';
-	             	}
-	             	if($sort_order == 1){
-	             		$str .= ' order="'.$ordername.' asc"';
-	             	}else{
-	             		$str .= ' order="'.$ordername.' desc"';
-	             	}
-            	}else{
-            		$str .= ' id=['.$self_number.']';
-            	}
-            	$str .= '}';
-            	
-            	$block_file = $block_file_path.'block_'.$model->bid.'.tpl';
-                $content = str_replace('{$blockname}',$model->blockname,$model->template);
-            	$content = str_replace('{$block}',$str.$model->content.'{/novel_book}',$content);
-            	file_put_contents($block_file,$content);
-            	//生成区块设置数据
-            	$block_config_path = $block_file_path.DS.'block_'.$model->bid.'.conf';
-         	
-            	$block_config = json_encode(array(
-            		'status'=>$model->status,
-            		'cachetime'=>$model->cachetime,
-            		'blockname'=>$model->blockname,
-            		'blocktype'=>$model->blocktype,
-            		'sequence'=>$model->sequence,
-            		'vars'=>$model->vars,
-            	));
-            	file_put_contents($block_config_path,$block_config);
+            	$this->novel_block_update($model);
             	
                 Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveSuccess']);
                 $this->refresh();
@@ -168,27 +100,7 @@ class ListController extends FWModuleAdminController
 			);
             if($model->save(true, $attributes)){
             	//生成区块设置数据文件
-            	$block_file_path = FW_ROOT_PATH.DS.'runtime'.DS.'blocks'.DS;
-            	if(!file_exists($block_file_path)){
-            		$this->dmkdir($block_file_path);
-            	}
-            	
-            	$block_file = $block_file_path.'block_'.$model->bid.'.tpl';
-                $content = str_replace('{$blockname}',$model->blockname,$model->template);
-            	$content = str_replace('{$block}',$model->content,$content);
-            	file_put_contents($block_file,$content);
-            	//生成区块设置数据
-            	$block_config_path = $block_file_path.DS.'block_'.$model->bid.'.conf';
-         	
-            	$block_config = json_encode(array(
-            		'status'=>$model->status,
-            		'cachetime'=>$model->cachetime,
-            		'blockname'=>$model->blockname,
-            		'blocktype'=>$model->blocktype,
-            		'sequence'=>$model->sequence,
-            		'vars'=>$model->vars,
-            	));
-            	file_put_contents($block_config_path,$block_config);
+            	$this->custom_block_update($model);
             	
                 Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveSuccess']);
                 $this->refresh();
@@ -268,10 +180,124 @@ class ListController extends FWModuleAdminController
 				$model->cachetime = $v->cachetime;
 				$model->save();
 			}
-			Yii::app()->user->setFlash('actionInfo','导入区块数据成功');
+			Yii::app()->user->setFlash('actionInfo','导入区块数据成功,请更新区块数据');
         	$this->redirect(array('admin/list/index'));
 		}
 		$this->render('insert');
+	}
+	/**
+	 * 更新全部区块数据
+	 * @param unknown_type $id
+	 */
+	public function actionUpdateall(){
+		$model = Block::model()->findAll();
+		if(null != $model){
+			foreach($model as $v){
+				if($v->blocktype == 'novel'){
+					$this->novel_block_update($v);
+				}else{
+					$this->custom_block_update($v);
+				}
+			}
+		}
+		Yii::app()->user->setFlash('actionInfo','全部区块数据更新成功');
+		$this->redirect(array('admin/list/index'));
+	}
+	private function novel_block_update($data){
+		list($sort_id,$sort_type,$sort_order,$nums,$self_number) = explode('|',$data->vars);
+		//生成区块设置数据文件
+            	$block_file_path = FW_ROOT_PATH.DS.runtime.DS.blocks.DS;
+            	if(!file_exists($block_file_path)){
+            		$this->dmkdir($block_file_path);
+            	}
+            	$str = '{novel_book ';
+            	if(empty($self_number)){
+	            	if($sort_id != 0){
+	            		$str .= 'cid=\''.$sort_id.'\'';
+	            	}
+	            	
+					$str .= ' limit='.$nums;
+	            	switch ($sort_type){
+	            		case 1:
+	            			$ordername = 'allclicks';break;
+	            		case 2:
+	            			$ordername = 'monthclicks';break;
+	            		case 3:
+	            			$ordername = 'weekclicks';break;
+	            		case 4:
+	            			$ordername = 'dayclicks';break;
+	            		case 5:
+	            			$ordername = 'alllikenum';break;
+	            		case 6:
+	            			$ordername = 'monthlikenum';break;
+	            		case 7:
+	            			$ordername = 'weeklikenum';break;
+	            		case 8:
+	            			$ordername = 'daylikenum';break;
+	            		case 9:
+	            			$ordername = 'createtime';break;
+	            		case 10:
+	            			$ordername = 'favoritenum';break;
+	            		case 11:
+	            			$ordername = 'wordcount';break;
+	            		case 12:
+	            			$ordername = 'lastchaptertime';break;
+	            		case 13:
+	            			$ordername = 'recommendlevel';break;
+	            		case 14:
+	            			$ordername = 'flag';break;
+	            		default:
+	            			$ordername = 'allclicks';
+	             	}
+	             	if($sort_order == 1){
+	             		$str .= ' order="'.$ordername.' asc"';
+	             	}else{
+	             		$str .= ' order="'.$ordername.' desc"';
+	             	}
+            	}else{
+            		$str .= ' id=\''.$self_number.'\'';
+            	}
+            	$str .= '}';
+            	
+            	$block_file = $block_file_path.'block_'.$data->bid.'.tpl';
+                $content = str_replace('{$blockname}',$data->blockname,$data->template);
+            	$content = str_replace('{$block}',$str.$data->content.'{/novel_book}',$content);
+            	file_put_contents($block_file,$content);
+            	//生成区块设置数据
+            	$block_config_path = $block_file_path.DS.'block_'.$data->bid.'.conf';
+         	
+            	$block_config = json_encode(array(
+            		'status'=>$data->status,
+            		'cachetime'=>$data->cachetime,
+            		'blockname'=>$data->blockname,
+            		'blocktype'=>$data->blocktype,
+            		'sequence'=>$data->sequence,
+            		'vars'=>$data->vars,
+            	));
+            	file_put_contents($block_config_path,$block_config);
+	}
+	private function custom_block_update($data){
+			$block_file_path = FW_ROOT_PATH.DS.'runtime'.DS.'blocks'.DS;
+            if(!file_exists($block_file_path)){
+            	$this->dmkdir($block_file_path);
+            }
+            
+            $block_file = $block_file_path.'block_'.$data->bid.'.tpl';
+                $content = str_replace('{$blockname}',$data->blockname,$data->template);
+            $content = str_replace('{$block}',$data->content,$content);
+            file_put_contents($block_file,$content);
+            //生成区块设置数据
+            $block_config_path = $block_file_path.DS.'block_'.$data->bid.'.conf';
+         
+            $block_config = json_encode(array(
+            	'status'=>$data->status,
+            	'cachetime'=>$data->cachetime,
+            	'blockname'=>$data->blockname,
+            	'blocktype'=>$data->blocktype,
+            	'sequence'=>$data->sequence,
+            	'vars'=>$data->vars,
+            ));
+            file_put_contents($block_config_path,$block_config);
 	}
     public function loadModel($id)
     {

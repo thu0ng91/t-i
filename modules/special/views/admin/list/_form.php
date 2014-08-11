@@ -51,12 +51,7 @@ if ($('#editor1').length > 0) {
 
 <?php echo $form->textFieldRow($model, 'title'); ?>
 <?php echo $form->textFieldRow($model, 'author'); ?>
-<div class="control-group" id="showInput">
-    <label class="control-label">专题简介<span class="required">*</span></label>
-    <div class='controls' id="articleList">
-       <textarea class="px media_area" id="editor1" name="Special[content]"><?php echo $model->content;?></textarea>
-    </div>
-</div>
+<?php echo $form->textAreaRow($model, 'content',array('hint'=>'*这里可以填写专题导读信息')); ?>
 <?php echo $form->dropDownListRow($model, 'template', $arr_file); ?>
 <?php echo $form->dropDownListRow($model, 'status', array('1'=>'显示','2'=>'隐藏')); ?>
 <input type="hidden" id="ckeditor_upload_url" value="<?php echo Yii::app()->createUrl("/special/admin/list/upload");?>"/>

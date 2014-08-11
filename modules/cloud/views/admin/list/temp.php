@@ -3,4 +3,4 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
-这里是模板中心首页
+<img src="<?php echo Yii::app()->controller->module['loading'];?>">

@@ -24,7 +24,6 @@ class ListController extends FWModuleAdminController
       ));
       $this->render('index',array(
           'dataProvider'=>$dataProvider,
-//          'categorys'=> Category::model()->showAllSelectCategory(Category::SHOW_ALLCATGORY),
           'model' => Friendlink::model(),
       ));
     }
@@ -40,26 +39,15 @@ class ListController extends FWModuleAdminController
 			$model = new Friendlink();
 		}
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
 		if(isset($_POST['Friendlink']))
 		{
-			
-//			$images = CUploadedFile::getInstancesByName('images');
-//
-//            if (isset($images)) {
-//                $imgUrl = Upload::createFile($images, 'book', 'create');
-//                $model->logo = $imgUrl;
-//            }
-//            VAR_DUMP($images);exit;
 			if(isset($_FILES['Friendlink']['name']['logo']) && !empty($_FILES['Friendlink']['name']['logo'])){
 				$file = CUploadedFile::getInstance($model,'logo');
 				$filename = $file->getName();//获取文件名
 				$filesize = $file->getSize();//获取文件大小
 				$filetype = $file->getType();//获取文件类型
 				$filename1 = iconv("utf-8", "gb2312", $filename);//这里是处理中文的问题，非中文不需要
-				$uploadPath = "uploads/friendlink/";
+				$uploadPath = 'uploads'.DS.'friendlink'.DS;
 				$uploadfile = $uploadPath.$filename1;
 				$this->dmkdir($uploadPath);
 				$file->saveAs($uploadfile,true);//上传操作

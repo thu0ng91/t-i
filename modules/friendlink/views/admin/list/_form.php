@@ -35,7 +35,7 @@
 <?php echo $form->textAreaRow($model,'description',array('class'=>'span5','style'=>'width:500px;height:100px')); ?>
 <?php echo $form->dropDownListRow($model, 'type', array('1'=>'图片','2'=>'文字')); ?>
 <?php echo $form->dropDownListRow($model, 'status', array('1'=>'显示','2'=>'隐藏')); ?>
-<?php echo $form->fileFieldRow($model,'logo');
+<?php echo $form->fileFieldRow($model,'logo',array('hint'=>'文字链接这里不需要选择'));
 
 	if(isset($model->logo) && $model->logo) {
 		echo CHtml::image(DS.$model->logo,'',array('width' => 100,'style' => 'margin-left:180px;margin-bottom:20px;'));

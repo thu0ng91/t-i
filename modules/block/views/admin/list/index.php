@@ -24,6 +24,7 @@ $this->widget('bootstrap.widgets.TbButtonGroup',
 			array('items'=>array(
 					array('label'=>'导入区块数据','url'=>Yii::app()->createUrl('block/admin/list/insert')),
 					array('label'=>'导出区块数据','url'=>Yii::app()->createUrl('block/admin/list/export')),
+					array('label'=>'更新区块数据','url'=>Yii::app()->createUrl('block/admin/list/updateall')),
 				)
 			),
 		),

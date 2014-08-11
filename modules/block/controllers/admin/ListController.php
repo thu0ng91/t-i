@@ -124,6 +124,11 @@ class ListController extends FWModuleAdminController
 			}else {
 				Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['deleteFail']);
 			}
+			$block_file_path = FW_ROOT_PATH.DS.runtime.DS.blocks.DS;
+			$block_file = $block_file_path.'block_'.$id.'.tpl';
+			unlink($block_file);
+			$block_config_path = $block_file_path.DS.'block_'.$id.'.conf';
+			unlink($block_config_path);
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect($_POST['returnUrl']);

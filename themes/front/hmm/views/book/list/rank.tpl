@@ -8,19 +8,19 @@
 <div class="hd">排行榜</div>
 <ul class="clearfix">
 <!--	{novel_menu}-->
-<!--	<li><a {if $smarty.get.id == $item->id}class="cur"{/if} href="{novel_rank_link}?id={$item->id}">{$item->title}</a></li>-->
+<!--	<li><a {if $smarty.get.sort == $item->id}class="cur"{/if} href="{novel_rank_link}?id={$item->id}">{$item->title}</a></li>-->
 <!--	{/novel_menu}-->
-	<li><a {if $smarty.get.id == 'allclicks'}class="cur"{/if}{if !$smarty.get.id} class="cur"{/if} href="top.html">总点击</a></li>
-	<li><a {if $smarty.get.id == 'monthclicks'}class="cur"{/if} href="{novel_rank_link}?id=monthclicks">月点击</a></li>
-	<li><a {if $smarty.get.id == 'weekclicks'}class="cur"{/if} href="{novel_rank_link}?id=weekclicks">周点击</a></li>
-	<li><a {if $smarty.get.id == 'dayclicks'}class="cur"{/if} href="{novel_rank_link}?id=dayclicks">日点击</a></li>
-	<li><a {if $smarty.get.id == 'alllikenum'}class="cur"{/if} href="{novel_rank_link}?id=alllikenum">总推荐</a></li>
-	<li><a {if $smarty.get.id == 'monthlikenum'}class="cur"{/if} href="{novel_rank_link}?id=monthlikenum">月推荐</a></li>
-	<li><a {if $smarty.get.id == 'weeklikenum'}class="cur"{/if} href="{novel_rank_link}?id=weeklikenum">周推荐</a></li>
-	<li><a {if $smarty.get.id == 'daylikenum'}class="cur"{/if} href="{novel_rank_link}?id=daylikenum">日推荐</a></li>		
-	<li><a {if $smarty.get.id == 'wordcount'}class="cur"{/if} href="{novel_rank_link}?id=wordcount">总字数</a></li>
-	<li><a {if $smarty.get.id == 'favoritenum'}class="cur"{/if} href="{novel_rank_link}?id=favoritenum">总收藏</a></li>
-	<li><a {if $smarty.get.id == 'createtime'}class="cur"{/if} href="{novel_rank_link}?id=createtime">最新入库</a></li>
+	<li><a {if $smarty.get.sort == 'allclicks'}class="cur"{/if}{if !$smarty.get.sort} class="cur"{/if} href="{novel_rank_link}">总点击</a></li>
+	<li><a {if $smarty.get.sort == 'monthclicks'}class="cur"{/if} href="{novel_rank_link}?sort=monthclicks">月点击</a></li>
+	<li><a {if $smarty.get.sort == 'weekclicks'}class="cur"{/if} href="{novel_rank_link}?sort=weekclicks">周点击</a></li>
+	<li><a {if $smarty.get.sort == 'dayclicks'}class="cur"{/if} href="{novel_rank_link}?sort=dayclicks">日点击</a></li>
+	<li><a {if $smarty.get.sort == 'alllikenum'}class="cur"{/if} href="{novel_rank_link}?sort=alllikenum">总推荐</a></li>
+	<li><a {if $smarty.get.sort == 'monthlikenum'}class="cur"{/if} href="{novel_rank_link}?sort=monthlikenum">月推荐</a></li>
+	<li><a {if $smarty.get.sort == 'weeklikenum'}class="cur"{/if} href="{novel_rank_link}?sort=weeklikenum">周推荐</a></li>
+	<li><a {if $smarty.get.sort == 'daylikenum'}class="cur"{/if} href="{novel_rank_link}?sort=daylikenum">日推荐</a></li>
+	<li><a {if $smarty.get.sort == 'wordcount'}class="cur"{/if} href="{novel_rank_link}?sort=wordcount">总字数</a></li>
+	<li><a {if $smarty.get.sort == 'favoritenum'}class="cur"{/if} href="{novel_rank_link}?sort=favoritenum">总收藏</a></li>
+	<li><a {if $smarty.get.sort == 'createtime'}class="cur"{/if} href="{novel_rank_link}?sort=createtime">最新入库</a></li>
 	
 	
 </ul>
@@ -48,17 +48,17 @@
 		</tr>
 	</thead>
 	<tbody>
-		{if $smarty.get.id}
-		{if $smarty.get.id == 'allclicks'} {assign var=condition value='allclicks desc'} {/if}
-		{if $smarty.get.id == 'monthclicks'} {assign var=condition value='monthclicks desc'} {/if}
-		{if $smarty.get.id == 'weekclicks'} {assign var=condition value='weekclicks desc'} {/if}
-		{if $smarty.get.id == 'daylikenum'} {assign var=condition value='daylikenum desc'} {/if}
-		{if $smarty.get.id == 'alllikenum'} {assign var=condition value='alllikenum desc'} {/if}
-		{if $smarty.get.id == 'monthlikenum'} {assign var=condition value='monthlikenum desc'} {/if}
-		{if $smarty.get.id == 'weeklikenum'} {assign var=condition value='weeklikenum desc'} {/if}
-		{if $smarty.get.id == 'daylikenum'} {assign var=condition value='daylikenum desc'} {/if}
-		{if $smarty.get.id == 'wordcount'} {assign var=condition value='wordcount desc'} {/if}
-		{if $smarty.get.id == 'favoritenum'} {assign var=condition value='favoritenum desc'} {/if}
+		{if $smarty.get.sort}
+		{if $smarty.get.sort == 'allclicks'} {assign var=condition value='allclicks desc'} {/if}
+		{if $smarty.get.sort == 'monthclicks'} {assign var=condition value='monthclicks desc'} {/if}
+		{if $smarty.get.sort == 'weekclicks'} {assign var=condition value='weekclicks desc'} {/if}
+		{if $smarty.get.sort == 'daylikenum'} {assign var=condition value='daylikenum desc'} {/if}
+		{if $smarty.get.sort == 'alllikenum'} {assign var=condition value='alllikenum desc'} {/if}
+		{if $smarty.get.sort == 'monthlikenum'} {assign var=condition value='monthlikenum desc'} {/if}
+		{if $smarty.get.sort == 'weeklikenum'} {assign var=condition value='weeklikenum desc'} {/if}
+		{if $smarty.get.sort == 'daylikenum'} {assign var=condition value='daylikenum desc'} {/if}
+		{if $smarty.get.sort == 'wordcount'} {assign var=condition value='wordcount desc'} {/if}
+		{if $smarty.get.sort == 'favoritenum'} {assign var=condition value='favoritenum desc'} {/if}
 		{novel_book  limit=30 order=$condition}
 		<tr>
 			<td class="font11">{$block.iteration}</td>

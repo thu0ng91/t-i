@@ -115,7 +115,7 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
 	public function getSmarty()
 	{
 		if ($this->_smarty === null) {
-			$this->_smarty = new Smarty();
+			$this->_smarty = new SmartyBC();
 		}
 	    return $this->_smarty;
 	}
@@ -140,22 +140,22 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
 //		}
 //
 //		// including Smarty class and registering autoload handler
-//		require_once('sysplugins/smarty_internal_data.php');
-		require_once('Smarty.class.php');
+		require_once('sysplugins/smarty_internal_data.php');
+		require_once('SmartyBC.class.php');
 
 		// need this since Yii autoload handler raises an error if class is not found
 		// Yii autoloader needs to be the last in the autoload chain
-//		spl_autoload_unregister('smartyAutoload');
-//		Yii::registerAutoloader('smartyAutoload');
+		spl_autoload_unregister('smartyAutoload');
+		Yii::registerAutoloader('smartyAutoload');
 
 		// configure smarty
-//		if (is_array($this->config)) {
-//			foreach ($this->config as $key => $value) {
-//				if ($key{0} != '_') { // not setting semi-private properties
-//					$this->getSmarty()->$key = $value;
-//				}
-//			}
-//		}
+		if (is_array($this->config)) {
+			foreach ($this->config as $key => $value) {
+				if ($key{0} != '_') { // not setting semi-private properties
+					$this->getSmarty()->$key = $value;
+				}
+			}
+		}
 		$this->getSmarty()->_file_perms = $this->filePermission;
 		$this->getSmarty()->_dir_perms = $this->directoryPermission;
 

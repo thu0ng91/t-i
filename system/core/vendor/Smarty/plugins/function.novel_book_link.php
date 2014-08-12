@@ -37,7 +37,6 @@ function smarty_function_novel_book_link($params, &$smarty){
             break;
     }
 
-    $dir = floor($id / 1000);
-    return Yii::app()->createUrl($link, array('id' => $id, 'dir' => $dir));
+    return Yii::app()->createUrl($link, array('id' => $id));
 
 }

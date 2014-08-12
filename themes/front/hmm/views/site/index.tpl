@@ -71,9 +71,9 @@
 </div>
 <dl class="famous clearfix" style="border: none">
 	<dt>友情连接：</dt>
-	{novel_friendlink}
-	<a href="{$item->url}" target="_blank">{$item->name}</a>
-	{/novel_friendlink}
+	{*{novel_friendlink}*}
+	{*<a href="{$item->url}" target="_blank">{$item->name}</a>*}
+	{*{/novel_friendlink}*}
 	<dd></dd>
 </dl>
 </div>

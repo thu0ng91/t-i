@@ -14,14 +14,13 @@
  */
 function smarty_function_widget($params, &$smarty){
     
-    $controller_object = $smarty->_tpl_vars['this']; //extract the controller from template vars
-
+    $controller_object = $smarty->tpl_vars['this']->value; //extract the controller from template vars
     if ($controller_object == null) {
-        throw $smarty->trigger_error("Can't get controller object from template. Error.");
+        throw new CException("Can't get controller object from template. Error.");
     }
     
     if (!isset($params['name'])) {
-        throw $smarty->trigger_error("Name parameter should be specified.");
+        throw new CException("Name parameter should be specified.");
     }
      $widgetName = $params['name'];
     unset($params['name']);

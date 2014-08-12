@@ -2,9 +2,9 @@
 <link href="{$FW_THEME_URL}/css/footer.css" rel="stylesheet" type="text/css"/>
 <link href="{$FW_THEME_URL}/css/directory.css" rel="stylesheet" type="text/css"/>
 <link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
+<script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
-<script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="js/xs.js"></script>
 
 <div class="main myset"><script>show_pagetop();</script></div>
@@ -16,8 +16,7 @@
 	<dt>
 	<p class="fr">	
 		<a class="nofollow" href="javascript:;" onclick="uservote({$book->id})">推荐 </a>|
-		<a class="nofollow" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a> |
-		<a href="{novel_chapter_link bookid=$book->id id=$nextChapterId}">返回书页</a>
+		<a class="nofollow" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a>
 	</p>
 <!--path begin-->
 <div class="wrap_in path1">当前位置： <a href="{$FW_SITE_URL}">云阅首页 </a>&gt; <a
@@ -29,12 +28,12 @@
 		<h1>{$chapter->title}</h1>
 		<h3>
 			<a	href="{novel_chapter_link bookid=$book->id id=$prevChapterId}">上一章</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a	href="{novel_chapter_link bookid=$book->id id=$nextChapterId}" >返回目录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<a	href="{novel_book_link id=$book->id}" >返回目录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 			<a	href="{novel_chapter_link bookid=$book->id id=$nextChapterId}">下一章</a>
 		</h3>
 	</dd>
 	<dd class="read_AD">
-			<img src="{$FW_THEME_URL}/images/read/AD.jpg" />
+			<img src="{$FW_THEME_URL}/images/AD.jpg" />
 	</dd>
 	 <div id="contents"><!--go-->{$chapter->content|replace:"\n":"<br />&nbsp;&nbsp;&nbsp;&nbsp;"} <!--over--></div>
 	</dd>
@@ -50,7 +49,7 @@
 	<dd id="tipscent"></dd>
 	<dd id="footlink">
 	<a	href="{novel_chapter_link bookid=$book->id id=$prevChapterId}"	class="redbutt">上一章</a>
-	<a	href="{novel_chapter_link bookid=$book->id id=$nextChapterId}" class="redbutt">返回章节目录</a>
+	<a	href="{novel_book_link id=$book->id}" class="redbutt">返回章节目录</a>
 	<a	href="{novel_chapter_link bookid=$book->id id=$nextChapterId}"	class="redbutt">下一章</a></dd>
 	<dd id="tipsfoot"></dd>
 </dl>

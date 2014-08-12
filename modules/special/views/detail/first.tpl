@@ -36,23 +36,20 @@
 <!--nav_other begin-->
 <div class="nav nav_other">
 <ul class="clearfix">
-<li ><a href="{$FW_SITE_URL}" target="_self">首页</a></li>
-{novel_menu}
-<li><a href="{$item->url}">{$item->title}</a></li>
-{/novel_menu}
-<li><a href="{novel_lastupdate_link}">最新更新</a></li>
-<li><a href="{novel_rank_link}">小说排行榜</a></li>
-
+	<li ><a href="{$FW_SITE_URL}" target="_self">首页</a></li>
+	{novel_menu}
+	<li><a href="{$item->url}">{$item->title}</a></li>
+	{/novel_menu}
+	<li><a href="{novel_lastupdate_link}">最新更新</a></li>
+	<li><a href="{novel_rank_link}">小说排行榜</a></li>
+	<li><a href="/special/detail/index/id/1.html">专题</a></li>
+	<li><a href="/notice/detail/index/id/1.html">公告</a></li>
 </ul>
 </div>
 
 <div class="wrap_in path1">
 	当前位置： <a href="{$FW_SITE_URL}">云阅首页 </a>&gt; 
-	{php}
-	$p = array('id' => $this->_tpl_vars['special']->id);
-	$this->_tpl_vars['p'] = $p;
-	{/php}
-	<a href="{$Yii->createUrl('/special/detail/index',$p)}">{$special->title}</a>
+	<a href="/special/detail/index/id/1.html">{$special->title}</a>
 </div>
 
 <div class="container" style="margin-top: 5px;">

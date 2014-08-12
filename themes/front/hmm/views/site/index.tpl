@@ -14,11 +14,12 @@
 </div>
 <!--col_slider end--> 
 <!--col_main begin-->
+<div class="col_main">
 {novel_block id=11}
 {novel_block id=12}
 </div>
+<!--col_main begin-->
 </div>
-<!--col_main begin--></div>
 <!--mod_a begin-->
 <div class="col_b mod mod_a">
 <div class="hd">
@@ -36,7 +37,7 @@
 <!-- 月排行榜 -->
 {novel_block id=7}
 </div>
-</div>
+
 <!--mod_a end--></div>
 <!--row_a end--> <!--row_b begin-->
 <div class="row_b clearfix">

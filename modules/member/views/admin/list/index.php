@@ -26,7 +26,7 @@ $this->pageTitle=Yii::app()->name;
 //            'headerHtmlOptions' => array('width'=>'33px'),
 //            'checkBoxHtmlOptions' => array('name' => 'selectdel[]'),
 //        ),
-        array('name'=>'id', 'header' => '会员编号', 'filter' => false),
+        array('name'=>'id', 'filter' => false),
 //        array('name'=>'username', ),
 //        array(
 //            'name'=>'imgurl',

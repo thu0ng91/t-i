@@ -69,7 +69,7 @@ class Block extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'bid' => 'Bid',
+			'bid' => '区块编号',
 			'blockname' => '区块标题',
 			'content' => '区块内容',
 			'vars' => '区块参数',

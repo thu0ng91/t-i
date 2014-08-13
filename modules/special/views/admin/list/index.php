@@ -16,7 +16,7 @@ $this->pageTitle=Yii::app()->name;
     'template'=>"{items}\n{pager}",
     //'filter' => $model,
     'columns'=>array(
-        array('name'=>'id', 'header' => 'ID','htmlOptions'=>array('style'=>'width: 80px;'), 'filter' => false),
+        array('name'=>'id','htmlOptions'=>array('style'=>'width: 80px;'), 'filter' => false),
         array('name'=>'title', 'header' => '专题标题', 'filter' => false),
         array('name'=>'author', 'header' => '作者', 'filter' => false),
         array('name'=>'template', 'header' => '模板', 'filter' => false),

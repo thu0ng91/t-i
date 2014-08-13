@@ -1,2 +1,2 @@
 <?php
-defined("FWXSVersion") or define("FWXSVersion", "1.2.4");
+defined("FWXSVersion") or define("FWXSVersion", "1.0.0");

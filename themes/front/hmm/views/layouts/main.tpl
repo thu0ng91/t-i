@@ -21,6 +21,7 @@
 		</div>
 	</form>
 	</div>
+	{hook name="onHeadTopSearchWords"}
 </div>
 
 <div class="aside clearfix">

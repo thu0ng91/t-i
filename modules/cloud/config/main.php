@@ -7,7 +7,6 @@ return array(
     'admin' => array(
         'list_count' => 50, // 默认后台列表展示条数
     ),
-    'loading'=>'/modules/cloud/images/loading.jpg',
     'front' => array(
     ),
 );

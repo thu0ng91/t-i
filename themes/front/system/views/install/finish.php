@@ -20,6 +20,12 @@ $this->pageTitle =  '安装完成'  . ' - ' . Yii::app()->name;
                 'url'=> $this->createUrl('site/index'),
                 'label'=>'访问首页',
             )); ?>
+              <?php $this->widget('bootstrap.widgets.TbButton', array(
+                'buttonType'=>'link',
+                'type'=>'primary',
+                'url'=> '/admin.php',
+                'label'=>'访问后台',
+            )); ?>
       </div>
 
     </div><!-- form -->

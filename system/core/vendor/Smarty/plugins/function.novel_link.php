@@ -3,7 +3,7 @@
  * 生成链接地址
  *
  * Example:
- * {novel_link url=''}
+ * {novel_link url='' params=[]}
  *
  *
  * @param array $params
@@ -19,6 +19,13 @@ function smarty_function_novel_link($params, &$smarty){
 
     $url = $params['url'];
     unset($params['url']);
+	
+
+	$argv = array();
+
+	if (isset($params['params']) && is_array($params['params'])) {
+		$argv = $params['params'];
+	}
 
 //    if (!Yii::app()->hasModule("book")) return "";
 
@@ -29,6 +36,6 @@ function smarty_function_novel_link($params, &$smarty){
 //
 //    $link = "book/chapter/index";
 
-    return Yii::app()->createUrl($url, $params);
+    return Yii::app()->createUrl($url, $argv);
 
 }

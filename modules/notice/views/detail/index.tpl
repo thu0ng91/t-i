@@ -18,7 +18,7 @@
 	$p = array('id' => $this->_tpl_vars['notice']->id);
 	$this->_tpl_vars['p'] = $p;
 	{/php}
-	<a href="{$Yii->createUrl('/notice/detail/index',$p)}">{$notice->title}</a>
+	<a href="{novel_link url='/notice/detail/index' params=['id'=>$notice->id]}">{$notice->title}</a>
 </div>
 <!--path end-->
 	</dt>

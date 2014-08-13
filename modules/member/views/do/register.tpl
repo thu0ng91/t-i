@@ -25,10 +25,10 @@
 </div>
 <div class="aside clearfix">
 	{if $Yii->user->isGuest}
-	<span ></span><a class="c_login" href="{$Yii->createUrl('/member/do/login')}">登录</a>　|　
-	<a class="c_register" href="{$Yii->createUrl('/member/do/register')}">注册</a>
+	<span ></span><a class="c_login" href="{novel_link url='/member/do/login'}">登录</a>　|　
+	<a class="c_register" href="{novel_link url='/member/do/register'}">注册</a>
 	{else}
-	<span class="c_loginimg"></span><a  href="{$Yii->createUrl('/member/my/information')}">个人中心</a>
+	<span class="c_loginimg"></span><a  href="{novel_link url='/member/my/information'}">个人中心</a>
 	{/if}
 </div>
 </div>

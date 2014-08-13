@@ -421,6 +421,4 @@ overflow: hidden;}
 .static_info .tb_con .ps{padding-bottom:0;font-size:12px;line-height:20px;text-align:right;border-bottom:0 none}
 .static_info .ps .spec{margin-right:5px;}
 #newchapter,#newcomment{padding:5px 10px;}
-.toby_rank {
-
-}
+#ninfo{margin-right: auto;margin-left: auto;height:25px;width:450px;vertical-align:middle;line-height:25px;}

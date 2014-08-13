@@ -1,4 +1,5 @@
 <link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
+
 <!--path begin-->
 <div class="wrap_in path">当前位置： <a href="{$FW_SITE_URL}">云阅首页 </a>&gt; <a
 	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a>&gt;
@@ -21,7 +22,7 @@
 已完结 {/if}</span>
 <h2>{$book->title}</h2>
 <p class="book_intr"><span>作者：{$book->author}</span><span>分类：<a
-	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a></span><span>字数：<em>{$book->wordcount}</em></span>{hook name="onBookIndexShare"}</p>
+	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a></span><span>字数：<em>{ceil($book->wordcount/10000)}万</em></span>{hook name="onBookIndexShare"}</p>
 <p class="book_con">
 
 <p>{$book->summary}</p>
@@ -36,10 +37,10 @@
 <div class="tip_box"><span class="arrow_out"></span> <span
 	class="arrow_in"></span>
 <ul class="tip_con clearfix">
-	<li><span>更新到：</span> <a target="_blank"
-		href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}"
-		> 第{$book->lastchapterid}章 {$book->lastchaptertitle} </a>
-	<span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span>
+	<li><span>更新到：</span>
+	 <a style="float:left" target="_blank"	href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">　
+		 第{$book->lastchapterid}章 {$book->lastchaptertitle} </a><span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span>
+	
 	</li>
 </ul>
 </div>
@@ -194,3 +195,4 @@
 </div>
 </div>
 <!--container end-->
+<script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>

@@ -65,10 +65,8 @@
 </div>
 <!--footer end-->
 
-<script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/index.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/common1.js"></script>
-<script type="text/javascript" src="{$FW_THEME_URL}/js/layer.min.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
 </body>
 </html>

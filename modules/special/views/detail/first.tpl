@@ -42,8 +42,8 @@
 	{/novel_menu}
 	<li><a href="{novel_lastupdate_link}">最新更新</a></li>
 	<li><a href="{novel_rank_link}">小说排行榜</a></li>
-	<li><a href="/special/detail/index/id/1.html">专题</a></li>
-	<li><a href="/notice/detail/index/id/1.html">公告</a></li>
+	<li><a href="{$Yii->createUrl('/specail/detail/index', ['id' =>1])}">专题</a></li>
+	<li><a href="{$Yii->createUrl('/notice/detail/index', ['id' =>1])}}">公告</a></li>
 </ul>
 </div>
 

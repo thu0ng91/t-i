@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `friendlink`;
 CREATE TABLE `friendlink` (
   `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
   `sequence` tinyint(3) NOT NULL DEFAULT '0' COMMENT '显示顺序，正序',

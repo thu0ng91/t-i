@@ -33,7 +33,8 @@ class DetailController extends FWModuleFrontController
         ));
 
         if (!$special) {
-            throw new CHttpException(404);
+//            throw new CHttpException(404);
+			echo "<script>alert('专题不存在！');window.location.href='/';</script>";Yii::app()->end();
         }
 
         $this->assign("special", $special);

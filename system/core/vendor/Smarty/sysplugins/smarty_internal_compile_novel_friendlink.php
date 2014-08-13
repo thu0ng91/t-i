@@ -204,7 +204,7 @@ class Smarty_Internal_Compile_Novel_friendlink extends Smarty_Internal_Book_Comp
  * @package Smarty
  * @subpackage Compiler
  */
-class Smarty_Internal_Compile_Novel_menuclose extends Smarty_Internal_CompileBase
+class Smarty_Internal_Compile_Novel_friendlinkclose extends Smarty_Internal_CompileBase
 {
     /**
      * Compiles code for the {/foreach} tag

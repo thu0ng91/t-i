@@ -23,7 +23,7 @@
 	</div>
 </div>
 
-<div class="aside clearfix">
+<div class="aside">
 	{if $Yii->user->isGuest}
 	<a href="{novel_link url='/member/do/login'}">登录</a>　|　
 	<a href="{novel_link url='/member/do/register'}">注册</a>

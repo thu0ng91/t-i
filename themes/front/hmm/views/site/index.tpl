@@ -3,7 +3,7 @@
 
 <div class="container" style="margin-top: -11px;"><!--row_a begin-->
 <div class="row_a clearfix">
-<div class="col_a clearfix"><!--col_slider begin--> <!--col_slider begin-->
+<div class="col_aa clearfix"><!--col_slider begin--> <!--col_slider begin-->
 <div id="J_slideContainer" class="col_slider">
 <div class="slider_pic clearfix">
 {novel_block id=8}
@@ -71,9 +71,9 @@
 </div>
 <dl class="famous clearfix" style="border: none">
 	<dt>友情连接：</dt>
-	{*{novel_friendlink}*}
-	{*<a href="{$item->url}" target="_blank">{$item->name}</a>*}
-	{*{/novel_friendlink}*}
+	{novel_friendlink}
+	<a href="{$item->url}" target="_blank">{$item->name}</a>
+	{/novel_friendlink}
 	<dd></dd>
 </dl>
 </div>

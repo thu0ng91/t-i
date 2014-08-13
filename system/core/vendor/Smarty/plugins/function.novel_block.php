@@ -58,7 +58,7 @@ function smarty_function_novel_block($params, &$smarty){
             break;
     }
 
-    $cacheDir = $smarty->cache_dir;
+    $cacheDir = $smarty->smarty->cache_dir;
     $cacheFile = $cacheDir . "block." . $id . ".cache";
 
     $isReCache = true;

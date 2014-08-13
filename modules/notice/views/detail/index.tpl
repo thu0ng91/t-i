@@ -10,7 +10,9 @@
 <!--path begin-->
 <div class="wrap_in path1">
 	当前位置： <a href="{$FW_SITE_URL}">云阅首页 </a>&gt; 
-	<a href="{$Yii->createUrl('/notice/detail/index', ['id' =>1])}}">{$notice->title}</a>
+
+	<a href="{novel_link url='/notice/detail/index' params=['id'=>$notice->id]}">{$notice->title}</a>
+
 </div>
 <!--path end-->
 	</dt>

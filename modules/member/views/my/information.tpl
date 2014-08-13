@@ -12,11 +12,11 @@
 			<span id="titleimg"> </span><p id="title">会员中心</p>
 		</div>
 		<div id="user_cur">
-			<div style="border-top:0px;background-color:white"><span id="img1"> </span><a href="{$Yii->createUrl('member/my/information')}" id="user_fcur">用户资料</a></div>
-			<div><span id="img2"> </span><a href="{$Yii->createUrl('member/my/photoupload')}" class="user_f">设置头像</a></div>
-			<div><span id="img3"> </span><a href="{$Yii->createUrl('member/my/pwdupdate')}" class="user_f">修改密码</a></div>
-			<div><span id="img4"> </span><a href="{$Yii->createUrl('member/my/bookcase')}" class="user_f">我的书架</a></div>
-			<div><span id="img5"> </span><a style="border-bottom:0px;" href="{$Yii->createUrl('member/do/logout')}" class="user_f" >退出登录</a></div>
+			<div style="border-top:0px;background-color:white"><span id="img1"> </span><a href="{novel_link url='member/my/information'}" id="user_fcur">用户资料</a></div>
+			<div><span id="img2"> </span><a href="{novel_link url='member/my/photoupload'}" class="user_f">设置头像</a></div>
+			<div><span id="img3"> </span><a href="{novel_link url='member/my/pwdupdate'}" class="user_f">修改密码</a></div>
+			<div><span id="img4"> </span><a href="{novel_link url='member/my/bookcase'}" class="user_f">我的书架</a></div>
+			<div><span id="img5"> </span><a style="border-bottom:0px;" href="{novel_link url='member/do/logout'}" class="user_f" >退出登录</a></div>
 		</div>
 	</div>
 	<div id="userinfo_right">

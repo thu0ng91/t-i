@@ -85,7 +85,7 @@
 
 	<div class="clear"></div>
 
-	<div id="footer">
+	<div id="footer" style="text-align:center">
 		Copyright &copy; <?php echo date('Y'); ?> by <?php echo Yii::app()->name; ?> <br/>
 	</div><!-- footer -->
 

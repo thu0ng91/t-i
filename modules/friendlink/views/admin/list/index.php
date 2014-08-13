@@ -16,7 +16,7 @@ $this->pageTitle=Yii::app()->name;
     'template'=>"{items}\n{pager}",
     'filter' => $model,
     'columns'=>array(
-        array('name'=>'id', 'header' => '区块ID','htmlOptions'=>array('style'=>'width: 80px;')),
+        array('name'=>'id','htmlOptions'=>array('style'=>'width: 80px;')),
 //        array('name'=>'username', ),
 //        array(
 //            'name'=>'imgurl',

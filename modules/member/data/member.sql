@@ -1,11 +1,14 @@
 --
 -- 表的结构 `member`
 --
-CREATE TABLE IF NOT EXISTS `member` (
+DROP TABLE IF EXISTS `member`;
+CREATE TABLE `member` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `username` varchar(32) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
   `realname` varchar(32) DEFAULT NULL,
+  `gender` tinyint(1) unsigned DEFAULT NULL COMMENT '性别：1 男 2 女',
+  `avatar` varchar(50) DEFAULT NULL,
   `level` tinyint(2) DEFAULT '0' COMMENT '等级：0 普通',
   `vip_level` tinyint(2) DEFAULT '0' COMMENT 'VIP等级：0 非VIP 1 一级VIP',
   `telephone` varchar(32) DEFAULT NULL,
@@ -19,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   `loginhits` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `username_idx` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- 表的结构 `member_book`

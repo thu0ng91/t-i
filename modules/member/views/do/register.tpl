@@ -25,10 +25,10 @@
 </div>
 <div class="aside clearfix">
 	{if $Yii->user->isGuest}
-	<span ></span><a class="c_login" href="{$Yii->createUrl('/member/do/login')}">登录</a>　|　
-	<a class="c_register" href="{$Yii->createUrl('/member/do/register')}">注册</a>
+	<span ></span><a class="c_login" href="{novel_link url='/member/do/login'}">登录</a>　|　
+	<a class="c_register" href="{novel_link url='/member/do/register'}">注册</a>
 	{else}
-	<span class="c_loginimg"></span><a  href="{$Yii->createUrl('/member/my/information')}">个人中心</a>
+	<span class="c_loginimg"></span><a  href="{novel_link url='/member/my/information'}">个人中心</a>
 	{/if}
 </div>
 </div>
@@ -41,8 +41,8 @@
 	{/novel_menu}
 	<li><a href="{novel_lastupdate_link}">最新更新</a></li>
 	<li><a href="{novel_rank_link}">小说排行榜</a></li>
-	<li><a href="/special/detail/index/id/1.html">专题</a></li>
-	<li><a href="/notice/detail/index/id/1.html">公告</a></li>
+	<li><a href="{novel_link url='/special/detail/index' params=['id'=>1]}">专题</a></li>
+	<li><a href="{novel_link url='/notice/detail/index' params=['id'=>1]}">公告</a></li>
 </ul>
 </div>
 <!--nav_other end-->
@@ -116,7 +116,7 @@
     <a href="http://www.yunyuewang.com/">会员注册</a> |
     <a href="http://www.yunyuewang.com/">产品答疑</a>
     <br />
-    Copyright &copy; 1996 - 2014 YUN Corporation, All Rights Reserved <br>
+    Copyright © 2014 YUNYUE Corporation, All Rights Reserved <br>
     上海云阅信息技术有限公司版权所有
 </div>
 <!--footer end-->

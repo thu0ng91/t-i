@@ -6,6 +6,20 @@
 <script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
 <script type="text/javascript" src="js/xs.js"></script>
+<script language="javascript" type="text/javascript">
+  var preview_page = "{novel_chapter_link bookid=$book->id id=$prevChapterId}";
+  var next_page = "{novel_chapter_link bookid=$book->id id=$nextChapterId}";
+  var index_page = "{novel_book_link id=$book->id}";
+  var bookid = "{$book->id}";
+  var readid = "{$chapter->id}";
+  function jumpPage() {
+	var event = document.all ? window.event: arguments[0];
+	if (event.keyCode == 37) document.location = preview_page;
+	if (event.keyCode == 39) document.location = next_page;
+	if (event.keyCode == 13) document.location = index_page;
+  }
+  document.onkeydown = jumpPage;
+  </script>
 
 <div class="main myset"><script>show_pagetop();</script></div>
 
@@ -59,49 +73,6 @@
 <div class="cl" style="height: 8px;"></div>
 
 
-<script language=javascript>
-    //上一页链接
-    var prevpage="{novel_chapter_link bookid=$book->id id=$prevChapterId}";
-    //下一页链接
-    var nextpage="{novel_chapter_link bookid=$book->id id=$nextChapterId}";
-    //目录页链接
-    var catalog="{novel_book_link id=$book->id}";
 
-    var bid = '{$book->id}';
-    var tid = '{$chapter->id}';
-    var title = '{$book->title}';
-    var texttitle = '{$chapter->title}';
-
-    {literal}
-
-//    document.onkeydown = gotNextPage;
-
-    function gotNextPage(event)
-    {
-        event = event ? event : (window.event ? window.event : null);
-        if (event.keyCode==39)
-        {
-            //alert("Next Page!")
-            location=nextpage
-        }
-        if (event.keyCode==37)
-        {
-            //alert("Prevpage Page!");
-            location=prevpage;
-        }
-        if (event.keyCode==13)
-        {
-            location=catalog
-        }
-    }
-
-    $(document).bind("keydown", gotNextPage);
-
-    $(document).ready(function () {
-        LoadUserPro();
-        window.lastread.set(bid,tid,title,texttitle);
-    });
-    {/literal}
-</script>
 
 <script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>

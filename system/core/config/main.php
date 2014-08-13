@@ -136,7 +136,7 @@ return array(
             'class'=>'application.extensions.yiiext.renderers.smarty.ESmartyViewRenderer',
             'fileExtension' => '.tpl',
             'config' => array(
-                'force_compile' => true,
+                'force_compile' => false,
             )
         ),
 

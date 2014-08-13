@@ -20,7 +20,7 @@ class SetupForm extends CFormModel
 		return array(
 			array('dbhost,dbname,username', 'required', 'message' => '不能为空'),
             array('password', 'length', 'max' => 100, 'tooLong' => '密码过长'),
-            array('repassword', 'compare', 'compareAttribute' => 'password', 'message' => '两次密码不一致'),
+//            array('repassword', 'compare', 'compareAttribute' => 'password', 'message' => '两次密码不一致'),
 		);
 	}
 

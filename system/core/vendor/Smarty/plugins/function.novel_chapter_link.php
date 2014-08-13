@@ -26,10 +26,9 @@ function smarty_function_novel_chapter_link($params, &$smarty){
 
     $id = intval($params['id']);
     $bookid = intval($params['bookid']);
-    $dir = floor($bookid / 1000);
 
     $link = "book/chapter/index";
 
-    return Yii::app()->createUrl($link, array('bookid' => $bookid, 'id' => $id, 'dir' => $dir));
+    return Yii::app()->createUrl($link, array('bookid' => $bookid, 'id' => $id));
 
 }

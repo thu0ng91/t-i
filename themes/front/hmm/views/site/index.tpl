@@ -3,7 +3,7 @@
 
 <div class="container" style="margin-top: -11px;"><!--row_a begin-->
 <div class="row_a clearfix">
-<div class="col_a clearfix"><!--col_slider begin--> <!--col_slider begin-->
+<div class="col_aa clearfix"><!--col_slider begin--> <!--col_slider begin-->
 <div id="J_slideContainer" class="col_slider">
 <div class="slider_pic clearfix">
 {novel_block id=8}

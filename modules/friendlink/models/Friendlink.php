@@ -75,7 +75,7 @@ class Friendlink extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => '友链编号',
 			'sequence' => '排序',
 			'name' => '站名',
 			'url' => '链接',

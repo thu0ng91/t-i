@@ -74,7 +74,7 @@ class Special extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => '专题编号',
 			'title' => '专题名',
 			'content' => '专题简介',
 			'template' => '专题模板',

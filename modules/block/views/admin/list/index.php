@@ -38,7 +38,7 @@ $this->widget('bootstrap.widgets.TbButtonGroup',
     'template'=>"{items}\n{pager}",
     'filter' => $model,
     'columns'=>array(
-        array('name'=>'bid', 'header' => '区块ID','htmlOptions'=>array('style'=>'width: 80px;')),
+        array('name'=>'bid','htmlOptions'=>array('style'=>'width: 80px;')),
 //        array('name'=>'username', ),
 //        array(
 //            'name'=>'imgurl',

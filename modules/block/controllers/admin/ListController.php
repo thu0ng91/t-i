@@ -184,8 +184,10 @@ class ListController extends FWModuleAdminController
 				$model->status = $v->status;
 				$model->cachetime = $v->cachetime;
 				$model->save();
+				$up_func = $model->blocktype.'_block_update';
+				$this->$up_func($model);
 			}
-			Yii::app()->user->setFlash('actionInfo','导入区块数据成功,请更新区块数据');
+			Yii::app()->user->setFlash('actionInfo','导入区块数据成功');
         	$this->redirect(array('admin/list/index'));
 		}
 		$this->render('insert');

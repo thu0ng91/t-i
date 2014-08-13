@@ -28,7 +28,7 @@
 <p>{$book->summary}</p>
 </p>
 <div class="op clearfix">
-	<a class="a_icon readnow" href="/book/{$book->id}/1.html" target="_blank">开始阅读</a> 
+	<a class="a_icon readnow" href="{novel_chapter_link bookid=$book->id id=1}" target="_blank">开始阅读</a> 
 	<a class="a_icon a_btn" href="{novel_book_download_link id=$book->id}" target="_blank">TXT下载</a>
 	<a class="a_icon view_all" href="javascript:;" onclick="uservote({$book->id})">推荐</a>
 	<a class="a_icon view_bookcase" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a>

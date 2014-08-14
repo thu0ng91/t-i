@@ -56,6 +56,7 @@ class Member extends BaseModel
 			array('address', 'length', 'max'=>200),
 			array('avatar', 'length', 'max'=>50),
 			array('username','unique','caseSensitive'=>false,'message'=>'用户名<span style="color:blue">{value}</span>已经被注册，请更换'),
+            array('username', 'filter','filter'=>array($obj=new CHtmlPurifier(),'purify')),
 			array('email', 'email', 'allowEmpty' => true),
 			array('password', 'length', 'min'=>6, 'max' => 32, 'allowEmpty' => false),
 			//array('repassword', 'compare', 'compareAttribute'=>'password', 'message' => "两次密码不一致",'on'=>'register'),

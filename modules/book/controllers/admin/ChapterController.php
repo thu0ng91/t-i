@@ -242,4 +242,22 @@ class ChapterController extends FWModuleAdminController
         }
         return $volumes;
     }
+	public function actionDelall() {
+        if (Yii::app()->request->isPostRequest) {
+        	$bookid = intval($_GET['id']);
+            //$criteria = new CDbCriteria;
+            //$criteria->addInCondition('id', $_POST['id']);
+            //Chapter::customModel()->deleteAll($criteria); //News换成你的模型
+            foreach($_POST['id'] as $v){
+            	$this->loadModel($v, $bookid)->delete();
+            }
+
+            if (isset(Yii::app()->request->isAjaxRequest)) {
+                echo CJSON::encode(array('success' => true));
+            } else
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+        }
+        else
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+    }
 }

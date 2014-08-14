@@ -168,7 +168,7 @@ class InstallController extends CController
 
                 // 安装成功，创建安装锁定文件
                 $this->createLockFile();
-                Yii::app()->user->setFlash('actionInfo','恭喜，云阅小说系统安装成功！');
+                Yii::app()->user->setFlash('actionInfo','恭喜，云阅小说系统安装成功！请先登录后台安装必备模块！');
                 $this->redirect('finish');
             }
         }

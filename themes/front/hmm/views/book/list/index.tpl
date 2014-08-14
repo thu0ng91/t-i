@@ -52,7 +52,7 @@
 				</span>
 			
 				</dd>
-			<dd class="desc">{$item->summary|truncate:68:"...":true}
+			<dd class="desc">{$item->summary|truncate:62:"...":true}
 				<a class="more" style="float:right" href="{novel_book_link id=$item->id}" title="{$item->title}" target="_blank">详细&gt;&gt;</a>
 			</dd>
 		</dl>
@@ -138,7 +138,5 @@
 </div>
 <!--container end-->
 <!--footer beigin-->
-<script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
-<script	type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
 <script	src="{$FW_THEME_URL}/js/jquery.cookie.js"></script>
 <script	src="{$FW_THEME_URL}/js/ua.js"></script>

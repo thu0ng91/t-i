@@ -3,4 +3,4 @@
 
 $this->pageTitle=Yii::app()->name;
 ?>
-<img src="<?php echo Yii::app()->controller->module['loading'];?>">
+<img src="<?php echo Yii::app()->baseUrl  . Yii::app()->controller->module['loading'];?>">

@@ -16,7 +16,7 @@ $this->pageTitle=Yii::app()->name;
     'template'=>"{items}\n{pager}",
     //'filter' => $model,
     'columns'=>array(
-        array('name'=>'id', 'header' => 'ID','htmlOptions'=>array('style'=>'width: 80px;'), 'filter' => false),
+        array('name'=>'id','htmlOptions'=>array('style'=>'width: 80px;'), 'filter' => false),
         array('name'=>'title', 'header' => '公告标题', 'filter' => false),
         array('name'=>'views', 'header' => '查看数', 'filter' => false),
         array('name'=>'dateline', 'value' => 'date("Y-m-d H:i:s", $data->dateline)', 'filter' => false),

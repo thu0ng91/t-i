@@ -204,7 +204,7 @@ class Smarty_Internal_Compile_Novel_notice extends Smarty_Internal_Book_Compileb
  * @package Smarty
  * @subpackage Compiler
  */
-class Smarty_Internal_Compile_Novel_menuclose extends Smarty_Internal_CompileBase
+class Smarty_Internal_Compile_Novel_noticeclose extends Smarty_Internal_CompileBase
 {
     /**
      * Compiles code for the {/foreach} tag

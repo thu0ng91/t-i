@@ -33,7 +33,8 @@ class DetailController extends FWModuleFrontController
         ));
 
         if (!$notice) {
-            throw new CHttpException(404);
+//            throw new CHttpException(404);
+			echo "<script>alert('公告不存在！');window.location.href='/';</script>";Yii::app()->end();
         }
 
         $this->assign("notice", $notice);

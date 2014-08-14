@@ -31,12 +31,12 @@ $this->pageTitle =  '第一步 数据库安装'  . ' - ' . Yii::app()->name;
 
       <?php echo $form->textFieldRow($model,'username'); ?>
 
-      <?php echo $form->passwordFieldRow($model,'password',array(
+      <?php echo $form->textFieldRow($model,'password',array(
             'hint'=>' ',
         )); ?>
-        <?php echo $form->passwordFieldRow($model,'repassword',array(
-            'hint'=>' ',
-        )); ?>
+        <?php //echo $form->passwordFieldRow($model,'repassword',array(
+            //'hint'=>' ',
+        //)); ?>
         </fieldset>
       <div class="form-actions">
         <?php $this->widget('bootstrap.widgets.TbButton', array(

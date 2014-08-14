@@ -37,7 +37,7 @@
 		                    	<a href="{novel_book_link id=$it->book_id}">　[{$it->title}]　</a>
 		                    	<a href="{novel_chapter_link bookid=$it->book_id id=$it->lastchapterid}">{$it->lastchaptertitle}</a></td>
 		                        <td>{$it->lastviewtime|date_format:'Y-m-d H:i'}</td>
-		                        <td><a href="/member/my/deletebookcase/id/{$it->id}">删除</a>
+		                        <td><a href="{novel_link url='member/my/deletebookcase' params=['id'=>$it->id]}id/{$it->id}">删除</a>
 		                    </td>
 	                    </tr>
 	                {foreachelse}

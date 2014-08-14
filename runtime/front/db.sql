@@ -186,3 +186,37 @@ CREATE TABLE `plugins` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `module_name_uniq` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+-- Table structure for `comment`
+-- ----------------------------
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE `comment` (
+  `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `uid` int(8) unsigned NOT NULL,
+  `username` varchar(25) NOT NULL,
+  `book_id` int(8) unsigned NOT NULL,
+  `content` varchar(1000) NOT NULL COMMENT '评论内容',
+  `digest` tinyint(1) unsigned NOT NULL COMMENT '是否精华',
+  `recommends` int(6) unsigned NOT NULL COMMENT '推荐数',
+  `status` tinyint(1) unsigned NOT NULL COMMENT '状态1为开启，2为关闭',
+  `dateline` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+-- ----------------------------
+-- Table structure for `bookcase`
+-- ----------------------------
+DROP TABLE IF EXISTS `bookcase`;
+CREATE TABLE `bookcase` (
+  `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `book_id` int(8) unsigned NOT NULL COMMENT '小说ID',
+  `userid` int(8) unsigned NOT NULL COMMENT '用户ID',
+  `username` varchar(25) NOT NULL COMMENT '用户名',
+  `lastviewtime` int(11) unsigned NOT NULL COMMENT '最后查看时间',
+  `dateline` int(11) unsigned NOT NULL COMMENT '添加时间',
+  `status` tinyint(1) unsigned NOT NULL COMMENT '状态，1为正常，2为删除',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

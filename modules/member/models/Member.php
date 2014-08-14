@@ -82,7 +82,7 @@ class Member extends BaseModel
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => '会员编号',
 			'username' => '用户名',
 			'password' => '密码',
 			'repassword' => '确认密码',

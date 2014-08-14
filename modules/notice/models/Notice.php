@@ -72,7 +72,7 @@ class Notice extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id' => 'ID',
+			'id' => '公告编号',
 			'title' => '标题',
 			'content' => '内容',
 			'views' => '查看数',

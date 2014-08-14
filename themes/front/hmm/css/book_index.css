@@ -10,7 +10,8 @@
 
 /*row_a*/
 .row_a{margin-bottom:10px;}
-.row_a .col_a{width:761px;height:400px;border:1px solid #dcdcdc;background-color:#fff;overflow:hidden;}
+.row_a .col_a{width:761px;height:auto;background-color:#fff;overflow:hidden;}
+.row_a .col_aa{width:761px;height:auto;background-color:#fff;overflow:hidden;border:1px solid #dcdcdc;margin-bottom: 10px;}
 .col_slider{float:left;width:275px;height:382px;padding:9px;border-right:1px solid #ccc;background-color:#f4f8fb}
 .col_main{float:right;width:467px;font-size:14px;line-height:26px;overflow:hidden;}
 
@@ -40,22 +41,22 @@
 
 
 /*mod_a*/
-.mod_a{width:215px;height:401px;margin-bottom:0;}
+.mod_a{width:215px;height:401px;margin-bottom:0;margin-bottom: 10px;}
 .mod_a .hd{background-color:#fff;}
 
 /*free_book*/
-.free_book{margin-bottom:10px;}
+.free_book{margin-bottom:10px;width:759px;}
 .free_book .mod_hd{padding-left:9px;}
 .free_book h3{padding-left:25px;background-position:-180px 7px;}
 .free_book .mod_bd{padding:14px 33px 12px;}
 
 /*recommend_book*/
-.recommend_book{margin-bottom:10px;}
+.recommend_book{margin-bottom:10px;height:auto;}
 .recommend_book .mod_hd{padding-left:9px;}
 .recommend_book .mod_hd .tit{margin-top:-1px;height:34px;overflow:hidden;}
 .recommend_book .mod_hd h3{float:left;padding-left:21px;background-position:-189px -50px;}
 .recommend_book .mod_hd span{margin-left:10px;color:#666;font-size:12px;}
-.recommend_book .mod_bd{width:723px;padding:0 19px;overflow:hidden;}
+.recommend_book .mod_bd{width:720px;padding:0 19px;height:auto;}
 .recommend_book .item_all{margin-top:-5px;}
 .recommend_book dl{float:left;width:172px;height:141px;padding:13px 15px 10px 0;font-size:12px;line-height:22px; border-top:1px dashed #c9c9c9;overflow:hidden}
 .recommend_book dt{font-size:14px;margin-bottom:9px;}
@@ -132,7 +133,7 @@
 .data_render .uptime{width:120px;}
 
 .data_render th{height:39px;line-height:39px;font-weight:100;background-position:0 0;border-bottom:2px solid #fff; }
-.data_render td{height:31px;line-height:31px;text-align:center;border-bottom:1px solid #e9f3fa;overflow:hidden;}
+.data_render td{height:31px;line-height:31px;text-align:center;border-bottom:1px solid #e9f3fa;}
 .data_render .cell_left{text-align:left;}
 .data_render th i{font-family:simsun}
 .data_render .font11{font-size:11px;}

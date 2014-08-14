@@ -1,6 +1,23 @@
---
--- 表的结构 `member`
---
+/*
+Navicat MySQL Data Transfer
+
+Source Server         : localhost
+Source Server Version : 50617
+Source Host           : localhost:3306
+Source Database       : yunyue
+
+Target Server Type    : MYSQL
+Target Server Version : 50617
+File Encoding         : 65001
+
+Date: 2014-08-13 13:37:39
+*/
+
+SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `member`
+-- ----------------------------
 DROP TABLE IF EXISTS `member`;
 CREATE TABLE `member` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -22,20 +39,4 @@ CREATE TABLE `member` (
   `loginhits` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `username_idx` (`username`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- 表的结构 `member_book`
---
-CREATE TABLE IF NOT EXISTS `member_book` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `memberid` int(11) NOT NULL COMMENT '用户编号',
-  `bookid` int(11) NOT NULL COMMENT '小说编号',
-  `readchapterid` int(11) DEFAULT NULL COMMENT '最后更新章节编号',
-  `readchaptertitle` varchar(100) DEFAULT NULL COMMENT '最后更新章节名',
-  `createtime` int(10) DEFAULT NULL,
-  `updatetime` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `memberid_idx` (`memberid`) USING BTREE,
-  KEY `bookid_idx` (`bookid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;

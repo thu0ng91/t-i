@@ -17,10 +17,10 @@ class MyController extends MemberController
      */
 	public function getAvatar($ava)
     {	
-    	$avatar = FW_ROOT_PATH.'uploads'.DS.'member'.DS.$ava;
+    	$avatar = FW_ROOT_PATH. DS .'uploads'.DS.'member'.DS.$ava;
 
     	if(file_exists($avatar)) {
-    		return Yii::app()->baseUrl.'uploads'.DS.'member'.DS.$ava;
+    		return Yii::app()->baseUrl. DS .'uploads'.DS.'member'.DS.$ava;
     	} else {
     		return false;
     	}
@@ -56,21 +56,16 @@ class MyController extends MemberController
 		$this->assign("telephone", $model->telephone);
 		$this->assign("address", $model->address);
     	$userinfo = Yii::app()->user->info;
-    	$nsql = "select * from member where id='$userinfo->id'";
-    	$command = $connection->createCommand($nsql);
-    	$result = $command->execute();
+
     	$this->assign("list", $userinfo);
     	if($_POST) {
-    		$sql = "update member set 
-    		email='".$_POST['email']."',
-    		gender='".$_POST['gender']."',
-    		qq='".$_POST['qq']."',
-    		telephone='".$_POST['telephone']."',
-    		address='".$_POST['address']."'
-    		where id='$userinfo->id'";
-			$command = $connection->createCommand($sql);
-			$result = $command->execute();
-			$this->redirect('/member/my/information');
+    		$model->email = $_POST['email'];
+    		$model->gender = intval($_POST['gender']);
+    		$model->qq = intval($_POST['qq']);
+    		$model->telephone = intval($_POST['telephone']);
+    		$model->address = $_POST['address'];
+    		$model->save();
+    		H::showmsg('成功修改资料', Yii::app()->createUrl('/member/my/information'));
     	} else {
     		 $this->render("information");
     	}
@@ -102,7 +97,7 @@ class MyController extends MemberController
     		} else {
     			if (!file_exists('uploads/member')){
     				mkdir ("uploads/member"); 
-    			} else { 
+    			} else {
 	            	$filename = $_FILES['userimg']['name'];//获取文件名
 	            	$filesize = $_FILES['userimg']['size'];//获取文件大小
 	            	if($filesize / 1000 >=$imgsize ) {
@@ -119,14 +114,16 @@ class MyController extends MemberController
 	            		echo "<script>alert('图片类型有误');</script>";
 	            		exit;
 					}
+					
+    			
+    		
 					$filename1 = $uid . "." . $s[0];
     				$uploadPath = "uploads/member/";
 					$uploadfile = $uploadPath.$filename1;
 					move_uploaded_file($_FILES["userimg"]["tmp_name"],$uploadPath .$filename1);
 					$sql = "update member set avatar='$filename1' where id='$uid'";
-					$command = $connection->createCommand($sql);
-					$result = $command->execute();
-					$this->redirect('/member/my/information');
+					$command = $connection->createCommand($sql)->execute();
+					H::showmsg('头像设置成功', Yii::app()->createUrl('/member/my/information'));
     			}
     		}
         }

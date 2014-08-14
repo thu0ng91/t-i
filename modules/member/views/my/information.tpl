@@ -26,8 +26,8 @@
 			<div id="user_tconter">
 				<div class="user_imts"><img src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}" /></div>
 				<div class="user_texs">
-					<div class="user_ceet">* 昵称：</div><div class="user_seec"><input type="text" name="realname" value="{$realname}" size="30" maxlength="30" /></div>
-					<div class="user_ceet">* 性别：</div><div class="user_seec"><input type="radio" value="1" {if $gender == 1}checked{/if} name="gender" /><span style="float:left;">男</span><input type="radio" value="2" {if $gender == 2}checked{/if} name="gender" /><span>女</span></div>
+					<div class="user_ceet">用户名：</div><div class="user_seec"><input type="text" value="{$username}" size="30" maxlength="30" disabled /></div>
+					<div class="user_ceet">* 性别：</div><div class="user_seec"><input type="radio" value="1" {if !$gender or $gender == 1}checked{/if} name="gender" /><span style="float:left;">男</span><input type="radio" value="2" {if $gender == 2}checked{/if} name="gender" /><span>女</span></div>
 					<div class="user_ceet">* 邮箱：</div><div class="user_seec"><input tyep="text" value="{$email}" name="email" size="60" maxlength="60" /></div>
 					<div class="user_ceet">Q Q：</div><div class="user_seec"><input tyep="text" value="{$qq}" name="qq" size="60" maxlength="60" /></div>
 					<div class="user_ceet">手机号码：</div><div class="user_seec"><input tyep="text" value="{$telephone}" name="telephone" size="60" maxlength="60" /></div>

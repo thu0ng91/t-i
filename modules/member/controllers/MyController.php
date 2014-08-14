@@ -17,10 +17,10 @@ class MyController extends MemberController
      */
 	public function getAvatar($ava)
     {	
-    	$avatar = FW_ROOT_PATH.DS.'uploads'.DS.'member'.DS.$ava;
+    	$avatar = FW_ROOT_PATH.'uploads'.DS.'member'.DS.$ava;
 
     	if(file_exists($avatar)) {
-    		return Yii::app()->baseUrl.DS.'uploads'.DS.'member'.DS.$ava;
+    		return Yii::app()->baseUrl.'uploads'.DS.'member'.DS.$ava;
     	} else {
     		return false;
     	}
@@ -51,7 +51,6 @@ class MyController extends MemberController
     	}
     	
 		$this->assign("avatar", $avatar);//头像
-		$this->assign("realname", $model->realname);
 		$this->assign("qq", $model->qq);
 		$this->assign("email", $model->email);
 		$this->assign("telephone", $model->telephone);
@@ -62,7 +61,7 @@ class MyController extends MemberController
     	$result = $command->execute();
     	$this->assign("list", $userinfo);
     	if($_POST) {
-    		$sql = "update member set realname='".$_POST['realname']."',
+    		$sql = "update member set 
     		email='".$_POST['email']."',
     		gender='".$_POST['gender']."',
     		qq='".$_POST['qq']."',

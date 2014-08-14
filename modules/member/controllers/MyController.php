@@ -94,38 +94,37 @@ class MyController extends MemberController
     	if($_FILES){
     		if (!file_exists('uploads')){
     			mkdir ("uploads"); 
-    		} else {
-    			if (!file_exists('uploads/member')){
-    				mkdir ("uploads/member"); 
-    			} else {
-	            	$filename = $_FILES['userimg']['name'];//获取文件名
-	            	$filesize = $_FILES['userimg']['size'];//获取文件大小
-	            	if($filesize / 1000 >=$imgsize ) {
-	            		$this->render("photoupload");
-	            		echo "<script>alert('图片大小不能超过$imgsize');</script>";
-	            		exit;
-	            	}
-				 	$filename1 = substr($filename, -5);
-				 	$filename1 = preg_replace('/\W/','',$filename1);
-				 	$filename1 = preg_replace('/1-9/','',$filename1);
-					preg_match("/(jpg)|(jpeg)|(png)|(gif)/", $filename1,$s);
-					if(!$s) {
-						$this->render("photoupload");
-	            		echo "<script>alert('图片类型有误');</script>";
-	            		exit;
-					}
-					
-    			
-    		
-					$filename1 = $uid . "." . $s[0];
-    				$uploadPath = "uploads/member/";
-					$uploadfile = $uploadPath.$filename1;
-					move_uploaded_file($_FILES["userimg"]["tmp_name"],$uploadPath .$filename1);
-					$sql = "update member set avatar='$filename1' where id='$uid'";
-					$command = $connection->createCommand($sql)->execute();
-					H::showmsg('头像设置成功', Yii::app()->createUrl('/member/my/information'));
-    			}
-    		}
+    		} 
+    		if (!file_exists('uploads/member')){
+    			mkdir ("uploads/member"); 
+    		} 
+            $filename = $_FILES['userimg']['name'];//获取文件名
+            $filesize = $_FILES['userimg']['size'];//获取文件大小
+            if($filesize / 1000 >=$imgsize ) {
+            	$this->render("photoupload");
+            	echo "<script>alert('图片大小不能超过$imgsize');</script>";
+            	exit;
+            }
+		 	$filename1 = substr($filename, -5);
+		 	$filename1 = preg_replace('/\W/','',$filename1);
+		 	$filename1 = preg_replace('/1-9/','',$filename1);
+			preg_match("/(jpg)|(jpeg)|(png)|(gif)/", $filename1,$s);
+			if(!$s) {
+				$this->render("photoupload");
+            	echo "<script>alert('图片类型有误');</script>";
+            	exit;
+			}
+			
+    	
+    
+			$filename1 = $uid . "." . $s[0];
+    		$uploadPath = "uploads/member/";
+			$uploadfile = $uploadPath.$filename1;
+			move_uploaded_file($_FILES["userimg"]["tmp_name"],$uploadPath .$filename1);
+			$sql = "update member set avatar='$filename1' where id='$uid'";
+			$command = $connection->createCommand($sql)->execute();
+			H::showmsg('头像设置成功', Yii::app()->createUrl('/member/my/information'));
+
         }
         $this->render("photoupload");
    	}

@@ -1,3 +1,4 @@
+<script>$(document)[0].title = '我的书架_' + $(document)[0].title; </script>
 <link href="{$FW_THEME_URL}/css/user.css" rel="stylesheet" />
 <div id="btod">
 <div id="user">

@@ -52,7 +52,7 @@
 <!--nav_other end-->
 <!--header end-->
 <!--path begin-->
-<div class="wrap_in path">当前位置： <a href="{$FW_SITE_URL}">云阅首页</a> &gt; 
+<div class="wrap_in path">当前位置： <a href="{$FW_SITE_URL}">{$siteinfo->SiteName}首页</a> &gt; 
 	<a href="{novel_category_link id=$book->category->id}">{$book->category->title}</a> &gt;
 	<a href="{novel_book_link id=$book->id}">{$book->title}</a> &gt;
 	<a href="{novel_book_download_link id=$book->id}">{$book->title}TXT下载 </a>
@@ -69,7 +69,7 @@
 					</div>
 				</div>
 				<div class="info">
-					<span class="state">{if $book->flag == 1} 连载中 {else}已完结 {/if}</span>
+					<span class="state">{if $book->flag == 0} 连载中 {else}已完结 {/if}</span>
 					<h2>{$book->title}</h2>
 					<p class="book_intr">
 						<span>作者：{$book->author}</span>

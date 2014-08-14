@@ -34,7 +34,7 @@
 				</span>
 			
 				</dd>
-			<dd class="desc">{$item->summary|truncate:66:"...":true}&nbsp;
+			<dd class="desc">{$item->summary|truncate:62:"...":true}&nbsp;
 			<a class="more" href="{novel_book_link id=$item->id}" title="{$item->title}" target="_blank">详细&gt;&gt;</a>
 			</dd>
 		</dl>

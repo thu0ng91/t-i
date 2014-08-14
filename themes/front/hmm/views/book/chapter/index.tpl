@@ -33,7 +33,7 @@
 		<a class="nofollow" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a>
 	</p>
 <!--path begin-->
-<div class="wrap_in path1">当前位置： <a href="{$FW_SITE_URL}">云阅首页 </a>&gt; <a
+<div class="wrap_in path1">当前位置： <a href="{$FW_SITE_URL}">{$siteinfo->SiteName}首页 </a>&gt; <a
 	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a>&gt;
 <a href="{novel_book_link id=$book->id}">{$book->title}</a></div>
 <!--path end-->

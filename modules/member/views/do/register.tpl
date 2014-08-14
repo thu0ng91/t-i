@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=7">
-<title>{$siteinfo->SiteName}</title>
+<title>{$title}</title>
 <meta name="keywords" content="{$keywords|strip_tags}"/>
 <link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
 
@@ -86,7 +86,7 @@
     </div>
   </div>
   <div class="remark">   
-    <div class="t">已有云阅帐号？ <a href="{novel_link url='member/do/login'}" class="dl">登 录</a></div>
+    <div class="t">已有{$siteinfo->SiteName}帐号？ <a href="{novel_link url='member/do/login'}" class="dl">登 录</a></div>
     <dl>
      <dt>注册成为会员，您将拥有：</dt>
      <dd>&middot;可将喜爱的书籍放入书架</dd>

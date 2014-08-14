@@ -1,3 +1,4 @@
+<script>$(document)[0].title = '用户资料_' + $(document)[0].title; </script>
 <link href="{$FW_THEME_URL}/css/user.css" rel="stylesheet" />
 <div id="btod">
 <div id="user">

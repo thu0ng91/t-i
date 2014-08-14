@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=7">
-<title>{$siteinfo->SiteName}</title>
+<title>{$title}</title>
 <meta name="keywords" content="{$keywords|strip_tags}"/>
 <link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
 <!--<script src="{$FW_THEME_URL}/js/main.js"></script>-->
@@ -49,7 +49,7 @@
 <link href="{$FW_THEME_URL}/css/style.css" type="text/css" rel="stylesheet" />
 <div class="box_mid fix">
   <div class="login">
- <h3>用户登录</h3>
+ <h3>会员登录</h3>
 <form action="{novel_link url='member/do/login'}" method="POST">
 <fieldset>
     <div class="form-item">
@@ -71,14 +71,14 @@
 
   </div>
   <div class="lother">
-   <h3>用户注册</h3>
-   还没有云阅账号？
+   <h3>会员注册</h3>
+   还没有{$siteinfo->SiteName}账号？
    <a href="{novel_link url='member/do/register'}"  title="立即注册" class="reg">立即注册</a>
 <!--   你也可以用站外账号登录:-->
 <!--    <p class="o_login"><a href="javascript:;" id="qqlogin" title="腾讯QQ" class="qq"></a>-<a href="javascript:alert('敬请期待...')"  title="新浪微博" class="sina"></a></p>-->
  </div>
 </div>
-</div>
+
 
 
 <!--container end-->

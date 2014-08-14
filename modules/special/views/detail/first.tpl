@@ -48,7 +48,7 @@
 </div>
 
 <div class="wrap_in path1">
-	当前位置： <a href="{$FW_SITE_URL}">云阅首页 </a>&gt; 
+	当前位置： <a href="{$FW_SITE_URL}">{$siteinfo->SiteName}首页 </a>&gt; 
 	<a href="/special/detail/index/id/1.html">{$special->title}</a>
 </div>
 

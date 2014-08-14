@@ -58,7 +58,7 @@ class Member extends BaseModel
 			array('username','unique','caseSensitive'=>false,'message'=>'用户名<span style="color:blue">{value}</span>已经被注册，请更换'),
 			array('email', 'email', 'allowEmpty' => true),
 			array('password', 'length', 'min'=>6, 'max' => 32, 'allowEmpty' => false),
-			array('repassword', 'compare', 'compareAttribute'=>'password', 'message' => "两次密码不一致"),
+			//array('repassword', 'compare', 'compareAttribute'=>'password', 'message' => "两次密码不一致",'on'=>'register'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, username, password, realname, avatar, level, vip_level, telephone, qq, email, address, createtime, updatetime, lastlogintime, status, loginhits', 'safe', 'on'=>'search'),
@@ -102,15 +102,13 @@ class Member extends BaseModel
 			'loginhits' => '登陆次数',
 		);
 	}
-
+	
     public function beforeSave()
     {
-        if (parent::beforeSave()) {
-            $this->password = H::encrpyt($this->password);
-            return true;
-        }
-
-        return false;
+    	if($this->isNewRecord){
+    		$this->password = H::encrpyt($this->password);
+    	}
+    	return true;
     }
 
     /**

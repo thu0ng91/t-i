@@ -25,8 +25,13 @@ $this->pageTitle=Yii::app()->name;
 	'id'=>'chapter',
 //    'filter' => $model,
     'columns'=>array(
-//        array('name'=>'id', 'header'=>'#'),
-//        array('name'=>'id', 'header' => '#', 'filter' => false),
+array(
+    'class' => 'CCheckBoxColumn',
+    'selectableRows' => 2,
+    'footer' => '<button type="button" onclick="GetCheckbox();" style="width:76px">批量删除</button>',
+    'checkBoxHtmlOptions' => array('name' => 'id[]'), //name在js中会用到
+),
+array('name'=>'id', 'header' => '章节编号', 'filter' => false),
         array('name'=>'title', 'filter' => false ),
         array('name'=>'chapterorder','value' => '$row +  ($this->grid->dataProvider->getPagination()->getCurrentPage() * $this->grid->dataProvider->getPagination()->getPageSize()) + 1' ,'filter' => false ),
         array('name'=>'wordcount', 'filter' => false ),
@@ -91,4 +96,28 @@ $this->pageTitle=Yii::app()->name;
             width: "60%"
         }, false);
     }
+</script>
+<script type="text/javascript">
+    /*<![CDATA[*/
+    var GetCheckbox = function (){
+        var data=new Array();
+        var bookId = '<?php echo $book->id;?>';
+        $('input:checkbox[name="id[]"]').each(function (){
+            //根据上边定义checkbox名字获取选中项，然后放到数组
+            if($(this).attr("checked")=="checked"){
+                data.push($(this).val());
+            }
+        });
+        if(data.length > 0){
+            $.post('<?php echo CHtml::normalizeUrl(array('/book/admin/chapter/delall/','id'=>$book->id)); ?>',{'id[]':data}, function (data) {
+                var ret = $.parseJSON(data);
+                if (ret != null && ret.success != null && ret.success) {
+                    $.fn.yiiGridView.update('chapter'); //这里是CGridView中定义的id
+                }
+            });
+        }else{
+            alert("请选择要删除的关键字!");
+        }
+    }
+    /*]]>*/
 </script>

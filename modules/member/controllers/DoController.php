@@ -25,11 +25,10 @@ class DoController extends FWFrontController
                     // 记录登陆信息
                     $m = Member::model()->findByPk(Yii::app()->user->info->id);
                     $m->updateLoginInfo();
-                    $this->redirect(array('/site/index'));
+                    H::showmsg('登录成功', Yii::app()->createUrl('/site/index'));
                 }else{
-                	 $this->render("login");
-            		 echo "<script>alert('账号或密码错误');</script>";
-            		 exit;
+                	 //$this->render("login");
+                	 H::showmsg('账号或密码错误', Yii::app()->createUrl('/site/index'));
                 }
             }
 
@@ -66,26 +65,25 @@ class DoController extends FWFrontController
 
         if(isset($_POST['RegisterForm']))
         {
+        	if($_POST['RegisterForm']['password'] != $_POST['RegisterForm']['repassword']){
+        		H::showmsg('两次密码输入不一致', Yii::app()->createUrl('/member/do/register'));
+        		$this->refresh();
+        	}
+        	if(strlen($_POST['RegisterForm']['password']) < 6){
+        		H::showmsg('密码不得小于6个字符', Yii::app()->createUrl('/member/do/register'));
+        		$this->refresh();
+        	}
+        	$model = new Member();
             $model->attributes = $_POST['RegisterForm'];
-//            $identity = new UserIdentity($model->username,$model->password);
-
-//            if(!$this->createAction('captcha')->validate($model->verifyCode, false)){
-//                Yii::app()->user->setFlash('actionInfo','验证码错误！');
-//                $this->refresh();
-//            }
 
             if($model->validate()){
-                $model = new Member();
-                $model->attributes = $_POST['RegisterForm'];
                 $model->status = Yii::app()->params['status']['ischecked'];
-//                $model->attributes['status'] = Yii::app()->params['status']['ischecked'];
                 if ($model->save()) {
                     FWHook::run("member", "afterRegisterSuccess", new FWHookEvent($this, array($model)));
-                    Yii::app()->user->setFlash('actionInfo','恭喜，注册成功！请登陆！');
-                    $this->redirect(array('login'));
+                    H::showmsg('恭喜，注册成功！请登陆！', Yii::app()->createUrl('/member/do/login'));
+                    $this->refresh();
                 } else {
-//                    FWHook::run("member", "afterRegisterFailed", new FWHookEvent($this, array($model)));
-                    Yii::app()->user->setFlash('actionInfo',"注册失败，请联系管理员！");
+                    H::showmsg('注册失败，请联系管理员！', Yii::app()->createUrl('/member/do/register'));
                     $this->refresh();
                 }
             } else {

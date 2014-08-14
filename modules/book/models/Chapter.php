@@ -378,4 +378,17 @@ class Chapter extends ChapterDynamicDbModel
 
         return true;
     }
+    /**
+     * 获取指定章节的部分文字
+     * @param $bookid
+     * @param $chapterid
+     * @param $len
+     * @param $suffix
+     */
+     public static function getChapterDesByCid($bookid,$chapterid,$len = 100,$suffix = '...'){
+     	$dir = Book::getBookDataDir($bookid);
+     	$chapter_file = $dir . DS . $chapterid . ".txt";
+     	$content = file_get_contents($chapter_file);
+     	return H::substr($content,$len,$suffix);
+     }
 }

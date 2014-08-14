@@ -16,6 +16,11 @@
 <div class="imgbox"><img src="{$book->coverImageUrl}"
 	alt="{$book->title}"></div>
 <ul class="op_list">
+<li>总点击：{$book->allclicks}</li>
+<li>月点击：{$book->monthclicks}</li>
+<li>总推荐：{$book->alllikenum}</li>
+<li>月推荐：{$book->monthlikenum}</li>
+<li>已写<font style="color:red">{$book->wordcount}</font>字</li>
 </ul>
 </div>
 <div class="info"><span class="state">{if $book->flag == 0} 连载中 {else}
@@ -25,7 +30,7 @@
 	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a></span><span>字数：<em>{ceil($book->wordcount/10000)}万</em></span>{hook name="onBookIndexShare"}</p>
 <p class="book_con">
 
-<p>{$book->summary}</p>
+<p>{$book->summary|nl2br}</p>
 </p>
 <div class="op clearfix">
 	<a class="a_icon readnow" href="{novel_chapter_link bookid=$book->id id=1}" target="_blank">开始阅读</a> 
@@ -36,13 +41,19 @@
 </div>
 <div class="tip_box"><span class="arrow_out"></span> <span
 	class="arrow_in"></span>
-<ul class="tip_con clearfix">
-	<li><span>更新到：</span>
-	 <a style="float:left" target="_blank"	href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">　
-		 第{$book->lastchapterid}章 {$book->lastchaptertitle} </a><span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span>
-	
-	</li>
-</ul>
+<!--<ul class="tip_con clearfix">-->
+<!--	<li><span>更新到：</span>-->
+<!--	 <a style="float:left" target="_blank"	href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">　-->
+<!--		 第{$book->lastchapterid}章 {$book->lastchaptertitle} </a><span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span>-->
+<!--	-->
+<!--	</li>-->
+<!--</ul>-->
+
+	<div style="height:25px;line-height:25px;background:#fafdfe;border-bottom:1px #ffe4cc solid;padding:2px 5px;"><span style="color:#f60">更新到：</span>
+	 <a target="_blank"	href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">　
+		 第{$book->lastchapterid}章 {$book->lastchaptertitle} </a><span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span></div>
+	<div style="padding:5px;">章节预览：<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">{$endchaptertxt}</a></div>
+
 </div>
 </div>
 </div>

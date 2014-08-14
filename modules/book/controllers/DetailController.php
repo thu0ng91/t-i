@@ -79,6 +79,10 @@ class DetailController extends FWModuleFrontController
         $chapterListla = array_slice($chapterList, -9, 9, true);
         $chapterListla = array_reverse($chapterListla);
         $this->assign("chapterla", $chapterListla);
+        //获取最后章节预览
+        $endchapter = array_slice($chapterList,-1,1);
+        $endchaptertxt = Chapter::getChapterDesByCid($id,$endchapter[0]->id,200);
+        $this->assign("endchaptertxt", $endchaptertxt);
         // 更新小说点击统计
         $book->updateClickStats();
 

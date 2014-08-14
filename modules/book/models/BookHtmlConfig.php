@@ -35,7 +35,7 @@ class BookHtmlConfig extends CFormModel
 	{
 		return array(
 			'BookDetailIndexIsMakeHtml' => '小说目录页是否开启静态',
-			'BookChapterIsMakeHtml' => '小说阅读页死否开启静态',
+			'BookChapterIsMakeHtml' => '小说阅读页是否开启静态',
 
 		);
 	}

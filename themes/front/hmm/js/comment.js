@@ -11,7 +11,19 @@
 	}
 	
 }
-
+function    HTMLEnCode(str)  
+{  
+      var    s    =    "";  
+      if    (str.length    ==    0)    return    "";  
+      s    =    str.replace(/&/g,    "&gt;");  
+      s    =    s.replace(/</g,        "&lt;");  
+      s    =    s.replace(/>/g,        "&gt;");  
+      s    =    s.replace(/    /g,        "&nbsp;");  
+      s    =    s.replace(/\'/g,      "'");  
+      s    =    s.replace(/\"/g,      "&quot;");  
+      s    =    s.replace(/\n/g,      " <br>");  
+      return    s;  
+} 
 function changeNum(){
 	var conBox = $("#conBox").val();
 	var str = 0;
@@ -56,7 +68,7 @@ $(function(){
 				if(userName == "Guest"){
 					alert('请先登录');return;
 				}
-				var conBox = $("#conBox").val();
+				var conBox = HTMLEnCode($("#conBox").val());
 				//var oLi = document.createElement("li");
 				var oLi=$("#insertcomment");
 				var imgSrc = $("#user_avatar").attr("src");

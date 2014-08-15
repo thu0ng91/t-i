@@ -119,7 +119,11 @@ class DetailController extends FWModuleFrontController
 		$comments = Comment::model()->findAllByAttributes(array('book_id'=>$id),array('order'=>'digest desc,id desc','limit'=>5));
 		$count_commends = Comment::model()->countByAttributes(array('book_id'=>$id));
 		$username = Yii::app()->user->name;
-        $this->render("index",array('commends'=>$comments,'count_commends'=>$count_commends,'username'=>$username));
+		
+		$avatar = false;
+		$avatar = Member::getUserAvatarByUid(Yii::app()->user->id);
+
+        $this->render("index",array('commends'=>$comments,'count_commends'=>$count_commends,'username'=>$username,'avatar'=>$avatar));
     }
 
     /**

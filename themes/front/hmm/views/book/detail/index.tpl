@@ -116,12 +116,12 @@
 
 <div id="msgBox" class="radius clearfix">
 <div id="comment" class="comment_view">
-	<h3><a href="" target="_blank">更多书评»</a>《{$book->title}》最新评论</h3>
+	<h3><!-- a href="" target="_blank">更多书评»</a>-->《{$book->title}》最新评论</h3>
 	<div id="insertcomment"></div>
 	{foreach from=$commends item=commend}
 	<div class="comment_content" id="comment">
 		<div class="c_block"></div>
-		<div class="comment_user"><img src="{$FW_THEME_URL}/images/avatar.bmp"><br>{$commend->username}</div>
+		<div class="comment_user"><img src="{Member::getUserAvatarByUid($commend->uid)}" onerror="this.src='{$FW_THEME_URL}/images/avatar.bmp'"><br>{$commend->username}</div>
 		<div class="comment_message" id="message">{$commend->content}<div class="reply">{$commend->dateline|date_format:'m月d日 H:i'}</div></div>
 	</div>
 	{/foreach}
@@ -137,7 +137,7 @@
                 <input id="sendBtn" type="button" value="" title="快捷键 Ctrl+Enter"  />
                 <input id="userName" type="hidden" value="{$username}" />
                 <input id="bookid" type="hidden" value="{$book->id}" />
-                <img src="{$FW_THEME_URL}/images/avatar.bmp" style="display:none;" id="user_avatar" />
+                <img src="{if false == $avatar}{$FW_THEME_URL}/images/avatar.bmp{else}{$avatar}{/if}" style="display:none;" id="user_avatar" />
             </p>
         </div>
     </form>

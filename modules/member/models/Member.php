@@ -158,4 +158,14 @@ class Member extends BaseModel
 			'criteria'=>$criteria,
 		));
 	}
+	public static function getUserAvatarByUid($uid){
+		$data = Member::model()->findByPk($uid);
+		if(null != $data && !empty($data->avatar)){
+			if(file_exists(Yii::getPathOfAlias('webroot').DS.'uploads'.DS.'member'.DS.$data->avatar)){
+				return Yii::app()->baseUrl.'/uploads/member/'.$data->avatar;
+			}
+			return false;
+		}
+		return false;
+	}
 }

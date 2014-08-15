@@ -6,8 +6,8 @@
 <script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
 <script language="javascript" type="text/javascript">
-  var preview_page = "{novel_chapter_link bookid=$book->id id=$prevChapterId}";
-  var next_page = "{novel_chapter_link bookid=$book->id id=$nextChapterId}";
+  var preview_page = "{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId}{else}{novel_book_link id=$book->id}{/if}";
+  var next_page = "{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId}{else}{novel_book_link id=$book->id}{/if}";
   var index_page = "{novel_book_link id=$book->id}";
   var bookid = "{$book->id}";
   var readid = "{$chapter->id}";
@@ -40,9 +40,9 @@
 	<dd>
 		<h1>{$chapter->title}</h1>
 		<h3>
-			<a	href="{novel_chapter_link bookid=$book->id id=$prevChapterId}">上一章</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<a	href="{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId}{else}{novel_book_link id=$book->id}{/if}">上一章</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 			<a	href="{novel_book_link id=$book->id}" >返回目录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a	href="{novel_chapter_link bookid=$book->id id=$nextChapterId}">下一章</a>
+			<a	href="{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId}{else}{novel_book_link id=$book->id}{/if}">下一章</a>
 		</h3>
 	</dd>
 	<dd class="read_AD">
@@ -61,9 +61,9 @@
  -->
 	<dd id="tipscent"></dd>
 	<dd id="footlink">
-	<a	href="{novel_chapter_link bookid=$book->id id=$prevChapterId}"	class="redbutt">上一章</a>
+	<a	href="{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId}{else}{novel_book_link id=$book->id}{/if}"	class="redbutt">上一章</a>
 	<a	href="{novel_book_link id=$book->id}" class="redbutt">返回章节目录</a>
-	<a	href="{novel_chapter_link bookid=$book->id id=$nextChapterId}"	class="redbutt">下一章</a></dd>
+	<a	href="{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId}{else}{novel_book_link id=$book->id}{/if}"	class="redbutt">下一章</a></dd>
 	<dd id="tipsfoot"></dd>
 </dl>
 <div class="cl"></div>

@@ -36,6 +36,6 @@ CREATE TABLE IF NOT EXISTS `member_book` (
   `createtime` int(10) DEFAULT NULL,
   `updatetime` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `memberid_idx` (`memberid`) USING BTREE,
+  KEY `memberid_idx` (`memberid`),
   KEY `bookid_idx` (`bookid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

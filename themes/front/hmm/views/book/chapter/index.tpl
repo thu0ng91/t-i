@@ -5,6 +5,7 @@
 <script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
+<script type="text/javascript" src="http://www.sj131.com/js/style.js"></script>
 <script language="javascript" type="text/javascript">
   var preview_page = "{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId}{else}{novel_book_link id=$book->id}{/if}";
   var next_page = "{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId}{else}{novel_book_link id=$book->id}{/if}";
@@ -19,8 +20,24 @@
   }
   document.onkeydown = jumpPage;
   </script>
-
-<div class="main myset"><script>show_pagetop();</script></div>
+<SCRIPT language=JavaScript>
+	var currentpos,timer;
+	function initialize(){
+		timer=setInterval("scrollwindow()",10);
+	}
+	function sc(){
+		clearInterval(timer);
+	}
+	function scrollwindow(){
+		currentpos=document.body.scrollTop;
+		window.scroll(0,++currentpos);
+		if (currentpos != document.body.scrollTop)
+			sc();
+	}
+	document.onmousedown=sc
+	document.ondblclick=initialize
+</script>
+<div class="main myset"><script>show_pagetop();</script><script>show_pagebottom();</script></div>
 
 <div id="a_main">
 <div class="bdtop"></div>
@@ -45,9 +62,7 @@
 			<a	href="{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId}{else}{novel_book_link id=$book->id}{/if}">下一章</a>
 		</h3>
 	</dd>
-	<dd class="read_AD">
-			<img src="{$FW_THEME_URL}/images/AD.jpg" />
-	</dd>
+	<div style="height: 10px;width: 96%;margin:0 auto;border-bottom:1px #e4e4e4 solid;"> </div>
 	 <div id="contents"><!--go-->{$chapter->content|replace:"\n":"<br />&nbsp;&nbsp;&nbsp;&nbsp;"} <!--over--></div>
 	</dd>
 	

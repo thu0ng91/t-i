@@ -47,7 +47,7 @@ class Comment extends CActiveRecord
 			array('uid, book_id', 'length', 'max'=>8),
 			array('username', 'length', 'max'=>25),
 			array('content', 'length', 'max'=>1000),
-			array('content', 'filter','filter'=>array($obj=new CHtmlPurifier(),'purify')),
+			//array('content', 'filter','filter'=>array($obj=new CHtmlPurifier(),'purify')),
 			array('recommends', 'length', 'max'=>6),
 			array('dateline', 'length', 'max'=>10),
 			// The following rule is used by search().

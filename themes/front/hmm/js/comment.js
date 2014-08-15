@@ -81,7 +81,11 @@ $(function(){
 				var bookid = $("#bookid").val();
 				
 				$.post('/book/commend/ajaxsubmitcommend/bookid/' + bookid,{content:conBox},function(data){
-					alert(data);
+					if(data == 1){
+						alert('评论成功');
+					}else{
+						alert('评论失败');
+					}
 				});
 				$("#conBox").val("");
 			})

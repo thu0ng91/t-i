@@ -18,7 +18,8 @@ class CommendController extends FWModuleFrontController {
 			echo '请先登录';
 			Yii::app()->end();
 		}
-		$content = Yii::app()->request->getParam('content',null);
+		$content = CHtml::encode(Yii::app()->request->getParam('content',null));
+		//$content = Yii::app()->request->getParam('content',null);
 		if(!$content){
 			echo '内容不能为空';
 			Yii::app()->end();
@@ -34,8 +35,11 @@ class CommendController extends FWModuleFrontController {
 		$model->recommends = 0;
 		$model->status = 1;
 		$model->dateline = $nowtime;
-		$model->save();
-		echo '评论成功';
-		Yii::app()->end();
+		if($model->validate()){
+			$model->save();
+			echo '1';Yii::app()->end();
+		}else{
+			echo '2';Yii::app()->end();
+		}
 	}
 }

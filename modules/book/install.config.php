@@ -8,6 +8,7 @@ return array(
 	'version' => '1.0.0', // 当前模块版本
 	'fwversion' => '1.0.0', // 模块所需最低云阅版本
 	'description' => '小说连载系统', // 模块详细说明
+    'iscore' => true,
     'adminmenus' => array(
         'top' => array(
             'label' => '小说管理',

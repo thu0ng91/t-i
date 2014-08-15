@@ -42,7 +42,7 @@ return array(
     'templatetags'=>array(
     	'{novel_book_link id=$item->id}'=>'小说链接',
     	'{$item->coverImageUrl}'=>'小说封面',
-    	'{$category->title}'=>'分类名称',
+    	'{$item->category->title}'=>'分类名称',
     	'{$item->id}'=>'小说id',
     	'{$item->title}'=>'小说标题',
     	'{$item->author}'=>'小说作者',

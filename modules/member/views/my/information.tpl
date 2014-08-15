@@ -4,7 +4,7 @@
 <div id="user">
 	<div id="userinfo_left">
 		<div id="user_head">
-			<img class="user_imt" src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}" />
+			<img class="user_imt" src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}"  onerror="this.src='{$FW_THEME_URL}/images/avatar.bmp'" />
 			<span class="userxx">{$username}</span>
 			<span style="padding-left:10px;">{$level}</span>
 			<p id="userid">　用户ID：{$uid}</p>
@@ -25,7 +25,7 @@
 		<div id="user_colo">
 			<form action="" method="POST">
 			<div id="user_tconter">
-				<div class="user_imts"><img src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}" /></div>
+				<div class="user_imts"><img src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}"  onerror="this.src='{$FW_THEME_URL}/images/avatar.bmp'" /></div>
 				<div class="user_texs">
 					<div class="user_ceet">用户名：</div><div class="user_seec"><input type="text" value="{$username}" size="30" maxlength="30" disabled /></div>
 					<div class="user_ceet">* 性别：</div><div class="user_seec"><input type="radio" value="1" {if !$gender or $gender == 1}checked{/if} name="gender" /><span style="float:left;">男</span><input type="radio" value="2" {if $gender == 2}checked{/if} name="gender" /><span>女</span></div>

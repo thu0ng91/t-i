@@ -28,7 +28,7 @@
 			<div class="user_im">
 					<div class="user_im">
 						<p>当前头像：</p>
-						<img class="imgs" src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}" style="margin-left:20px;" />
+						<img class="imgs" src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}" style="margin-left:20px;" onerror="this.src='{$FW_THEME_URL}/images/avatar.bmp'" />
 					</div>
 					<div class="user_im">
 						<p>修改头像：</p>

@@ -41,18 +41,18 @@
 </div>
 <div class="tip_box"><span class="arrow_out"></span> <span
 	class="arrow_in"></span>
-<!--<ul class="tip_con clearfix">-->
-<!--	<li><span>更新到：</span>-->
-<!--	 <a style="float:left" target="_blank"	href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">　-->
-<!--		 第{$book->lastchapterid}章 {$book->lastchaptertitle} </a><span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span>-->
-<!--	-->
-<!--	</li>-->
-<!--</ul>-->
+{*<!--<ul class="tip_con clearfix">-->*}
+{*<!--	<li><span>更新到：</span>-->*}
+{*<!--	 <a style="float:left" target="_blank"	href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">　-->*}
+{*<!--		 第{$book->lastchapterid}章 {$book->lastchaptertitle} </a><span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span>-->*}
+{*<!--	-->*}
+{*<!--	</li>-->*}
+{*<!--</ul>-->*}
 
 	<div style="height:25px;line-height:25px;background:#fafdfe;border-bottom:1px #ffe4cc solid;padding:2px 5px;"><span style="color:#f60">更新到：</span>
 	 <a target="_blank"	href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">　
-		 第{$book->lastchapterid}章 {$book->lastchaptertitle} </a><span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span></div>
-	<div style="padding:5px;">章节预览：<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">{$endchaptertxt}</a></div>
+		 {$book->lastchaptertitle} </a><span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span></div>
+	<div style="padding:5px;">章节预览：<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">{$endchaptertxt|nl2br}</a></div>
 
 </div>
 </div>

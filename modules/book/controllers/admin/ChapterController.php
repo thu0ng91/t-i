@@ -222,7 +222,7 @@ class ChapterController extends FWModuleAdminController
 		    $model=Chapter::model()->findByPk((int)$id);
         }
         $model->content = $model->getContentFromFile();
-        
+
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;

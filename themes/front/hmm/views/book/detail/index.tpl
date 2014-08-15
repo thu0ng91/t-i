@@ -27,7 +27,7 @@
 已完结 {/if}</span>
 <h2>{$book->title}</h2>
 <p class="book_intr"><span>作者：{$book->author}</span><span>分类：<a
-	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a></span><span>字数：<em>{ceil($book->wordcount/10000)}万</em></span>{hook name="onBookIndexShare"}</p>
+	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a></span><span>字数：<em>{$book->wordcount}</em></span>{hook name="onBookIndexShare"}</p>
 <p class="book_con">
 
 <p>{$book->summary|nl2br}</p>

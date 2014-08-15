@@ -10,7 +10,6 @@
   	<link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
 	<link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet" />
 	<script src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
-	<script src="{$FW_THEME_URL}/js/common.js" type="text/javascript" language="javascript"></script>
 </head>
 <body>
 <!--header begin-->
@@ -26,10 +25,10 @@
 	</form>
 	</div>
 </div>
-<div class="aside clearfix">
+<div class="aside">
 	{if $Yii->user->isGuest}
-	<span ></span><a class="c_login" href="{novel_link url='/member/do/login'}">登录</a>　|　
-	<a class="c_register" href="{novel_link url='/member/do/register'}">注册</a>
+	<a href="{novel_link url='/member/do/login'}">登录</a>　|　
+	<a href="{novel_link url='/member/do/register'}">注册</a>
 	{else}
 	<span class="c_loginimg"></span><a  href="{novel_link url='/member/my/information'}">个人中心</a>
 	{/if}
@@ -160,6 +159,9 @@
 <!--container end-->
 <!-- footer -->
 <!-- footer -->
+<script type="text/javascript" src="{$FW_THEME_URL}/js/index.js"></script>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/common1.js"></script>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>
 <div class="footer">
     <br />
     <a href="http://www.yunyuewang.com/">云阅简介</a> |

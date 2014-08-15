@@ -66,7 +66,7 @@
 				<div class="fix_txt"><a class="sub_link" href="{novel_book_link id=$item->id}"
 					target="_blank" title="{$item->title|truncate:16:'...':true}">《{$item->title|truncate:16:"...":true}》</a>
 					<a class="other_link"
-					href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" title="{$book->lastchaptertitle}" target="_blank">{$item->lastchaptertitle}</a>
+					href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" title="{$item->lastchaptertitle}" target="_blank">{$item->lastchaptertitle}</a>
 				</div>
 			</td>
 			<td><font color="#3876b2">{if $item->flag == 0} 连载中 {else} 已完结 {/if}</font></td>

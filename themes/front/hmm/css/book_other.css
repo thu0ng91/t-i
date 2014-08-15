@@ -90,7 +90,7 @@ color: #999;
 /*book_img*/
 .book_img .mod_hd{margin-bottom:16px;}
 .book_img .mod_hd em{color:#f60;font-weight:700;}
-.book_img .mod_bd{padding:0 19px;overflow:hidden;}
+.book_img .mod_bd{padding:0 10px;overflow:hidden;}
 .book_img .img_list{width:723px;overflow:hidden}
 .book_img .img_list ul{width:775px;margin:0 -21px;}
 

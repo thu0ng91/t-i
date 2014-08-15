@@ -5,7 +5,6 @@
 <script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
-<script type="text/javascript" src="js/xs.js"></script>
 <script language="javascript" type="text/javascript">
   var preview_page = "{novel_chapter_link bookid=$book->id id=$prevChapterId}";
   var next_page = "{novel_chapter_link bookid=$book->id id=$nextChapterId}";
@@ -71,8 +70,3 @@
 </div>
 </div>
 <div class="cl" style="height: 8px;"></div>
-
-
-
-
-<script type="text/javascript" src="{$FW_THEME_URL}/js/common.js"></script>

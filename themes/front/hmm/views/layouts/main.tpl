@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=7">
 <title id="tit">{$title}</title>
 <meta name="keywords" content="{$keywords|strip_tags}"/>
+<meta name="description" content="{$description}" />
 <link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 </head>

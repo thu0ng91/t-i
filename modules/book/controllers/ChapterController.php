@@ -29,13 +29,27 @@ class ChapterController extends FWModuleFrontController
 
     public function actionIndex()
     {
-        $bookid = $_GET['bookid'];
         $id = $_GET['id'];
+//        $book = Book::model()->findByPk($bookid);
+//
+        $bookid = $_GET['bookid'];
+        if ($bookid > 0) {
+            $book = Book::model()->find("id=:id and status=:status", array(
+                ':id' => $bookid,
+                ':status' => Yii::app()->params['status']['ischecked'],
+            ));
+        } elseif (isset($_GET['pinyin'])) {
+            $book = Book::model()->find("pinyin=:pinyin and status=:status", array(
+                ':pinyin' => $_GET['pinyin'],
+                ':status' => Yii::app()->params['status']['ischecked'],
+            ));
+        }
 
-        $book = Book::model()->findByPk($bookid);
         if (!$book) {
             throw new CHttpException(404);
         }
+
+        $bookid = $book->id;
 
         $m = Chapter::customModel($bookid);
         $chapter = $m->findByPk($id);

@@ -48,14 +48,27 @@ class DetailController extends FWModuleFrontController
     {
         $id = intval($_GET['id']);
 
-        $book = Book::model()->find("id=:id and status=:status", array(
-            ':id' => $id,
-            ':status' => Yii::app()->params['status']['ischecked'],
-        ));
+        $book = null;
+        if ($id > 0) {
+            $book = Book::model()->find("id=:id and status=:status", array(
+                ':id' => $id,
+                ':status' => Yii::app()->params['status']['ischecked'],
+            ));
+        } elseif (isset($_GET['pinyin'])) {
+            $book = Book::model()->find("pinyin=:pinyin and status=:status", array(
+                ':pinyin' => $_GET['pinyin'],
+                ':status' => Yii::app()->params['status']['ischecked'],
+            ));
+        }
 
         if (!$book) {
             throw new CHttpException(404);
         }
+
+
+//        var_dump($_GET,$book);exit;
+
+        $id = $book->id;
 
         $this->assign("book", $book);
     	if(Yii::app()->user->id){

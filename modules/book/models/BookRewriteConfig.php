@@ -5,7 +5,7 @@
  */
 class BookRewriteConfig extends CFormModel
 {
-    private $idPatternRule = '/(\{(id|bookid)\}){1}/i';
+    private $idPatternRule = '/(\{(id|bookid|pinyin|dir)\}){1}/i';
 
     private $shortTitlePatternRule = '/(\{(pinyin|id)\}){1}/i';
 
@@ -27,6 +27,14 @@ class BookRewriteConfig extends CFormModel
 
     public $BookRankRule;
 
+    // 小说目录页目录级及拼音化支持
+    public $BookIndexRuleIsUseVarDir = 0 ;
+    public $BookIndexRuleIsUseVarPinyin = 0;
+
+    // 小说章节页目录级及拼音化支持
+    public $BookChapterDetailRuleVarDir = 0;
+    public $BookChapterDetailRuleVarPinyin = 0;
+
 
 	/**
 	 * Declares the validation rules.
@@ -44,6 +52,10 @@ class BookRewriteConfig extends CFormModel
             array('BookSearchRule', 'length', 'max'=> 255),
             array('BookLastupdateRule', 'length', 'max'=> 255),
             array('BookRankRule', 'length', 'max'=> 255),
+            array('BookIndexRuleIsUseVarDir', 'in', 'range' => array(0, 1)),
+            array('BookIndexRuleIsUseVarPinyin', 'in', 'range' => array(0, 1)),
+            array('BookChapterDetailRuleVarDir', 'in', 'range' => array(0, 1)),
+            array('BookChapterDetailRuleVarPinyin', 'in', 'range' => array(0, 1)),
 //            array('NewsListRule', 'match', 'pattern' => $this->idPatternRule),
 //            array('NewsDetailRule', 'match', 'pattern' => $this->idPatternRule),
 //			array('UrlSuffix,RewriteRules', 'required'),
@@ -69,6 +81,10 @@ class BookRewriteConfig extends CFormModel
 			'BookSearchRule' => '小说搜索页',
 			'BookLastupdateRule' => '小说更新页',
 			'BookRankRule' => '小说排行页',
+			'BookIndexRuleIsUseVarDir' => '启用{dir}变量',
+			'BookIndexRuleIsUseVarPinyin' => '启用{pinyin}变量',
+			'BookChapterDetailRuleVarDir' => '启用{dir}变量',
+			'BookChapterDetailRuleVarPinyin' => '启用{pinyin}变量',
 //			'NewsListRule' => '新闻列表',
 //			'NewsDetailRule' => '新闻内容',
 //			'SiteIntro' => '站点简介',

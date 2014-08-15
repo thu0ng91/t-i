@@ -37,6 +37,33 @@ function smarty_function_novel_book_link($params, &$smarty){
             break;
     }
 
-    return Yii::app()->createUrl($link, array('id' => $id));
+    $pinyin = "";
+    if(!empty($params['pinyin'])){
+        $pinyin = $params['pinyin'];
+    }
+
+    $argv = array();
+
+    $m = Yii::app()->settings->get("BookRewriteConfig", "book");
+    if ($m) {
+        if ($m->BookIndexRule && $m->BookIndexRuleIsUseVarDir > 0) { // 开启了 dir 变量
+            $dir = floor($id / 1000);
+            $argv['dir'] = $dir;
+        }
+
+        if ($m->BookIndexRule && $m->BookIndexRuleIsUseVarPinyin > 0 && $pinyin != "") { // 开启了 dir 变量
+
+//            $book = Book::model()->findByPk($id);
+//            if (!$book) return "";
+
+            $argv['pinyin'] = $pinyin;
+        }
+    }
+
+    unset($m);
+
+    if (!isset($argv['pinyin'])) $argv['id'] = $id;
+
+    return Yii::app()->createUrl($link, $argv);
 
 }

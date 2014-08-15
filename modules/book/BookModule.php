@@ -55,17 +55,39 @@ class BookModule extends FWModule
 
             if ($m->BookIndexRule) {
                 $r = $m->BookIndexRule;
-                $r = str_replace('{id}', '<id:\d+>', $r);
-                $r = str_replace('{dir}', '<dir:\d+>', $r);
+
+                if ($m->BookIndexRuleIsUseVarDir > 0) {
+                    $r = str_replace('{dir}', '<dir:\d+>', $r);
+                } else {
+                    $r = str_replace('{dir}', '', $r);
+                }
+                if ($m->BookIndexRuleIsUseVarPinyin > 0) {
+                    $r = str_replace('{pinyin}', '<pinyin:\w+>', $r);
+                } else {
+                    $r = str_replace('{id}', '<id:\d+>', $r);
+                    $r = str_replace('{pinyin}', '', $r);
+                }
+
                 $r = array( $r =>  'book/detail/index');
                 Yii::app()->urlManager->addRules($r, false);
             }
 
             if ($m->BookChapterDetailRule) {
                 $r = $m->BookChapterDetailRule;
-                $r = str_replace('{bookid}', '<bookid:\d+>', $r);
+
                 $r = str_replace('{id}', '<id:\d+>', $r);
-                $r = str_replace('{dir}', '<dir:\d+>', $r);
+
+                if ($m->BookChapterDetailRuleVarDir > 0) {
+                    $r = str_replace('{dir}', '<dir:\d+>', $r);
+                } else {
+                    $r = str_replace('{dir}', '', $r);
+                }
+                if ($m->BookChapterDetailRuleVarPinyin > 0) {
+                    $r = str_replace('{pinyin}', '<pinyin:\w+>', $r);
+                } else {
+                    $r = str_replace('{bookid}', '<bookid:\d+>', $r);
+                    $r = str_replace('{pinyin}', '', $r);
+                }
                 $r = array( $r =>  'book/chapter/index');
                 Yii::app()->urlManager->addRules($r, false);
             }

@@ -35,10 +35,10 @@ class FWOutputCache extends COutputCache {
             $cfg = Yii::app()->settings->get("BookHtmlConfig", 'book-config-makehtml');
 
             if ($this->owner->id == 'detail' && $this->owner->action->id == 'index') {
-                if ($cfg->BookDetailIndexIsMakeHtml == 1) { // 小说目录页符合生成静态条件
+                if ($cfg && $cfg->BookDetailIndexIsMakeHtml == 1) { // 小说目录页符合生成静态条件
                     $this->makeHtml($this->getContent());
                 }
-            } elseif ($this->owner->id == 'chapter' && $this->owner->action->id == 'index') {
+            } elseif ($cfg && $this->owner->id == 'chapter' && $this->owner->action->id == 'index') {
                 if ($cfg->BookChapterIsMakeHtml == 1) { // 阅读页符合生成静态条件
                     $this->makeHtml($this->getContent());
                 }

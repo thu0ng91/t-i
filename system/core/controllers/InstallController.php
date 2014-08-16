@@ -169,6 +169,8 @@ class InstallController extends CController
                 // 安装成功，创建安装锁定文件
                 $this->createLockFile();
                 Yii::app()->user->setFlash('actionInfo','恭喜，云阅小说系统安装成功！请先登录后台安装必备模块！');
+
+                $this->sendStats();
                 $this->redirect('finish');
             }
         }
@@ -248,5 +250,26 @@ class InstallController extends CController
         }
 
         return true;
+    }
+
+    /**
+     * 发送基本统计信息
+     */
+    protected function sendStats()
+    {
+        $domain = Yii::app()->request->getHostInfo();
+
+        if (false !== strpos($domain, 'localhost') || false !== strpos($domain, '127.0.0.1')) {
+            return;
+        }
+//        $version = FWXSVersion;
+        $url = 'http://www.yunyuewang.com/index.php?r=zhanzhangTongji/index&domain=' . $domain . '&version=' . FWXSVersion;
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_exec($ch);
+        curl_close($ch);
     }
 }

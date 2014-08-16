@@ -12,7 +12,22 @@ class DetailController extends FWModuleFrontController
      */
     public function filters() {
         $ret = array();
-        if ($this->siteConfig && $this->siteConfig->SiteIsUsedCache && $this->module->cacheConfig && ($this->module->cacheConfig->BookIsCache == 1)) {
+
+        $cfg = Yii::app()->settings->get("BookHtmlConfig", 'book-config-makehtml');
+
+        if ($cfg != null && $cfg->BookDetailIndexIsMakeHtml == 1) {
+            $ret[] = array (
+                'FWOutputCache + index',
+                'duration' => 10,
+                'varyByParam' => array('id'),
+                'varyByExpression' => array('FWOutputCache', 'getExpression'),
+                'dependCacheKey'=> '',
+//                'dependency' => array(
+//                    'class'=> 'FWCacheDependency',
+//                    'dependCacheKey'=> 'news-category' . $_GET['id'] . $_GET['page'],
+//                )
+            );
+        } elseif ($this->siteConfig && $this->siteConfig->SiteIsUsedCache && $this->module->cacheConfig && ($this->module->cacheConfig->BookIsCache == 1)) {
             $ret[] = array (
                 'FWOutputCache + index',
                 'duration' => $this->module->cacheConfig->BookDetailCacheTime,

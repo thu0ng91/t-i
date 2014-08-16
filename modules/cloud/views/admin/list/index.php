@@ -4,3 +4,6 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 <img src="<?php echo Yii::app()->baseUrl  . Yii::app()->controller->module['loading'];?>">
+<div style="width:98%;margin:0 auto;">
+	<iframe src="http://www.yunyuewang.com/bbs/plugin.php?id=yunyuewang:cloud" style="border:none;height:600px;width:98%;margin:0 auto;"></iframe>
+</div>

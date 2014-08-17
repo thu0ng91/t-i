@@ -59,3 +59,5 @@ CREATE TABLE `bookcase` (
 --
 -- -----------------
 update modules set fwversion='1.0.0', version='1.0.0';
+alter table `member` add `gender` tinyint(1) unsigned default null;
+alter table `member` add `avatar` varchar(50) default null;

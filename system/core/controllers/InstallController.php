@@ -22,7 +22,7 @@ class InstallController extends CController
 
     public function beforeAction($action)
     {
-        if ($action->id != 'finish' && H::checkIsInstall()) {
+        if ($action->id != 'finish' && $action->id != 'upgrade' && H::checkIsInstall()) {
             Yii::app()->user->setFlash('actionInfo','已经成功安装了小说系统，不需要重新安装！');
             $this->redirect(array('install/finish'));
         }
@@ -187,6 +187,24 @@ class InstallController extends CController
     public function actionFinish()
     {
         $this->render('finish');
+    }
+
+    /**
+     *
+     */
+    public function actionUpgrade()
+    {
+        $this->dbFile = 'upgrade.sql';
+
+        $r = $this->importDbFile(Yii::app()->db);
+
+        if ($r) {
+            Yii::app()->user->setFlash('actionInfo','恭喜，云阅小说系统升级成功！请先登录后台安装必备模块！');
+        } else {
+            Yii::app()->user->setFlash('actionInfo','很遗憾，云阅小说系统升级失败！请联系云阅官方处理！www.yunyuewang.com');
+        }
+
+        $this->redirect('finish');
     }
 
     /**

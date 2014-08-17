@@ -40,14 +40,14 @@ class Bookcase extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('book_id, userid, username, lastviewtime, dateline, status', 'required'),
-			array('status', 'numerical', 'integerOnly'=>true),
+			array('book_id, userid, username, lastviewtime,readchapterid, dateline, status', 'required'),
+			array('status,readchapterid,userid,book_id,lastviewtime,dateline', 'numerical', 'integerOnly'=>true),
 			array('book_id, userid', 'length', 'max'=>8),
 			array('username', 'length', 'max'=>25),
-			array('lastviewtime, dateline', 'length', 'max'=>11),
+			array('lastviewtime, dateline,readchapterid', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, book_id, userid, username, lastviewtime, dateline, status', 'safe', 'on'=>'search'),
+			array('id, book_id, userid, username, lastviewtime,readchapterid, dateline, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -74,6 +74,7 @@ class Bookcase extends CActiveRecord
 			'username' => 'Username',
 			'lastviewtime' => 'Lastviewtime',
 			'dateline' => 'Dateline',
+			'readchapterid' => 'Readchapterid',
 			'status' => 'Status',
 		);
 	}
@@ -95,6 +96,7 @@ class Bookcase extends CActiveRecord
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('lastviewtime',$this->lastviewtime,true);
 		$criteria->compare('dateline',$this->dateline,true);
+		$criteria->compare('readchapterid',$this->readchapterid,true);
 		$criteria->compare('status',$this->status);
 
 		return new CActiveDataProvider($this, array(

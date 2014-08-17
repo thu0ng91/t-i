@@ -123,5 +123,14 @@ class ChapterController extends FWModuleFrontController
 
         $this->render("index");
     }
-    
+    public function actionUpdatebookcase(){
+    	$bookid = intval(Yii::app()->request->getParam('id',null));
+    	$chapter_id = intval(Yii::app()->request->getParam('cid',null));
+    	$model = Bookcase::model()->findByAttributes(array('userid'=>Yii::app()->user->id,'book_id'=>$bookid));
+		if(null != $model){
+			$model->readchapterid = (null != $chapter_id ? $chapter_id : 0);
+			$model->lastviewtime = time();
+			$model->save();
+		}
+    }
 }

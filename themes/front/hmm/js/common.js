@@ -385,9 +385,9 @@ function addbook(bid)
 	Ajax.Request(url2);
 }
 //加入书架
-function addbookcase(bid)
+function addbookcase(bid,cid)
 {
-	url="/book/detail/addbookcase/id/"+bid+".html";
+	url="/book/detail/addbookcase/id/"+bid+"/cid/"+cid+".html";
 	Ajax.Request(url,{onComplete:function(){alert(this.response.replace(/<br[^<>]*>/g,'\n'));}});
 }
 //网友推荐小说

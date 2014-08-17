@@ -5,7 +5,7 @@
 <script	type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/main.js"></script>
 <script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
-<script type="text/javascript" src="http://www.sj131.com/js/style.js"></script>
+<script type="text/javascript" src="{novel_link url='/book/chapter/updatebookcase' params=['id'=>{$book->id},'cid'=>{$chapter->id}]}"></script>
 <script language="javascript" type="text/javascript">
   var preview_page = "{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId}{else}{novel_book_link id=$book->id}{/if}";
   var next_page = "{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId}{else}{novel_book_link id=$book->id}{/if}";
@@ -46,7 +46,7 @@
 	<dt>
 	<p class="fr">	
 		<a class="nofollow" href="javascript:;" onclick="uservote({$book->id})">推荐 </a>|
-		<a class="nofollow" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a>
+		<a class="nofollow" href="javascript:;" onclick="addbookcase({$book->id},{$chapter->id})">加入书架</a>
 	</p>
 <!--path begin-->
 <div class="wrap_in path1">当前位置： <a href="{$FW_SITE_URL}">{$siteinfo->SiteName}首页 </a>&gt; <a

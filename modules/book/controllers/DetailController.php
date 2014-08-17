@@ -281,20 +281,25 @@ class DetailController extends FWModuleFrontController
 		if(!Yii::app()->user->id){
 			echo '请先登录';Yii::app()->end();
 		}
-		$id = Yii::app()->request->getParam('id',null);
+		$id = intval(Yii::app()->request->getParam('id',null));
+		$cid = intval(Yii::app()->request->getParam('cid',null));
+
 		$model = Bookcase::model()->findByAttributes(array('userid'=>Yii::app()->user->id,'book_id'=>$id));
+		if(null == $model){
+			$model = new Bookcase();
+		}
+		$model->status = 1;
+		$model->readchapterid = (null != $cid ? $cid : 0);
+		$model->lastviewtime = time();
+
 		if(null != $model){
-			$model->status = 1;
 			$model->save();
 			echo '您已经收藏过该书';Yii::app()->end();
 		}else{
-			$model = new Bookcase();
 			$model->userid = Yii::app()->user->id;
 			$model->username = Yii::app()->user->name;
 			$model->book_id = $id;
-			$model->lastviewtime = time();
 			$model->dateline = time();
-			$model->status = 1;
 			$model->save();
 			echo '您成功收藏该书';Yii::app()->end();
 		}

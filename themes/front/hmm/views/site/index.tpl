@@ -1,4 +1,4 @@
-﻿<link href="{$FW_THEME_URL}/css/book_index.css" rel="stylesheet"/>
+<link href="{$FW_THEME_URL}/css/book_index.css" rel="stylesheet"/>
 <!--container begin-->
 
 <div class="container" style="margin-top: -11px;"><!--row_a begin-->
@@ -9,7 +9,6 @@
 {novel_block id=8}
 {novel_block id=15}
 <div class="img_overview" style="top: 0"><i class="arrow"></i></div>
-</div>
 {novel_block id=9}
 </div>
 <!--col_slider end--> 
@@ -17,8 +16,6 @@
 <div class="col_main">
 {novel_block id=11}
 {novel_block id=12}
-</div>
-</div>
 </div>
 <!--col_main begin-->
 </div>

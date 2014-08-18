@@ -28,7 +28,7 @@
 			<div id="user_tconter">
 				<table width="100%" class="bookcase" id="bookcase" >
 	                <tr style="background-color:#D4EEFF">
-	                <th width="65%">　[作品名称]　最新章节</th>
+	                <th width="65%">　[作品名称]　上次阅读章节</th>
 	                <th width="20%">上次阅读时间</th>
 	                <th width="15%">操作</th>
 	                </tr><input type="hidden" value="{$i}" />
@@ -36,7 +36,8 @@
 	                	<tr {if ($i++) % 2 == 1} style="background-color:#F2F2F2"{/if}>
 		                    <td>
 		                    	<a href="{novel_book_link id=$it->book_id}">　[{$it->title}]　</a>
-		                    	<a href="{novel_chapter_link bookid=$it->book_id id=$it->lastchapterid}">{$it->lastchaptertitle}</a>{if $it->readchapterid < $it->lastchapterid}<font color=red>(新)</font>{/if}</td>
+		                    	{if $it->readchapterid}<a href="{novel_chapter_link bookid=$it->book_id id=$it->readchapterid}">{$it->readchaptertitle}</a>{if $it->readchapterid < $it->lastchapterid}<font color=red>(新)</font>{/if}{else}您还没有开始阅读本书{/if}
+		                    </td>
 		                        <td>{$it->lastviewtime|date_format:'Y-m-d H:i'}</td>
 		                        <td><a href="{novel_link url='member/my/deletebookcase' params=['id'=>$it->id]}">删除</a> | <a href="{novel_chapter_link bookid=$it->book_id id=$it->readchapterid}">继续阅读</a>
 		                    </td>

@@ -284,25 +284,33 @@ class DetailController extends FWModuleFrontController
 		$id = intval(Yii::app()->request->getParam('id',null));
 		$cid = intval(Yii::app()->request->getParam('cid',null));
 
+		$readtitle = Yii::app()->request->getParam('readtitle',null);
 		$model = Bookcase::model()->findByAttributes(array('userid'=>Yii::app()->user->id,'book_id'=>$id));
-		if(null == $model){
-			$model = new Bookcase();
-		}
-		$model->status = 1;
-		$model->readchapterid = (null != $cid ? $cid : 0);
-		$model->lastviewtime = time();
 
+
+		
 		if(null != $model){
+			$model->status = 1;
+			$model->readchapterid = null == $cid ? 0 : intval($cid);
+			$model->lastviewtime = time();
+			$model->readchaptertitle = $readtitle;
 			$model->save();
-			echo '您已经收藏过该书';Yii::app()->end();
-		}else{
+			echo '本书已经在您的书架中';
+		}else{			
+			
+			$model = new Bookcase();
+			$model->status = 1;
+			$model->readchapterid = intval($cid);
+			$model->lastviewtime = time();
 			$model->userid = Yii::app()->user->id;
 			$model->username = Yii::app()->user->name;
 			$model->book_id = $id;
+			$model->readchaptertitle = $readtitle;
 			$model->dateline = time();
-			$model->save();
-			echo '您成功收藏该书';Yii::app()->end();
+			$model->save();			
+			echo '恭喜您成功将本书加入书架';
 		}
+		Yii::app()->end();
 	}
     public function actionDownPage()
     {

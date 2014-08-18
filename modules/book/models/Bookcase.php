@@ -44,10 +44,11 @@ class Bookcase extends CActiveRecord
 			array('status,readchapterid,userid,book_id,lastviewtime,dateline', 'numerical', 'integerOnly'=>true),
 			array('book_id, userid', 'length', 'max'=>8),
 			array('username', 'length', 'max'=>25),
+			array('readchaptertitle','length','max'=>100),
 			array('lastviewtime, dateline,readchapterid', 'length', 'max'=>11),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, book_id, userid, username, lastviewtime,readchapterid, dateline, status', 'safe', 'on'=>'search'),
+			array('id, book_id, userid, username, lastviewtime,readchapterid,readchaptertitle, dateline, status', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,6 +77,7 @@ class Bookcase extends CActiveRecord
 			'dateline' => 'Dateline',
 			'readchapterid' => 'Readchapterid',
 			'status' => 'Status',
+			'readchaptertitle'=>'readchaptertitle',
 		);
 	}
 

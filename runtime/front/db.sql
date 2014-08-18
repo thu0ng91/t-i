@@ -206,6 +206,8 @@ CREATE TABLE `comment` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
+SET FOREIGN_KEY_CHECKS=0;
+
 -- ----------------------------
 -- Table structure for `bookcase`
 -- ----------------------------
@@ -218,5 +220,7 @@ CREATE TABLE `bookcase` (
   `lastviewtime` int(11) unsigned NOT NULL COMMENT '最后查看时间',
   `dateline` int(11) unsigned NOT NULL COMMENT '添加时间',
   `status` tinyint(1) unsigned NOT NULL COMMENT '状态，1为正常，2为删除',
+  `readchapterid` int(8) unsigned NOT NULL,
+  `readchaptertitle` varchar(100) NOT NULL COMMENT '最后阅读章节标题',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

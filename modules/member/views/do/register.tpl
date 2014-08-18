@@ -6,9 +6,40 @@
 <meta http-equiv="X-UA-Compatible" content="IE=7">
 <title>{$title}</title>
 <meta name="keywords" content="{$keywords|strip_tags}"/>
+<meta name="description" content="{$description}" />
 <link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
-
 </head>
+<script>
+	function indexsub() {
+		var uname = document.getElementById('username');
+		var email = document.getElementById('email');
+		var pwd = document.getElementById('pwd');
+		var repwd = document.getElementById('repwd');
+//		var pattern = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;  
+		if(uname.value == "") {
+			alert("用户名不能为空");
+			uname.focus();
+			return false;
+		}else if(email.value == ""){
+			alert("邮箱不能为空");
+			email.focus();
+			return false;
+		}else if(pwd.value == ""){
+			alert("密码不能为空");
+			pwd.focus();
+			return false;
+		}else if(repwd.value == ""){
+			alert("确认密码不能为空");
+			repwd.focus();
+			return false;
+		}else if(pwd.value != repwd.value) {
+			alert("2次密码不一致");
+			pwd.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
 <body>
 <!--header begin-->
 <div class="header clearfix">
@@ -53,30 +84,30 @@
   <div class="regist fix">
     <h4>会员注册</h4>
     <div class="box_form">
-    <form action="{novel_link url='member/do/register'}" method="POST">
+    <form action="{novel_link url='member/do/register'}" method="POST" onsubmit="return indexsub( );">
 	<fieldset>
     <div class="form-item">
         <div class="field-name">用户名：</div>
         <div class="field-input">
-          <input type="text" name="RegisterForm[username]" value="" />
+          <input type="text" name="RegisterForm[username]" id="username" value="" />
         </div>
     </div>
     <div class="form-item">
         <div class="field-name">邮箱：</div>
         <div class="field-input">
-         <input type="text" name="RegisterForm[email]" />
+         <input type="text" name="RegisterForm[email]" id="email" />
         </div>
     </div>
     <div class="form-item">
         <div class="field-name">密码：</div>
         <div class="field-input">
-          <input type="password" name="RegisterForm[password]" />
+          <input type="password" name="RegisterForm[password]" id="pwd" />
         </div>
     </div>
     <div class="form-item">
         <div class="field-name">确认密码：</div>
         <div class="field-input">
-          <input type="password" name="RegisterForm[repassword]" />
+          <input type="password" name="RegisterForm[repassword]" id="repwd" />
         </div>
     </div>
 </fieldset>

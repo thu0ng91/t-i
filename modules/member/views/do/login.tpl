@@ -5,9 +5,26 @@
 <meta http-equiv="X-UA-Compatible" content="IE=7">
 <title>{$title}</title>
 <meta name="keywords" content="{$keywords|strip_tags}"/>
+<meta name="description" content="{$description}" />
 <link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
 <!--<script src="{$FW_THEME_URL}/js/main.js"></script>-->
 </head>
+<script>
+	function indexsub() {
+		var uname = document.getElementById('username');
+		var pwd = document.getElementById('pwd');
+		if(uname.value == "") {
+			alert("用户名不能为空");
+			uname.focus();
+			return false;
+		}else if(pwd.value == ""){
+			alert("密码不能为空");
+			pwd.focus();
+			return false;
+		}
+		return true;
+	}
+</script>
 <body>
 <!--header begin-->
 <div class="header clearfix">
@@ -16,7 +33,7 @@
 	<div class="search_box">
 	<form id="search" name="search" action="{novel_search_link}" method="get" onSubmit="return qrsearch();">
 		<div class="serachwrap">
-			<span class="search_text"><input id="kw" name="keyword" type="text" value="请输入小说名..." autocomplete="off"  title="请输入小说名..." onfocus="if(this.value==this.title) this.value='';" onblur="if(this.value=='') this.value=this.title;"  onSubmit="return qrsearch();" autofocus="true" x-webkit-speech="" x-webkit-grammar="builtin:translate"></span>
+			<span class="search_text"><input id="kw" name="keyword" type="text" value="请输入小说名..." autocomplete="off"  title="请输入小说名..." onfocus="if(this.value==this.title) this.value='';" onblur="if(this.value=='') this.value=this.title;" autofocus="true"  x-webkit-grammar="builtin:translate"></span>
 			<button type="submit" class="btn_search" id="search_top">搜小说</button>
 		</div>
 	</form>
@@ -50,7 +67,7 @@
 <div class="box_mid fix">
   <div class="login">
  <h3>会员登录</h3>
-<form action="{novel_link url='member/do/login'}" method="POST">
+<form action="{novel_link url='member/do/login'}" method="POST" onsubmit="return indexsub( );">
 <fieldset>
     <div class="form-item">
         <div class="field-name">用户名：</div>
@@ -66,7 +83,7 @@
     </div>
 
 </fieldset>
-<button id="btn-submit" class="btn-submit2" type="submit" onclick="indexsub()">登录</button>
+<button id="btn-submit" class="btn-submit2" type="submit">登录</button>
 </form>
 
   </div>

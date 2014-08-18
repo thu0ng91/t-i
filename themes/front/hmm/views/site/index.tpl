@@ -18,6 +18,8 @@
 {novel_block id=11}
 {novel_block id=12}
 </div>
+</div>
+</div>
 <!--col_main begin-->
 </div>
 <!--mod_a begin-->

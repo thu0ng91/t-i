@@ -5,6 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=7">
 <title>{$special->title}_{$siteinfo->SiteName}</title>
 <meta name="keywords" content="{$keywords|strip_tags}"/>
+<meta name="description" content="{$description}" />
 <link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
 <link href="{$FW_THEME_URL}/css/book_index.css" rel="stylesheet"/>
 <link href="{$FW_THEME_URL}/css/book_other.css" rel="stylesheet"/>

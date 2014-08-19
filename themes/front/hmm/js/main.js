@@ -60,13 +60,13 @@ $("#link_ck").click(function(){
 	var add = $("#contents_list1");
 	var addt = $("#contents_list");
 	if (a.html() == "查看全部章节"){
-	     setTimeout(function(){add.slideUp(800);},0);
-	     setTimeout(function(){addt.slideDown(1000);},500);
-	     setTimeout(function(){a.html("点击即可返回");},1200);
+	     setTimeout(function(){add.slideUp(0);},0);
+	     setTimeout(function(){addt.slideDown(0);},0);
+	     setTimeout(function(){a.html("点击即可返回");},0);
 	} else {
-		setTimeout(function(){add.slideDown(1000);},500);
-		setTimeout(function(){addt.slideUp(800);},0);
-		setTimeout(function(){a.html("查看全部章节");},1200);
+		setTimeout(function(){add.slideDown(0);},0);
+		setTimeout(function(){addt.slideUp(0);},0);
+		setTimeout(function(){a.html("查看全部章节");},0);
 	}
 });
 

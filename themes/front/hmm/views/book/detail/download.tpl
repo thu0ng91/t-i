@@ -68,7 +68,7 @@
 					</div>
 				</div>
 				<div class="info">
-					<span class="state">{if $book->flag == 0} 连载中 {else}已完结 {/if}</span>
+					<span class="state">{if $book->flag == 1} 连载中 {else}已完结 {/if}</span>
 					<h2>{$book->title}</h2>
 					<p class="book_intr">
 						<span>作者：{$book->author}</span>
@@ -106,9 +106,9 @@
 						<ul class="clearfix  lazyload_box">
 							{novel_book limit=10 order="alllikenum desc" cid=$book->category->id}
 							<li>
-								<a href="{novel_book_link id=$item->id}" title="{$item->title|truncate:16:"...":true}" target="_blank">
-								<img src="{$item->coverImageUrl}" alt="{$item->title|truncate:16:"...":true}"	title="{$item->title|truncate:16:"...":true}" />
-								<span>{$item->title|truncate:16:"...":true}</span>
+								<a href="{novel_book_link id=$item->id}" title="{$item->title|truncate:10:"...":true}" target="_blank">
+								<img src="{$item->coverImageUrl}" alt="{$item->title|truncate:10:"...":true}"	title="{$item->title|truncate:10:"...":true}" />
+								<span>{$item->title|truncate:10:"...":true}</span>
 								</a>
 							</li>
 							{/novel_book}
@@ -146,7 +146,7 @@
 					<li>{if $block.iteration <= 3} <i class="num hot">{$block.iteration}</i>
 					{else} <i class="num">{$block.iteration}</i> {/if}
 					<div class="tit"><a href="{novel_book_link id=$item->id}"
-						target="_blank">{$item->title|truncate:16:"...":true}</a> <span
+						target="_blank">{$item->title|truncate:10:"...":true}</a> <span
 						style="float: right">{$item->createtime|date_format:"m-d"}</span></div>
 					</li>
 					{/novel_book}

@@ -194,7 +194,7 @@ class H {
 		else
 			$rtime = $returntime;
 		echo '<!doctype html><html><meta charset="utf-8"><body style="text-align:center;">';
-		echo '<div style="width:530px;height:200px;margin:20px auto 0;font:12px/1.5 \'Microsoft Yahei\',Tahoma,\'Simsun\'">';
+		echo '<div style="width:530px;height:200px;margin:50px auto 0;font:12px/1.5 \'Microsoft Yahei\',Tahoma,\'Simsun\'">';
 		echo '<meta http-equiv="refresh" content="' . $rtime . ';url=' . $url . '">';
 		echo '<div style="border:2px #2f96e3 solid;margin-top:20px;"><div style="height:50px;width:5px;background:#2f96e3;float:left;margin-top:20px;"></div>
       <div style="font-size:35px;color:#50bdda;float:left;margin-left:10px;margin-top:15px;">提示信息</div>

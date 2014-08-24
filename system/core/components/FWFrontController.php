@@ -74,7 +74,11 @@ class FWFrontController extends CController
     protected function initTplVar()
     {
         // 初始化共用模板变量
-        $this->assign("FW_SITE_URL", Yii::app()->baseUrl != "" ? Yii::app()->baseUrl : '/'); // 站点URL
+        if ($this->siteConfig && $this->siteConfig->SiteIsWildcardDomain > 0) {
+            $this->assign("FW_SITE_URL", "http://www." . H::getRootDomain() . "/");
+        } else {
+            $this->assign("FW_SITE_URL", Yii::app()->baseUrl != "" ? Yii::app()->baseUrl : '/'); // 站点URL
+        }
         $url = 'http://'.$_SERVER['HTTP_HOST'] . ($_SERVER["SERVER_PORT"] == "80" ? '' : ':'.$_SERVER["SERVER_PORT"]). (Yii::app()->baseUrl ? Yii::app()->baseUrl : '/');
         $this->assign("FW_SITE_PUB_URL", $url); // 站点URL，站外用
         $this->assign("FW_THEME_URL", Yii::app()->theme->baseUrl); // 当前主题URL

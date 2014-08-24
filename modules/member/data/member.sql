@@ -1,4 +1,4 @@
-﻿--
+--
 -- 表的结构 `member`
 --
 DROP TABLE IF EXISTS `member`;

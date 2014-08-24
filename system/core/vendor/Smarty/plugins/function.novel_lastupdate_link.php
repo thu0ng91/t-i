@@ -24,6 +24,8 @@ function smarty_function_novel_lastupdate_link($params, &$smarty){
 
 //    if ($keyword == "") return Yii::app()->createUrl($link);
 
-    return Yii::app()->createUrl($link);
+    $url = Yii::app()->createUrl($link);
+    $url = H::wrapUrlWithMainDomain($url);
+    return $url;
 
 }

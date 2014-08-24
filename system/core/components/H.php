@@ -230,4 +230,20 @@ class H {
         }
         return getRegisteredDomain($host);
     }
+
+    /**
+     * 根据系统是否打开泛站得到主站url
+     * @param $url
+     * @return string
+     */
+    public static function wrapUrlWithMainDomain($url)
+    {
+        $m = Yii::app()->settings->get("SystemBaseConfig");
+        if ($m && $m->SiteIsWildcardDomain > 0) {
+            $rootDomain = H::getRootDomain();
+            $url = "http://www." . $rootDomain . $url;
+        }
+
+        return $url;
+    }
 }

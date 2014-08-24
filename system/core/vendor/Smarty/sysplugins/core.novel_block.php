@@ -116,6 +116,7 @@ function _fw_get_book_menu_list($params)
 //        $v->coverImageUrl = H::getStaticAbsoluteUrl($imageMap[$v->id], false);
 //        $v->category = $categoryMap[$v->cid]
         $v->url =  Yii::app()->createUrl('book/list/index', array('title' => $v->shorttitle));
+        $v->url = H::wrapUrlWithMainDomain($v->url);
     }
 
 //    var_dump($newList);
@@ -364,6 +365,7 @@ function _fw_get_book_category_list($params)
 //        $v->coverImageUrl = H::getStaticAbsoluteUrl($imageMap[$v->id], false);
 //        $v->category = $categoryMap[$v->cid]
         $v->url =  Yii::app()->createUrl('book/list/index', array('title' => $v->shorttitle));
+        $v->url = H::wrapUrlWithMainDomain($v->url);
     }
 
 //    var_dump($newList);

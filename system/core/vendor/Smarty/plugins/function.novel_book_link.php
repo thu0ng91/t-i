@@ -45,7 +45,7 @@ function smarty_function_novel_book_link($params, &$smarty){
     if ($pinyin != "") {
         $rootDomain = H::getRootDomain();
         $m = Yii::app()->settings->get("SystemBaseConfig");
-        if ($m->SiteIsWildcardDomain > 0) {
+        if ($m && $m->SiteIsWildcardDomain > 0) {
             return "http://" . $pinyin . "." . $rootDomain;
         }
     }

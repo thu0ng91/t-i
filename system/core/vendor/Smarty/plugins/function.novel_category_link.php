@@ -46,6 +46,10 @@ function smarty_function_novel_category_link($params, &$smarty){
         $shorttitle = $m->shorttitle;
     }
 
-    return Yii::app()->createUrl('book/list/index', array('title' => $shorttitle));
+    $url = Yii::app()->createUrl('book/list/index', array('title' => $shorttitle));
+
+    $url = H::wrapUrlWithMainDomain($url);
+
+    return $url;
 
 }

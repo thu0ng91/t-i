@@ -33,6 +33,12 @@ class SystemBaseConfig extends CFormModel
      */
     public $SiteIndexCacheTime = 0;
 
+    /**
+     * 站点是否开启泛站
+     * @var int
+     */
+    public $SiteIsWildcardDomain = 0;
+
 	/**
 	 * Declares the validation rules.
 	 * The rules state that username and password are required,
@@ -44,6 +50,7 @@ class SystemBaseConfig extends CFormModel
 			array('SiteName', 'required'),
 			array('SiteAdminEmail', 'email'),
 			array('SiteIsUsedCache', 'boolean'),
+			array('SiteIsWildcardDomain', 'boolean'),
             array('SiteName', 'length', 'max'=> 100),
             array('SiteIndexCacheTime', 'numerical', 'integerOnly'=>true),
             array('SiteKeywords,SiteIntro,SiteCopyright,SiteAttachmentPath,SiteTheme', 'length', 'max'=> 255),
@@ -66,6 +73,7 @@ class SystemBaseConfig extends CFormModel
 			'SiteTheme' => '站点主题',
 			'SiteIsUsedCache' => '是否启用缓存',
 			'SiteIndexCacheTime' => '首页缓存时间',
+			'SiteIsWildcardDomain' => '是否启用泛站群',
 		);
 	}
 

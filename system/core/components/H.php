@@ -180,6 +180,8 @@ class H {
 
         return $columns;
     }
+
+
 	/*
      * 提示跳转窗口
     * $msg 提示信息内容
@@ -206,4 +208,26 @@ class H {
 		echo '</div></div></body></html>';
 		exit ();
 	}
+
+    /**
+     * 根据给定主机得到其根域名
+     * @param string $host
+     * @return null|string
+     */
+    public static function getRootDomain($host = null)
+    {
+        Yii::import('ext.regdom.*');
+
+        include_once 'effectiveTLDs.inc.php';
+        include_once 'regDomain.inc.php';
+
+        if ($host == null) {
+            if(isset($_SERVER['HTTP_HOST'])) {
+                $host = $_SERVER['HTTP_HOST'];
+            } else {
+                $host = $_SERVER['SERVER_NAME'];
+            }
+        }
+        return getRegisteredDomain($host);
+    }
 }

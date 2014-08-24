@@ -47,6 +47,37 @@ class SiteController extends FWFrontController
             $this->redirect(array('install/index'));
         }
 
+        // 启用了泛解析
+        if ($this->siteConfig->SiteIsWildcardDomain > 0) {
+            $host = null;
+            if(isset($_SERVER['HTTP_HOST'])) {
+                $host = $_SERVER['HTTP_HOST'];
+            } else {
+                $host = $_SERVER['SERVER_NAME'];
+            }
+
+            if ($host) {
+                $rootDomain = H::getRootDomain($host);
+                $subHost = str_replace($rootDomain, "", $host);
+                $subHost = rtrim($subHost, ".");
+                //$firstPrefix = explode(".", $subHost);
+                if ($subHost != "" && $subHost != "www") {
+                    if (Yii::app()->hasModule("book")) {
+//                        Yii::import("book.models.*");
+                        Yii::import("book.controllers.*");
+
+//                        $book = Book::model()->find("pinyin=:pinyin", array(":pinyin" => $subHost));
+//                        if ($book) {
+                            $_GET['pinyin'] =  $subHost;
+
+                            Yii::app()->runController("book/detail/index");
+                            Yii::app()->end();
+//                        }
+                    }
+                }
+            }
+        }
+
         $this->render("index");
 	}
 

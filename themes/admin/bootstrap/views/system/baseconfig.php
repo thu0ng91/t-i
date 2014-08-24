@@ -3,11 +3,11 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - 基础属性';
+$this->pageTitle=Yii::app()->name . ' - 系统设置';
 ?>
 <ul class="nav nav-tabs">
   <li class="active">
-    <a href="#">基础属性</a>
+    <a href="#">系统设置</a>
   </li>
 </ul>
     <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
@@ -30,6 +30,10 @@ $this->pageTitle=Yii::app()->name . ' - 基础属性';
       <?php echo $form->textAreaRow($model, 'SiteIntro'); ?>
 <!--      --><?php //echo $form->textFieldRow($model, 'SiteAttachmentPath'); ?>
       <?php echo $form->textAreaRow($model, 'SiteCopyright'); ?>
+
+    <?php echo $form->dropDownListRow($model, 'SiteIsWildcardDomain', array('0' => '否', '1' => '是'), array(
+        'hint'=> '<span style="color:red;font-weight: bold">启用泛站，会启用每本小说一个域名</span>'
+    )); ?>
 
       <?php echo $form->dropDownListRow($model, 'SiteIsUsedCache', array('0' => '否', '1' => '是'), array(
           'hint'=> '只有站点开启缓存，首页及各子模块缓存才生效'

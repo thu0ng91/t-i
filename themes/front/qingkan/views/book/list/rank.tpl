@@ -2,7 +2,6 @@
 <div class="phb_contain">
 	<div class="phb_left phb_kuang">
 		<div class="phb_bt02">榜单</div>
-		
 		<ul id="box"><li><a title="总点击榜" href="{novel_rank_link}#click_mod">小说点击榜</a></li></ul>
 		<div class="line"></div>
 		<ul id="box"><li><a title="月点击榜" href="{novel_rank_link}#vote_mod">小说推荐榜</a></li></ul>

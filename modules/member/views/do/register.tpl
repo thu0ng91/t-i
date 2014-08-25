@@ -1,21 +1,44 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=7">
 <title>{$title}</title>
+<script type="text/javascript" src="{$FW_THEME_URL}/js/jquery-1.4.3.min.js"></script>
 <meta name="keywords" content="{$keywords|strip_tags}"/>
 <meta name="description" content="{$description}" />
 <link href="{$FW_THEME_URL}/css/global.css" rel="stylesheet"/>
 </head>
 <script>
-	function indexsub() {
+
+ 
+
+$(function(){
+    $("#username").change(function(){
+		var username = $(this).val();
+		$.ajax({
+			type:"POST",
+			datatype:'json',
+			data:"username="+username,
+			success: function(josn){
+				if(josn == 0){
+					 $("#utext").text("恭喜你可以注册");
+					return true;
+				 }else{
+					$("#utext").text("用户名已存在不可注册");
+					return false;
+				 }
+			}
+		});
+	});
+});
+
+	/* function indexsub() {
 		var uname = document.getElementById('username');
 		var email = document.getElementById('email');
 		var pwd = document.getElementById('pwd');
 		var repwd = document.getElementById('repwd');
-//		var pattern = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;  
+		var pattern = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;  
 		if(uname.value == "") {
 			alert("用户名不能为空");
 			uname.focus();
@@ -38,7 +61,7 @@
 			return false;
 		}
 		return true;
-	}
+	}  */
 </script>
 <body>
 <!--header begin-->
@@ -89,7 +112,7 @@
     <div class="form-item">
         <div class="field-name">用户名：</div>
         <div class="field-input">
-          <input type="text" name="RegisterForm[username]" id="username" value="" />
+          <input type="text" name="RegisterForm[username]" id="username" value="" /><span id="utext"> </span>
         </div>
     </div>
     <div class="form-item">

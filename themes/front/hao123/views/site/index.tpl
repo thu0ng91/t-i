@@ -9,7 +9,7 @@
                 <div class="indexonell">
                     <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
                     <h2><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h2>
-					<span>{$item->summary|trim|truncate:50:'...'}
+					<span>{$item->summary|trim|strip_tags|truncate:50:'...'}
 					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
 					</span>
                 </div>
@@ -17,7 +17,7 @@
             {if $block.index == 1}
                 <div class="indexonelc">
                     <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
-					<span>{$item->summary|trim|truncate:50:'...'}
+					<span>{$item->summary|trim|strip_tags|truncate:50:'...'}
 					<a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
 					</span>
             {/if}
@@ -32,7 +32,7 @@
             {/if}
             {if !$block.last && $block.index == 10}
                     <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
-                    <span>{$item->summary|trim|truncate:50:'...'}
+                    <span>{$item->summary|trim|strip_tags|truncate:50:'...'}
                     <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
                     </span>           
                     <ul class="clearfix">
@@ -57,7 +57,7 @@
                 <div class="indexonell">
                     <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
                     <h2><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h2>
-                    <span>{$item->summary|trim|truncate:50:'...'}
+                    <span>{$item->summary|trim|strip_tags|truncate:50:'...'}
                     <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
                     </span>
                 </div>
@@ -65,7 +65,7 @@
             {if $block.index == 1}
                 <div class="indexonelc">
                     <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
-                    <span>{$item->summary|trim|truncate:50:'...'}
+                    <span>{$item->summary|trim|strip_tags|truncate:50:'...'}
                     <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
                     </span>
             {/if}
@@ -80,7 +80,7 @@
             {/if}
             {if !$block.last && $block.index == 10}
                     <h3><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h3>
-                    <span>{$item->summary|trim|truncate:50:'...'}
+                    <span>{$item->summary|trim|strip_tags|truncate:50:'...'}
                     <a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
                     </span>           
                     <ul class="clearfix">
@@ -144,7 +144,7 @@
                     <a href="{novel_book_link id=$item->id type='index'}"><img src="{$item->coverImageUrl}"></a>
                     <div class="figurer">
                         <h4><a href="{novel_book_link id=$item->id type='index'}">{$item->title}</a></h4>
-                        <span>{$item->summary|trim|truncate:15:'...'}</span><a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
+                        <span>{$item->summary|trim|strip_tags|truncate:15:'...'}</span><a href="{novel_book_link id=$item->id type='index'}" class="green">阅读&gt;&gt;</a>
                     </div>
                 </div>
                 <ul class="clearfix">
@@ -172,7 +172,7 @@
             <li class="cur">最新大作</li>
             <li class="">畅销小说</li>
             <li class="">言情推荐</li>
-            <li>最新上榜</li>
+            <li class="">最新上榜</li>
             <li class="last">全本小说</li>
         </ul>
     </div>
@@ -181,7 +181,7 @@
   		{novel_book order='allclicks desc, createtime desc' limit=12}
             <li><a href="{novel_book_link id=$item->id}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->title}"></a>
                 <h3><a href="{novel_book_link id=$item->id}" target="_blank">{$item->title}</a></h3>
-                {$item->summary|trim|truncate:10:'...'}<span class="lzzico"></span></li>
+                {$item->summary|trim|strip_tags|truncate:10:'...'}<span class="lzzico"></span></li>
        	{/novel_book}
         </ul>
 
@@ -189,7 +189,7 @@
   		{novel_book order='allclicks desc' limit=12} 
             <li><a href="{novel_book_link id=$item->id}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->title}"></a>
                 <h3><a href="{novel_book_link id=$item->id}" target="_blank">{$item->title}</a></h3>
-                {$item->summary|trim|truncate:10:'...'}<span class="lzzico"></span></li>
+                {$item->summary|trim|strip_tags|truncate:10:'...'}<span class="lzzico"></span></li>
        	{/novel_book}
         </ul>
 
@@ -198,7 +198,7 @@
   		{novel_book cid=[10] limit=12} 
             <li><a href="{novel_book_link id=$item->id}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->title}"></a>
                 <h3><a href="{novel_book_link id=$item->id}" target="_blank">{$item->title}</a></h3>
-                {$item->summary|trim|truncate:10:'...'}<span class="lzzico"></span></li>
+                {$item->summary|trim|strip_tags|truncate:10:'...'}<span class="lzzico"></span></li>
        	{/novel_book}
         </ul>
 
@@ -207,15 +207,15 @@
   		{novel_book order='lastchaptertime desc' limit=12} 
             <li><a href="{novel_book_link id=$item->id}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->title}"></a>
                 <h3><a href="{novel_book_link id=$item->id}" target="_blank">{$item->title}</a></h3>
-                {$item->summary|trim|truncate:10:'...'}<span class="lzzico"></span></li>
+                {$item->summary|trim|strip_tags|truncate:10:'...'}<span class="lzzico"></span></li>
        	{/novel_book}
         </ul>
 
          <ul style="display: none;" class="clearfix imgitems hidden">
-  		{novel_book order='lastchaptertime desc' limit=12} 
+  		{novel_book order='lastchaptertime desc' limit=12 where="flag = 0"} 
             <li><a href="{novel_book_link id=$item->id}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->title}"></a>
                 <h3><a href="{novel_book_link id=$item->id}" target="_blank">{$item->title}</a></h3>
-                {$item->summary|trim|truncate:10:'...'}<span class="lzzico"></span></li>
+                {$item->summary|trim|strip_tags|truncate:10:'...'}<span class="lzzico"></span></li>
        	{/novel_book}
         </ul>       
 
@@ -360,11 +360,5 @@
 
 {* 回到顶部*}
 <div id="fix-area" class="fix-area">
-    <a style="visibility: visible;" class="go-top-btn" href="#" target="_self">返回顶部</a>
-    {*
-    <a class="feedback-btn boxy" href="#feedback">反馈</a>
-    <div id="shortcut-goerwei" class="shortcut-erweiwrap" style="height:120px;">
-        <a class="g_icon clz"></a><a class="shortcut-goerwei" href="http://www.hao123.com/shouji"><span class="top">万本小说免费读</span><span class="shortcut-goerwei-pic"><img src="http://imgs.imgshao123.net/images/1233459.png" border="0" height="70px" width="70px"></span><span>点击或扫描下载</span></a>
-    </div>
-    *}
+    <a style="visibility: visible;" class="go-top-btn" href="#" target="_self">返回顶部</a>
 </div>

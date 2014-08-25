@@ -19,21 +19,6 @@
             <span class="lzzico"></span>
             <div class="con_limg">
                 <img src="{$book->coverImageUrl}" alt="{$book->title}">
-                {*
-                <a href="{novel_book_download_link id=$book->id}" class="">TXT下载</a>
-                *}
-                {*
-                <a href="#feedback" class="cwfk boxy">错误反馈</a>
-                <a href="#" class="sccs">收藏此书</a>
-                *}
-                {*
-                <!-- Baidu Button BEGIN -->
-                <div id="bdshare" class="bdshare_b" style="margin-left:28px;margin-top:7px; _margin-left:14px;_margin-top:7px;;">
-                    <a href="#" class="fxcs" style="padding-left:30px;">分享此书</a>
-                </div>
-                <script src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=387158" type="text/javascript" id="bdshare_js" data="type=button&amp;uid=0"></script>
-                <!-- Baidu Button END -->
-                *}
             </div>
             <div class="r420">
                 <h1>{$book->title}</h1>
@@ -41,12 +26,9 @@
                     作者：<span class="black"><a href="#" target="_blank">{$book->author}</a></span>
                 </p>
                 <div class="r_cons">
-                {$book->summary}
+                {$book->summary|trim|strip_tags}
                 </div>
                 <div class="r_tools">
-                    {*
-                    <a href="/intro/132154/chaptershow.html" class="startedbtn" target="_blank">开始阅读</a><a href="/intro/132154/chapter.html" class="diralinks">目录</a><a href="/intro/132154/chapterlist.html" class="newchapter">最新章节</a>
-                    *}
                 </div>
                 <div class="lastrecord">
                     最新章节：<strong><a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" target="_blank">{$book->lastchaptertitle}</a></strong>
@@ -91,12 +73,13 @@
                     <h3><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h3>
                     作者：{$item->author}
                     <p>
-                        {$item->summary|trim|truncate:15:'...'}
+                        {$item->summary|trim|strip_tags|truncate:15:'...'}
                     </p>
                 </div>
                 <ol class="clearfix olcrwrap">
-            {/if}
+            {else}
                     <li><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
+			{/if}
             {if $block.last}
                 </ol>
             {/if}
@@ -108,69 +91,6 @@
         <div class="lbline708">
         </div>    
 </div>
-
-<div class="clearfix"></div>
-
-<div class="clearfix wrap980">
-    <div class="wrap706">
-    {*
-        <div class="dirlboxs">
-            <div class="clearfix dirconthree">
-                <ol id="dirsort01">
-                {assign "i" 1}
-                {foreach $chapters as $item}
-                    <li><strong>{$i}</strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
-                    {assign "i" $i +1}
-                {/foreach}
-                </ol>
-            </div>
-        </div>
-        <div class="bline706">
-        </div>
-        *}
-    </div>
-    {*
-    <div class="w262">
-        <div class="ritemboxtwo">
-            <div class="tittwo">
-                <h2>热门排行</h2>
-                <ul>
-                    <li class="cur">日</li>
-                    <li>周</li>
-                    <li>月</li>
-                </ul>
-            </div>
-            <div id="dirconsone">
-            {foreach ['day', 'month', 'week'] as $t}
-                <div {if !$t@first}class="hidden"{/if}>
-                {novel_book_rank order=$t cid=[$book->cid] limit=12}
-                    {if $block.first}
-                    <div class="cimgsfont">
-                        <a class="imgcss" href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
-                        <h3><a href="{novel_book_link id=$item->id}"></a></h3>
-                        作者：{$item->author}
-                        <p>
-                            {$item->summary|trim|truncate:30:"......"}
-                        </p>
-                    </div>
-                    <ol class="clearfix olcrwrap">
-                    {/if}
-                    {if !$block.first}
-                        <li><span>{$item.allclicks}</span><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
-                    {/if}
-                    {if $block.last}
-                    </ol>
-                    {/if}
-                {/novel_book_rank}
-                </div>
-            {/foreach} 
-            </div>
-        </div>
-        <div class="bline706">
-        </div>
-    </div>
-    *}
-</div>
 {assign "newestChapters" array_reverse(array_slice($chapters, -7, -1, true))}
 
 <div class="wrapone">
@@ -178,10 +98,10 @@
         <div class="dirlboxs">
             <div class="clearfix dirconthree">
                 <ol id="dirsort01">
-                {assign "i" 1}
+
                 {foreach $newestChapters as $item}
                     <li><strong></strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
-                    {assign "i" $i +1}
+
                 {/foreach}
                 </ol>
             </div>
@@ -202,10 +122,10 @@
         <div class="dirlboxs">
             <div class="clearfix dirconthree">
                 <ol id="dirsort01">
-                {assign "i" 1}
+
                 {foreach $chapters as $item}
-                    <li><strong>{$i}</strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
-                    {assign "i" $i +1}
+                    <li><strong></strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
+
                 {/foreach}
                 </ol>
             </div>
@@ -220,7 +140,7 @@
         {novel_book cid=[$book->cid] where='recommendlevel<=5' order='createtime desc,allclicks desc' limit=6}
         <li><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->lastchaptertitle}"><strong>{$item->lastchaptertitle}</strong></a>
         <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
-        {$item->summary|trim|truncate:20:"..."}</li>
+        {$item->summary|trim|strip_tags||strip_tags|truncate:20:"..."}</li>
         {/novel_book}
     </ul>
 </div>

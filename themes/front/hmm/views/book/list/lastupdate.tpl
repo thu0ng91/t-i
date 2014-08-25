@@ -15,16 +15,16 @@
 	{foreach from=$list item=item}
 		<li>
 		<div class="imgbox">
-			<a href="{novel_book_link id=$item->id}" target="_blank"> 
+			<a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank"> 
 			<img width="90" height="118" src="{$item->coverImageUrl}"	alt="{$item->title}" title="{$item->title}" />
 			 <span class="txt_bg">
-			{if $item->flag == 1}连载 {else}完结 {$item->wordcount}万{/if}
+			{if $item->flag == 1}连载中 {else}已完结 {$item->wordcount}万{/if}
 			</span>
 			</a>
 		</div>
 		<dl class="info">
 			<dt>
-				<a class="sub_link" href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:10:"...":true}</a>
+				<a class="sub_link" href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank">{$item->title|truncate:10:"...":true}</a>
 			</dt>
 			<dd>作者：<span>	{$item->author}</span></dd>
 			<dd>更新到：
@@ -35,7 +35,7 @@
 			
 				</dd>
 			<dd class="desc">{$item->summary|strip_tags|truncate:62:"...":true}&nbsp;
-			<a class="more" href="{novel_book_link id=$item->id}" title="{$item->title}" target="_blank">详细&gt;&gt;</a>
+			<a class="more" href="{novel_book_link id=$item->id pinyin=$item->pinyin}" title="{$item->title}" target="_blank">详细&gt;&gt;</a>
 			</dd>
 		</dl>
 		</li>
@@ -83,7 +83,7 @@
 		<i class="num">{$block.iteration}</i>
 		{/if}
 		<div class="tit">
-		<a href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:10:"...":true}</a>
+		<a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank">{$item->title|truncate:10:"...":true}</a>
 		<span style="float:right">{$item->createtime|date_format:"m-d"}</span>
 		</div>
 	</li>
@@ -106,7 +106,7 @@
 		<i class="num">{$block.iteration}</i>
 		{/if}
 		<div class="tit">
-			<a href="{novel_book_link id=$item->id}" target="_blank">{$item->title|truncate:10:"...":true}</a>
+			<a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank">{$item->title|truncate:10:"...":true}</a>
 			<span style="float:right">{$item->lastchaptertime|date_format:"m-d"}</span>
 		</div>
 	</li>

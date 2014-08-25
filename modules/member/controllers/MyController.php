@@ -59,11 +59,11 @@ class MyController extends MemberController
 
     	$this->assign("list", $userinfo);
     	if($_POST) {
-    		$model->email = $_POST['email'];
-    		$model->gender = intval($_POST['gender']);
-    		$model->qq = intval($_POST['qq']);
-    		$model->telephone = intval($_POST['telephone']);
-    		$model->address = $_POST['address'];
+    		$model->email = strip_tags($_POST['email']);
+    		$model->gender = intval(strip_tags($_POST['gender']));
+    		$model->qq = intval(strip_tags($_POST['qq']));
+    		$model->telephone = intval(strip_tags($_POST['telephone']));
+    		$model->address = strip_tags($_POST['address']);
     		$model->save();
     		H::showmsg('成功修改资料', Yii::app()->createUrl('/member/my/information'));
     	} else {

@@ -33,26 +33,18 @@
 <p>{$book->summary|strip_tags|nl2br}</p>
 </p>
 <div class="op clearfix">
-	<a class="a_icon readnow" href="{novel_chapter_link bookid=$book->id id=1}" target="_blank">开始阅读</a> 
-	<a class="a_icon a_btn" href="{novel_book_download_link id=$book->id}" target="_blank">TXT下载</a>
+	<a class="a_icon readnow" href="{novel_chapter_link bookid=$book->id pinyin=$book->pinyin  id=1}" target="_blank">开始阅读</a> 
+	<a class="a_icon a_btn" href="{novel_book_download_link id=$book->id pinyin=$book->pinyin}" target="_blank">TXT下载</a>
 	<a class="a_icon view_all" href="javascript:;" onclick="uservote({$book->id})">推荐</a>
 	<a class="a_icon view_bookcase" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a>
 	<span id="added_store" class="a_icon addedshelf" style="display: none;"></span>
 </div>
 <div class="tip_box"><span class="arrow_out"></span> <span
 	class="arrow_in"></span>
-{*<!--<ul class="tip_con clearfix">-->*}
-{*<!--	<li><span>更新到：</span>-->*}
-{*<!--	 <a style="float:left" target="_blank"	href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">　-->*}
-{*<!--		 第{$book->lastchapterid}章 {$book->lastchaptertitle} </a><span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span>-->*}
-{*<!--	-->*}
-{*<!--	</li>-->*}
-{*<!--</ul>-->*}
-
 	<div style="height:25px;line-height:25px;background:#fafdfe;border-bottom:1px #ffe4cc solid;padding:2px 5px;"><span style="color:#f60">更新到：</span>
-	 <a target="_blank"	href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">　
+	 <a target="_blank"	href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid pinyin=$book->pinyin}">　
 		 {$book->lastchaptertitle} </a><span class="time">{$book->lastchaptertime|date_format:'Y-m-d H:i:s'}　</span></div>
-	<div style="padding:5px;">章节预览：<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">{$endchaptertxt|nl2br}</a></div>
+	<div style="padding:5px;">章节预览：<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid pinyin=$book->pinyin}">{$endchaptertxt|nl2br}</a></div>
 
 </div>
 </div>
@@ -75,9 +67,9 @@
 		{$i = 0}
 		{foreach from=$chapterla item=chapter}
 			<li>
-			<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$chapter->id}"> 
+			<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$chapter->id pinyin=$book->pinyin}"> 
 			{if	$i++ <= 2 }
-				<font color=red>{$chapter->title}</font>
+				<font color='red'>{$chapter->title}</font>
 			{else}
 				{$chapter->title} 
 			{/if} 
@@ -94,7 +86,7 @@
 	<ul class="clearfix">
 		{foreach from=$chapters item=chapter}
 		<li>
-			<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$chapter->id}">{$chapter->title}</a>
+			<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$chapter->id pinyin=$book->pinyin}">{$chapter->title}</a>
 		</li>
 		{/foreach}
 	</ul>
@@ -106,7 +98,7 @@
 	<ul class="clearfix">
 		{foreach from=$chapterst item=chapter}
 		<li><a target="_blank"
-			href="{novel_chapter_link bookid=$book->id id=$chapter->id}">
+			href="{novel_chapter_link bookid=$book->id id=$chapter->id pinyin=$book->pinyin}">
 		{$chapter->title}</a></li>
 		{/foreach}
 	</ul>
@@ -121,7 +113,7 @@
 			{if $i < 3}
 				<input type="hidden" value="{$i++}" />
 				<li>
-					<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$chapter->id}"> 
+					<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$chapter->id pinyin=$book->pinyin}"> 
 						<font color=red>{$chapter->title}</font>
 					 </a>
 				 </li>
@@ -136,7 +128,7 @@
 		<ul class="clearfix">
 			{foreach from=$chapters item=chapter}
 			<li>
-				<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$chapter->id}">{$chapter->title}</a>
+				<a target="_blank" href="{novel_chapter_link bookid=$book->id id=$chapter->id pinyin=$book->pinyin}">{$chapter->title}</a>
 			</li>
 			{/foreach}
 		</ul>
@@ -190,7 +182,7 @@
 		<ul class="clearfix  lazyload_box">
 			{novel_book limit=10 order="alllikenum desc" cid=$book->category->id}
 			<li>
-			<a href="{novel_book_link id=$item->id}" title="{$item->title|truncate:10:"...":true}" target="_blank">
+			<a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" title="{$item->title|truncate:10:"...":true}" target="_blank">
 			<img src="{$item->coverImageUrl}" alt="{$item->title|truncate:10:"...":true}"	title="{$item->title|truncate:10:"...":true}" />
 			<span>{$item->title|truncate:10:"...":true}</span>
 			</a>
@@ -230,7 +222,7 @@
 	{novel_book limit=10 order="allclicks desc" cid=$category->id}
 	<li>{if $block.iteration <= 3} <i class="num hot">{$block.iteration}</i>
 	{else} <i class="num">{$block.iteration}</i> {/if}
-	<div class="tit"><a href="{novel_book_link id=$item->id}"
+	<div class="tit"><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}"
 		target="_blank">{$item->title|truncate:10:"...":true}</a> <span
 		style="float: right">{$item->createtime|date_format:"m-d"}</span></div>
 	</li>

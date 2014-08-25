@@ -205,7 +205,6 @@ CREATE TABLE `comment` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------

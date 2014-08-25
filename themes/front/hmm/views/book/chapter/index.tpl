@@ -7,9 +7,9 @@
 <script type="text/javascript" src="{$FW_THEME_URL}/js/xs.js"></script>
 <script type="text/javascript" src="{novel_link url='/book/chapter/updatebookcase' params=['id'=>{$book->id},'cid'=>{$chapter->id},'readtitle'=>{$chapter->title}]}"></script>
 <script language="javascript" type="text/javascript">
-  var preview_page = "{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId}{else}{novel_book_link id=$book->id}{/if}";
-  var next_page = "{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId}{else}{novel_book_link id=$book->id}{/if}";
-  var index_page = "{novel_book_link id=$book->id}";
+  var preview_page = "{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId pinyin=$book->pinyin}{else}{novel_book_link id=$book->id pinyin=$book->pinyin}{/if}";
+  var next_page = "{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId pinyin=$book->pinyin}{else}{novel_book_link id=$book->id pinyin=$book->pinyin}{/if}";
+  var index_page = "{novel_book_link id=$book->id pinyin=$book->pinyin}";
   var bookid = "{$book->id}";
   var readid = "{$chapter->id}";
   function jumpPage() {
@@ -57,9 +57,9 @@
 	<dd>
 		<h1>{$chapter->title}</h1>
 		<h3>
-			<a	href="{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId}{else}{novel_book_link id=$book->id}{/if}">上一章</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a	href="{novel_book_link id=$book->id}" >返回目录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-			<a	href="{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId}{else}{novel_book_link id=$book->id}{/if}">下一章</a>
+			<a	href="{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId pinyin=$book->pinyin}{else}{novel_book_link id=$book->id pinyin=$book->pinyin}{/if}">上一章</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<a	href="{novel_book_link id=$book->id pinyin=$book->pinyin}" >返回目录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+			<a	href="{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId pinyin=$book->pinyin}{else}{novel_book_link id=$book->id pinyin=$book->pinyin}{/if}">下一章</a>
 		</h3>
 	</dd>
 	<div style="height: 10px;width: 96%;margin:0 auto;border-bottom:1px #e4e4e4 solid;"> </div>
@@ -76,9 +76,9 @@
  -->
 	<dd id="tipscent"></dd>
 	<dd id="footlink">
-	<a	href="{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId}{else}{novel_book_link id=$book->id}{/if}"	class="redbutt">上一章</a>
-	<a	href="{novel_book_link id=$book->id}" class="redbutt">返回章节目录</a>
-	<a	href="{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId}{else}{novel_book_link id=$book->id}{/if}"	class="redbutt">下一章</a></dd>
+	<a	href="{if $prevChapterId}{novel_chapter_link bookid=$book->id id=$prevChapterId pinyin=$book->pinyin}{else}{novel_book_link id=$book->id pinyin=$book->pinyin}{/if}"	class="redbutt">上一章</a>
+	<a	href="{novel_book_link id=$book->id pinyin=$book->pinyin}" class="redbutt">返回目录</a>
+	<a	href="{if $nextChapterId}{novel_chapter_link bookid=$book->id id=$nextChapterId pinyin=$book->pinyin}{else}{novel_book_link id=$book->id pinyin=$book->pinyin}{/if}"	class="redbutt">下一章</a></dd>
 	<dd id="tipsfoot"></dd>
 </dl>
 <div class="cl"></div>

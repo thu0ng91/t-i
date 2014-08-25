@@ -23,18 +23,14 @@
 	var siteUrl = '{$FW_SITE_URL}';
 	var siteThemeUrl = '{$FW_THEME_URL}';
 </script>
-{if $FW_SITE_URL == "/"}
-<script type="text/javascript" src="{$FW_SITE_URL}ok/ok.js"></script>
-{else}
-<script type="text/javascript" src="{$FW_SITE_URL}/ok/ok.js"></script>
-{/if}
+
 </head>
 <body>
 <div id="page-header">
 
 	<div id="header">
 		<div class="wrap980">
-			<div class="logocss"><a href="{$FW_SITE_URL}">{$siteinfo->SiteName}</a></div>
+			<div class="logocss"><a href="{$FW_SITE_URL}"><img style="width:200px;height:62px" src="{$FW_THEME_URL}/images/logo.png" /></a></div>
 			<form id="search" name="search" action="{novel_search_link}" method="get" onSubmit="return qrsearch();">
 			<div class="serachwrap">
 				<span class="search_text"><input id="kw" name="keyword" type="text" value="请输入小说名..." autocomplete="off"  title="请输入小说名..." onfocus="if(this.value==this.title) this.value='';" onblur="if(this.value=='') this.value=this.title;"  onSubmit="return qrsearch();" autofocus="true" x-webkit-speech="" x-webkit-grammar="builtin:translate"></span><input type="submit" value="" class="search_submit">

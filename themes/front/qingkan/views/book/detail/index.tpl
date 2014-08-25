@@ -35,7 +35,7 @@
                                 <span class="sp_01">【作品简介】</span>
                                 <span class="clear"></span>
                             </li>
-                            <li id="articledesc" class="a2">{$book->summary|truncate:200:"...":true}</li>
+                            <li id="articledesc" class="a2">{$book->summary|trim|strip_tags|truncate:200:"...":true}</li>
                         </ul>
                     </span>
                     <div class="sy_anniu" id="keyword">

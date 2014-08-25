@@ -79,13 +79,7 @@
 					<div id="TxtdownTop">
 				        <div style="float:left;width:100%">◎ 
 				        	<a href="{$FW_SITE_URL}">{$siteinfo->SiteName}</a> - 
-				            <a href="{novel_book_link id=$book->id}">{$book->title}在线阅读</a><br />◎
-				            <script src="http://pstatic.xunlei.com/js/webThunderDetect.js"></script>
-				            <script src="http://pstatic.xunlei.com/js/base64.js"></script>
-				            <script language="javascript">var thunder_url = "http://dl.qgzw.com/17/17365.txt";var thunder_pid = "130465";var restitle = ""; document.write('<a href="#" thunderHref="' + ThunderEncode(thunder_url) + '" thunderPid="' + thunder_pid + '" thunderResTitle="' + restitle + '" onClick="return OnDownloadClick_Simple(this,2,4)" oncontextmenu="ThunderNetwork_SetHref(this)"><b>{$book->title}TXT下载（迅雷专用高速下载1）</b></a> '); </script><BR>◎
-				            <script src="http://pstatic.xunlei.com/js/webThunderDetect.js"></script>
-				            <script src="http://pstatic.xunlei.com/js/base64.js"></script>
-				            <script language="javascript">var thunder_url = "http://dl.qgzw.com/17/17365.txt";var thunder_pid = "130465";var restitle = ""; document.write('<a href="#" thunderHref="' + ThunderEncode(thunder_url) + '" thunderPid="' + thunder_pid + '" thunderResTitle="' + restitle + '" onClick="return OnDownloadClick_Simple(this,2,4)" oncontextmenu="ThunderNetwork_SetHref(this)"><b>{$book->title}TXT下载（迅雷专用高速下载2）</b></a> '); </script><BR>◎ 
+				            <a href="{novel_book_link id=$book->id}">{$book->title}在线阅读</a><br />
 				            <a href="{novel_book_download_link type='full' id=$book->id}">{$book->title}TXT下载（右键目标另存为）</a>
 				        </div>
 					</div>

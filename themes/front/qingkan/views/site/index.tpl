@@ -5,12 +5,11 @@
             <div class="newfmx_jd">
                 <div id="ifocus">
                     <div class="newjd_topbox">
-
                         <div id="ifocus_pic">
-                            <div id="ifocus_piclist" style="left: 0px; top: -825px;">
+                            <div id="ifocus_piclist" style="left: 0px; top: 0px;">
                                 <ul>
                                     {novel_book order="recommendlevel desc" recommend=[1,2,3,4,5,6,7,8,9] limit=4}
-                                    <li>
+									<li>
                                         <a href="{novel_book_link id=$item->id}" title="{$item->title}" target="_blank">
                                             <img src="{$item->coverImageUrl}" alt="{$item->title}" original="{$item->coverImageUrl}">
                                         </a>
@@ -19,11 +18,14 @@
                                 </ul>
                             </div>
                         </div>
-
                         <div id="ifocus_btn">
                             <ul>
                                 {novel_book order="recommendlevel desc" recommend=[1,2,3,4,5,6,7,8,9] limit=4}
-                                <li class="normal">                                 
+								 {if $block.first} 
+								<li class="current">    
+								 {else}
+								<li>
+								 {/if}								
                                  <a href="{novel_book_link id=$item->id}" title="{$item->title}" target="_blank">
                                     <img src="{$item->coverImageUrl}" alt="{$item->title}" original="{$item->coverImageUrl}">
                                 </a>
@@ -35,23 +37,27 @@
                     <div id="ifocus_tx">
                         <ul>
                             {novel_book order="recommendlevel desc" recommend=[1,2,3,4,5,6,7,8,9] limit=4}
-                            <li class="normal">                            
+							 {if $block.first} 
+							<li class="current">    
+							 {else}
+							<li>
+							 {/if}	                         
                                <h3><a href="{novel_book_link id=$item->id}" title="{$item->title}" target="_blank">{$item->title}</a></h3>
-                               <span class="intro">简介：{$item->summary|truncate:80:"...":true}</span>
+                               <span class="intro">简介：{$item->summary|trim|strip_tags|truncate:80:"...":true}</span>
                            </li>
                            {/novel_book}
                        </ul>
                    </div>
                 </div>
                 
-           </div>
-       </div>
-       <div id="cont1_2">
+            </div>
+        </div>
+        <div id="cont1_2">
             <div id="cont1_2_cont01">
                 <h4>热门小说</h4>
                 {novel_book order="recommendlevel desc,createtime desc" recommend=[1] limit=1}
                 <h1><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></h1>
-                <p>&nbsp;&nbsp;{$item->summary|truncate:80:"...":true}<a href="{novel_book_link id=$item->id}" target="_blank">[详情]</a></p>
+                <p>&nbsp;&nbsp;{$item->summary|trim|strip_tags|truncate:80:"...":true}<a href="{novel_book_link id=$item->id}" target="_blank">[详情]</a></p>
                 {/novel_book}
                 <ul>
                     {novel_book order="recommendlevel desc,createtime desc" recommend=[3] limit=6}
@@ -87,7 +93,7 @@
                     <p class="p_img"><a href="{novel_book_link id=$item->id}" title="{$item->title}最新章节" target="_blank"><img src="{$item->coverImageUrl}" alt="{$item->title}最新章节" original="{$item->coverImageUrl}" style="display: inline-block;"></a></p>
                     <h5><a href="{novel_book_link id=$item->id}" title="{$item->title}最新章节" target="_blank">{$item->title}</a></h5>
                     <p class="p_name"><span>作者：</span>欹孤小蛇</p>
-                    <p class="p_jianjie"><span>简介：</span>  {$item->summary|truncate:80:"...":true}</p>
+                    <p class="p_jianjie"><span>简介：</span>  {$item->summary|trim|strip_tags|truncate:80:"...":true}</p>
                     <p class="p_caozuo"><a href="{novel_book_link id=$item->id}" target="_blank">点击阅读</a></p>
                 </div>
                 {/novel_book}
@@ -101,7 +107,9 @@
                 <div class="clear"></div>
             </div>
         </div>
-        <div class="cont2_right" style="border-bottom:none;">
+        <div class="clear"></div>
+    </div>
+	        <div class="cont2_right">
             <div class="ph_box">
                 <div class="xx_top" id="ph11">
                     <h5>新书点击榜</h5>
@@ -115,8 +123,6 @@
                 </div>
             </div>
         </div>
-        <div class="clear"></div>
-    </div>
     <div id="cont4">
         <div id="update">
             <div class="l_top">

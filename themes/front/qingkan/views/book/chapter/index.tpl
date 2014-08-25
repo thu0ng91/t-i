@@ -57,7 +57,6 @@
     </div>
 </div>
 <!--end 列表-->
-{*<script src="{$FW_THEME_URL}/js/jquery.min.js" type="text/javascript" language="javascript"></script>*}
 <script src="{$FW_THEME_URL}/js/font.js" type="text/javascript" language="javascript"></script>
 
 

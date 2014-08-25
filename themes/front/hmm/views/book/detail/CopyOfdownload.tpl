@@ -40,7 +40,7 @@ a {color:#2C78C5;text-decoration:none;}a:hover{color:#CC0000;text-decoration:und
 	《{$book->title}》
 	<script language="javascript" type="text/javascript" src="{$FW_THEME_URL}/js/fx.js"></script>
 	<br />
-	 作者：{$book->author}|内容简介：&nbsp;&nbsp;&nbsp;&nbsp;{$book->summary}
+	 作者：{$book->author}|内容简介：&nbsp;&nbsp;&nbsp;&nbsp;{$book->summary|strip_tags}
 </DIV>
 <DIV id="Chapters">
 	{$book->title}[章节列表]

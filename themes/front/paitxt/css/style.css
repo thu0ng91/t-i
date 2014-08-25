@@ -27,7 +27,7 @@ a:hover{color:#FF4810;}
 .padding{width:1020px; margin:0 auto;}
 .head{width:100%;height:45px;background:#166EB7;border-bottom:#0C5FA5 4px solid; min-width:1020px;}
 .header{margin:0px auto;width:1020px;}
-.logo{width:110px;height:45px;background:url(../images/logo.png) left center no-repeat;float:left;margin-left:25px;}
+.logo{width:110px;height:45px;float:left;margin-left:25px;}
 .logo a{display:block;height:45px;}
 .menu{float:left;line-height:45px;margin-left:30px;}
 .menu li{margin-right:5px;float:left;}

@@ -53,7 +53,9 @@
 <div class="hd clearfix">
 <ul>
 <li><h3><a href="javascript:;" onclick="ta(1)" style="background:#d2e6f5;" id="newchapter">最新章节</a></h3></li>
-<li><h3><a href="javascript:;" onclick="ta(2)" style="background:#f2f2f2;" id="newcomment">评论</a></h3></li>
+{if $commentStatus == 1}
+	<li><h3><a href="javascript:;" onclick="ta(2)" style="background:#f2f2f2;" id="newcomment">评论</a></h3></li>
+{/if}
 </ul>
 </div>
 
@@ -139,6 +141,7 @@
 </div>
 <!-- 显示章节结束 -->
 </div>
+{if $commentStatus == 1}
 <!-- 评论开始 -->
 <link href="{$FW_THEME_URL}/css/comment.css?123" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="{$FW_THEME_URL}/js/comment.js"></script>
@@ -172,6 +175,7 @@
     </form>
 </div>
 </div>
+{/if}
 <!-- 评论结束 -->
 <div class="mod_box book_img">
 <div class="mod_hd">

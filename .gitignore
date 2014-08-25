@@ -6,4 +6,7 @@ runtime/*
 txt
 uploads
 .*
-runtime/front/*
+/runtime/front/*
+runtime/front/db.config.php
+/plugins/resou
+/runtime/front/db.config.php

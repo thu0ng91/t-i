@@ -49,6 +49,40 @@ class SystemController extends FWAdminController
 	public function actionNavigation(){
 		$this->render('navigation');
 	}
+	public function actionTempconf(){
+		
+		$cacheCategory =  'system';
+        $model = new SystemTempConfig();
+
+        if(isset($_POST['SystemTempConfig']))
+        {
+            $model->attributes = $_POST['SystemTempConfig'];
+
+            if(!$model->validate()){
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveFail']);
+                $this->refresh();
+            } else {
+//                foreach ($model->attributes as $k => $v) {
+//                    Yii::app()->settings->set($k, $v, $cacheCategory);
+//                }
+
+                Yii::app()->settings->set(get_class($model), $model, $cacheCategory);
+                Yii::app()->settings->deleteCache($cacheCategory);
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveSuccess']);
+                $this->refresh();
+            }
+        } else {
+//            foreach ($model->attributes as $k => $v) {
+//                $model->$k = Yii::app()->settings->get($k, $cacheCategory);
+//            }
+            $m = Yii::app()->settings->get(get_class($model), $cacheCategory);
+            if ($m) {
+                $model = $m;
+            }
+        }
+
+		$this->render('tempconf',array('model'=>$model));
+	}
     public function actionRewrite()
     {
         $cacheCategory =  'system';

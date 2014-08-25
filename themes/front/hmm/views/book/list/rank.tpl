@@ -59,7 +59,7 @@
 		{if $smarty.get.sort == 'daylikenum'} {assign var=condition value='daylikenum desc'} {/if}
 		{if $smarty.get.sort == 'wordcount'} {assign var=condition value='wordcount desc'} {/if}
 		{if $smarty.get.sort == 'favoritenum'} {assign var=condition value='favoritenum desc'} {/if}
-		{novel_book  limit=30 order=$condition}
+		{novel_book  limit=$showNums order=$condition}
 		<tr>
 			<td class="font11">{$block.iteration}</td>
 			<td class="cell_left">
@@ -76,7 +76,7 @@
 		</tr>
 		{/novel_book}
 		{else}
-		{novel_book limit=30 order="allclicks desc" }
+		{novel_book limit=$showNums order="allclicks desc" }
 		<tr>
 			<td class="font11">{$block.iteration}</td>
 			<td class="cell_left">

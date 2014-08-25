@@ -211,7 +211,7 @@ class ListController extends FWModuleFrontController
     public function actionQuanben()
     {
         $criteria = new CDbCriteria();
-        $criteria->compare("flag", 2);
+        $criteria->compare("flag", 0);
         $criteria->order = "lastchaptertime desc";
 
         $count=Book::model()->count($criteria);

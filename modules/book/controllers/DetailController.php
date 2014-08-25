@@ -137,7 +137,14 @@ class DetailController extends FWModuleFrontController
 		
 		$avatar = false;
 		$avatar = Member::getUserAvatarByUid(Yii::app()->user->id);
-
+		//评论配置
+    	$tempconf = Yii::app()->settings->get('SystemTempConfig', 'system');
+		if(empty($tempconf->commentStatus)){
+			$commentStatus = 1;
+		}else{
+			$commentStatus = $tempconf->commentStatus;
+		}
+		$this->assign("commentStatus", $commentStatus);
         $this->render("index",array('commends'=>$comments,'count_commends'=>$count_commends,'username'=>$username,'avatar'=>$avatar));
     }
 

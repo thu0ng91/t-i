@@ -17,6 +17,7 @@
             array('label'=>'系统信息', 'url'=> $this->createUrl('system/index'), 'active'=> $this->action->id == 'index' ? true : false),
             array('label'=>'基础属性', 'url'=> $this->createUrl('system/base'), 'active'=> $this->action->id == 'base' ? true : false),
             array('label'=>'伪静态设置', 'url'=> $this->createUrl('system/rewrite'), 'active'=> $this->action->id == 'rewrite' ? true : false),
+            array('label'=>'页面控制', 'url'=> $this->createUrl('system/tempconf'), 'active'=> $this->action->id == 'tempconf' ? true : false),
 //            array('label'=>'导航管理', 'url'=> $this->createUrl('system/navigation'), 'active'=> $this->action->id == 'navigation' ? true : false),
         );
     } elseif ($this->menupanel[0] == 'friendlink') {

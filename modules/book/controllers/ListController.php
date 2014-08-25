@@ -68,7 +68,13 @@ class ListController extends FWModuleFrontController
         $pages=new CPagination($count);
 
         // results per page
-        $pages->pageSize= $this->module['front']['category_list_count'];
+        $tempconf = Yii::app()->settings->get('SystemTempConfig', 'system');
+    	if(empty($tempconf->PageShowNums)){
+			$showNums = 30;
+		}else{
+			$showNums = $tempconf->PageShowNums;
+		}
+        $pages->pageSize= $showNums;//$this->module['front']['category_list_count'];
         $pages->applyLimit($criteria);
 
         $list =Book::model()->findAll($criteria);
@@ -106,7 +112,13 @@ class ListController extends FWModuleFrontController
         $pages=new CPagination($count);
 
         // results per page
-        $pages->pageSize= $this->module['front']['category_list_count'];
+        $tempconf = Yii::app()->settings->get('SystemTempConfig', 'system');
+    	if(empty($tempconf->LastupdateShowNums)){
+			$showNums = 30;
+		}else{
+			$showNums = $tempconf->LastupdateShowNums;
+		}
+        $pages->pageSize= $showNums;//$this->module['front']['category_list_count'];
         $pages->applyLimit($criteria);
 
         $list =Book::model()->findAll($criteria);
@@ -173,8 +185,13 @@ class ListController extends FWModuleFrontController
     {
         $this->setSEOVar("分类名", "点击排行榜");
         $this->setAllSEOInfo("分类页");
-
-        $this->render("rank");
+		$tempconf = Yii::app()->settings->get('SystemTempConfig', 'system');
+		if(empty($tempconf->TopShowNums)){
+			$showNums = 30;
+		}else{
+			$showNums = $tempconf->TopShowNums;
+		}
+        $this->render("rank",array('showNums'=>$showNums));
     }
     /**
      * 字母

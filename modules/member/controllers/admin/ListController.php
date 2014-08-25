@@ -77,6 +77,7 @@ class ListController extends FWModuleAdminController
 //            {
 //                $model->imgurl = Upload::createFile($upload,'book','create');
 //            }
+			$model->status = 1;//如果手工增加的话，直接设置状态为已经审核通过
             $attributes = array(
                 'username',
                 'password',

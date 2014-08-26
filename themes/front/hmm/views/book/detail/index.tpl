@@ -3,7 +3,7 @@
 <!--path begin-->
 <div class="wrap_in path">当前位置： <a href="{$FW_SITE_URL}">{$siteinfo->SiteName}首页 </a>&gt; <a
 	href="{novel_category_link id=$book->category->id}">{$book->category->title}</a>&gt;
-<a href="{novel_book_link id=$book->id}">{$book->title}</a></div>
+<a href="{novel_book_link id=$book->id pinyin=$book->pinyin}">{$book->title}</a></div>
 <!--path end-->
 <!--container begin-->
 <div class="container clearfix">

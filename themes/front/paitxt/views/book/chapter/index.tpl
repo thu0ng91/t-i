@@ -11,7 +11,7 @@
                         <dl>
                             <div class="adtext"></div>
                             <dt>{$chapter->title}</dt>
-                            <div class="sdt"><script type="text/javascript">TplTextSelect();</script>
+                            <div class="sdt">
                                 <div id="TextSelect">
                                     <div class="ts1">
                                         <span>选择背景颜色：</span>
@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                <div class="book_middle_text_next"><a href="{novel_chapter_link bookid=$book->id id=$prevChapterId}" class="redbutt">(快捷键:←)上一章</a>&nbsp;&nbsp;&nbsp;<a href="{novel_book_link id=$book->id}" class="redbutt">返回章节目录(快捷键:回车)</a>&nbsp;&nbsp;&nbsp;<a href="{novel_chapter_link bookid=$book->id id=$nextChapterId}" class="redbutt">下一章(快捷键:→)</a></div>
+                <div class="book_middle_text_next"><a href="{novel_chapter_link bookid=$book->id id=$prevChapterId pinyin=$book->pinyin}" class="redbutt">(快捷键:←)上一章</a>&nbsp;&nbsp;&nbsp;<a href="{novel_book_link id=$book->id pinyin=$book->pinyin}" class="redbutt">返回章节目录(快捷键:回车)</a>&nbsp;&nbsp;&nbsp;<a href="{novel_chapter_link bookid=$book->id id=$nextChapterId pinyin=$book->pinyin}" class="redbutt">下一章(快捷键:→)</a></div>
 
             </div>
         </div>
@@ -61,11 +61,11 @@
 
 <script language=javascript>
     //上一页链接
-    var prevpage="{novel_chapter_link bookid=$book->id id=$prevChapterId}";
+    var prevpage="{novel_chapter_link bookid=$book->id id=$prevChapterId pinyin=$book->pinyin}";
     //下一页链接
-    var nextpage="{novel_chapter_link bookid=$book->id id=$nextChapterId}";
+    var nextpage="{novel_chapter_link bookid=$book->id id=$nextChapterId pinyin=$book->pinyin}";
     //目录页链接
-    var catalog="{novel_book_link id=$book->id}";
+    var catalog="{novel_book_link id=$book->id pinyin=$book->pinyin}";
 
     var bid = '{$book->id}';
     var tid = '{$chapter->id}';

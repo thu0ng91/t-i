@@ -9,7 +9,6 @@
 {/literal}
 </style>
 
-<script>bookinfo_banner_top();</script>
 <div class="crumbswrap">
     <span>当前位置：</span><a href="{$FW_SITE_URL}">首页</a>&gt;<a href="{novel_category_link id=$book->category->id}">{$book->category->title}</a><em>&gt;&nbsp;{$book->title}</em>
 </div>
@@ -31,7 +30,7 @@
                 <div class="r_tools">
                 </div>
                 <div class="lastrecord">
-                    最新章节：<strong><a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" target="_blank">{$book->lastchaptertitle}</a></strong>
+                    最新章节：<strong><a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid pinyin=$book->pinyin}" target="_blank">{$book->lastchaptertitle}</a></strong>
                     <div class="jianj">
                     </div>
                 </div>
@@ -69,8 +68,8 @@
             {novel_book_rank order=$v cid=[$book->category->id] limit=5}
             {if $block.first}
                 <div class="cimgsfont">
-                    <a class="imgcss" href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
-                    <h3><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h3>
+                    <a class="imgcss" href="{novel_book_link id=$item->id  pinyin=$item->pinyin}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
+                    <h3><a href="{novel_book_link id=$item->id  pinyin=$item->pinyin}">{$item->title}</a></h3>
                     作者：{$item->author}
                     <p>
                         {$item->summary|trim|strip_tags|truncate:15:'...'}
@@ -78,7 +77,7 @@
                 </div>
                 <ol class="clearfix olcrwrap">
             {else}
-                    <li><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
+                    <li><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></li>
 			{/if}
             {if $block.last}
                 </ol>
@@ -91,6 +90,7 @@
         <div class="lbline708">
         </div>    
 </div>
+</div>
 {assign "newestChapters" array_reverse(array_slice($chapters, -7, -1, true))}
 
 <div class="wrapone">
@@ -100,7 +100,7 @@
                 <ol id="dirsort01">
 
                 {foreach $newestChapters as $item}
-                    <li><strong></strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
+                    <li><strong></strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id  pinyin=$book->pinyin}">{$item->title}</a></span></li>
 
                 {/foreach}
                 </ol>
@@ -112,8 +112,8 @@
 
 <div class="crumbswrap">
     <span>推荐阅读：</span>
-        {novel_book cid=[$book->category->id] where='recommendlevel<=6' order='createtime desc,allclicks desc' limit=14}
-        <a href="{novel_book_link id=$item->id}">{$item->title}</a>
+        {novel_book cid=[$book->category->id] where='recommendlevel <=6' order='createtime desc,allclicks desc' limit=14}
+        <a href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a>
         {/novel_book}    
 </div>
 
@@ -124,7 +124,7 @@
                 <ol id="dirsort01">
 
                 {foreach $chapters as $item}
-                    <li><strong></strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id}">{$item->title}</a></span></li>
+                    <li><strong></strong><span class="splone"><a href="{novel_chapter_link bookid=$book->id id=$item->id pinyin=$book->pinyin} ">{$item->title}</a></span></li>
 
                 {/foreach}
                 </ol>
@@ -138,12 +138,11 @@
     <h2 class="youlovetit">猜你喜欢</h2>
     <ul class="clearfix imgitems">
         {novel_book cid=[$book->cid] where='recommendlevel<=5' order='createtime desc,allclicks desc' limit=6}
-        <li><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->lastchaptertitle}"><strong>{$item->lastchaptertitle}</strong></a>
-        <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
-        {$item->summary|trim|strip_tags||strip_tags|truncate:20:"..."}</li>
+        <li><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid pinyin=$item->pinyin}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->lastchaptertitle}"><strong>{$item->lastchaptertitle}</strong></a>
+        <h3><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></h3>
+        {$item->summary|trim|strip_tags|strip_tags|truncate:20:"..."}</li>
         {/novel_book}
     </ul>
 </div>
 <div class="blinebgs">
 </div>
-<script>bookinfo_banner_bottom();</script>

@@ -10,11 +10,11 @@
                     {foreach from=$list item=book}
                     <div class="bk">
                     <div class="pic">
-                    <a href='{novel_book_link id=$book->id}' title='{$book->title}' target="_blank">
+                    <a href='{novel_book_link id=$book->id pinyin=$book->pinyin}' title='{$book->title}' target="_blank">
                     <img src="{$book->coverImageUrl}" alt='{$book->title}'/></a>
                     </div>
-                    <h3><a href='{novel_book_link id=$book->id}'  target='_blank' title='{$book->title}'>{$book->title}</a></h3>
-                    <h4>作者：{$book->author} </h4><div class="bnew"><a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}" target="_blank">{$book->lastchaptertitle}</a></div><div class='bnew'>
+                    <h3><a href='{novel_book_link id=$book->id pinyin=$book->pinyin}'  target='_blank' title='{$book->title}'>{$book->title}</a></h3>
+                    <h4>作者：{$book->author} </h4><div class="bnew"><a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid pinyin=$book->pinyin}" target="_blank">{$book->lastchaptertitle}</a></div><div class='bnew'>
                     <span>最后更新：{$book->createtime|date_format:'Y-m-d'}</span>
                     </div>
                     <p>{$book->summary|trim|strip_tags|truncate:30:'...'}</p>

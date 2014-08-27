@@ -3,8 +3,8 @@
     {*<h2 class="youlovetit">猜你喜欢</h2>*}
     <ul class="clearfix imgitems">
         {novel_book cid=[$category->id] where='recommendlevel<=7' order='createtime desc,allclicks desc' limit=6}
-        <li><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->lastchaptertitle}"><strong>{$item->lastchaptertitle}</strong></a>
-        <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
+        <li><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid  pinyin=$item->pinyin}" class="imgcss"><img src="{$item->coverImageUrl}" alt="{$item->lastchaptertitle}"><strong>{$item->lastchaptertitle}</strong></a>
+        <h3><a href="{novel_book_link id=$item->id  pinyin=$item->pinyin}">{$item->title}</a></h3>
         {$item->summary|trim|strip_tags|truncate:20:"..."}</li>
         {/novel_book}
     </ul>
@@ -17,7 +17,7 @@
         </div>
         <ul class="clearfix">
             {foreach from=$list item=item name=book}
-            <li><span class="width57">{$smarty.foreach.book.iteration}</span><span class="width369 jhfd">[{$category->title}]<a href="{novel_book_link id=$item->id}" class="green" target="_blank">{$item->title}</a><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}" class="gray" target="_blank">{$item->lastchaptertitle}</a></span><span class="width85 green">连载中</span><span class="width84"><a href="{novel_book_download_link id=$item->id}">TXT下载</a></span><span class="width111"><a href="#" class="nichen">{$item->author}</a></span></li>
+            <li><span class="width57">{$smarty.foreach.book.iteration}</span><span class="width369 jhfd">[{$category->title}]<a href="{novel_book_link id=$item->id  pinyin=$item->pinyin}" class="green" target="_blank">{$item->title}</a><a href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid  pinyin=$item->pinyin}" class="gray" target="_blank">{$item->lastchaptertitle}</a></span><span class="width85 green">连载中</span><span class="width84"><a href="{novel_book_download_link id=$item->id}">TXT下载</a></span><span class="width111"><a href="#" class="nichen">{$item->author}</a></span></li>
             {/foreach}
         </ul>
         <div class="dirtools">
@@ -45,8 +45,8 @@
             {novel_book_rank order=$v cid=[$category->id] limit=12}
             {if $block.first}
                 <div class="cimgsfont">
-                    <a class="imgcss" href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
-                    <h3><a href="{novel_book_link id=$item->id type='info'}">{$item->title}</a></h3>
+                    <a class="imgcss" href="{novel_book_link id=$item->id  pinyin=$item->pinyin}"><img alt="{$item->title}" src="{$item->coverImageUrl}"><i class="nbicos"></i></a>
+                    <h3><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></h3>
                     作者：{$item->author}
                     <p>
                         {$item->summary|strip_tags|trim|truncate:15:'...'}
@@ -54,7 +54,7 @@
                 </div>
                 <ol class="clearfix olcrwrap">
 			{else}
-                    <li><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
+                    <li><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></li>
 			{/if}
             {if $block.last}
                 </ol>
@@ -71,8 +71,8 @@
             {/if}
             {if $block.index < 1}
                 {*if $block.first*}
-                <li><a href="{novel_book_link id=$item->id}"><img alt="{$item->title}" src="{$item->coverImageUrl}"></a>
-                <h3><a href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
+                <li><a href="{novel_book_link id=$item->id  pinyin=$item->pinyin}"><img alt="{$item->title}" src="{$item->coverImageUrl}"></a>
+                <h3><a href="{novel_book_link id=$item->id  pinyin=$item->pinyin}">{$item->title}</a></h3>
                 <p>
                     {$item->summary|strip_tags|trim|truncate:15:'...'}
                 </p>
@@ -88,7 +88,7 @@
             <ul class="clearfix ritemtwo">
             {/if}
             {if $block.index >=2}
-                <li><a href="{novel_book_link id=$item->id}">{$item->title}</a></li>
+                <li><a href="{novel_book_link id=$item->id  pinyin=$item->pinyin}">{$item->title}</a></li>
             {/if}
             
             {if $block.index > 2 && $block.last}

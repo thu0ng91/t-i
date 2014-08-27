@@ -16,14 +16,14 @@
                  {novel_book_rank type="click" order="day" limit=9}
                 <div class="bk">
                     <div class="pic">
-                        <a target="_blank" href="{novel_book_link id=$item->id}">
+                        <a target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">
                             <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                         </a>
                     </div>
-                    <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
+                    <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></h3>
                     <span>作者：{$item->author}</span>
                     <div class="bnew">
-                        <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>
+                        <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid pinyin=$item->pinyin}">{$item->lastchaptertitle}</a>
                     </div>
                     <div class="bnew">
                         <span><a style="color:gray">最后更新：{$item->lastchaptertime|date_format:'Y-m-d'}</a></span>
@@ -44,14 +44,14 @@
                         {novel_book_rank type="click" order="week" limit=9}
                             <div class="bk">
                                 <div class="pic">
-                                    <a target="_blank" href="{novel_book_link id=$item->id}">
+                                    <a target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">
                                         <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                                     </a>
                                 </div>
-                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
+                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></h3>
                                 <span>作者：{$item->author}</span>
                                 <div class="bnew">
-                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>
+                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid pinyin=$item->pinyin}">{$item->lastchaptertitle}</a>
                                 </div>
                                 <div class="bnew">
                                     <span><a style="color:gray">最后更新：{$item->lastchaptertime|date_format:'Y-m-d'}</a></span>
@@ -76,10 +76,10 @@
                                         <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                                     </a>
                                 </div>
-                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
+                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></h3>
                                 <span>作者：{$item->author}</span>
                                 <div class="bnew">
-                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>
+                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid pinyin=$item->pinyin}">{$item->lastchaptertitle}</a>
                                 </div>
                                 <div class="bnew">
                                     <span><a style="color:gray">最后更新：{$item->lastchaptertime|date_format:'Y-m-d'}</a></span>
@@ -100,14 +100,14 @@
                         {novel_book_rank type="click" order="all" limit=9}
                             <div class="bk">
                                 <div class="pic">
-                                    <a target="_blank" href="{novel_book_link id=$item->id}">
+                                    <a target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">
                                         <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                                     </a>
                                 </div>
-                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
+                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></h3>
                                 <span>作者：{$item->author}</span>
                                 <div class="bnew">
-                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>
+                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid pinyin=$item->pinyin}">{$item->lastchaptertitle}</a>
                                 </div>
                                 <div class="bnew">
                                     <span><a style="color:gray">最后更新：{$item->lastchaptertime|date_format:'Y-m-d'}</a></span>

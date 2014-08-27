@@ -61,11 +61,9 @@
             if (typeof r == 'object' && r.result)  {
                 var p = $("#loginPannel");
                 var bookcaseUrl = SiteUrl + "/member/my/bookcase";
-                p.html(r.data.username + " 你好，你可以访问 <a href='" + bookcaseUrl + "'>云端书架</a> 快速找到上次阅读过的章节");
+                p.html(r.data.username + " 你好，你可以访问 <a href='" + bookcaseUrl + "'>我的书架</a> 快速找到上次阅读过的章节");
             }
         }
-
-//        alert("aaa");
         getLoginInfo(showLoginInfo);
     });
     {/literal}

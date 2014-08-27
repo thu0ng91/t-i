@@ -516,8 +516,6 @@ float:left;
 .cont2_left .l_cont_right {
 	float:right;
 	width:350px;
-	margin-bottom:10px;
-	padding:8px 0px 0px 0px;
 }
 .cont2_left .l_cont_right li {
 	height:28px;

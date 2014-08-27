@@ -8,7 +8,7 @@
 
                     <div class="book_news_title title">
                         <ul>
-                            <li>当前位置：<a href="{$FW_SITE_URL}">首页</a> &gt;<a href="{novel_category_link id=$book->category->id}">{$book->category->title}</a>&gt; <a href="{novel_book_link id=$book->id}">{$book->title}</a></li>
+                            <li>当前位置：<a href="{$FW_SITE_URL}">首页</a> &gt;<a href="{novel_category_link id=$book->category->id}">{$book->category->title}</a>&gt; <a href="{novel_book_link id=$book->id pinyin=$book->pinyin}">{$book->title}</a></li>
                         </ul>
                     </div>
                     <div class="book_news_style">
@@ -19,7 +19,7 @@
                                 <h2>作者：{$book->author}</h2>
                                 <h2><a href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a></h2>
                                 <h2><a href="javascript:;" onclick="uservote({$book->id})">推荐本书</a></h2>
-                                <h3>{$book->title}最新章节：<a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">{$book->lastchaptertitle}</a><br><br><span id="adin_top"></span></h3>
+                                <h3>{$book->title}最新章节：<a href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid pinyin=$book->pinyin}">{$book->lastchaptertitle}</a><br><br><span id="adin_top"></span></h3>
                             </div>
                             <div class="book_article_title">小说介绍：</div>
                             <div class="msgarea"><p>{$book->summary|trim|strip_tags}</p></div>
@@ -59,7 +59,6 @@
     </div>	
 </div>
 <!--评论结束-->
-
                     <div class="book_article_texttable">
                         {$i=0}
                         {$tagIsClosed = false}
@@ -70,7 +69,7 @@
                                     <div class="book_article_listtext">
                                     <dl id="chapterlist">
                                 {/if}
-                                <dd><a href="{novel_chapter_link bookid=$book->id id=$chapter->id}">{$chapter->title}</a></dd>
+                                <dd><a href="{novel_chapter_link bookid=$book->id id=$chapter->id pinyin=$book->pinyin}">{$chapter->title}</a></dd>
                                 {if (($i +1) % 3 == 0 && $i > 0)  || $chapter@last}
                                     </dl>
                                     <div class="clear"></div>

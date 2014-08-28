@@ -36,7 +36,7 @@
 			<a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank"> 
 			<img width="90" height="118" src="{$item->coverImageUrl}"	alt="{$item->title}" title="{$item->title}" />
 			 <span class="txt_bg">
-			{if $item->flag == 1}连载中 {else}已完结 {ceil($item->wordcount/10000)}万{/if}
+			{if $item->flag == 0}连载中 {else}已完结 {ceil($item->wordcount/10000)}万{/if}
 			</span>
 			</a>
 		</div>

@@ -68,7 +68,7 @@
 					</div>
 				</div>
 				<div class="info">
-					<span class="state">{if $book->flag == 1} 连载中 {else}已完结 {/if}</span>
+					<span class="state">{if $book->flag == 0} 连载中 {else}已完结 {/if}</span>
 					<h2>{$book->title}</h2>
 					<p class="book_intr">
 						<span>作者：{$book->author}</span>

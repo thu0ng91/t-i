@@ -192,7 +192,7 @@ class MyController extends MemberController
     	}
         $db = Yii::app()->db;
         $sql = "select
-                b.title,b.lastchapterid,b.lastchaptertitle,mb.id,mb.lastviewtime,mb.book_id,mb.readchapterid,mb.readchaptertitle
+                b.title,b.lastchapterid,b.lastchaptertitle,b.pinyin,mb.id,mb.lastviewtime,mb.book_id,mb.readchapterid,mb.readchaptertitle
                 from book b, bookcase mb where mb.book_id=b.id and mb.userid=:memberid and mb.status=1
                 order by mb.id desc
                 limit 100

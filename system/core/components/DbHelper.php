@@ -25,4 +25,29 @@ class DbHelper {
 
         return $sql;
     }
+
+    /**
+     * 导入sql 文件
+     * @param $db
+     * @param $sqlFile
+     */
+    public static function importSqlFile(&$db, $sqlFile)
+    {
+        $sqlList = file($sqlFile);
+        $templine = '';
+
+        foreach ($sqlList as $line) {
+
+            if (substr($line, 0, 2) == '--' || $line == '')
+                continue;
+
+            $templine .= $line;
+
+            if (substr(trim($line), -1, 1) == ';')
+            {
+                $db->createCommand($templine)->execute();
+                $templine = '';
+            }
+        }
+    }
 }

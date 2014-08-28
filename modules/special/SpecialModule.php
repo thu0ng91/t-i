@@ -19,15 +19,7 @@ class SpecialModule extends FWModule
         $dbFile =  FW_MODULE_BASE_PATH . DS . "special"  . DS . "data" . DS . "special.sql";
 
         try {
-            $sqlText = file_get_contents($dbFile);
-
-            $sqlList = explode(";", $sqlText);
-
-            foreach ($sqlList as $sql) {
-                $sql = trim($sql);
-                if ($sql != "")
-                    $db->createCommand($sql)->execute();
-            }
+            DbHelper::importSqlFile($db, $dbFile);
         } catch (Exception $ex) {
             echo $ex->getMessage();
             return false;

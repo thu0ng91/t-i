@@ -33,7 +33,7 @@
 <p>{$book->summary|strip_tags|nl2br}</p>
 </p>
 <div class="op clearfix">
-	<a class="a_icon readnow" href="{novel_chapter_link bookid=$book->id pinyin=$book->pinyin  id=1}" target="_blank">开始阅读</a> 
+	<a class="a_icon readnow" href="{novel_chapter_link bookid=$book->id pinyin=$book->pinyin  id=$chapterst[0]->id}" target="_blank">开始阅读</a>
 	<a class="a_icon a_btn" href="{novel_book_download_link id=$book->id pinyin=$book->pinyin}" target="_blank">TXT下载</a>
 	<a class="a_icon view_all" href="javascript:;" onclick="uservote({$book->id})">推荐</a>
 	<a class="a_icon view_bookcase" href="javascript:;" onclick="addbookcase({$book->id})">加入书架</a>

@@ -3,11 +3,11 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - 基础属性';
+$this->pageTitle=Yii::app()->name . ' - 系统设置';
 ?>
 <ul class="nav nav-tabs">
   <li class="active">
-    <a href="#">基础属性</a>
+    <a href="#">系统设置</a>
   </li>
 </ul>
     <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(

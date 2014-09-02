@@ -19,16 +19,11 @@ class DoController extends FWFrontController
             $model->attributes=$_POST['LoginForm'];
 
             if($model->validate()){
-                $identity = new MemberIdentity($model->username,$model->password);
-                if($identity->authenticate()){
-                    Yii::app()->user->login($identity);
-                    // 记录登陆信息
-                    $m = Member::model()->findByPk(Yii::app()->user->info->id);
-                    $m->updateLoginInfo();
-                    H::showmsg('登录成功', Yii::app()->createUrl('/site/index'));
+                $loginStatus = $this->userLogin($model->username,$model->password);
+                if($loginStatus === true){
+                	H::showmsg('登录成功', Yii::app()->createUrl('/site/index'));
                 }else{
-                	 //$this->render("login");
-                	 H::showmsg('账号或密码错误', Yii::app()->createUrl('/site/index'));
+                	H::showmsg('账号或密码错误', Yii::app()->createUrl('/site/index'));
                 }
             }
 
@@ -80,8 +75,13 @@ class DoController extends FWFrontController
                 $model->status = Yii::app()->params['status']['ischecked'];
                 if ($model->save()) {
                     FWHook::run("member", "afterRegisterSuccess", new FWHookEvent($this, array($model)));
-                    H::showmsg('恭喜，注册成功！请登陆！', Yii::app()->createUrl('/member/do/login'));
-                    $this->refresh();
+	                $loginStatus = $this->userLogin($_POST['RegisterForm']['username'],$_POST['RegisterForm']['password']);
+	                if($loginStatus === true){
+	                	H::showmsg('恭喜，注册成功！', Yii::app()->createUrl('/site/index'));
+	                }else{
+	                	H::showmsg('注册失败，请联系管理员！', Yii::app()->createUrl('/site/index'));
+	                }
+                	$this->refresh();
                 } else {
                     H::showmsg('注册失败，请联系管理员！', Yii::app()->createUrl('/member/do/register'));
                     $this->refresh();
@@ -92,8 +92,9 @@ class DoController extends FWFrontController
                     $msg .= array_shift($err) . "<br />";
                     break;
                 }
-                Yii::app()->user->setFlash('actionInfo', $msg);
-                $this->refresh();
+				H::showmsg($msg, Yii::app()->createUrl('/member/do/register'));
+                //Yii::app()->user->setFlash('actionInfo', $msg);
+                //$this->refresh();
             }
         }
 
@@ -112,5 +113,19 @@ class DoController extends FWFrontController
         }
 //        print_r(Yii::app()->user->info->attributes);exit;
         $this->jsonOuputAndEnd(true, H::getNeedColumns(Yii::app()->user->info, array('username', 'id')));
+    }
+    
+    //用户登录
+    private function userLogin($username,$password){
+    	$identity = new MemberIdentity($username,$password);
+		if($identity->authenticate()){
+			Yii::app()->user->login($identity);
+			// 记录登陆信息
+			$m = Member::model()->findByPk(Yii::app()->user->info->id);
+			$m->updateLoginInfo();
+			return true;
+		}else{
+			return false;
+		}
     }
 }

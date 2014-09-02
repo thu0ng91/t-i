@@ -26,7 +26,6 @@ class DetailController extends FWModuleFrontController
     public function actionIndex()
     {
         $id = intval($_GET['id']);
-
         $special = Special::model()->find("id=:id and status=:status", array(
             ':id' => $id,
             ':status' => 1,

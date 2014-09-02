@@ -136,6 +136,23 @@ class ListController extends FWModuleFrontController
      */
     public function actionSearch()
     {
+    	$tempconf = Yii::app()->settings->get('SystemTempConfig', 'system');
+    	if(empty($tempconf->searchtime)){
+			$searchtime = 10;
+		}else{
+			$searchtime = $tempconf->searchtime;
+		}
+    	if(empty($tempconf->searchShowNums)){
+			$searchShowNums = 30;
+		}else{
+			$searchShowNums = $tempconf->searchShowNums;
+		}
+    	$searchkey = 'search_'.Yii::app()->user->id;
+		if (false != Yii::app()->cache->get($searchkey) && !isset($_GET['page'])){
+			H::showmsg('不能频繁搜索','/');
+		}else{
+			Yii::app()->cache->set($searchkey,1,$searchtime);
+		}
         $criteria = new CDbCriteria();
 //        $criteria->compare("cid", $category->id);
 //        $criteria->compare("status", Yii::app()->params['status']['ischecked']);
@@ -156,7 +173,7 @@ class ListController extends FWModuleFrontController
         $pages=new CPagination($count);
 
         // results per page
-        $pages->pageSize= $this->module['front']['category_list_count'];
+        $pages->pageSize= $searchShowNums;//$this->module['front']['category_list_count'];
         $pages->applyLimit($criteria);
 
         $list =Book::model()->findAll($criteria);
@@ -174,10 +191,23 @@ class ListController extends FWModuleFrontController
         $this->assign("list", $list);
         $this->assign("pages", $pages);
         $this->assign("keyword", $_GET['keyword']);
-//        $this->assign("keywords", "just for test");
 
-        //      print_r(Yii::app()->hasModule("test"));
-        //      $this->renderPartial("index");
+        
+		$model = Searchlog::model()->findByAttributes(array('keywords'=>$_GET['keyword']));
+
+        if(null == $model){
+        	$model = new Searchlog();
+        	$model->keywords = $_GET['keyword'];
+        	$model->nums = 1;
+        	$model->dateline = time();
+        }else{
+        	$model->nums += 1;
+        }
+
+        $model->result_nums = $count;
+        $model->lasttime = time();
+        $model->save();
+		
         $this->render("search");
     }
 
@@ -228,7 +258,7 @@ class ListController extends FWModuleFrontController
     public function actionQuanben()
     {
         $criteria = new CDbCriteria();
-        $criteria->compare("flag", 0);
+        $criteria->compare("flag", 1);
         $criteria->order = "lastchaptertime desc";
 
         $count=Book::model()->count($criteria);

@@ -2,7 +2,6 @@
 <div class="phb_contain">
 	<div class="phb_left phb_kuang">
 		<div class="phb_bt02">榜单</div>
-		
 		<ul id="box"><li><a title="总点击榜" href="{novel_rank_link}#click_mod">小说点击榜</a></li></ul>
 		<div class="line"></div>
 		<ul id="box"><li><a title="月点击榜" href="{novel_rank_link}#vote_mod">小说推荐榜</a></li></ul>
@@ -36,7 +35,7 @@
 						<ul>
 							{novel_book_rank type="click" order="week" limit=10}
 							<li class="a3">
-								<span><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></span>
+								<span><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></span>
 								<cite>{$item->weekclicks}</cite>
 							</li>
 							{/novel_book_rank}
@@ -45,7 +44,7 @@
 						<ul style="display:none;">
 							{novel_book_rank type="click" order="month" limit=10}
 							<li class="a3">
-								<span><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></span>
+								<span><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></span>
 								<cite>{$item->monthclicks}</cite>
 							</li>
 							{/novel_book_rank}
@@ -53,7 +52,7 @@
 						<ul  style="display:none;">
 							{novel_book_rank type="click" order="all" limit=10}
 							<li class="a3">
-								<span><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></span>
+								<span><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></span>
 								<cite>{$item->allclicks}</cite>
 							</li>
 							{/novel_book_rank}
@@ -79,7 +78,7 @@
 						<ul>
 							{novel_book order="weeklikenum desc" limit=10}
 							<li class="a3">
-								<span><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></span>
+								<span><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></span>
 								<cite>{$item->weeklikenum}</cite>
 							</li>
 							{/novel_book}
@@ -87,7 +86,7 @@
 						<ul style="display:none;">
 							{novel_book order="monthlikenum desc" limit=10}
 							<li class="a3">
-								<span><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></span>
+								<span><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></span>
 								<cite>{$item->monthlikenum}</cite>
 							</li>
 							{/novel_book}
@@ -95,7 +94,7 @@
 						<ul  style="display:none;">
 							{novel_book order="alllikenum desc" limit=10}
 							<li class="a3">
-								<span><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></span>
+								<span><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></span>
 								<cite>{$item->alllikenum}</cite>
 							</li>
 							{/novel_book}
@@ -114,7 +113,7 @@
 					<ul>
 						{novel_book  order="favoritenum desc" limit=10}
 						<li class="a3">
-							<span><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></span>
+							<span><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></span>
 							<cite>{$item->favoritenum}</cite>
 						</li>
 						{/novel_book}
@@ -131,7 +130,7 @@
 					<ul>
 						{novel_book  order="wordcount desc" limit=10}
 						<li class="a3">
-							<span><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></span>
+							<span><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></span>
 							<cite>{$item->wordcount}</cite>
 						</li>
 						{/novel_book}
@@ -149,7 +148,7 @@
 					<ul>
 						{novel_book  order="updatetime desc" limit=10}
 						<li class="a3">
-							<span><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></span>
+							<span><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></span>
 							<cite>{$item->updatetime|date_format:'Y-m-d'}</cite>
 						</li>
 						{/novel_book}
@@ -166,7 +165,7 @@
 					<ul>
 						{novel_book  order="createtime desc" limit=10}
 						<li class="a3">
-							<span><a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></span>
+							<span><a href="{novel_book_link id=$item->id pinyin=$item->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></span>
 							<cite>{$item->createtime|date_format:'Y-m-d'}</cite>
 						</li>
 						{/novel_book}

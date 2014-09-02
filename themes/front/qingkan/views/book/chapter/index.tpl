@@ -50,24 +50,23 @@
                     </div>
                 </div>
 
-                <div class="book_middle_text_next"><a href="{novel_chapter_link bookid=$book->id id=$prevChapterId}" class="redbutt">(快捷键:←)上一章</a>&nbsp;&nbsp;&nbsp;<a href="{novel_book_link id=$book->id}" class="redbutt">返回章节目录(快捷键:回车)</a>&nbsp;&nbsp;&nbsp;<a href="{novel_chapter_link bookid=$book->id id=$nextChapterId}" class="redbutt">下一章(快捷键:→)</a></div>
+                <div class="book_middle_text_next"><a href="{novel_chapter_link bookid=$book->id id=$prevChapterId pinyin=$book->pinyin}" class="redbutt">(快捷键:←)上一章</a>&nbsp;&nbsp;&nbsp;<a href="{novel_book_link id=$book->id pinyin=$book->pinyin}" class="redbutt">返回章节目录(快捷键:回车)</a>&nbsp;&nbsp;&nbsp;<a href="{novel_chapter_link bookid=$book->id id=$nextChapterId pinyin=$book->pinyin}" class="redbutt">下一章(快捷键:→)</a></div>
 
             </div>
         </div>
     </div>
 </div>
 <!--end 列表-->
-{*<script src="{$FW_THEME_URL}/js/jquery.min.js" type="text/javascript" language="javascript"></script>*}
 <script src="{$FW_THEME_URL}/js/font.js" type="text/javascript" language="javascript"></script>
 
 
 <script language=javascript>
     //上一页链接
-    var prevpage="{novel_chapter_link bookid=$book->id id=$prevChapterId}";
+    var prevpage="{novel_chapter_link bookid=$book->id id=$prevChapterId pinyin=$book->pinyin}";
     //下一页链接
-    var nextpage="{novel_chapter_link bookid=$book->id id=$nextChapterId}";
+    var nextpage="{novel_chapter_link bookid=$book->id id=$nextChapterId pinyin=$book->pinyin}";
     //目录页链接
-    var catalog="{novel_book_link id=$book->id}";
+    var catalog="{novel_book_link id=$book->id pinyin=$book->pinyin}";
 
     var bid = '{$book->id}';
     var tid = '{$chapter->id}';

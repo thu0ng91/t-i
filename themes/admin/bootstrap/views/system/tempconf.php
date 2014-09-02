@@ -25,6 +25,8 @@ $this->pageTitle=Yii::app()->name . ' - 页面控制';
       <?php echo $form->textFieldRow($model, 'LastupdateShowNums'); ?>
       <?php echo $form->textFieldRow($model, 'TopShowNums'); ?>
       <?php echo $form->dropDownListRow($model, 'commentStatus',array('1'=>'开启评论','2'=>'关闭评论')); ?>
+      <?php echo $form->textFieldRow($model, 'searchtime'); ?>
+      <?php echo $form->textFieldRow($model, 'searchShowNums'); ?>
       <div class="form-actions">
         <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'submit',

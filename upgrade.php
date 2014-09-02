@@ -24,14 +24,27 @@ try {
 }
 
 
-$sqlText = file_get_contents($upgradeDbSqlFile);
+//$sqlText = file_get_contents($upgradeDbSqlFile);
 
-$sqlList = explode(";", $sqlText);
+//$sqlList = explode(";", $sqlText);
 
-foreach ($sqlList as $sql) {
-    $sql = trim($sql);
-    if ($sql != "")
-        $db->exec($sql);
+
+$sqlList = file($upgradeDbSqlFile);
+$templine = '';
+foreach ($sqlList as $line) {
+
+    if (substr($line, 0, 2) == '--' || $line == '')
+        continue;
+
+    $templine .= $line;
+
+    if (substr(trim($line), -1, 1) == ';')
+    {
+        $db->exec($templine);
+        $templine = '';
+    }
+//    if ($sql != "")
+//        $db->exec($sql);
 }
 
 echo "升级成功";

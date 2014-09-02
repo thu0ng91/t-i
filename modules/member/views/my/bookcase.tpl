@@ -4,7 +4,7 @@
 <div id="user">
 	<div id="userinfo_left">
 		<div id="user_head">
-			<img class="user_imt" src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}" />
+			<img class="user_imt" src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}"  onerror="this.src='{$FW_THEME_URL}/images/avatar.bmp'" />
 			<span class="userxx">{$username}</span>
 			<span style="padding-left:10px;">{$level}</span>
 			<p id="userid">　用户ID：{$uid}</p>
@@ -20,7 +20,6 @@
 			<div><span id="img5"> </span><a style="border-bottom:0px;" href="{novel_link url='member/do/logout'}" class="user_f" >退出登录</a></div>
 		</div>
 	</div>
-<!--		<div id="user_title_bookcase"><ul><li class="li_cur" id="li_cur" onclick="stb(2)">我的书架</li><li class="li_uncur"  id="li_uncur" onclick="stb(1)">最近阅读</li></ul></div>-->
 			<div id="userinfo_right">
 		<div id="user_title">我的书架</div>
 		<div id="user_colo">
@@ -32,15 +31,24 @@
 	                <th width="20%">上次阅读时间</th>
 	                <th width="15%">操作</th>
 	                </tr><input type="hidden" value="{$i}" />
-	               {foreach from=$list item=it}
+	               {foreach from=$list item=item}
 	                	<tr {if ($i++) % 2 == 1} style="background-color:#F2F2F2"{/if}>
 		                    <td>
-		                    	<a href="{novel_book_link id=$it->book_id}">　[{$it->title}]　</a>
-		                    	{if $it->readchapterid}<a href="{novel_chapter_link bookid=$it->book_id id=$it->readchapterid}">{$it->readchaptertitle}</a>{if $it->readchapterid < $it->lastchapterid}<font color=red>(新)</font>{/if}{else}您还没有开始阅读本书{/if}
+		                    	　<a href="{novel_book_link id=$item->book_id pinyin=$item->pinyin}">[{$item->title}]</a>　
+									{if $item->readchapterid}
+										<a href="{novel_chapter_link bookid=$item->book_id id=$item->readchapterid pinyin=$item->pinyin}">{$item->readchaptertitle}</a>
+										{if $item->readchapterid < $item->lastchapterid}
+											<font color='red'>(新)</font>
+										{/if}
+									{else}
+										您还没有开始阅读本书
+									{/if}
 		                    </td>
-		                        <td>{$it->lastviewtime|date_format:'Y-m-d H:i'}</td>
-		                        <td><a href="{novel_link url='member/my/deletebookcase' params=['id'=>$it->id]}">删除</a> | <a href="{novel_chapter_link bookid=$it->book_id id=$it->readchapterid}">继续阅读</a>
-		                    </td>
+							<td>{$item->lastviewtime|date_format:'Y-m-d H:i'}</td>
+							<td>
+								<a href="{novel_link url='member/my/deletebookcase' params=['id'=>$item->id]}">删除</a> | 
+								<a href="{novel_chapter_link bookid=$item->book_id id=$item->readchapterid pinyin=$item->pinyin}">继续阅读</a>
+							</td>
 	                    </tr>
 	                {foreachelse}
 	                     <tr>
@@ -55,12 +63,12 @@
 	                <th width="25%">上次阅读时间</th>
 	                <th width="10%">操作</th>
 	                </tr>
-	               {foreach from=$list item=it}
+	               {foreach from=$list item=item}
 	                	<tr>
-	                    <td>　<a href="{novel_book_link id=$it->book_id}">[{$it->title}]</a>
-	                    	<a href="{novel_chapter_link bookid=$it->book_id id=$it->lastchapterid}">{$it->lastchaptertitle}</a></td>
-	                        <td>{$it->lastviewtime|date_format:'Y-m-d H:i'}</td>
-	                        <td><a href="/member/my/deletebookcase/id/{$it->id}">删除</a></td>
+	                    <td>　<a href="{novel_book_link id=$item->book_id pinyin=$item->pinyin}">[{$item->title}]</a>
+	                    	<a href="{novel_chapter_link bookid=$item->book_id id=$item->lastchapterid pinyin=$item->pinyin}">{$item->lastchaptertitle}</a></td>
+	                        <td>{$item->lastviewtime|date_format:'Y-m-d H:i'}</td>
+	                        <td><a href="/member/my/deletebookcase/id/{$item->id}">删除</a></td>
 	                        </tr>
 	                {foreachelse}
 	                     <tr>

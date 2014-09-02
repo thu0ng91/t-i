@@ -9,8 +9,6 @@
                     <h5 data-box="cols-2">周点击榜</h5>
                     <h5 data-box="cols-3">月点击榜</h5>
                     <h5 data-box="cols-4">总点击榜</h5>
-                    {*<h5 data-box="cols-4">推荐排行</h5>*}
-                    {*<h5 data-box="cols-5">收藏排行</h5>*}
                 </div>
                 <div id="cols-1" class="books section-cols noradius">
                 <!--18-->
@@ -18,14 +16,14 @@
                  {novel_book_rank type="click" order="day" limit=9}
                 <div class="bk">
                     <div class="pic">
-                        <a target="_blank" href="{novel_book_link id=$item->id}">
+                        <a target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">
                             <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                         </a>
                     </div>
-                    <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
-                    <span>作者：{$item->author}T</span>
+                    <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></h3>
+                    <span>作者：{$item->author}</span>
                     <div class="bnew">
-                        <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>
+                        <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid pinyin=$item->pinyin}">{$item->lastchaptertitle}</a>
                     </div>
                     <div class="bnew">
                         <span><a style="color:gray">最后更新：{$item->lastchaptertime|date_format:'Y-m-d'}</a></span>
@@ -33,13 +31,10 @@
                     <div style="height:70px;" class="yx_0">
                         <div><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_1 m_b_5">共</span><span class="yx_2 m_b_5" style="height:12px; line-height:12px;margin-bottom:3px;">{$item->allclicks}人</span><span class="yx_3 m_b_5" style="height:12px; line-height:12px;margin-bottom:3px;">阅读</span></div>
                         <div style="clear:both"></div>
-                        {*<div><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_1">共</span><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_2 m_b_5">164人</span><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_3">推荐</span></div>*}
-                        {*<div style="clear:both"></div>*}
-                        {*<div><span style="height:12px; line-height:12px;" class="yx_1">共</span><span style="height:12px; line-height:12px;" class="yx_2">27人</span><span style="height:12px; line-height:12px;" class="yx_3">收藏</span></div>*}
                     </div>
                 </div>
                 {/novel_book_rank}
-                <div class="index_more">{*<a href="{novel_lastupdate_link}">查看更多...</a>*}</div>
+                <div class="index_more"></div>
                 </ul>
                 </div>
 
@@ -49,14 +44,14 @@
                         {novel_book_rank type="click" order="week" limit=9}
                             <div class="bk">
                                 <div class="pic">
-                                    <a target="_blank" href="{novel_book_link id=$item->id}">
+                                    <a target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">
                                         <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                                     </a>
                                 </div>
-                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
-                                <span>作者：{$item->author}T</span>
+                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></h3>
+                                <span>作者：{$item->author}</span>
                                 <div class="bnew">
-                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>
+                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid pinyin=$item->pinyin}">{$item->lastchaptertitle}</a>
                                 </div>
                                 <div class="bnew">
                                     <span><a style="color:gray">最后更新：{$item->lastchaptertime|date_format:'Y-m-d'}</a></span>
@@ -64,9 +59,6 @@
                                 <div style="height:70px;" class="yx_0">
                                     <div><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_1 m_b_5">共</span><span class="yx_2 m_b_5" style="height:12px; line-height:12px;margin-bottom:3px;">{$item->allclicks}人</span><span class="yx_3 m_b_5" style="height:12px; line-height:12px;margin-bottom:3px;">阅读</span></div>
                                     <div style="clear:both"></div>
-                                    {*<div><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_1">共</span><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_2 m_b_5">164人</span><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_3">推荐</span></div>*}
-                                    {*<div style="clear:both"></div>*}
-                                    {*<div><span style="height:12px; line-height:12px;" class="yx_1">共</span><span style="height:12px; line-height:12px;" class="yx_2">27人</span><span style="height:12px; line-height:12px;" class="yx_3">收藏</span></div>*}
                                 </div>
                             </div>
                         {/novel_book_rank}
@@ -84,10 +76,10 @@
                                         <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                                     </a>
                                 </div>
-                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
-                                <span>作者：{$item->author}T</span>
+                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></h3>
+                                <span>作者：{$item->author}</span>
                                 <div class="bnew">
-                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>
+                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid pinyin=$item->pinyin}">{$item->lastchaptertitle}</a>
                                 </div>
                                 <div class="bnew">
                                     <span><a style="color:gray">最后更新：{$item->lastchaptertime|date_format:'Y-m-d'}</a></span>
@@ -95,9 +87,6 @@
                                 <div style="height:70px;" class="yx_0">
                                     <div><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_1 m_b_5">共</span><span class="yx_2 m_b_5" style="height:12px; line-height:12px;margin-bottom:3px;">{$item->allclicks}人</span><span class="yx_3 m_b_5" style="height:12px; line-height:12px;margin-bottom:3px;">阅读</span></div>
                                     <div style="clear:both"></div>
-                                    {*<div><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_1">共</span><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_2 m_b_5">164人</span><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_3">推荐</span></div>*}
-                                    {*<div style="clear:both"></div>*}
-                                    {*<div><span style="height:12px; line-height:12px;" class="yx_1">共</span><span style="height:12px; line-height:12px;" class="yx_2">27人</span><span style="height:12px; line-height:12px;" class="yx_3">收藏</span></div>*}
                                 </div>
                             </div>
                         {/novel_book_rank}
@@ -111,14 +100,14 @@
                         {novel_book_rank type="click" order="all" limit=9}
                             <div class="bk">
                                 <div class="pic">
-                                    <a target="_blank" href="{novel_book_link id=$item->id}">
+                                    <a target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">
                                         <img alt="{$item->title}最新章节" src="{$item->coverImageUrl}">
                                     </a>
                                 </div>
-                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id}">{$item->title}</a></h3>
-                                <span>作者：{$item->author}T</span>
+                                <h3><a title="{$item->title}最新章节" target="_blank" href="{novel_book_link id=$item->id pinyin=$item->pinyin}">{$item->title}</a></h3>
+                                <span>作者：{$item->author}</span>
                                 <div class="bnew">
-                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid}">{$item->lastchaptertitle}</a>
+                                    <a target="_blank" title="{$item->lastchaptertitle}" href="{novel_chapter_link bookid=$item->id id=$item->lastchapterid pinyin=$item->pinyin}">{$item->lastchaptertitle}</a>
                                 </div>
                                 <div class="bnew">
                                     <span><a style="color:gray">最后更新：{$item->lastchaptertime|date_format:'Y-m-d'}</a></span>
@@ -126,17 +115,11 @@
                                 <div style="height:70px;" class="yx_0">
                                     <div><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_1 m_b_5">共</span><span class="yx_2 m_b_5" style="height:12px; line-height:12px;margin-bottom:3px;">{$item->allclicks}人</span><span class="yx_3 m_b_5" style="height:12px; line-height:12px;margin-bottom:3px;">阅读</span></div>
                                     <div style="clear:both"></div>
-                                    {*<div><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_1">共</span><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_2 m_b_5">164人</span><span style="height:12px; line-height:12px;margin-bottom:3px;" class="yx_3">推荐</span></div>*}
-                                    {*<div style="clear:both"></div>*}
-                                    {*<div><span style="height:12px; line-height:12px;" class="yx_1">共</span><span style="height:12px; line-height:12px;" class="yx_2">27人</span><span style="height:12px; line-height:12px;" class="yx_3">收藏</span></div>*}
                                 </div>
                             </div>
                         {/novel_book_rank}
-                        <div class="index_more">{*<a href="{novel_lastupdate_link}">查看更多...</a>*}</div>
+                        <div class="index_more"></div>
                     </ul>
-                </div>
-
-                {*<div class="clear"></div>*}
             </div>
         </div>
     </div>

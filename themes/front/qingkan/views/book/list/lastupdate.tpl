@@ -17,9 +17,9 @@
             <ul class="{if $key%2 == 1}a1{/if}">
                 <li class="storelistbt3z">{$key+1}</li>
                 <li class="storelistbt3b">
-                    <a target="_blank" class="ts_font01" title="{$book->title}" href="{novel_book_link id=$book->id}">{$book->title}</a>
+                    <a target="_blank" class="ts_font01" title="{$book->title}" href="{novel_book_link id=$book->id pinyin=$book->pinyin}">{$book->title}</a>
                     
-                    <a title="{$book->title} {$book->lastchaptertitle}" target="_blank" href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid}">{$book->lastchaptertitle}</a>
+                    <a title="{$book->title} {$book->lastchaptertitle}" target="_blank" href="{novel_chapter_link bookid=$book->id id=$book->lastchapterid pinyin=$book->pinyin}">{$book->lastchaptertitle}</a>
                 </li>
                 <li class="storelistbt3c">{$book->allclicks}</li>
                 <li class="storelistbt3d">{$book->author}</li>
@@ -46,7 +46,7 @@
                 <ul>
                     {$index = 1}
                     {novel_book  order="updatetime desc" limit=20}
-                    <li>{$index++}. <a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></li>
+                    <li>{$index++}. <a href="{novel_book_link id=$item->id pinyin=$book->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></li>
                     {/novel_book}
                 </ul>
             </span>
@@ -54,7 +54,7 @@
                 <ul>
                     {$index = 1}
                     {novel_book  order="createtime desc" limit=20}
-                    <li>{$index++}. <a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></li>
+                    <li>{$index++}. <a href="{novel_book_link id=$item->id pinyin=$book->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></li>
                     {/novel_book}
 
                     
@@ -70,7 +70,7 @@
             <ul>
                {$index = 1}
                {novel_book_rank  type="click" limit=20}
-               <li>{$index++}. <a href="{novel_book_link id=$item->id}" target="_blank" title="{$item->title}">{$item->title}</a></li>
+               <li>{$index++}. <a href="{novel_book_link id=$item->id pinyin=$book->pinyin}" target="_blank" title="{$item->title}">{$item->title}</a></li>
                {/novel_book_rank}
            </ul>
        </div>

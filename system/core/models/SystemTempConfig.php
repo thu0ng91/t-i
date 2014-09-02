@@ -11,6 +11,8 @@ class SystemTempConfig extends CFormModel
 	public $LastupdateShowNums;
 	public $TopShowNums;
 	public $commentStatus;
+	public $searchtime;
+	public $searchShowNums;
 
 	/**
 	 * Declares the validation rules.
@@ -21,7 +23,7 @@ class SystemTempConfig extends CFormModel
 	{
 		return array(
 			array('PageShowNums', 'required'),
-            array('PageShowNums,LastupdateShowNums,TopShowNums,commentStatus', 'numerical', 'integerOnly'=>true),
+            array('PageShowNums,LastupdateShowNums,TopShowNums,commentStatus,searchtime,searchShowNums', 'numerical', 'integerOnly'=>true),
 		);
 	}
 
@@ -35,6 +37,8 @@ class SystemTempConfig extends CFormModel
 			'LastupdateShowNums' => '最后更新页面显示条数',
 			'TopShowNums' => '排行榜页面显示条数',
 			'commentStatus' => '目录页评论开关',
+			'searchtime' => '搜索间隔秒数',
+			'searchShowNums' => '搜索页面显示条数',
 		);
 	}
 }

@@ -4,7 +4,7 @@
 <div id="user">
 	<div id="userinfo_left">
 		<div id="user_head">
-			<img class="user_imt" src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}" />
+			<img class="user_imt" src="{if $avatar == false}{$FW_THEME_URL}/images/touxiang.png{else}{$avatar}{/if}"  onerror="this.src='{$FW_THEME_URL}/images/avatar.bmp'" />
 			<span class="userxx">{$username}</span>
 			<span style="padding-left:10px;">{$level}</span>
 			<p id="userid">　用户ID：{$uid}</p>

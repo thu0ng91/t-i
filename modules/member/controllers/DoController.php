@@ -57,7 +57,17 @@ class DoController extends FWFrontController
 //        $evt = new FWHookEvent($this, null);
 
         FWHook::run("member", "beforeRegister", new FWHookEvent($this, null));
-
+		
+		if(isset($_POST['username'])){
+			$username = $_POST['username'];
+			$db = Yii::app()->db;
+			$sql = "select * from member where username='$username' ";
+			$cmd = $db->createCommand($sql);
+			$result = $cmd->execute();
+			$success = $result  ? 1 : 0;
+			echo $success;exit; //转成json数据
+		}
+		
         if(isset($_POST['RegisterForm']))
         {
         	if($_POST['RegisterForm']['password'] != $_POST['RegisterForm']['repassword']){

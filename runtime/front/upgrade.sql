@@ -1,63 +1,32 @@
-
 -- ----------------------------
--- Table structure for plugins
+-- Table structure for `searchlog`
 -- ----------------------------
-DROP TABLE IF EXISTS `plugins`;
-CREATE TABLE `plugins` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) NOT NULL COMMENT '插件标题',
-  `name` varchar(50) NOT NULL COMMENT '插件名称：与插件目录名一致',
-  `author` varchar(10) NOT NULL COMMENT '插件作者',
-  `version` varchar(10) NOT NULL COMMENT '插件版本',
-  `upgradeversion` varchar(10) DEFAULT NULL COMMENT '插件升级版本号',
-  `fwversion` varchar(10) NOT NULL COMMENT '插件所需最低云阅系统版本',
-  `description` varchar(500) NOT NULL COMMENT '插件描述',
-  `adminmenus` varchar(1000) DEFAULT NULL COMMENT '管理员菜单数组序列化',
-  `createtime` int(11) NOT NULL COMMENT '插件引入系统时间',
-  `updatetime` int(11) NOT NULL COMMENT '插件调整时间',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态：0 未安装 1 已安装 -1 已禁用',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `module_name_uniq` (`name`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
-
--- ----------------------------
--- Table structure for `comment`
--- ----------------------------
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE `comment` (
+DROP TABLE IF EXISTS `searchlog`;
+CREATE TABLE `searchlog` (
   `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
-  `uid` int(8) unsigned NOT NULL,
-  `username` varchar(25) NOT NULL,
-  `book_id` int(8) unsigned NOT NULL,
-  `content` varchar(1000) NOT NULL COMMENT '评论内容',
-  `digest` tinyint(1) unsigned NOT NULL COMMENT '是否精华',
-  `recommends` int(6) unsigned NOT NULL COMMENT '推荐数',
-  `status` tinyint(1) unsigned NOT NULL COMMENT '状态1为开启，2为关闭',
-  `dateline` int(10) unsigned NOT NULL,
+  `keywords` varchar(25) NOT NULL COMMENT '搜索关键词',
+  `nums` int(8) unsigned NOT NULL,
+  `result_nums` int(4) unsigned NOT NULL,
+  `lasttime` int(11) unsigned NOT NULL COMMENT '最后搜索时间',
+  `dateline` int(11) unsigned NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for `bookcase`
+-- Records of block
 -- ----------------------------
-DROP TABLE IF EXISTS `bookcase`;
-CREATE TABLE `bookcase` (
-  `id` int(8) unsigned NOT NULL AUTO_INCREMENT,
-  `book_id` int(8) unsigned NOT NULL COMMENT '小说ID',
-  `userid` int(8) unsigned NOT NULL COMMENT '用户ID',
-  `username` varchar(25) NOT NULL COMMENT '用户名',
-  `lastviewtime` int(11) unsigned NOT NULL COMMENT '最后查看时间',
-  `dateline` int(11) unsigned NOT NULL COMMENT '添加时间',
-  `status` tinyint(1) unsigned NOT NULL COMMENT '状态，1为正常，2为删除',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
-
--- -----------------
---
--- -----------------
-update modules set fwversion='1.0.0', version='1.0.0';
-alter table `member` add `gender` tinyint(1) unsigned default null;
-alter table `member` add `avatar` varchar(50) default null;
+TRUNCATE TABLE `block`;
+INSERT INTO `block` VALUES ('4', '右侧总推荐', '<li>\r\n		{if $block.iteration <= 3}\r\n		<i class=\"num hot\">{$block.iteration}</i>\r\n		{else}\r\n		<i class=\"num\">{$block.iteration}</i>\r\n		{/if}\r\n		<div class=\"tit\"><a class=\"sub_link\" href=\"{$item->category->url}\" target=\"_blank\">[{$item->category->title}]</a><a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" target=\"_blank\">{$item->title|truncate:16:\"...\":true}</a></div>\r\n	</li>', '<div class=\"mod\">\r\n<div class=\"hd\">\r\n<h3 class=\"tit\">总推荐</h3>\r\n</div>\r\n<div class=\"bd\">\r\n<ul class=\"mod_con clearfix\">\r\n{$block}\r\n</ul>\r\n</div>\r\n</div>', '0|5|2|10|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('3', '最新入库', '<li>\r\n{if $block.iteration <= 3}\r\n<i class=\"num hot\">{$block.iteration}</i>	\r\n{else}\r\n<i class=\"num\">{$block.iteration}</i>\r\n{/if}\r\n<div class=\"tit\">\r\n<a class=\"sub_link\" href=\"{$item->category->url}\" target=\"_blank\">[{$item->category->title}]</a><a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" target=\"_blank\"> {$item->title} </a></div>\r\n			</li>', '<div class=\"mod last_mod\"><div class=\"hd\"><h3 class=\"tit\">最新入库</h3></div><div class=\"bd\"><ul class=\"mod_con clearfix\">\r\n{$block}\r\n</ul></div></div>', '0|9|1|10|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('11', '首页上部文字推荐小说', ' {if $block.first}\r\n<div class=\"hd\"><a class=\"spec\" href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" title=\"{$item->title}\"\r\n	target=\"_blank\">《{$item->title}》{$item->author}</a></div>\r\n\r\n<div class=\"bd\">\r\n<ul class=\"clearfix\">\r\n	{else}<li><a href=\"{$item->category->url}\">[{$item->category->title}]</a><a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" title=\"{$item->title}\" target=\"_blank\">《{$item->title}》</a></li>\r\n{/if}\r\n{if $block.last}\r\n</ul>\r\n</div>\r\n{/if}', '{$block}', '0|13|2|11|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('5', '最近更新', '<tr>	{if $block.iteration <= 3}\r\n	<td class=\"num hot\">{$block.iteration}</td>\r\n	{else}\r\n	<td class=\"num\">{$block.iteration}</td>\r\n	{/if}\r\n	<td class=\"cell_left\">\r\n	<div class=\"fix_txt\">\r\n	<a class=\"type_link\" href=\"{$item->category->url}\" title=\"{$item->category->title}\" target=\"_blank\">[{$item->category->title}]</a>\r\n	<a target=\"_blank\" class=\"sub_link\" title=\"{$item->title}\" href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\">《{$item->title}》</a>\r\n	 <a class=\"other_link\" title=\"{$item->title} {$item->lastchaptertitle}\" target=\"_blank\" href=\"{novel_chapter_link bookid=$item->id id=$item->lastchapterid pinyin=$item->pinyin}\">{$item->lastchaptertitle}</a>\r\n	</div>\r\n	</td>\r\n	<td>{$item->author}</td>\r\n	<td>{$item->lastchaptertime|date_format:\'m-d\'}</td>\r\n</tr>\r\n', '<div class=\"mod_box recommend_book\">\r\n<div class=\"mod_hd\">\r\n<div class=\"tit\">\r\n<h3>{$blockname}</h3>\r\n</div>\r\n<a class=\"more\" href=\"{novel_lastupdate_link}\" target=\"_blank\">更多&gt;&gt;</a></div>\r\n<div class=\"mod_bd\">\r\n<div class=\"item_all clearfix\">\r\n\r\n<table class=\"data_render\"\r\n	style=\"margin-top: 10px; margin-bottom: 10px;\">\r\n	<colgroup>\r\n		<col class=\"order\">\r\n		<col class=\"book_name\">\r\n		<col class=\"author\">\r\n		<col class=\"uptime\">\r\n	</colgroup>\r\n	<tbody>\r\n       {$block}\r\n	</tbody>\r\n</table>\r\n</div>\r\n</div>\r\n</div>', '0|12|2|15|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('10', '首页全本小说推荐', '<li>\r\n		<a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" title=\"{$item->title}\" target=\"_blank\">\r\n			<img	src=\"{$item->coverImageUrl}\" alt=\"{$item->title}\"	title={$item->title}\" />\r\n			<span>{$item->title}</span>\r\n		</a>\r\n	</li>', '<ul class=\"clearfix\">{$block}</ul>', '0|14|2|10|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('6', '右侧周点击排行', ' {if $block.first}\r\n	<li class=\"hover\"><i class=\"num hot\">{$block.iteration}</i>\r\n	<div class=\"tit\">\r\n		<a href=\"{novel_book_link id=$book->id pinyin=$item->pinyin type=info}\" target=\"_blank\">{$item->title}</a>\r\n	</div>\r\n	<dl class=\"info clearefix\">\r\n		<dt class=\"imgbox\">\r\n			<a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\"  target=\"_blank\"><img alt=\"{$item->title}\" src=\"{$item->coverImageUrl}\"></a>\r\n			</dt>\r\n		<dd><strong><a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" target=\"_blank\">{$item->title}</a></strong>\r\n		<p> {strip_tags($item->summary)|trim|truncate:15:\'...\'}</p>\r\n		</dd>\r\n	</dl>\r\n	</li>\r\n{else}\r\n\r\n	<li>\r\n{if $block.iteration <= 3}\r\n<i class=\"num hot\">{$block.iteration}</i>	\r\n{else}\r\n<i class=\"num\">{$block.iteration}</i>\r\n{/if}\r\n	<div class=\"tit\"><a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" target=\"_blank\">{$item->title}</a></div>\r\n	</li>\r\n{/if}', '<ul class=\"mod_con clearfix\" id=\"week-rank\">\r\n{$block}\r\n</ul>', '0|3|2|10|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('7', '右侧月点击排行', ' {if $block.first}\r\n	<li class=\"hover\"><i class=\"num hot\">{$block.iteration}</i>\r\n	<div class=\"tit\">\r\n		<a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin type=\'info\'}\" target=\"_blank\">{$item->title}</a>\r\n	</div>\r\n	<dl class=\"info clearefix\">\r\n		<dt class=\"imgbox\">\r\n			<a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\"  target=\"_blank\"><img alt=\"{$item->title}\" src=\"{$item->coverImageUrl}\"></a>\r\n			</dt>\r\n		<dd><strong><a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" target=\"_blank\">{$item->title}</a></strong>\r\n		<p> {strip_tags($item->summary)|trim|truncate:15:\'...\'}</p>\r\n		</dd>\r\n	</dl>\r\n	</li>\r\n{else}\r\n	<li>{if $block.iteration <= 3}\r\n<i class=\"num hot\">{$block.iteration}</i>	\r\n{else}\r\n<i class=\"num\">{$block.iteration}</i>\r\n{/if}\r\n	<div class=\"tit\"><a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" target=\"_blank\">{$item->title}</a></div>\r\n	</li>\r\n{/if}\r\n', '<ul class=\"mod_con clearfix\" id=\"month-rank\" style=\"display: none\">\r\n{$block}\r\n</ul>', '0|2|2|10|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('9', '首页总推荐2', ' {if $block.first}\r\n<li style=\"display: block\">\r\n{else}\r\n<li>\r\n{/if}\r\n	<p class=\"desc_hd\"><a class=\"sub_link\" title=\"{$item->title}\"\r\n		target=\"_blank\">《{$item->title}》{$item->author}</a></p>\r\n	<p class=\"desc_bd\">{strip_tags($item->summary)|truncate:100:\"...\":true}<a\r\n		class=\"more\" href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" title=\"{$item->title}\" target=\"_blank\">阅读&gt;&gt;</a></p>\r\n	</li>\r\n	', '<ul id=\"J_showInfo\" class=\"slider_desc\">\r\n{$block}\r\n</ul>', '0|13|2|3|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('8', '首页总推荐', '<li>\r\n<a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" target=\"_blank\" title=\"{$item->title}\">\r\n<img	src=\"{$item->coverImageUrl}\" title=\"{$item->title}\" width=\"205\" height=\"267\" alt=\"{$item->title}\" />\r\n</a>\r\n</li>', '<ul id=\"J_showImg\" class=\"slider_show\">\r\n	{$block}\r\n</ul>', '0|13|2|3|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('12', '首页上部文字推荐小说2', ' {if $block.first}\r\n<div class=\"hd\"><a class=\"spec\" href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" title=\"{$item->title}\"\r\n	target=\"_blank\">《{$item->title}》{$item->author}</a></div>\r\n<div class=\"bd\">\r\n<ul class=\"clearfix\">\r\n	{else}<li><a href=\"{$item->category->url}\">[{$item->category->title}]</a><a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" title=\"{$item->title}\" target=\"_blank\">《{$item->title}》</a></li>\r\n\r\n{/if}\r\n{if $block.last}\r\n</ul>\r\n</div>\r\n{/if}', '{$block}', '0|9|2|11|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('13', '右侧总排行榜', '<li>\r\n		{if $block.iteration <= 3}\r\n		<i class=\"num hot\">{$block.iteration}</i>\r\n		{else}\r\n		<i class=\"num\">{$block.iteration}</i>\r\n		{/if}\r\n		<div class=\"tit\"><a class=\"sub_link\" href=\"{$item->category->url}\" target=\"_blank\">[{$item->category->title}]</a> \r\n		<a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" target=\"_blank\">{$item->title|truncate:16:\"...\":true}</a></div>\r\n	</li>', '<div class=\"mod\">\r\n<div class=\"hd\">\r\n<h3 class=\"tit\">总推荐</h3>\r\n</div>\r\n<div class=\"bd\">\r\n<ul class=\"mod_con clearfix\">\r\n{$block}\r\n</ul>\r\n</div>\r\n</div>', '0|1|2|10|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('14', '右侧最近更新', '<li>\r\n		{if $block.iteration <= 3}\r\n		<i class=\"num hot\">{$block.iteration}</i>\r\n		{else}\r\n		<i class=\"num\">{$block.iteration}</i>\r\n		{/if}\r\n		<div class=\"tit\"><a class=\"sub_link\" href=\"{$item->category->url}\" target=\"_blank\">[{$item->category->title}]</a> \r\n		<a href=\"{novel_book_link id=$item->id pinyin=$item->pinyin}\" target=\"_blank\">{$item->title|truncate:16:\"...\":true}</a></div>\r\n	</li>', '<div class=\"mod\">\r\n<div class=\"hd\">\r\n<h3 class=\"tit\">最近更新</h3>\r\n</div>\r\n<div class=\"bd\">\r\n<ul class=\"mod_con clearfix\">\r\n{$block}\r\n</ul>\r\n</div>\r\n</div>', '0|12|1|10|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('15', '首页总推荐右图', ' {if $block.first}\r\n<li style=\"display: block\">\r\n{else}\r\n<li>\r\n{/if}\r\n<img	src=\"{$item->coverImageUrl}\" width=\"64\" height=\"85\" alt=\"\" />\r\n</li>', '<ul id=\"J_slideThumb\" class=\"slider_nav\">\r\n{$block}\r\n</ul>', '0|13|2|3|', 'novel', '0', '4', '1');
+INSERT INTO `block` VALUES ('16', '玄幻魔法小说专题', '		{if  $block.index % 2 == 0}\r\n		<div class=\"zbot_cen\">\r\n		{/if}\r\n		\r\n			<div class=\"{if  $block.index % 2 == 0}zbot_left{else}zbot_right{/if}\">\r\n				<img src=\"{$item->coverImageUrl}\" />\r\n				<div class=\"left_te\"><span class=\"book_na\">{$item->title}</span>-<span class=\"book_au\">{$item->author}</span></div>\r\n				<div>\r\n					<div class=\"left_te\">　　{strip_tags($item->summary)|trim:\"\\r\\n\"|truncate:100:\"...\":true}</div><a class=\"book_re\" href=\"{novel_book_link id=$item->id pinyin=#item->pinyin}\">【点击阅读】</a>\r\n				</div>\r\n			</div>\r\n			\r\n			{if $block.iteration % 2 ==0 || $block.last}\r\n		</div>\r\n		{/if}', '	<div class=\"zbot\">\r\n		<strong class=\"zbot_tit\">{$blockname}</strong>\r\n{$block}\r\n</div>', '1|1|2|4|', 'novel', '0', '4', '1');

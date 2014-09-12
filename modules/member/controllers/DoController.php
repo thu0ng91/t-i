@@ -79,6 +79,7 @@ class DoController extends FWFrontController
         		$this->refresh();
         	}
         	$model = new Member();
+        	$_POST['RegisterForm']['createtime'] = time();
             $model->attributes = $_POST['RegisterForm'];
 
             if($model->validate()){

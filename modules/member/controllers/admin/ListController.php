@@ -78,12 +78,17 @@ class ListController extends FWModuleAdminController
 //                $model->imgurl = Upload::createFile($upload,'book','create');
 //            }
 			$model->status = 1;//如果手工增加的话，直接设置状态为已经审核通过
+			$model->createtime = $model->lastlogintime = time();
+			$model->loginhits = 0;
             $attributes = array(
                 'username',
                 'password',
                 'repassword',
                 'email',
                 'status',
+            	'loginhits',
+            	'createtime',
+            	'lastlogintime',
             );
 
             if($model->save(true, $attributes)){

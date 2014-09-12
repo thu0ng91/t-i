@@ -245,14 +245,21 @@ class ListController extends FWModuleFrontController
     public function actionQuanben()
     {
         $criteria = new CDbCriteria();
-        $criteria->compare("flag", 1);
+        $criteria->addCondition("flag!=".$this->module['front']['flagstatus']);
         $criteria->order = "lastchaptertime desc";
 
         $count=Book::model()->count($criteria);
         $pages=new CPagination($count);
 
         // results per page
-        $pages->pageSize= $this->module['front']['category_list_count'];
+    	$tempconf = Yii::app()->settings->get('SystemTempConfig', 'system');
+		if(empty($tempconf->TopShowNums)){
+			$showNums = 30;
+		}else{
+			$showNums = $tempconf->TopShowNums;
+		}
+        $pages->pageSize= $showNums;
+        //$pages->pageSize= $this->module['front']['category_list_count'];
         $pages->applyLimit($criteria);
 
         $list =Book::model()->findAll($criteria);

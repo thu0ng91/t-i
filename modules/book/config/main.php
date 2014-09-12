@@ -9,6 +9,7 @@ return array(
     ),
     'front' => array(
         'category_list_count' => 30, // 分类页展示条数
+    	'flagstatus'=>1,//连载中
         'seo' => array(
             '标题' => array(
                 '分类页' => "{分类名}_{站点名}",

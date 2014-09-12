@@ -202,6 +202,16 @@ class DetailController extends FWModuleFrontController
             ':id' => $id,
             ':status' => Yii::app()->params['status']['ischecked'],
         ));
+    	//下载权限设置
+    	$permissionconf = Yii::app()->settings->get('PermissionConfig', 'system');
+		if(empty($permissionconf->downPermission)){
+			$downPermission = 2;
+		}else{
+			$downPermission = $permissionconf->downPermission;
+		}
+    	if($downPermission == 1 && !Yii::app()->user->id){
+			H::showmsg('登录后才可以下载', Yii::app()->createUrl('/book/detail/index',array('id'=>$id)));
+		}
 
         if (!$book) {
             throw new CHttpException(404);

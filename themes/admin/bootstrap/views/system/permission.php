@@ -3,13 +3,13 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - 页面控制';
+$this->pageTitle=Yii::app()->name . ' - 权限控制';
 ?>
 <ul class="nav nav-tabs">
+  <li><a href="<?php echo Yii::app()->createUrl('system/tempconf')?>">页面控制</a></li>
   <li class="active">
-    <a href="#">页面控制</a>
+    <a href="#">权限控制</a>
   </li>
-  <li><a href="<?php echo Yii::app()->createUrl('system/permission')?>">权限控制</a></li>
 </ul>
     <?php $form=$this->beginWidget('bootstrap.widgets.TbActiveForm', array(
       'id'=>'baseconfig-form',
@@ -22,12 +22,7 @@ $this->pageTitle=Yii::app()->name . ' - 页面控制';
       'htmlOptions'=>array('enctype' => 'multipart/form-data'),
     )); ?>
 
-      <?php echo $form->textFieldRow($model, 'PageShowNums'); ?>
-      <?php echo $form->textFieldRow($model, 'LastupdateShowNums'); ?>
-      <?php echo $form->textFieldRow($model, 'TopShowNums'); ?>
-      <?php echo $form->dropDownListRow($model, 'commentStatus',array('1'=>'开启评论','2'=>'关闭评论')); ?>
-      <?php echo $form->textFieldRow($model, 'searchtime'); ?>
-      <?php echo $form->textFieldRow($model, 'searchShowNums'); ?>
+      <?php echo $form->dropDownListRow($model, 'downPermission',array('1'=>'开启','2'=>'关闭')); ?>
       <div class="form-actions">
         <?php $this->widget('bootstrap.widgets.TbButton', array(
                 'buttonType'=>'submit',

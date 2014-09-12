@@ -49,6 +49,9 @@ class SystemController extends FWAdminController
 	public function actionNavigation(){
 		$this->render('navigation');
 	}
+	/**
+	 * 页面控制
+	 */
 	public function actionTempconf(){
 		
 		$cacheCategory =  'system';
@@ -83,6 +86,9 @@ class SystemController extends FWAdminController
 
 		$this->render('tempconf',array('model'=>$model));
 	}
+	/**
+	 * 伪静态管理
+	 */
     public function actionRewrite()
     {
         $cacheCategory =  'system';
@@ -119,7 +125,42 @@ class SystemController extends FWAdminController
 //			'categorys'=>Category::model()->showAllSelectCategory(),
         ));
     }
+	/**
+	 * 权限控制
+	 */
+	public function actionPermission(){
+		$cacheCategory =  'system';
+        $model = new PermissionConfig();
 
+        if(isset($_POST['PermissionConfig']))
+        {
+            $model->attributes = $_POST['PermissionConfig'];
+
+            if(!$model->validate()){
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveFail']);
+                $this->refresh();
+            } else {
+//                foreach ($model->attributes as $k => $v) {
+//                    Yii::app()->settings->set($k, $v, $cacheCategory);
+//                }
+
+                Yii::app()->settings->set(get_class($model), $model, $cacheCategory);
+                Yii::app()->settings->deleteCache($cacheCategory);
+                Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['saveSuccess']);
+                $this->refresh();
+            }
+        } else {
+//            foreach ($model->attributes as $k => $v) {
+//                $model->$k = Yii::app()->settings->get($k, $cacheCategory);
+//            }
+            $m = Yii::app()->settings->get(get_class($model), $cacheCategory);
+            if ($m) {
+                $model = $m;
+            }
+        }
+
+		$this->render('permission',array('model'=>$model));
+	}
     /**
      * 缓存管理界面
      */

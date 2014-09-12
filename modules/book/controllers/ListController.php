@@ -153,21 +153,15 @@ class ListController extends FWModuleFrontController
 		}else{
 			Yii::app()->cache->set($searchkey,1,$searchtime);
 		}
+		$keyword = addslashes(trim($_GET['keyword']));
+		if(strlen($keyword) <= 0){
+			H::showmsg('搜索关键词不能为空','/');
+		}
         $criteria = new CDbCriteria();
-//        $criteria->compare("cid", $category->id);
-//        $criteria->compare("status", Yii::app()->params['status']['ischecked']);
-//        $criteria->addCondition('MATCH (title, author) AGAINST(:keyword IN BOOLEAN MODE)');
-        $criteria->addSearchCondition('title', $_GET['keyword']);
-        $criteria->addSearchCondition('author', $_GET['keyword'], true, 'OR');
-//        $criteria->addSearchCondition('author', ":keyword", true, 'OR');
-//        $criteria->addCondition('status=:status');
+        $criteria->addSearchCondition('title', $keyword);
+        $criteria->addSearchCondition('author', $keyword, true, 'OR');
         $criteria->compare("status", Yii::app()->params['status']['ischecked']);
         $criteria->order = "lastchaptertime desc";
-//        $criteria->params = array(
-////            ':keyword' => $_GET['keyword'] . "*",
-////            ':keyword' => $_GET['keyword'],
-////            ':status' =>  Yii::app()->params['status']['ischecked'],
-//        );
 
         $count=Book::model()->count($criteria);
         $pages=new CPagination($count);
@@ -178,26 +172,19 @@ class ListController extends FWModuleFrontController
 
         $list =Book::model()->findAll($criteria);
 
-        //      var_dump($list);
-
         // SEO 相关
-        $this->setSEOVar("分类名", strip_tags($_GET['keyword']) . "搜索结果");
-//        $this->setSEOVar("分类关键字", $category->keywords);
-//        $this->setSEOVar("分类描述", $category->description);
-
+        $this->setSEOVar("分类名", strip_tags($keyword) . "搜索结果");
         $this->setAllSEOInfo("分类页");
-
-//        $this->assign("category", $category);
         $this->assign("list", $list);
         $this->assign("pages", $pages);
-        $this->assign("keyword", $_GET['keyword']);
+        $this->assign("keyword", $keyword);
 
         
-		$model = Searchlog::model()->findByAttributes(array('keywords'=>$_GET['keyword']));
+		$model = Searchlog::model()->findByAttributes(array('keywords'=>$keyword));
 
         if(null == $model){
         	$model = new Searchlog();
-        	$model->keywords = $_GET['keyword'];
+        	$model->keywords = $keyword;
         	$model->nums = 1;
         	$model->dateline = time();
         }else{

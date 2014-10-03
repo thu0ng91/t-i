@@ -204,6 +204,19 @@ class Chapter extends ChapterDynamicDbModel
 //            );
         }
 
+        if (!$this->getIsNewRecord()) {
+            if ($book->lastchapterid == $this->id) { // 如果最新章节等于当前章节，则更新记录的最新章节信息
+                // 更新小说最后章节信息
+                $book->lastchaptertitle =  $this->title;
+                $book->lastchaptertime =  $this->createtime;
+                $book->lastchapterid =  $this->id;
+                $book->update(array(
+                    'lastchaptertitle',
+                    'lastchaptertime',
+                    'lastchapterid'
+                ));
+            }
+        }
         if ($this->chaptertype == 0) {
             // 增加小说总字数
             $book->updateCounters(array(

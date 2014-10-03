@@ -51,4 +51,16 @@ class SiteController extends FWAdminController
 		Yii::app()->user->logout();
 		$this->redirect(array('site/login'));
 	}
+
+    public function actionError()
+    {
+        if($error = Yii::app()->errorHandler->error) {
+
+            $msg = "当前地址：" . $_SERVER['PHP_SELF'] . "<br />";
+            $msg .= '错误信息：' . $error['message'];
+            Yii::app()->user->setFlash('actionInfo', $msg);
+        }
+//        var_dump($error['errorCode']);exit;
+        $this->render('error');
+    }
 }

@@ -34,7 +34,7 @@ class Smarty_Internal_Compile_Novel_friendlink extends Smarty_Internal_Book_Comp
      * @var array
      * @see Smarty_Internal_CompileBase
      */
-    public $optional_attributes = array('name');
+    public $optional_attributes = array('name', 'limit');
     /**
      * Attribute definition: Overwrites base class.
      *

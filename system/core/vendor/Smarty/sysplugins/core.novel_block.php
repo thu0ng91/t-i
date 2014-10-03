@@ -594,7 +594,7 @@ function _fw_get_book_friendlink_list($params)
     if (isset($params['limit'])) {
         $limit = intval($params['limit']);
     } else {
-        $limit = 10;
+        $limit = 100;
     }
 
     $sql = "select * from friendlink where status=1 order by sequence desc limit " . $limit ;

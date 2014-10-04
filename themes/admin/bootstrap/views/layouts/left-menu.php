@@ -19,6 +19,7 @@
             array('label'=>'伪静态设置', 'url'=> $this->createUrl('system/rewrite'), 'active'=> $this->action->id == 'rewrite' ? true : false),
             array('label'=>'页面控制', 'url'=> $this->createUrl('system/tempconf'), 'active'=> $this->action->id == 'tempconf' ? true : false),
 //            array('label'=>'导航管理', 'url'=> $this->createUrl('system/navigation'), 'active'=> $this->action->id == 'navigation' ? true : false),
+            array('label'=>'管理员管理', 'url'=> $this->createUrl('adminuser/index'), 'active'=> $this->id == 'adminuser' ? true : false),
         );
     } elseif ($this->menupanel[0] == 'friendlink') {
         $menus = array(

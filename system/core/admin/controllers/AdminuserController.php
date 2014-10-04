@@ -77,7 +77,6 @@ class AdminuserController extends FWAdminController
 		{
             $pwd = $model->password;
 			$model->attributes = $_POST['AdminUser'];
-
             if(!$model->validate()){
                 Yii::app()->user->setFlash('actionInfo',Yii::app()->params['actionInfo']['updateFail']);
                 $this->redirect(array('adminuser/index'));
@@ -85,8 +84,9 @@ class AdminuserController extends FWAdminController
 
             if ($model->password != "password") { // 如果填写了密码则重新设置
                 $model->password = User::encrpyt($model->password);
+                $model->passwordAgain = User::encrpyt($model->passwordAgain);
             } else {
-                $model->password = $pwd;
+                $model->password = $model->passwordAgain = $pwd;
             }
 
 			if($model->save()){

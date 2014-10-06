@@ -18,7 +18,7 @@ $this->pageTitle=Yii::app()->name . ' - 小说重新生成';
 )); ?>
 
 
-  <form class="form-horizontal" action="<?php echo Yii::app()->createUrl('book/admin/update/update');?>" method="post">
+  <form class="form-horizontal" action="<?php echo Yii::app()->createUrl('book/admin/static/update');?>" method="post">
     <fieldset>
       <div id="legend" class="">
         <legend class="">重新生成</legend>

@@ -43,6 +43,10 @@ return array(
                 'label' => '小说评论管理',
                 'url' => 'book/admin/comment/index',
             ),
+            array(
+                'label' => '小说静态管理',
+                'url' => 'book/admin/static/index',
+            ),
         )
     ),
 );

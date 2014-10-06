@@ -14,12 +14,12 @@
         );
     } elseif ($this->menupanel[0] == 'system') {
         $menus = array(
-            array('label'=>'系统信息', 'url'=> $this->createUrl('system/index'), 'active'=> $this->action->id == 'index' ? true : false),
-            array('label'=>'系统设置', 'url'=> $this->createUrl('system/base'), 'active'=> $this->action->id == 'base' ? true : false),
-            array('label'=>'伪静态设置', 'url'=> $this->createUrl('system/rewrite'), 'active'=> $this->action->id == 'rewrite' ? true : false),
-            array('label'=>'页面控制', 'url'=> $this->createUrl('system/tempconf'), 'active'=> $this->action->id == 'tempconf' ? true : false),
+            array('label'=>'系统信息', 'url'=> $this->createUrl('system/index'), 'active'=> $this->id == 'system' && $this->action->id == 'index' ? true : false),
+            array('label'=>'系统设置', 'url'=> $this->createUrl('system/base'), 'active'=>  $this->id == 'system' && $this->action->id == 'base' ? true : false),
+            array('label'=>'伪静态设置', 'url'=> $this->createUrl('system/rewrite'), 'active'=>  $this->id == 'system' && $this->action->id == 'rewrite' ? true : false),
+            array('label'=>'页面控制', 'url'=> $this->createUrl('system/tempconf'), 'active'=>  $this->id == 'system' && $this->action->id == 'tempconf' ? true : false),
 //            array('label'=>'导航管理', 'url'=> $this->createUrl('system/navigation'), 'active'=> $this->action->id == 'navigation' ? true : false),
-            array('label'=>'管理员管理', 'url'=> $this->createUrl('adminuser/index'), 'active'=> $this->id == 'adminuser' ? true : false),
+            array('label'=>'管理员管理', 'url'=> $this->createUrl('adminuser/index'), 'active'=>  $this->id == 'adminuser' && $this->id == 'adminuser' ? true : false),
         );
     } elseif ($this->menupanel[0] == 'friendlink') {
         $menus = array(

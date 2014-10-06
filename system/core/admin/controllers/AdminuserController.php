@@ -5,7 +5,7 @@ class AdminuserController extends FWAdminController
     protected function menus()
     {
         return array(
-            'user',
+            'system',
         );
     }
 

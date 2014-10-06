@@ -117,6 +117,11 @@ class AdminUser extends BaseModel
     {
         $this->lastlogintime = time();
         $this->loginhits += 1;
-        $this->save();
+
+//        var_dump($this->id);exit;
+        $this->update(array(
+            'lastlogintime',
+            'loginhits',
+        ));
     }
 }

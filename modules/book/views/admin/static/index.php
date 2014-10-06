@@ -18,7 +18,7 @@ $this->pageTitle=Yii::app()->name . ' - 小说重新生成';
 )); ?>
 
 
-  <form class="form-horizontal" action="<?php echo Yii::app()->createUrl('book/admin/static/update');?>" method="post">
+  <form class="form-horizontal" id="staticForm" action="<?php echo Yii::app()->createUrl('book/admin/static/update');?>" method="post" onsubmit="return false;">
     <fieldset>
       <div id="legend" class="">
         <legend class="">重新生成</legend>
@@ -54,7 +54,7 @@ $this->pageTitle=Yii::app()->name . ' - 小说重新生成';
           <div class="controls">
       <!-- Inline Checkboxes -->
       <label class="checkbox inline">
-        <input type="checkbox" name="type[]" value="1">
+        <input type="checkbox" name="type[]" value="1" checked>
         生成目录页
       </label>
       <label class="checkbox inline">
@@ -70,9 +70,62 @@ $this->pageTitle=Yii::app()->name . ' - 小说重新生成';
 
           <!-- Button -->
           <div class="controls">
-            <button class="btn btn-success">提交</button>
+            <button class="btn btn-success" data-loading-text="正在生成...">提交</button>
           </div>
+     </div>
+        <input type="hidden" name="bookid" id="bookid" value="0" />
+  </form>
+    <div class="control-group" id="msgDiv" style="display: none">
+        <label class="control-label"></label>
+
+        <!-- Button -->
+        <div class="controls">
+            <textarea class="" id="msgTextArea" style="width:500px;height:400px"></textarea>
         </div>
+    </div>
 
     </fieldset>
-  </form>
+
+<script>
+    $(".btn-success").click(function () {
+        $(".btn-success").button('loading');
+        $("#staticForm").ajaxSubmit({
+            dataType:  'json',
+            error: function () {
+                alert("生成失败！生成超时或生成出现错误！");
+                $(".btn-success").button('reset');
+                $("#msgDiv").hide();
+                $("#msgTextArea").val("");
+            },
+            success: function (r) {
+                if (!r.result) {
+//                    alert(r.data.msg);
+                    appendText(r.data.msg);
+                    $(".btn-success").button('reset');
+                    return;
+                }
+
+                if (r.data.nextId == 0) {
+                    $("#bookid").val(0);
+                    $(".btn-success").button('reset');
+                    return;
+                }
+
+                $("#bookid").val(r.data.nextId);
+                appendText(r.data.msg);
+
+                $(".btn-success").click();
+                //alert(r.status);
+//                $(".btn-success").button('reset');
+            }
+        });
+
+    })
+
+    function appendText(text) {
+        $("#msgDiv").show();
+        var v = $("#msgTextArea").val();
+        $("#msgTextArea").val(v + "\r\n" + text);
+    }
+//    $(".btn-success").button('loading');
+</script>

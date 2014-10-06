@@ -11,6 +11,7 @@
 
 	<?php Yii::app()->bootstrap->register(); ?>
 
+    <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl;?>/js/jquery.form.min.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl;?>/js/artDialog/jquery.artDialog.js?skin=default"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl;?>/js/artDialog/plugins/iframeTools.js"></script>
 </head>

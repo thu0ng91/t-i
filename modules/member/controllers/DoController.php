@@ -139,4 +139,33 @@ class DoController extends FWFrontController
 			return false;
 		}
     }
+    
+    /*
+     * <script type="text/javascript" src="{novel_link url='/member/do/ajaxlogin'}"></script>
+     */
+    public function actionAjaxlogin(){
+    	$user = Yii::app()->user;
+		$msg = '';
+    	if(isset($_POST['LoginForm'])){ 
+            $model = new LoginForm;
+            $model->attributes=$_POST['LoginForm'];
+			
+            if($model->validate()){
+                $loginStatus = $this->userLogin($model->username,$model->password);
+                if($loginStatus === true){
+                	H::showmsg('登录成功', Yii::app()->createUrl('/site/index'));
+                }else{
+                	//H::showmsg('', Yii::app()->createUrl('/member/do/ajaxlogin'));
+                	$msg = 1;//'账号或密码错误';
+                	H::showmsg('账号或密码错误', Yii::app()->createUrl('/site/index'));
+                }
+            }
+
+        }
+    	$this->renderPartial('ajaxlogin',array('user'=>$user,'msg'=>$msg));
+    }
+    public function actionAjaxlogout(){
+    	Yii::app()->user->logout();
+    	$this->redirect(array('/site/index'));
+    }
 }

@@ -29,7 +29,7 @@ function isMobile()
 
 require_once('version.php');
 
-$yii=dirname(__FILE__).'/system/framework/yii.php';
+$yii=dirname(__FILE__).'/system/framework/yiilite.php';
 $globals=dirname(__FILE__).'/system/core/globals.php';
 
 //defined('YII_DEBUG') or define('YII_DEBUG',true);

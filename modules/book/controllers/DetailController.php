@@ -93,9 +93,15 @@ class DetailController extends FWModuleFrontController
 				$bookcase->save();
 			}
         }
+
+        $sort = 'asc';
+        if (isset($_GET['sort']) && $_GET['sort'] == 'desc') {
+            $sort = 'desc';
+        }
+
         $criteria = new CDbCriteria();
         $criteria->compare("bookid", $book->id);
-        $criteria->order = "chapterorder asc";
+        $criteria->order = "chapterorder " . $sort;
 
         $chapterList = Chapter::customModel($book->id)->findAll($criteria);
         $this->assign("chapters", $chapterList);

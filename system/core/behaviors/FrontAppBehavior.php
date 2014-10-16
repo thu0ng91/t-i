@@ -34,6 +34,11 @@ class FrontAppBehavior extends CBehavior {
 //            Yii::app()->viewRenderer->smarty->assign("siteinfo", $m);
         }
 
+        // 如果是移动端则加载移动主题
+        if (isMobile()) {
+            Yii::app()->theme = 'wap';
+        }
+
         // Url 重写
         $m = Yii::app()->settings->get("SystemRewriteConfig");
         if ($m) {

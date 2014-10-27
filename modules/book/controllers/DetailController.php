@@ -377,7 +377,7 @@ class DetailController extends FWModuleFrontController
         $allTextFileTime = @filemtime($allTxtFile);
         if (false === $allTextFileTime) $allTextFileTime = 0;
 
-        if (file_exists($allTxtFile) && filemtime($dir . DS . ".") <= $allTextFileTime) {
+        if (filemtime($dir . DS . ".") <= $allTextFileTime) {
             return $allTxtFile;
         }
 

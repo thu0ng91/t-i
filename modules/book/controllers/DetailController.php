@@ -168,7 +168,8 @@ class DetailController extends FWModuleFrontController
         ));
 
         if (!$book) {
-            throw new CHttpException(404);
+//            throw new CHttpException(404);
+            H::showmsg("找不到书籍！", Yii::app()->createUrl("site/index"));
         }
         
         $this->assign("book", $book);
@@ -216,17 +217,17 @@ class DetailController extends FWModuleFrontController
 			$downPermission = $permissionconf->downPermission;
 		}
     	if($downPermission == 1 && !Yii::app()->user->id){
-			H::showmsg('登录后才可以下载', Yii::app()->createUrl('/book/detail/index',array('id'=>$id)));
+			H::showmsg('登录后才可以下载', Yii::app()->createUrl('/book/detail/index',array('id'=>$book->id, 'pinyin' => $book->pinyin)));
 		}
 
+        $url = Yii::app()->createUrl('site/index');
+
         if (!$book) {
-            throw new CHttpException(404);
+            H::showmsg("找不到书籍！", $url);
         }
 
-        $file = Book::getBookDataDir($id) . DS . "all.txt";
-
-        if (!file_exists($file)) {
-            throw new CHttpException(404);
+        if (false === ($file = $this->makeAllTxtFile($id))) {
+            H::showmsg("找不到书籍内容！", $url);
         }
 
         $title = iconv("UTF-8", "GBK//ignore", $book->title);
@@ -344,7 +345,8 @@ class DetailController extends FWModuleFrontController
         ));
 
         if (!$book) {
-            throw new CHttpException(404);
+//            throw new CHttpException(404);
+            H::showmsg("找不到书籍！", Yii::app()->createUrl("site/index"));
         }
 
         $this->assign("book", $book);
@@ -358,5 +360,40 @@ class DetailController extends FWModuleFrontController
         $this->assign("chapters", $chapterList);
 
         $this->renderPartial('download');
+    }
+
+    /**
+     * 根据书籍生成对应的全部章节的txt并返回txt文件路径，失败返回false
+     * @param $bookId
+     * @return bool|string
+     */
+    protected function makeAllTxtFile($bookId)
+    {
+        $dir = Book::getBookDataDir($bookId);
+
+        if (!is_dir($dir)) return false;
+        $allTxtFile = $dir . DS . "all.txt";
+
+        $allTextFileTime = @filemtime($allTxtFile);
+        if (false === $allTextFileTime) $allTextFileTime = 0;
+
+        if (file_exists($allTxtFile) && filemtime($dir . DS . ".") <= $allTextFileTime) {
+            return $allTxtFile;
+        }
+
+        $iterator = new DirectoryIterator($dir);
+
+        $isMake = false;
+        foreach ($iterator as $f) {
+            if ($f->isFile() && !$f->isDot() && strtolower($f->getExtension()) == 'txt' && $f->getMTime() > $allTextFileTime) {
+                @file_put_contents($allTxtFile, file_get_contents($f->getPathname()), FILE_APPEND);
+
+                if (!$isMake) $isMake = true;
+            }
+        }
+
+        if ($allTextFileTime > 0 || $isMake) return $allTxtFile;
+
+        return false;
     }
 }

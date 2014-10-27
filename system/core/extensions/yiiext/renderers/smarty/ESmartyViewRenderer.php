@@ -290,6 +290,8 @@ class ESmartyViewRenderer extends CApplicationComponent implements IViewRenderer
 //		else
 //			$template->display();
 
+        $this->getSmarty()->loadFilter('output', 'trimwhitespace');
+
         if ($return) {
             return $this->getSmarty()->fetch($sourceFile);
         } else {

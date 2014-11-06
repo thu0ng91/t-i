@@ -47,6 +47,10 @@ return array(
                 'label' => '小说静态管理',
                 'url' => 'book/admin/static/index',
             ),
+            array(
+                'label' => '小说最新章节修复',
+                'url' => 'book/admin/fix/lastchapter',
+            ),
         )
     ),
 );

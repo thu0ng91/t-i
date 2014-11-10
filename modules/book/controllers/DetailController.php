@@ -385,7 +385,10 @@ class DetailController extends FWModuleFrontController
 
         $isMake = false;
         foreach ($iterator as $f) {
-            if ($f->isFile() && !$f->isDot() && strtolower($f->getExtension()) == 'txt' && $f->getMTime() > $allTextFileTime) {
+			$fileName = $f->getFilename();
+  			$pos_dot = strrpos($fileName, "."); // find '.'
+  			$ext = ($pos_dot !== false) ? substr($fileName, $pos_dot+1) : '';
+            if ($f->isFile() && !$f->isDot() && strtolower($ext) == 'txt' && $f->getMTime() > $allTextFileTime) {
                 @file_put_contents($allTxtFile, file_get_contents($f->getPathname()), FILE_APPEND);
 
                 if (!$isMake) $isMake = true;

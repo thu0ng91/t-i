@@ -62,7 +62,7 @@ class ListController extends FWModuleFrontController
         $criteria->compare("cid", $category->id);
         $criteria->compare("status", Yii::app()->params['status']['ischecked']);
 
-        $criteria->order = "createtime desc";
+        $criteria->order = "lastchaptertime desc";
 
         $count=Book::model()->count($criteria);
         $pages=new CPagination($count);

@@ -171,7 +171,7 @@ class DoController extends FWFrontController
                 	H::showmsg('账号或密码错误', Yii::app()->createUrl('/site/index'));
                 }
             }
-
+	
         }
     	$this->renderPartial('ajaxlogin',array('user'=>$user,'msg'=>$msg));
     }

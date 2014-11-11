@@ -13,6 +13,13 @@ class DoController extends FWFrontController
 //        $this->layout = 'main-login';
         Yii::app()->theme = "system";
 
+        $url = Yii::app()->createUrl('/site/index');
+        if (isset($_REQUEST['go_url']) && !preg_match('/login/i', $_REQUEST['go_url'])) {
+            $url = $_REQUEST['go_url'];
+        } elseif (isset($_SERVER['HTTP_REFERER']) && !preg_match('/login/i', $_SERVER['HTTP_REFERER'])) {
+            $url = $_SERVER['HTTP_REFERER'];
+        }
+
         if(isset($_POST['LoginForm']))
         { 
             $model = new LoginForm;
@@ -21,9 +28,12 @@ class DoController extends FWFrontController
             if($model->validate()){
                 $loginStatus = $this->userLogin($model->username,$model->password);
                 if($loginStatus === true){
-                	H::showmsg('登录成功', Yii::app()->createUrl('/site/index'));
+
+                	H::showmsg('登录成功', $url);
                 }else{
-                	H::showmsg('账号或密码错误', Yii::app()->createUrl('/site/index'));
+                	H::showmsg('账号或密码错误', Yii::app()->createUrl('/member/do/login', array(
+                        'go_url' => $url,
+                    )));
                 }
             }
 
@@ -31,6 +41,7 @@ class DoController extends FWFrontController
         $this->setAllSEOInfo("登陆页");
 //        $this->setSEOVar()
         //$this->render('login',array('model'=>$model));
+        $this->assign('go_url', $url);
         $this->renderPartial('login');
     }
 

@@ -8,7 +8,7 @@ class MyController extends MemberController
 
     public function actionIndex()
     {
-        var_dump(Yii::app()->themeManager->baseUrl);
+//        var_dump(Yii::app()->themeManager->baseUrl);
         exit;
     }
 	

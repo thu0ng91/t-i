@@ -41,8 +41,8 @@ return array(
     'urlSuffix' => array('.html'),
     'lockFile' => 'install.lock',
     'novelFlag' => array(
-       '0' => '完本',
-       '1' => '连载'
+       '0' => '连载',
+       '1' => '完本',
     ),
     'recommendLevel' => array(
         '不推荐',

@@ -16,9 +16,20 @@ defined('BASE_THEME_PATH') or define('BASE_THEME_PATH', FW_ROOT_PATH. DS . BASE_
 defined('FW_UPLOAD_DIR') or define('FW_UPLOAD_DIR', 'uploads');
 defined('FW_TXT_DIR') or define('FW_TXT_DIR', 'txt');
 
+
+/**
+ * 检查是否移动端
+ * @return bool
+ */
+function isMobile()
+{
+    $userAgent = $_SERVER['HTTP_USER_AGENT'];
+    return preg_match ( "/phone|iphone|itouch|ipod|symbian|android|htc_|htc-|palmos|blackberry|opera mini|iemobile|windows ce|nokia|fennec|hiptop|kindle|mot |mot-|webos\/|samsung|sonyericsson|^sie-|nintendo/i",$userAgent);
+}
+
 require_once('version.php');
 
-$yii=dirname(__FILE__).'/system/framework/yii.php';
+$yii=dirname(__FILE__).'/system/framework/yiilite.php';
 $globals=dirname(__FILE__).'/system/core/globals.php';
 
 //defined('YII_DEBUG') or define('YII_DEBUG',true);

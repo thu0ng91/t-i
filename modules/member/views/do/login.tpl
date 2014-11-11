@@ -83,6 +83,7 @@
     </div>
 
 </fieldset>
+    <input type="hidden" name="go_url" value="{$go_url}" />
 <button id="btn-submit" class="btn-submit2" type="submit">登录</button>
 </form>
 

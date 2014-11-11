@@ -3094,15 +3094,19 @@ class CUrlRule extends CBaseUrlRule
 		}
 		$p=rtrim($pattern,'*');
 		$this->append=$p!==$pattern;
-		$p=trim($p,'/');
-		$this->template=preg_replace('/<(\w+):?.*?>/','<$1>',$p);
-		$this->pattern='/^'.strtr($this->template,$tr).'\/';
+//		$p=trim($p,'/');
+		$p=ltrim($p,'/');
+
+		$this->template=preg_replace('~<(\w+):?.*?>~','<$1>',$p);
+
+		$this->pattern='~^'.strtr($this->template,$tr);
+        if (substr($p, -1) != '/') $this->pattern .= '\/';
 		if($this->append)
-			$this->pattern.='/u';
+			$this->pattern.='~u';
 		else
-			$this->pattern.='$/u';
+			$this->pattern.='$~u';
 		if($this->references!==array())
-			$this->routePattern='/^'.strtr($this->route,$tr2).'$/u';
+			$this->routePattern='~^'.strtr($this->route,$tr2).'$~u';
 		if(YII_DEBUG && @preg_match($this->pattern,'test')===false)
 			throw new CException(Yii::t('yii','The URL pattern "{pattern}" for route "{route}" is not a valid regular expression.',
 				array('{route}'=>$route,'{pattern}'=>$pattern)));
